@@ -16,6 +16,12 @@ How to Install?
 How to Develop?
 ---------------
 
+How to nuke everything not in Git under source control,
+THUS LOOSING ANYTHING UNCOMMITED (in staging),
+and build locally to make sure you're good:
+
+   git reset --hard ; git clean -dfx ; mvn -o clean package
+
 Get on the [eclipse-emf-eson-dev Google Group](https://groups.google.com/forum/#!forum/eclipse-emf-eson-dev) and start yapping...
 
 The recommended way to get a ready-to-rock development workspace is to the [Eclipse Oomph Installer](https://wiki.eclipse.org/Eclipse_Oomph_Installer), which includes a Setup Model for ESON.  Alternatively you could also just do it old-style and manually:
