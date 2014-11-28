@@ -5,3 +5,4 @@ bin
 xtend-gen
 rebel.xml
 *~
+.antlr-generator*.jar
