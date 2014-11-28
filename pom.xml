@@ -268,6 +268,10 @@
 					</execution>
 				</executions>
 			</plugin>
+<!-- TODO Uncomment
+	once http://jira.codehaus.org/browse/MLICENSE-113 is resolved,
+	or work-around using http://mojo.codehaus.org/license-maven-plugin/examples/example-add-license.html
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
@@ -290,6 +294,7 @@
 					</execution>
 				</executions>
 			</plugin>
+-->
 		</plugins>
 		<pluginManagement>
 			<plugins>
