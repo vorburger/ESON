@@ -1,0 +1,7 @@
+target
+bin
+*._trace
+.svn
+xtend-gen
+rebel.xml
+*~
