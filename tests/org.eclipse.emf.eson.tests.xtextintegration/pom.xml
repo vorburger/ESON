@@ -7,6 +7,7 @@
 		<artifactId>eson</artifactId>
 		<groupId>org.eclipse.emf.eson</groupId>
 		<version>0.10.0-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>org.eclipse.emf.eson.tests.xtextintegration</artifactId>
 	<packaging>eclipse-plugin</packaging>

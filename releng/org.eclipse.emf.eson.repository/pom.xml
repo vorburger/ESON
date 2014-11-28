@@ -6,8 +6,10 @@
 		<artifactId>eson</artifactId>
 		<groupId>org.eclipse.emf.eson</groupId>
 		<version>0.10.0-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<groupId>org.eclipse.emf.eson</groupId>
-	<artifactId>org.eclipse.emf.eson.feature</artifactId>
-	<packaging>eclipse-feature</packaging>
+	<artifactId>org.eclipse.emf.eson.repository</artifactId>
+	<packaging>eclipse-repository</packaging>
+	
 </project>
