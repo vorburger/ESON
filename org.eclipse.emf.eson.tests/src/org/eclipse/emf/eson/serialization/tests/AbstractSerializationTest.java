@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.compare.Comparison;
 import org.eclipse.emf.compare.Diff;
 import org.eclipse.emf.compare.EMFCompare;
+import org.eclipse.emf.compare.scope.DefaultComparisonScope;
 import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -79,7 +80,7 @@ public abstract class AbstractSerializationTest {
 		}
 		
 		// @see http://wiki.eclipse.org/EMF_Compare/Developer_Guide
-		IComparisonScope scope = EMFCompare.createDefaultScope(expected, actual);
+		IComparisonScope scope = new DefaultComparisonScope(expected, actual, null);
 		EMFCompare comparator = EMFCompare.builder().build();
 		Comparison comparison = comparator.compare(scope);
 
