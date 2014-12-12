@@ -2,7 +2,7 @@
  * #%L
  * org.eclipse.emf.eson.ui
  * %%
- * No copyright, as per discussion in https://dev.eclipse.org/ipzilla/show_bug.cgi?id=8690
+ * Copyright (C) 2014 by no one (no copyright), as per discussion in https://dev.eclipse.org/ipzilla/show_bug.cgi?id=8690
  * %%
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
