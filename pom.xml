@@ -10,7 +10,7 @@
 
 	<name>ESON</name>
 	<description>ESON is the EMF (Eclipse Modeling Framework) Simple Object Notation</description>
-	<url>https://github.com/vorburger/efactory</url>
+	<url>http://git.eclipse.org/c/emf/org.eclipse.emf.eson.git/</url>
 	<inceptionYear>2009</inceptionYear>
 	
 	<organization>

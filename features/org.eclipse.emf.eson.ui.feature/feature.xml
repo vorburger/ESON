@@ -4,12 +4,12 @@
       label="EFactory UI"
       version="0.10.0.qualifier">
 
-   <description url="https://github.com/vorburger/efactory">
-      The UI and help.
+   <description url="http://git.eclipse.org/c/emf/org.eclipse.emf.eson.git/">
+      The ESON UI feature.
    </description>
 
    <copyright>
-      Copyright (c) 2009 Sebastian Benz, Michael Vorburger and others.
+      Copyright (c) 2009 - 2015 Sebastian Benz, Michael Vorburger and others.
 
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License

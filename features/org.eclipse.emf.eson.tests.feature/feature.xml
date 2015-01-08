@@ -4,8 +4,8 @@
       label="EFactory Tests"
       version="0.10.0.qualifier">
 
-   <description url="https://github.com/vorburger/efactory">
-      The Tests.
+   <description url="http://git.eclipse.org/c/emf/org.eclipse.emf.eson.git/">
+      The ESON Tests feature.
    </description>
 
    <copyright>
