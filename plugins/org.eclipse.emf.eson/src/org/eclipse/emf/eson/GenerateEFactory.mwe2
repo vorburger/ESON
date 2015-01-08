@@ -8,6 +8,7 @@ var grammarURI = "classpath:/org/eclipse/emf/eson/EFactory.xtext"
 var file.extensions = "efactory,eson"
 var projectName = "org.eclipse.emf.eson"
 var runtimeProject = "../${projectName}"
+var testProject = "../../tests/${projectName}.tests"
 
 Workflow {
     bean = StandaloneSetup {
@@ -28,7 +29,7 @@ Workflow {
     }
 
     component = DirectoryCleaner {
-        directory = "${runtimeProject}.tests/src-gen"
+        directory = "${testProject}/src-gen"
     	exclude = ".gitempty-src-gen"
     	exclude = ".gitempty-xtend-gen"
     }
@@ -36,7 +37,7 @@ Workflow {
     component = Generator {
         pathRtProject = runtimeProject
         pathUiProject = "${runtimeProject}.ui"
-        pathTestProject = "${runtimeProject}.tests"
+        pathTestProject = "${testProject}"
         projectNameRt = projectName
         projectNameUi = "${projectName}.ui"
         language = {
