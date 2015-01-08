@@ -609,8 +609,8 @@ public class InternalEFactoryLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2019:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ',' | '0' .. '9' )+ )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2019:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ',' | '0' .. '9' )+
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2019:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ',' | '-' | '0' .. '9' )+ )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2019:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ',' | '-' | '0' .. '9' )+
             {
             // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2019:11: ( '^' )?
             int alt10=2;
@@ -630,14 +630,14 @@ public class InternalEFactoryLexer extends Lexer {
 
             }
 
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2019:16: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ',' | '0' .. '9' )+
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2019:16: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ',' | '-' | '0' .. '9' )+
             int cnt11=0;
             loop11:
             do {
                 int alt11=2;
                 int LA11_0 = input.LA(1);
 
-                if ( (LA11_0==','||(LA11_0>='0' && LA11_0<='9')||(LA11_0>='A' && LA11_0<='Z')||LA11_0=='_'||(LA11_0>='a' && LA11_0<='z')) ) {
+                if ( ((LA11_0>=',' && LA11_0<='-')||(LA11_0>='0' && LA11_0<='9')||(LA11_0>='A' && LA11_0<='Z')||LA11_0=='_'||(LA11_0>='a' && LA11_0<='z')) ) {
                     alt11=1;
                 }
 
@@ -646,7 +646,7 @@ public class InternalEFactoryLexer extends Lexer {
             	case 1 :
             	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:
             	    {
-            	    if ( input.LA(1)==','||(input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+            	    if ( (input.LA(1)>=',' && input.LA(1)<='-')||(input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
 
             	    }
@@ -1281,19 +1281,19 @@ public class InternalEFactoryLexer extends Lexer {
 
     protected DFA21 dfa21 = new DFA21(this);
     static final String DFA21_eotS =
-        "\1\uffff\1\27\1\31\1\25\6\uffff\3\27\1\25\1\45\1\25\1\uffff\3\25"+
-        "\2\uffff\1\27\12\uffff\3\27\1\45\1\uffff\1\45\5\uffff\1\62\3\27"+
-        "\1\uffff\1\60\1\uffff\1\67\1\70\1\27\3\uffff\1\70";
+        "\1\uffff\1\27\1\31\1\25\6\uffff\4\27\1\45\1\25\1\uffff\3\25\2\uffff"+
+        "\1\27\12\uffff\3\27\1\45\1\uffff\1\45\5\uffff\1\62\3\27\1\uffff"+
+        "\1\60\1\uffff\1\67\1\70\1\27\3\uffff\1\70";
     static final String DFA21_eofS =
         "\72\uffff";
     static final String DFA21_minS =
         "\1\0\1\163\1\52\1\116\6\uffff\1\125\1\162\1\141\1\60\2\54\1\uffff"+
-        "\2\0\1\52\2\uffff\1\145\12\uffff\1\114\1\165\1\154\1\56\1\uffff"+
+        "\2\0\1\52\2\uffff\1\145\12\uffff\1\114\1\165\1\154\1\54\1\uffff"+
         "\1\54\1\60\4\uffff\1\54\1\114\1\145\1\163\1\uffff\1\56\1\uffff\2"+
         "\54\1\145\3\uffff\1\54";
     static final String DFA21_maxS =
         "\1\uffff\1\163\1\52\1\116\6\uffff\1\125\1\162\1\141\1\71\2\172\1"+
-        "\uffff\2\uffff\1\57\2\uffff\1\145\12\uffff\1\114\1\165\1\154\1\71"+
+        "\uffff\2\uffff\1\57\2\uffff\1\145\12\uffff\1\114\1\165\1\154\1\172"+
         "\1\uffff\1\172\1\71\4\uffff\1\172\1\114\1\145\1\163\1\uffff\1\71"+
         "\1\uffff\2\172\1\145\3\uffff\1\172";
     static final String DFA21_acceptS =
@@ -1321,9 +1321,9 @@ public class InternalEFactoryLexer extends Lexer {
             "\1\42",
             "\1\43",
             "\12\44",
-            "\1\27\1\uffff\1\47\1\uffff\12\46\7\uffff\32\27\4\uffff\1\27"+
-            "\1\uffff\32\27",
-            "\1\27\3\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27",
+            "\2\27\1\47\1\uffff\12\46\7\uffff\32\27\4\uffff\1\27\1\uffff"+
+            "\32\27",
+            "\2\27\2\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27",
             "",
             "\0\50",
             "\0\50",
@@ -1344,29 +1344,30 @@ public class InternalEFactoryLexer extends Lexer {
             "\1\55",
             "\1\56",
             "\1\57",
-            "\1\60\1\uffff\12\44",
+            "\2\27\1\60\1\uffff\12\44\7\uffff\32\27\4\uffff\1\27\1\uffff"+
+            "\32\27",
             "",
-            "\1\27\1\uffff\1\47\1\uffff\12\46\7\uffff\32\27\4\uffff\1\27"+
-            "\1\uffff\32\27",
+            "\2\27\1\47\1\uffff\12\46\7\uffff\32\27\4\uffff\1\27\1\uffff"+
+            "\32\27",
             "\12\61",
             "",
             "",
             "",
             "",
-            "\1\27\3\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27",
+            "\2\27\2\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27",
             "\1\63",
             "\1\64",
             "\1\65",
             "",
             "\1\66\1\uffff\12\61",
             "",
-            "\1\27\3\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27",
-            "\1\27\3\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27",
+            "\2\27\2\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27",
+            "\2\27\2\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27",
             "\1\71",
             "",
             "",
             "",
-            "\1\27\3\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27"
+            "\2\27\2\uffff\12\27\7\uffff\32\27\4\uffff\1\27\1\uffff\32\27"
     };
 
     static final short[] DFA21_eot = DFA.unpackEncodedString(DFA21_eotS);
