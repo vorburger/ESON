@@ -18,13 +18,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.eson.eFactory.CustomNameMapping;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.EcoreUtil2;
 
 import com.google.common.collect.Iterables;
 
-@NonNullByDefault
 public class NameAccessor {
 
 	protected static final String DEFAULT_NAME_FEATURE = "name";
@@ -49,12 +46,12 @@ public class NameAccessor {
 		eObject.eSet(nameAttribute, name);
 	}
 
-	public @Nullable EAttribute getNameAttribute(NewObject newObject) {
+	public EAttribute getNameAttribute(NewObject newObject) {
 		Factory context = EcoreUtil2.getContainerOfType(newObject, Factory.class);
 		return getNameAttribute(newObject, context);
 	}
 	
-	public @Nullable EAttribute getNameAttribute(NewObject newObject, @Nullable Factory context) {
+	public EAttribute getNameAttribute(NewObject newObject, Factory context) {
 		if (newObject.getEClass() == null)
 			return null;
 		if (context != null) {
@@ -76,7 +73,6 @@ public class NameAccessor {
 			return null;
 	}
 
-	@SuppressWarnings("null")
 	protected Iterable<CustomNameMapping> getCustomNameMappings(Factory factory) {
 		return Iterables.filter(factory.getAnnotations(), CustomNameMapping.class);
 	}

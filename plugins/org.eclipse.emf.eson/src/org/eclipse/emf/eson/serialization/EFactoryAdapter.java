@@ -33,8 +33,6 @@ import org.eclipse.emf.eson.eFactory.MultiValue;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.Value;
 import org.eclipse.emf.eson.resource.EFactoryResource;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.util.concurrent.IWriteAccess;
@@ -295,7 +293,7 @@ public class EFactoryAdapter extends EContentAdapter {
 		});
 	}
 
-	protected @Nullable Feature getChangedFactoryFeature(Notification msg, NewObject newObject) {
+	protected Feature getChangedFactoryFeature(Notification msg, NewObject newObject) {
 		final EStructuralFeature changedEFeature = (EStructuralFeature) msg.getFeature();
 		final EList<Feature> newObjectAllFeatures = newObject.getFeatures();
 		for (Feature feature : newObjectAllFeatures) {
@@ -306,7 +304,7 @@ public class EFactoryAdapter extends EContentAdapter {
 		return null;
 	}
 
-	protected @NonNull Feature newFactoryFeature(Notification msg, NewObject newObject) {
+	protected Feature newFactoryFeature(Notification msg, NewObject newObject) {
 		final Feature newFeature = EFactoryFactory.eINSTANCE.createFeature();
 		final EStructuralFeature changedEFeature = (EStructuralFeature) msg.getFeature();
 		newFeature.setEFeature(changedEFeature);
@@ -315,17 +313,16 @@ public class EFactoryAdapter extends EContentAdapter {
 		return newFeature;
 	}
 
-	protected @NonNull NewObject getChangedNewObject(EObject eNotifier) {
+	protected NewObject getChangedNewObject(EObject eNotifier) {
 		return getEFactoryResource(eNotifier).getExistingEFactoryNewObject(eNotifier);
 	}
 
-	protected @NonNull EFactoryResource getEFactoryResource(Notification msg) {
+	protected EFactoryResource getEFactoryResource(Notification msg) {
 		final EObject eNotifier = (EObject) msg.getNotifier();
 		return getEFactoryResource(eNotifier);
 	}
 
-	@SuppressWarnings("null") // assuming EObject eNotifier is ALWAYS in an EResource
-	protected @NonNull EFactoryResource getEFactoryResource(EObject eNotifier) {
+	protected EFactoryResource getEFactoryResource(EObject eNotifier) {
 		final Resource eNotifierResource = eNotifier.eResource();
 		return (EFactoryResource) eNotifierResource;
 	}

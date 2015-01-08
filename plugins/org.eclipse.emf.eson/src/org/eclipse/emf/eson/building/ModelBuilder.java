@@ -25,8 +25,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.BiMap;
@@ -42,7 +40,7 @@ public class ModelBuilder {
 
 	// intentionally package local - outside clients shouldn't need to build individual NewObject, they only build(Factory)
 	// NOTE: It is the caller's (!) responsibility to add the returned EObject into another EObject (or a Resource) eContainer. 
-	@NonNull EObject build(@NonNull NewObject newObject) throws ModelBuilderException {
+	EObject build(NewObject newObject) throws ModelBuilderException {
 		Preconditions.checkNotNull(newObject);
 		EObject target = mapping.get(newObject);
 		if (target != null) {
@@ -54,8 +52,7 @@ public class ModelBuilder {
 		return eObject;
 	}
 
-	@SuppressWarnings("null") // req. because EFactory.create is not null annotated
-	@NonNull private EObject createTarget(NewObject from) throws ModelBuilderException {
+	private EObject createTarget(NewObject from) throws ModelBuilderException {
 		EClass eClass = from.getEClass();
 		if (eClass == null) {
 			throw new ModelBuilderException("No EClass for New Object " + getNewObjectDescriptionForErrorMessage(from));
@@ -93,13 +90,13 @@ public class ModelBuilder {
 	 * @return the EObject built from the Factory
 	 * @throws ModelBuilderException if the content of the Factory prevented creation of a matching EObject
 	 */
-	public @NonNull EObject build(Factory factory) throws ModelBuilderException {
+	public EObject build(Factory factory) throws ModelBuilderException {
 		EObject unlinkedRoot = buildWithoutLinking(factory);
 		link();
 		return unlinkedRoot;
 	}
 
-	public @NonNull EObject buildWithoutLinking(@NonNull Factory factory) throws ModelBuilderException {
+	public EObject buildWithoutLinking(Factory factory) throws ModelBuilderException {
 		Preconditions.checkNotNull(factory);
 		return build(factory.getRoot());
 	}
@@ -120,7 +117,7 @@ public class ModelBuilder {
 		}
 	}
 
-	public @NonNull EObject getBuilt(@NonNull NewObject newObject) throws ModelBuilderException {
+	public EObject getBuilt(NewObject newObject) throws ModelBuilderException {
 		Preconditions.checkNotNull(newObject);
 		checkNotEmpty();
 		EObject target = mapping.get(newObject);
@@ -137,7 +134,7 @@ public class ModelBuilder {
 	 * @return new object, or null if the value EObject wasn't built by this ModelBuilder 
 	 * @throws ModelBuilderException if build ModelBuilder is uninitialized, build() needs to called with non-empty Factory/NewObject before this. 
 	 */
-	public @Nullable NewObject getSource(@NonNull EObject value) throws ModelBuilderException {
+	public NewObject getSource(EObject value) throws ModelBuilderException {
 		Preconditions.checkNotNull(value);
 		checkNotEmpty();
 		return mapping.inverse().get(value);

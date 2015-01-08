@@ -22,7 +22,6 @@ import org.eclipse.emf.eson.eFactory.Value;
 import org.eclipse.emf.eson.eFactory.impl.ReferenceImpl;
 import org.eclipse.emf.eson.eFactory.util.EFactorySwitch;
 import org.eclipse.emf.eson.util.EcoreUtil3;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.EcoreUtil2;
 
 /**
@@ -85,7 +84,7 @@ public class FeatureSwitch extends EFactorySwitch<FeatureBuilder> {
 		return doSwitch(value);
 	}
 	
-	private @Nullable EStructuralFeature getEFeature(Value value) {
+	private EStructuralFeature getEFeature(Value value) {
 		final Feature containingFeature = EcoreUtil2.getContainerOfType(value, Feature.class);
 		if ( containingFeature != null )
 			return containingFeature.getEFeature();

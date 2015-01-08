@@ -19,8 +19,6 @@ import org.eclipse.emf.eson.building.ModelBuilder;
 import org.eclipse.emf.eson.building.ModelBuilderException;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.serialization.EFactoryAdapter;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.concurrent.IWriteAccess;
@@ -39,7 +37,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		return getBuilder().isBuilt();
 	}
 	
-	public @Nullable NewObject getEFactoryNewObject(EObject eObject) {
+	public NewObject getEFactoryNewObject(EObject eObject) {
 		if (builder == null) {
 			return null;
 		}
@@ -52,7 +50,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		}
 	}
 
-	public @NonNull NewObject getExistingEFactoryNewObject(EObject eObject) {
+	public NewObject getExistingEFactoryNewObject(EObject eObject) {
 		NewObject newObject = getEFactoryNewObject(eObject);
 		if (newObject == null) {
 			throw new IllegalArgumentException(eObject.toString());
@@ -60,12 +58,12 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		return newObject ;
 	}
 	
-	public @NonNull EObject getEFactoryEObject(NewObject nObject) throws ModelBuilderException {
+	public EObject getEFactoryEObject(NewObject nObject) throws ModelBuilderException {
 		return getBuilder().getBuilt(nObject);
 	}
 
 	// package-private, as only used by EFactoryDerivedStateComputer
-	@NonNull ModelBuilder getBuilder() throws IllegalStateException {
+	ModelBuilder getBuilder() throws IllegalStateException {
 		// written in this weird style just to satisfy Eclipse' slightly dumb null check
 		final ModelBuilder _builder = builder;
 		if (_builder != null) {
@@ -75,7 +73,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		}
 	}
 	
-	public @Nullable org.eclipse.emf.eson.eFactory.Factory getEFactoryFactory() {
+	public org.eclipse.emf.eson.eFactory.Factory getEFactoryFactory() {
 		if (getContents().isEmpty()) {
 			return null;
 		}
@@ -87,10 +85,9 @@ public class EFactoryResource extends DerivedStateAwareResource {
 	}
 
 	// package-private, as only used by EFactoryDerivedStateComputer
-	@NonNull Provider<IWriteAccess<XtextResource>> getWriteAccessProvider() {
+	Provider<IWriteAccess<XtextResource>> getWriteAccessProvider() {
 		return new Provider<IWriteAccess<XtextResource>>() {
-			@SuppressWarnings("null") // JDT null check even in Kepler is still too dumb to understand the if null means return will never return null.. :( 
-			public @NonNull IWriteAccess<XtextResource> get() {
+			public IWriteAccess<XtextResource> get() {
 				if (documentWriteAccess == null)
 					// throw new IllegalStateException("setWriteAccess(IWriteAccess<XtextResource>) should have been called by org.eclipse.emf.eson.ui.editor.EFactoryXtextDocument.setInput(XtextResource), but wasnt't (yet) - how come?");
 					return new XtextResourceDirectAccess(EFactoryResource.this);
@@ -122,7 +119,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		builder.putEObjectNewObjectPair(eObject, newObject);
 	}
 
-	public static @Nullable EObject getEFactoryEObject(Resource r) {
+	public static EObject getEFactoryEObject(Resource r) {
 		final EFactoryResource eFactoryResource = (EFactoryResource) r;
 		if (!eFactoryResource.isBuilt())
 			return null;
@@ -136,7 +133,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		}
 	}
 
-	public static @Nullable <T> T getEFactoryEObject(Resource r, Class<T> clazz) {
+	public static <T> T getEFactoryEObject(Resource r, Class<T> clazz) {
 		EObject object = getEFactoryEObject(r);
 		if (object == null)
 			return null;
