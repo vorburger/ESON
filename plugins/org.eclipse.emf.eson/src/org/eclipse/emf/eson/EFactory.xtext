@@ -81,8 +81,8 @@ terminal DOUBLE returns ecore::EDouble : ('-')?  ('0'..'9')+ '.'  ('0'..'9')+;
 terminal DATE returns ecore::EDate : ('0'..'9')+ '.' ('0'..'9')+ '.' ('0'..'9')+;
 
 // Due to historic reasons in a closed source an in-house product which uses ESON
-// we need to add ',' allowed in IDs, as well as permit ID starting with digits:
+// we need to add ',' and '-' to be allowed in IDs, as well as permit ID starting with digits:
 // (NOTE: This terminal must be named 'ID' as well, not some new ID2 - unless you write a new ValueConverter for it.)
-terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_'|','|'0'..'9')+ ;
+terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')+ ;
 
 // PS: Order of terminals appears to matter - ID needs to come after BOOLEAN

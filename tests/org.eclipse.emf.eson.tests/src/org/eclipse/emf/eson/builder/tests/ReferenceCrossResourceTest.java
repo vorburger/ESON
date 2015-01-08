@@ -35,6 +35,6 @@ public class ReferenceCrossResourceTest {
 		TestSetup.INSTANCE.doSetup();
 		/*TestModel aModel =*/ provider.loadModel("res/BuilderTests/ReferenceCrossResourceTestA.efactory", TestModel.class);
 		TestModel bModel = provider.loadModel("res/BuilderTests/ReferenceCrossResourceTestB.efactory", TestModel.class);
-		Assert.assertEquals("1target,1", bModel.getReferenceTestContainer().get(0).getReferenceToOne().getName());
+		Assert.assertEquals("1-target,1", bModel.getReferenceTestContainer().get(0).getReferenceToOne().getName());
 	}
 }

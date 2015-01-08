@@ -555,41 +555,66 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private FactoryElements pFactory;
-	private PackageImportElements pPackageImport;
-	private AnnotationElements pAnnotation;
-	private CustomNameMappingElements pCustomNameMapping;
-	private FeatureElements pFeature;
-	private NewObjectElements pNewObject;
-	private ValueElements pValue;
-	private MultiValueElements pMultiValue;
-	private ReferenceElements pReference;
-	private ContainmentElements pContainment;
-	private AttributeElements pAttribute;
-	private EnumAttributeElements pEnumAttribute;
-	private StringAttributeElements pStringAttribute;
-	private IntegerAttributeElements pIntegerAttribute;
-	private DoubleAttributeElements pDoubleAttribute;
-	private DateAttributeElements pDateAttribute;
-	private NullAttributeElements pNullAttribute;
-	private BooleanAttributeElements pBooleanAttribute;
-	private QualifiedNameElements pQualifiedName;
-	private ValidIDElements pValidID;
-	private TerminalRule tBOOLEAN;
-	private TerminalRule tLONG;
-	private TerminalRule tDOUBLE;
-	private TerminalRule tDATE;
-	private TerminalRule tID;
+	private final FactoryElements pFactory;
+	private final PackageImportElements pPackageImport;
+	private final AnnotationElements pAnnotation;
+	private final CustomNameMappingElements pCustomNameMapping;
+	private final FeatureElements pFeature;
+	private final NewObjectElements pNewObject;
+	private final ValueElements pValue;
+	private final MultiValueElements pMultiValue;
+	private final ReferenceElements pReference;
+	private final ContainmentElements pContainment;
+	private final AttributeElements pAttribute;
+	private final EnumAttributeElements pEnumAttribute;
+	private final StringAttributeElements pStringAttribute;
+	private final IntegerAttributeElements pIntegerAttribute;
+	private final DoubleAttributeElements pDoubleAttribute;
+	private final DateAttributeElements pDateAttribute;
+	private final NullAttributeElements pNullAttribute;
+	private final BooleanAttributeElements pBooleanAttribute;
+	private final QualifiedNameElements pQualifiedName;
+	private final ValidIDElements pValidID;
+	private final TerminalRule tBOOLEAN;
+	private final TerminalRule tLONG;
+	private final TerminalRule tDOUBLE;
+	private final TerminalRule tDATE;
+	private final TerminalRule tID;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public EFactoryGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pFactory = new FactoryElements();
+		this.pPackageImport = new PackageImportElements();
+		this.pAnnotation = new AnnotationElements();
+		this.pCustomNameMapping = new CustomNameMappingElements();
+		this.pFeature = new FeatureElements();
+		this.pNewObject = new NewObjectElements();
+		this.pValue = new ValueElements();
+		this.pMultiValue = new MultiValueElements();
+		this.pReference = new ReferenceElements();
+		this.pContainment = new ContainmentElements();
+		this.pAttribute = new AttributeElements();
+		this.pEnumAttribute = new EnumAttributeElements();
+		this.pStringAttribute = new StringAttributeElements();
+		this.pIntegerAttribute = new IntegerAttributeElements();
+		this.pDoubleAttribute = new DoubleAttributeElements();
+		this.pDateAttribute = new DateAttributeElements();
+		this.pNullAttribute = new NullAttributeElements();
+		this.pBooleanAttribute = new BooleanAttributeElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pValidID = new ValidIDElements();
+		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN");
+		this.tLONG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LONG");
+		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE");
+		this.tDATE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DATE");
+		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -622,7 +647,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//Factory:
 	//	epackages+=PackageImport* annotations+=Annotation* root=NewObject;
 	public FactoryElements getFactoryAccess() {
-		return (pFactory != null) ? pFactory : (pFactory = new FactoryElements());
+		return pFactory;
 	}
 	
 	public ParserRule getFactoryRule() {
@@ -632,7 +657,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//PackageImport: // TODO maybe we'll rename this 'use' to 'import' later (not short term, as it's in use)
 	//	"use" ePackage=[ecore::EPackage|QualifiedName] ".*";
 	public PackageImportElements getPackageImportAccess() {
-		return (pPackageImport != null) ? pPackageImport : (pPackageImport = new PackageImportElements());
+		return pPackageImport;
 	}
 	
 	public ParserRule getPackageImportRule() {
@@ -643,7 +668,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//Annotation:
 	//	CustomNameMapping;
 	public AnnotationElements getAnnotationAccess() {
-		return (pAnnotation != null) ? pAnnotation : (pAnnotation = new AnnotationElements());
+		return pAnnotation;
 	}
 	
 	public ParserRule getAnnotationRule() {
@@ -655,7 +680,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//CustomNameMapping:
 	//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}";
 	public CustomNameMappingElements getCustomNameMappingAccess() {
-		return (pCustomNameMapping != null) ? pCustomNameMapping : (pCustomNameMapping = new CustomNameMappingElements());
+		return pCustomNameMapping;
 	}
 	
 	public ParserRule getCustomNameMappingRule() {
@@ -665,7 +690,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//Feature:
 	//	eFeature=[ecore::EStructuralFeature] ":" value=Value?;
 	public FeatureElements getFeatureAccess() {
-		return (pFeature != null) ? pFeature : (pFeature = new FeatureElements());
+		return pFeature;
 	}
 	
 	public ParserRule getFeatureRule() {
@@ -679,7 +704,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//NewObject:
 	//	eClass=[ecore::EClass|QualifiedName] name=ID? "{" features+=Feature* "}";
 	public NewObjectElements getNewObjectAccess() {
-		return (pNewObject != null) ? pNewObject : (pNewObject = new NewObjectElements());
+		return pNewObject;
 	}
 	
 	public ParserRule getNewObjectRule() {
@@ -689,7 +714,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//Value: // The two (!) Syntactic Predicates => are needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
 	//	MultiValue | Attribute | => Containment | => Reference;
 	public ValueElements getValueAccess() {
-		return (pValue != null) ? pValue : (pValue = new ValueElements());
+		return pValue;
 	}
 	
 	public ParserRule getValueRule() {
@@ -699,7 +724,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//MultiValue:
 	//	{MultiValue} "[" values+=Value* "]";
 	public MultiValueElements getMultiValueAccess() {
-		return (pMultiValue != null) ? pMultiValue : (pMultiValue = new MultiValueElements());
+		return pMultiValue;
 	}
 	
 	public ParserRule getMultiValueRule() {
@@ -712,7 +737,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//// e.g. in an integration scenario with other Xtext grammars.
 	//	value=[ecore::EObject|QualifiedName];
 	public ReferenceElements getReferenceAccess() {
-		return (pReference != null) ? pReference : (pReference = new ReferenceElements());
+		return pReference;
 	}
 	
 	public ParserRule getReferenceRule() {
@@ -722,7 +747,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//Containment:
 	//	value=NewObject;
 	public ContainmentElements getContainmentAccess() {
-		return (pContainment != null) ? pContainment : (pContainment = new ContainmentElements());
+		return pContainment;
 	}
 	
 	public ParserRule getContainmentRule() {
@@ -733,7 +758,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//	EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute |
 	//	NullAttribute;
 	public AttributeElements getAttributeAccess() {
-		return (pAttribute != null) ? pAttribute : (pAttribute = new AttributeElements());
+		return pAttribute;
 	}
 	
 	public ParserRule getAttributeRule() {
@@ -743,7 +768,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumAttribute:
 	//	":" value=[ecore::EEnumLiteral];
 	public EnumAttributeElements getEnumAttributeAccess() {
-		return (pEnumAttribute != null) ? pEnumAttribute : (pEnumAttribute = new EnumAttributeElements());
+		return pEnumAttribute;
 	}
 	
 	public ParserRule getEnumAttributeRule() {
@@ -754,7 +779,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//StringAttribute:
 	//	value=STRING;
 	public StringAttributeElements getStringAttributeAccess() {
-		return (pStringAttribute != null) ? pStringAttribute : (pStringAttribute = new StringAttributeElements());
+		return pStringAttribute;
 	}
 	
 	public ParserRule getStringAttributeRule() {
@@ -764,7 +789,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//IntegerAttribute:
 	//	value=LONG;
 	public IntegerAttributeElements getIntegerAttributeAccess() {
-		return (pIntegerAttribute != null) ? pIntegerAttribute : (pIntegerAttribute = new IntegerAttributeElements());
+		return pIntegerAttribute;
 	}
 	
 	public ParserRule getIntegerAttributeRule() {
@@ -774,7 +799,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//DoubleAttribute:
 	//	value=DOUBLE;
 	public DoubleAttributeElements getDoubleAttributeAccess() {
-		return (pDoubleAttribute != null) ? pDoubleAttribute : (pDoubleAttribute = new DoubleAttributeElements());
+		return pDoubleAttribute;
 	}
 	
 	public ParserRule getDoubleAttributeRule() {
@@ -784,7 +809,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//DateAttribute:
 	//	value=DATE;
 	public DateAttributeElements getDateAttributeAccess() {
-		return (pDateAttribute != null) ? pDateAttribute : (pDateAttribute = new DateAttributeElements());
+		return pDateAttribute;
 	}
 	
 	public ParserRule getDateAttributeRule() {
@@ -794,7 +819,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//NullAttribute:
 	//	value="NULL";
 	public NullAttributeElements getNullAttributeAccess() {
-		return (pNullAttribute != null) ? pNullAttribute : (pNullAttribute = new NullAttributeElements());
+		return pNullAttribute;
 	}
 	
 	public ParserRule getNullAttributeRule() {
@@ -804,7 +829,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//BooleanAttribute:
 	//	value=BOOLEAN;
 	public BooleanAttributeElements getBooleanAttributeAccess() {
-		return (pBooleanAttribute != null) ? pBooleanAttribute : (pBooleanAttribute = new BooleanAttributeElements());
+		return pBooleanAttribute;
 	}
 	
 	public ParserRule getBooleanAttributeRule() {
@@ -814,7 +839,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ValidID ("." ValidID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -824,7 +849,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//ValidID:
 	//	ID;
 	public ValidIDElements getValidIDAccess() {
-		return (pValidID != null) ? pValidID : (pValidID = new ValidIDElements());
+		return pValidID;
 	}
 	
 	public ParserRule getValidIDRule() {
@@ -834,36 +859,36 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal BOOLEAN returns ecore::EBoolean:
 	//	"true" | "false";
 	public TerminalRule getBOOLEANRule() {
-		return (tBOOLEAN != null) ? tBOOLEAN : (tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN"));
+		return tBOOLEAN;
 	} 
 
 	//terminal LONG returns ecore::ELong:
 	//	"-"? "0".."9"+;
 	public TerminalRule getLONGRule() {
-		return (tLONG != null) ? tLONG : (tLONG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LONG"));
+		return tLONG;
 	} 
 
 	//terminal DOUBLE returns ecore::EDouble:
 	//	"-"? "0".."9"+ "." "0".."9"+;
 	public TerminalRule getDOUBLERule() {
-		return (tDOUBLE != null) ? tDOUBLE : (tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE"));
+		return tDOUBLE;
 	} 
 
 	//// TODO Date RegExp should later not be hard-coded here anymore at all.. Grammar should be more open & generic.
 	//terminal DATE returns ecore::EDate:
 	//	"0".."9"+ "." "0".."9"+ "." "0".."9"+;
 	public TerminalRule getDATERule() {
-		return (tDATE != null) ? tDATE : (tDATE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DATE"));
+		return tDATE;
 	} 
 
 	//// Due to historic reasons in a closed source an in-house product which uses ESON
-	//// we need to add ',' allowed in IDs, as well as permit ID starting with digits:
+	//// we need to add ',' and '-' to be allowed in IDs, as well as permit ID starting with digits:
 	//// (NOTE: This terminal must be named 'ID' as well, not some new ID2 - unless you write a new ValueConverter for it.)
 	//// PS: Order of terminals appears to matter - ID needs to come after BOOLEAN
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_" | "," | "0".."9")+;
+	//	"^"? ("a".."z" | "A".."Z" | "_" | "," | "-" | "0".."9")+;
 	public TerminalRule getIDRule() {
-		return (tID != null) ? tID : (tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID"));
+		return tID;
 	} 
 
 	//terminal INT returns ecore::EInt:
@@ -873,8 +898,8 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

@@ -5,7 +5,7 @@ TestModel testModelNameA {
 	referenceTestContainer: [ 
 		ReferenceTestContainer test1 {
 			containments: [
-				ReferenceTarget 1target,1 {} // NOTE "1target" is deliberately named like that, to make sure that ID are not restrictive, and can e.g. start with a digit
+				ReferenceTarget 1-target,1 {} // NOTE "1-target" is deliberately named like that, to make sure that ID are not restrictive, and can e.g. start with a digit and contain hyphens
 				ReferenceTarget target2 {}
 				ReferenceTarget target3 {}
 			]
