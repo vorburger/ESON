@@ -242,7 +242,7 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 		assertFalse("Name cannot be blank", EFactoryPackage.Literals.NEW_OBJECT__NAME, name.trim().isEmpty()); // https://github.com/vorburger/efactory/pull/18
 		EAttribute nameAttribute = nameAccessor.getNameAttribute(newObject);
 		if (newObject.getEClass() != null)
-			if (nameAttribute == null)
+			if (nameAttribute == null && !newObject.getEClass().eIsProxy())
 				error("Cannot name " + newObject.getEClass().getName(), EFactoryPackage.Literals.NEW_OBJECT__NAME, ERR_CANNOT_NAME);
 	}
 
