@@ -1,6 +1,7 @@
 ESON
 ====
 
+* https://www.youtube.com/watch?v=nS3Y5KbaIfY screencast of Form Generator example
 * first blog http://blog2.vorburger.ch/2013/06/efactory-ii-xobjects-ehutn.html (incl. the introductory screen cast http://www.youtube.com/watch?v=ToUWqIRHkHY)
 * second blog http://blog2.vorburger.ch/2013/12/efactory-ii-eson-201311-update.html (and it's screencast at http://www.youtube.com/watch?v=fSq_zes4kv8)
 * slides from my talk at EclipseCon SFO 2014 https://www.eclipsecon.org/na2014/session/eson-emf-simple-object-notation-textual-dsl-syntax-alternative-xmi-formerly-known-efactory (https://docs.google.com/presentation/d/1tCrjnVw48IoYPZ5kYyPFvZscTTcSZ5oRZU4SSkeKaII/edit#slide=id.p)
@@ -20,7 +21,9 @@ How to nuke everything not in Git under source control,
 THUS LOOSING ANYTHING UNCOMMITED (in staging),
 and build locally to make sure you're good:
 
-   git reset --hard ; git clean -dfx ; mvn -o clean package
+   git reset --hard ; git clean -dfx ; mvn -o clean verify
+
+NOTE: Must use mvn verify instead of only package, because tycho-surefire-plugin is bound to Maven phase integration-test, which is after package, before verify (which is just before install). 
 
 Get on the [eclipse-emf-eson-dev Google Group](https://groups.google.com/forum/#!forum/eclipse-emf-eson-dev) and start yapping...
 
