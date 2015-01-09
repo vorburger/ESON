@@ -14,9 +14,10 @@ package org.eclipse.emf.eson.building;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eson.eFactory.Containment;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 
-import org.eclipse.emf.eson.eFactory.Containment;
+import com.google.common.base.Optional;
 
 public class ContainmentBuilder extends FeatureBuilder {
 
@@ -28,11 +29,12 @@ public class ContainmentBuilder extends FeatureBuilder {
 
 	@Override
 	public void build() throws ModelBuilderException {
-		EObject newValue = getModelBuilder().build(containment.getValue());
+		Optional<EObject> newValue = getModelBuilder().build(containment.getValue());
 		final EStructuralFeature eFeature = getFeature().getEFeature();
 		if (eFeature.eIsProxy())
 			return;
-		EcoreUtil3.setOrAddValue(getContainer(), eFeature, newValue);
+		if (newValue.isPresent())
+			EcoreUtil3.setOrAddValue(getContainer(), eFeature, newValue.get());
 	}
 
 }

@@ -12,8 +12,6 @@
  */
 package org.eclipse.emf.eson.builder.tests;
 
-import static org.junit.Assert.fail;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eson.building.ModelBuilder;
 import org.eclipse.emf.eson.eFactory.EFactoryFactory;
@@ -23,6 +21,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import testmodel.TestmodelPackage;
+
+import com.google.common.base.Optional;
 
 /**
  * Unit Test (!) for ModelBuilder.
@@ -40,20 +40,9 @@ public class ModelBuilderTest {
 		factory.setRoot(newObject);
 		
 		ModelBuilder modelBuilder = new ModelBuilder();
-		EObject result = modelBuilder.build(factory);
-		EObject result2 = modelBuilder.build(factory);
-		Assert.assertEquals(result, result2);
-	}
-
-	@Test
-	public void testBuild_getNewObject_Null() throws Exception {
-		try {
-			new ModelBuilder().build((Factory) null);
-		} catch (NullPointerException e) {
-			// expected
-			return;
-		}
-		fail("Expected IllegalArgumentException for null argument");
+		Optional<EObject> result = modelBuilder.build(factory);
+		Optional<EObject> result2 = modelBuilder.build(factory);
+		Assert.assertEquals(result.get(), result2.get());
 	}
 
 }

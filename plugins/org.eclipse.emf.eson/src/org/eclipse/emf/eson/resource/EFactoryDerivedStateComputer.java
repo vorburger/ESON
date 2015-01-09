@@ -26,6 +26,7 @@ import org.eclipse.xtext.parser.antlr.IReferableElementsUnloader;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
 import org.eclipse.xtext.resource.IDerivedStateComputer;
 
+import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
@@ -73,22 +74,26 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
     	EFactoryResource efResource = (EFactoryResource) resource;
 		ModelBuilder builder = efResource.getBuilder();
 		try {
-			EObject eModel = builder.buildWithoutLinking(model);
-			if (!preLinkingPhase) {
-				builder.link();
+			Optional<EObject> eModel = builder.buildWithoutLinking(model);
+			
+			if (eModel.isPresent()) {
+				if (!preLinkingPhase) {
+					builder.link();
+				}
+				// Do add() only AFTER the buildWithoutLinking() + link(),
+				// because we don't want/need to get the notifications from our
+				// ModelBuilder - only from external clients (e.g. Generic Ecore
+				// editor UI, etc.)
+				//
+				// Note that our EFactoryAdapter change notification listener
+				// gets added by org.eclipse.emf.eson.resource.EFactoryResource.attached(EObject)
+				resource.getContents().add(eModel.get());
+			} else {
+				builder.clear();
 			}
-			// Do add() only AFTER the buildWithoutLinking() + link(),
-			// because we don't want/need to get the notifications from our
-			// ModelBuilder - only from external clients (e.g. Generic Ecore
-			// editor UI, etc.)
-			//
-			// Note that our EFactoryAdapter change notification listener
-			// gets added by org.eclipse.emf.eson.resource.EFactoryResource.attached(EObject)
-			resource.getContents().add(eModel);
 		} catch (ModelBuilderException e) {
 			builder.clear();
-			// TODO make this a logger.debug() again LATER.. it's only logger.error() so that we can conveniently see this one better while developing..
-			logger.error(resource.getURI() + " could not be transformed by ModelBuilder (this may be normal if incomplete while editing)", e);
+			logger.error(resource.getURI() + " could not be transformed by ModelBuilder (this may be normal if incomplete while editing; but please raise a bug attaching your *.eson so that the code can be improved to log this yet continue to build the rest of the internal model)", e);
 			// No need for something like this:
 			// resource.getErrors().add(new ExceptionDiagnostic(e));
 			// that would only lead to duplicate errors - the resource

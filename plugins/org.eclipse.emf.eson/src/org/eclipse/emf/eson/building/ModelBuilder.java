@@ -28,13 +28,15 @@ import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
 public class ModelBuilder {
-
+	
 	private static Logger logger = Logger.getLogger(ModelBuilder.class);
+	
 	private NameAccessor nameSetter = new NameAccessor();
 	private final FeatureSwitch featureSwitch = new FeatureSwitch();
 	private BiMap<NewObject, EObject> mapping = HashBiMap.create();
@@ -42,41 +44,47 @@ public class ModelBuilder {
 
 	// intentionally package local - outside clients shouldn't need to build individual NewObject, they only build(Factory)
 	// NOTE: It is the caller's (!) responsibility to add the returned EObject into another EObject (or a Resource) eContainer. 
-	@NonNull EObject build(@NonNull NewObject newObject) throws ModelBuilderException {
+	Optional<EObject> build(NewObject newObject) throws ModelBuilderException {
 		Preconditions.checkNotNull(newObject);
 		EObject target = mapping.get(newObject);
 		if (target != null) {
-			return target;
+			return Optional.of(target);
 		}
-		EObject eObject = createTarget(newObject);
-		setName(eObject, newObject);
-		buildFeatures(eObject, newObject.getFeatures());
-		return eObject;
+		Optional<EObject> eObjectOpt = createTarget(newObject);
+		if (eObjectOpt.isPresent()) {
+			EObject eObject = eObjectOpt.get();
+			setName(eObject , newObject);
+			buildFeatures(eObject, newObject.getFeatures());
+		}
+		return eObjectOpt;
 	}
 
-	@SuppressWarnings("null") // req. because EFactory.create is not null annotated
-	@NonNull private EObject createTarget(NewObject from) throws ModelBuilderException {
+	private Optional<EObject> createTarget(NewObject from) throws ModelBuilderException {
 		EClass eClass = from.getEClass();
 		if (eClass == null) {
-			throw new ModelBuilderException("No EClass for New Object " + getNewObjectDescriptionForErrorMessage(from));
+			logger.info("No EClass for New Object " + getNewObjectDescriptionForErrorMessage(from));
+			return Optional.absent();
 		}
 		if (eClass.getEPackage() == null) {
 			EcoreUtil.resolve(from.eClass(), from);
 		}
 		if (eClass.eIsProxy()) {
-			throw new ModelBuilderException("The EClass for NewObject " + getNewObjectDescriptionForErrorMessage(from) + " is still an unresolved EMF Proxy, something isn't working in your cross-Resource reference resolution");
+			logger.info("The EClass for NewObject " + getNewObjectDescriptionForErrorMessage(from) + " is still an unresolved EMF Proxy, something isn't working in your cross-Resource reference resolution");
+			return Optional.absent();
 		}
 		EPackage ePackage = eClass.getEPackage();
 		if (ePackage == null) {
-			throw new ModelBuilderException("No EPackage registered for EClass '" + eClass.getName() + "' defined in NewObject " + getNewObjectDescriptionForErrorMessage(from));
+			logger.info("No EPackage registered for EClass '" + eClass.getName() + "' defined in NewObject " + getNewObjectDescriptionForErrorMessage(from));
+			return Optional.absent();
 		}
 		EFactory eFactoryInstance = ePackage.getEFactoryInstance();
 		if (eFactoryInstance == null) {
-			throw new ModelBuilderException("No EFactory registered for " + ePackage.getNsURI());
+			logger.info("No EFactory registered for " + ePackage.getNsURI());
+			return Optional.absent();
 		}
 		EObject target = eFactoryInstance.create(eClass);
 		mapping.put(from, target);
-		return target;
+		return Optional.of(target);
 	}
 
 	private String getNewObjectDescriptionForErrorMessage(NewObject from) {
@@ -93,17 +101,18 @@ public class ModelBuilder {
 	 * @return the EObject built from the Factory
 	 * @throws ModelBuilderException if the content of the Factory prevented creation of a matching EObject
 	 */
-	public @NonNull EObject build(Factory factory) throws ModelBuilderException {
-		EObject unlinkedRoot = buildWithoutLinking(factory);
+	public Optional<EObject> build(@NonNull Factory factory) throws ModelBuilderException {
+		Optional<EObject> unlinkedRoot = buildWithoutLinking(factory);
 		link();
 		return unlinkedRoot;
 	}
 
-	public @NonNull EObject buildWithoutLinking(@NonNull Factory factory) throws ModelBuilderException {
+	public Optional<EObject> buildWithoutLinking(@NonNull Factory factory) throws ModelBuilderException {
 		Preconditions.checkNotNull(factory);
 		return build(factory.getRoot());
 	}
 	
+	@SuppressWarnings("null")
 	private void setName(EObject target, NewObject source) {
 		String name = source.getName();
 		if (name != null) {
