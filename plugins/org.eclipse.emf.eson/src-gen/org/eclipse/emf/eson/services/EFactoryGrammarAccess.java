@@ -198,7 +198,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cEClassEClassCrossReference_0_0 = (CrossReference)cEClassAssignment_0.eContents().get(0);
 		private final RuleCall cEClassEClassQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEClassEClassCrossReference_0_0.eContents().get(1);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cFeaturesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cFeaturesFeatureParserRuleCall_3_0 = (RuleCall)cFeaturesAssignment_3.eContents().get(0);
@@ -209,10 +209,10 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//// the EFactoryJavaValidator flags it up if it's really missing
 		//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
 		//NewObject:
-		//	eClass=[ecore::EClass|QualifiedName] name=ID? "{" features+=Feature* "}";
+		//	eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}";
 		public ParserRule getRule() { return rule; }
 
-		//eClass=[ecore::EClass|QualifiedName] name=ID? "{" features+=Feature* "}"
+		//eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}"
 		public Group getGroup() { return cGroup; }
 
 		//eClass=[ecore::EClass|QualifiedName]
@@ -224,11 +224,11 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getEClassEClassQualifiedNameParserRuleCall_0_0_1() { return cEClassEClassQualifiedNameParserRuleCall_0_0_1; }
 
-		//name=ID?
+		//name=ValidID?
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -544,14 +544,22 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class ValidIDElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidID");
-		private final RuleCall cIDTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cLONGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//ValidID:
-		//	ID;
+		//	ID / * | LONG_ID * / | LONG;
 		public ParserRule getRule() { return rule; }
 
+		//ID / * | LONG_ID * / | LONG
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//ID
-		public RuleCall getIDTerminalRuleCall() { return cIDTerminalRuleCall; }
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+
+		//LONG
+		public RuleCall getLONGTerminalRuleCall_1() { return cLONGTerminalRuleCall_1; }
 	}
 	
 	
@@ -702,7 +710,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//// the EFactoryJavaValidator flags it up if it's really missing
 	//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
 	//NewObject:
-	//	eClass=[ecore::EClass|QualifiedName] name=ID? "{" features+=Feature* "}";
+	//	eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}";
 	public NewObjectElements getNewObjectAccess() {
 		return pNewObject;
 	}
@@ -847,7 +855,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ValidID:
-	//	ID;
+	//	ID / * | LONG_ID * / | LONG;
 	public ValidIDElements getValidIDAccess() {
 		return pValidID;
 	}
@@ -856,6 +864,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getValidIDAccess().getRule();
 	}
 
+	//// terminal LONG_ID: ('0'..'9')* ID;
 	//terminal BOOLEAN returns ecore::EBoolean:
 	//	"true" | "false";
 	public TerminalRule getBOOLEANRule() {
@@ -882,9 +891,18 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//// Due to historic reasons in a closed source an in-house product which uses ESON
-	//// we need to add ',' and '-' to be allowed in IDs, as well as permit ID starting with digits:
+	//// we need to add ',' and '-' to be allowed in IDs.  We also permit ID starting with digits, via the ValidID: ID | LONG above.
 	//// (NOTE: This terminal must be named 'ID' as well, not some new ID2 - unless you write a new ValueConverter for it.)
+	//// TODO terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')* ;
 	//// PS: Order of terminals appears to matter - ID needs to come after BOOLEAN
+	//// TODO copy/paste org.eclipse.xtext.common.Terminals 
+	////terminal STRING	: 
+	////			'"' ( '\\' . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !('\\'|'"') )* '"' |
+	////			"'" ( '\\' . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !('\\'|"'") )* "'" ; 
+	////terminal ML_COMMENT	: '/ *' -> '* /';
+	////terminal SL_COMMENT : '//' !('\n'|'\r')* ('\r'? '\n')?;
+	////
+	////terminal WS			: (' '|'\t'|'\r'|'\n')+;
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_" | "," | "-" | "0".."9")+;
 	public TerminalRule getIDRule() {

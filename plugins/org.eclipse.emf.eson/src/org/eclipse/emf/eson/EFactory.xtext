@@ -1,4 +1,6 @@
 grammar org.eclipse.emf.eson.EFactory with org.eclipse.xtext.common.Terminals
+	// TODO remove with Terminals, directly use hidden(WS, ML_COMMENT, SL_COMMENT) 
+	// Because we don't want to have the INT terminal (see below at the end); this avoids the warn during generation.
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
@@ -31,7 +33,7 @@ Feature:
 	// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
 	
 NewObject:
-	eClass=[ecore::EClass|QualifiedName] (name=ID)? "{"
+	eClass=[ecore::EClass|QualifiedName] (name=ValidID)? "{"
 		(features += Feature)*
 	"}";
 
@@ -72,8 +74,9 @@ NullAttribute:    value = "NULL";
 BooleanAttribute: value = BOOLEAN;
 
 QualifiedName: ValidID (=>'.' ValidID)*;
-ValidID: ID;
+ValidID: ID /* | LONG_ID */ | LONG; // This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
 
+// terminal LONG_ID: ('0'..'9')* ID;
 terminal BOOLEAN returns ecore::EBoolean : "true" | "false";
 terminal LONG returns ecore::ELong : ('-')?  ('0'..'9')+;
 terminal DOUBLE returns ecore::EDouble : ('-')?  ('0'..'9')+ '.'  ('0'..'9')+;
@@ -81,8 +84,18 @@ terminal DOUBLE returns ecore::EDouble : ('-')?  ('0'..'9')+ '.'  ('0'..'9')+;
 terminal DATE returns ecore::EDate : ('0'..'9')+ '.' ('0'..'9')+ '.' ('0'..'9')+;
 
 // Due to historic reasons in a closed source an in-house product which uses ESON
-// we need to add ',' and '-' to be allowed in IDs, as well as permit ID starting with digits:
+// we need to add ',' and '-' to be allowed in IDs.  We also permit ID starting with digits, via the ValidID: ID | LONG above.
 // (NOTE: This terminal must be named 'ID' as well, not some new ID2 - unless you write a new ValueConverter for it.)
 terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')+ ;
+// TODO try this: terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')* ;
 
 // PS: Order of terminals appears to matter - ID needs to come after BOOLEAN
+
+// TODO copy/paste org.eclipse.xtext.common.Terminals 
+//terminal STRING	: 
+//			'"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"' |
+//			"'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )* "'" ; 
+//terminal ML_COMMENT	: '/*' -> '*/';
+//terminal SL_COMMENT : '//' !('\n'|'\r')* ('\r'? '\n')?;
+//
+//terminal WS			: (' '|'\t'|'\r'|'\n')+;
