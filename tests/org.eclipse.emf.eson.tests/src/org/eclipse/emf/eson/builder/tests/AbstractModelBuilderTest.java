@@ -12,35 +12,31 @@
  */
 package org.eclipse.emf.eson.builder.tests;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.resource.EFactoryResource;
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.Find;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.emf.eson.tests.util.TestConstants;
-import org.eclipse.emf.eson.tests.util.TestSetup;
+import org.eclipse.xtext.junit4.InjectWith;
+import org.eclipse.xtext.junit4.XtextRunner;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.runner.RunWith;
 
 import testmodel.TestModel;
 
-public abstract class AbstractModelBuilderTest extends TestCase {
+@RunWith(XtextRunner.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
+public abstract class AbstractModelBuilderTest {
 
 	private ResourceProvider resourceProvider;
 	protected Factory factory;
 	protected TestModel testModel;
 
-	public AbstractModelBuilderTest() {
-		super();
-	}
-
-	public AbstractModelBuilderTest(String name) {
-		super(name);
-	}
-
-	@Override
-	protected void setUp() throws Exception {
-		TestSetup.INSTANCE.doSetup();
+	@Before
+	public void setUp() throws Exception {
 		this.resourceProvider = new ResourceProvider(TestConstants.PLUGIN_ID);
 		this.testModel = resourceProvider.loadModel("res/BuilderTests/" + getTestModelName(), TestModel.class, /* HACK TODO UNDO */ false);
 		this.factory = ((EFactoryResource) testModel.eResource()).getEFactoryFactory();
@@ -49,12 +45,12 @@ public abstract class AbstractModelBuilderTest extends TestCase {
 	protected abstract String getTestModelName();
 
 	protected <T> T checkType(Class<T> clazz, EObject eObject) {
-		assertTrue(clazz.isInstance(eObject));
+		Assert.assertTrue(clazz.isInstance(eObject));
 		return clazz.cast(eObject);
 	}
 
 	protected void checkName(TestModel testModel, String testModelName) {
-		assertEquals(testModelName, testModel.getName());
+		Assert.assertEquals(testModelName, testModel.getName());
 	}
 
 	public <T extends EObject> T find(final Class<T> candidateClass,

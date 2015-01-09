@@ -18,17 +18,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.eson.util.EPackageResolver;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
-import org.eclipse.emf.eson.tests.util.TestSetup;
-
 public class EPackageResolverTest {
-
-	@Before
-	public void setUp() throws Exception {
-		TestSetup.INSTANCE.doSetup();
-	}
 
 	@Test
 	public void testResolveString_Registry() {

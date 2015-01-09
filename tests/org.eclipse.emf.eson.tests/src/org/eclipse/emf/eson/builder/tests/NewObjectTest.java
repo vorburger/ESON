@@ -12,22 +12,27 @@
  */
 package org.eclipse.emf.eson.builder.tests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eson.util.ValueResolver;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 import org.eclipse.emf.eson.eFactory.Attribute;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.MultiValue;
 import org.eclipse.emf.eson.eFactory.NewObject;
+import org.eclipse.emf.eson.util.ValueResolver;
+import org.junit.Test;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 public class NewObjectTest extends AbstractModelBuilderTest {
 
 	private static final String TEST_MODEL_NAME = "test";
 
-	public void testBuild_NewObject() throws Exception {
+	@Test public void testBuild_NewObject() throws Exception {
 		assertTrue(testModel.getSingleRequired().getParentReference() == testModel);
 		
 		checkName(testModel, TEST_MODEL_NAME);

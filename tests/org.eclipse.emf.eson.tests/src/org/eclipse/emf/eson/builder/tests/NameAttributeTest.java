@@ -12,22 +12,27 @@
  */
 package org.eclipse.emf.eson.builder.tests;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import testmodel.NameAttributeContainer;
 
 public class NameAttributeTest extends AbstractNameAttributeTest {
 
+	@Test
 	public void testDefaultNameMapping() throws Exception {
 		NameAttributeContainer fixture = getNameTestContainer();
 		String actual = fixture.getDefaultNameTest().getName();
 		String expected = "name";
-		assertEquals(actual, expected);
+		Assert.assertEquals(actual, expected);
 	}
 
+	@Test
 	public void testCustomNameMapping() throws Exception {
 		NameAttributeContainer fixture = getNameTestContainer();
 		String actual = fixture.getCustomNameTest().getId();
 		String expected = "id";
-		assertEquals(actual, expected);
+		Assert.assertEquals(actual, expected);
 	}
 
 }

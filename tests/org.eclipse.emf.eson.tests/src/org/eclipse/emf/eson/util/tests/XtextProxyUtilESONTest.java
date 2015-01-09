@@ -22,22 +22,20 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
 import org.eclipse.emf.eson.resource.EFactoryResource;
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.util.XtextProxyUtil;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import testmodel.Child;
 import testmodel.SingleRequired;
 import testmodel.TestModel;
-import testmodel.TestmodelPackage;
 
 /**
  * Tests XtextProxyUtil on ESON.
@@ -47,7 +45,7 @@ import testmodel.TestmodelPackage;
  * @author Michael Vorburger
  */
 @RunWith(XtextRunner.class)
-@InjectWith(EFactoryInjectorProvider.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class XtextProxyUtilESONTest {
 
 	@Inject
@@ -58,12 +56,6 @@ public class XtextProxyUtilESONTest {
 
 	@Inject 
 	IResourceValidator validator;
-	
-	@BeforeClass
-	public static void setUp() throws Exception {
-		// ? EcorePackage.eINSTANCE.toString();
-		TestmodelPackage.eINSTANCE.toString();
-	}
 	
 	@Test
 	public void testGetSingleProxyCrossRefAsString() throws Exception {
