@@ -19,8 +19,8 @@ import org.eclipse.emf.eson.conversion.DATEValueConverter;
 import org.eclipse.emf.eson.conversion.TerminalConverters;
 import org.eclipse.emf.eson.resource.EFactoryDerivedStateComputer;
 import org.eclipse.emf.eson.resource.EFactoryLocationInFileProvider;
+import org.eclipse.emf.eson.resource.EFactoryResourceFactory;
 import org.eclipse.emf.eson.resource.EFactoryResourceServiceProvider;
-import org.eclipse.emf.eson.resource.EFactoryStandaloneResourceFactory;
 import org.eclipse.emf.eson.scoping.EFactoryQualifiedNameProvider;
 import org.eclipse.emf.eson.scoping.EPackageScopeProvider;
 import org.eclipse.emf.eson.scoping.IEPackageScopeProvider;
@@ -66,7 +66,7 @@ public class EFactoryRuntimeModule extends AbstractEFactoryRuntimeModule {
 
 	@Override
 	public Class<? extends IResourceFactory> bindIResourceFactory() {
-		return EFactoryStandaloneResourceFactory.class;
+		return EFactoryResourceFactory.class;
 	}
 	
 	// NO @Override
