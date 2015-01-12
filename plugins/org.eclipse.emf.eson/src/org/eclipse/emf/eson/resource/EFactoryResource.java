@@ -12,6 +12,7 @@
  */
 package org.eclipse.emf.eson.resource;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -29,6 +30,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 public class EFactoryResource extends DerivedStateAwareResource {
+	private static final Logger logger = Logger.getLogger(EFactoryDerivedStateComputer.class);
 
 	@Inject private ModelBuilder builder;
 	@Inject private Provider<EFactoryAdapter> eFactoryAdapterProvider;
@@ -123,6 +125,10 @@ public class EFactoryResource extends DerivedStateAwareResource {
 	}
 
 	public static @Nullable EObject getEFactoryEObject(Resource r) {
+		if (!(r instanceof EFactoryResource)) {
+			logger.warn("EMF Resource is not an EFactoryResource (caller should not even have invoked this method): " + r.getURI().toString());
+			return null;
+		}
 		final EFactoryResource eFactoryResource = (EFactoryResource) r;
 		if (!eFactoryResource.isBuilt())
 			return null;
