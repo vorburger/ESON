@@ -14,6 +14,8 @@ package org.eclipse.emf.eson.imports.tests;
 
 import javax.inject.Inject;
 
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
+import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.junit.Assert;
@@ -22,19 +24,14 @@ import org.junit.runner.RunWith;
 
 import testmodel.TestModel;
 
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
-import org.eclipse.emf.eson.tests.util.EFactoryTestUtil;
-import org.eclipse.emf.eson.tests.util.ResourceProvider;
-
 /**
  * Tests import of EFactory from another EFactory.
  */
 @RunWith(XtextRunner.class)
-@InjectWith(EFactoryInjectorProvider.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class ImportsEFactory2Test {
 	
 	@Inject ResourceProvider resourceProvider;
-	@Inject EFactoryTestUtil setup;
 	
 	@Test
 	public void testImports() throws Exception {

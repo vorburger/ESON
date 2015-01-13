@@ -15,20 +15,24 @@ package org.eclipse.emf.eson.imports.tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
+import org.eclipse.emf.eson.tests.util.ResourceProvider;
+import org.eclipse.emf.eson.tests.util.TestConstants;
+import org.eclipse.xtext.junit4.InjectWith;
+import org.eclipse.xtext.junit4.XtextRunner;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import testmodel.TestModel;
-
-import org.eclipse.emf.eson.tests.util.ResourceProvider;
-import org.eclipse.emf.eson.tests.util.TestConstants;
-import org.eclipse.emf.eson.tests.util.TestSetup;
 
 /**
  * Tests import of a XMI from an EFactory.
  */
+@RunWith(XtextRunner.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class ImportsTest {
 
 	private ResourceProvider resourceProvider;
@@ -36,7 +40,6 @@ public class ImportsTest {
 
 	@Before
 	public void setUp() throws Exception {
-		TestSetup.INSTANCE.doSetup();
 		this.resourceProvider = new ResourceProvider(TestConstants.PLUGIN_ID);
 		resourceProvider.load("res/ImportTests/Imported.xmi", false); // This is an XMI file!
 		this.testModel = (TestModel) resourceProvider.loadModel("res/ImportTests/Importing.efactory");

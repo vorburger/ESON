@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.Find;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
@@ -27,7 +27,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(XtextRunner.class)
-@InjectWith(EFactoryInjectorProvider.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class DynamicEmfTest {
 
 	@Inject ResourceProvider provider;

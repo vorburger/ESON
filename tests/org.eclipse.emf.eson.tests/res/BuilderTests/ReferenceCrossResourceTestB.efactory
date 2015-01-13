@@ -12,6 +12,8 @@ TestModel testModelNameB {
 				testModelNameA.test1.1-target,1
 				testModelNameA.test1.target2 
 				testModelNameA.test1.target3
+				testModelNameA.test1.4
+				testModelNameA.test1.4abc
 			]		
 		}
 		ReferenceTestContainer test2 {

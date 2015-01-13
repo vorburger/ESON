@@ -12,7 +12,11 @@
  */
 package org.eclipse.emf.eson.builder.tests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import org.eclipse.emf.common.util.EList;
+import org.junit.Test;
 
 import testmodel.AttributeTestContainer;
 import testmodel.SampleEnum;
@@ -44,14 +48,14 @@ public class BrokenEnumTest extends AbstractModelBuilderTest {
 	// BrokenEnumTest.eson has ONE invalid enum literal (the
 	// :IAMBrokenBadBoy)
 	
-	public void testAttribute_OneEnum() throws Exception {
+	@Test public void testAttribute_OneEnum() throws Exception {
 		AttributeTestContainer fixture = find(AttributeTestContainer.class, TEST_NAME);
 		SampleEnum actual = fixture.getOneEnum();
 		SampleEnum expected = SampleEnum.SAMPLE2;
 		assertEquals(expected, actual);
 	}
 
-	public void testAttribute_ManyEnums() throws Exception {
+	@Test public void testAttribute_ManyEnums() throws Exception {
 		AttributeTestContainer fixture = find(AttributeTestContainer.class, TEST_NAME);
 		EList<? extends Object> actualValues = fixture.getManyEnums();
 		Object[] expectedValues = new Object[] { SampleEnum.SAMPLE, SampleEnum.SAMPLE2 };

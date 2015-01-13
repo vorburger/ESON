@@ -12,13 +12,14 @@
  */
 package org.eclipse.emf.eson.builder.tests;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.inject.Inject;
 
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -26,15 +27,17 @@ import testmodel.TestModel;
 
 @RunWith(XtextRunner.class)
 @InjectWith(ESONWithTestmodelInjectorProvider.class)
-public class ReferenceCrossResourceTest {
+public class NameOneDigitOnlyTest {
 
 	@Inject ResourceProvider provider;
 
-	@Test public void testCrossResourceReference() throws Exception {
-		/*TestModel aModel =*/ provider.loadModel("res/BuilderTests/ReferenceCrossResourceTestA.efactory", TestModel.class);
-		TestModel bModel = provider.loadModel("res/BuilderTests/ReferenceCrossResourceTestB.efactory", TestModel.class);
-		Assert.assertEquals("1-target,1", bModel.getReferenceTestContainer().get(0).getReferenceToOne().getName());
-		Assert.assertEquals("4", bModel.getReferenceTestContainer().get(0).getReferenceToMany().get(3).getName());
+	@Test public void testNameOneDigitOnly() throws Exception {
+		TestModel m = provider.loadModel("res/BuilderTests/NameOneDigitOnly.eson", TestModel.class);
+		assertEquals("1", m.getName());
 	}
-	
+
+	@Test public void testNameOneDigitPlusChars() throws Exception {
+		TestModel m = provider.loadModel("res/BuilderTests/NameOneDigitPlusChars.eson", TestModel.class);
+		assertEquals("1a-b,c", m.getName());
+	}
 }

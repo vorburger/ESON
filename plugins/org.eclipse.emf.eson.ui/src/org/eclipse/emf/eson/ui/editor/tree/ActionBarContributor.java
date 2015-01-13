@@ -145,9 +145,11 @@ public class ActionBarContributor
                 }
                 if (part == null) {
                         selectionProvider = null;
-                }
-                else {
+                } else {
                         selectionProvider = part.getSite().getSelectionProvider();
+                        if (selectionProvider == null)
+                        	return;
+                        
                         selectionProvider.addSelectionChangedListener(this);
 
                         // Fake a selection changed event to update the menus.

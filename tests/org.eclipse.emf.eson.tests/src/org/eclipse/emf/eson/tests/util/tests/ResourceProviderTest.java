@@ -17,20 +17,19 @@ import java.io.IOException;
 import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.DiagnosticException;
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
+import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
-import org.eclipse.emf.eson.tests.util.ResourceProvider;
 
 /**
  * Tests ResourceProvider.
  * @author Michael Vorburger
  */
 @RunWith(XtextRunner.class)
-@InjectWith(EFactoryInjectorProvider.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class ResourceProviderTest {
 
 	@Inject ResourceProvider resourceProvider;

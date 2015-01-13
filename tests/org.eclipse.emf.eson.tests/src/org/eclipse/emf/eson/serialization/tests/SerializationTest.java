@@ -12,24 +12,17 @@
  */
 package org.eclipse.emf.eson.serialization.tests;
 
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
-import org.eclipse.emf.eson.tests.util.TestSetup;
-
 @RunWith(XtextRunner.class)
-@InjectWith(EFactoryInjectorProvider.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class SerializationTest extends AbstractSerializationTest {
 
-	@BeforeClass public static void beforeTestClass() {
-		TestSetup.INSTANCE.doSetup();
-	}
-	
 	@Test public void testFactoryCreation() throws Exception {
 		performSerializationTest("FactoryCreation.efactory");
 	}

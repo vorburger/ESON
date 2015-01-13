@@ -39,6 +39,7 @@ public class EFactoryParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getAttributeAccess().getAlternatives(), "rule__Attribute__Alternatives");
+					put(grammarAccess.getValidIDAccess().getAlternatives(), "rule__ValidID__Alternatives");
 					put(grammarAccess.getFactoryAccess().getGroup(), "rule__Factory__Group__0");
 					put(grammarAccess.getPackageImportAccess().getGroup(), "rule__PackageImport__Group__0");
 					put(grammarAccess.getCustomNameMappingAccess().getGroup(), "rule__CustomNameMapping__Group__0");

@@ -10,11 +10,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * #L%
  */
-package org.eclipse.emf.eson.ui.resource;
+package org.eclipse.emf.eson.resource;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceFactory;
 
@@ -22,6 +21,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 public class EFactoryResourceFactory extends XtextResourceFactory {
+	
 	@Inject
 	private Provider<EFactoryResource> efactoryResourceProvider;
 

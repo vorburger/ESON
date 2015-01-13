@@ -26,7 +26,6 @@ import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
 import org.eclipse.emf.eson.eFactory.Containment;
 import org.eclipse.emf.eson.eFactory.EnumAttribute;
 import org.eclipse.emf.eson.eFactory.Factory;
@@ -37,14 +36,13 @@ import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.StringAttribute;
 import org.eclipse.emf.eson.eFactory.Value;
 import org.eclipse.emf.eson.resource.EFactoryResource;
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
-import org.eclipse.emf.eson.tests.util.TestSetup;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.util.ReplaceRegion;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -66,7 +64,7 @@ import com.google.inject.Provider;
  * @author Michael Vorburger
  */
 @RunWith(XtextRunner.class)
-@InjectWith(EFactoryInjectorProvider.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class BuilderResyncTest {
 
 	// using a Provider because we want each test to get a fresh ResourceProvider 
@@ -74,11 +72,6 @@ public class BuilderResyncTest {
 
 	@Inject ISerializer serializer;
 	
-	@BeforeClass
-	public static void beforeTest() {
-		TestSetup.INSTANCE.doSetup();
-	}
-
 	@Test
 	public void testChangeNameStringValueFeature() throws Exception {
 		EList<EObject> resourceContents = rp.get().load("res/BuilderResyncTests/1TestModelWithNameProperty.efactory", true);

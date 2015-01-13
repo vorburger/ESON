@@ -14,18 +14,9 @@ package org.eclipse.emf.eson.builder.tests;
 
 import testmodel.NameAttributeContainer;
 
-public abstract class AbstractNameAttributeTest extends
-		AbstractModelBuilderTest {
+public abstract class AbstractNameAttributeTest extends AbstractModelBuilderTest {
 
 	private static final String TEST_NAME = "test";
-
-	public AbstractNameAttributeTest() {
-		super();
-	}
-
-	public AbstractNameAttributeTest(String name) {
-		super(name);
-	}
 
 	@Override
 	protected String getTestModelName() {
@@ -33,8 +24,7 @@ public abstract class AbstractNameAttributeTest extends
 	}
 
 	protected NameAttributeContainer getNameTestContainer() {
-		NameAttributeContainer fixture = find(NameAttributeContainer.class,
-				TEST_NAME);
+		NameAttributeContainer fixture = find(NameAttributeContainer.class, TEST_NAME);
 		return fixture;
 	}
 

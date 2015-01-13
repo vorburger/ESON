@@ -16,9 +16,8 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
-import org.eclipse.emf.eson.tests.util.TestSetup;
 import org.eclipse.xtext.formatting.INodeModelFormatter;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -26,7 +25,6 @@ import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -36,7 +34,7 @@ import org.junit.runner.RunWith;
  * @author Michael Vorburger
  */
 @RunWith(XtextRunner.class)
-@InjectWith(EFactoryInjectorProvider.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class FormatterTest {
 
 	// using our ResourceProvider instead of a ParseHelper<org.eclipse.emf.eson.eFactory.Factory>
@@ -46,11 +44,6 @@ public class FormatterTest {
 	@Inject ResourceProvider resourceProvider;
 	
 	@Inject INodeModelFormatter formatter;
-	
-	
-	@BeforeClass public static void beforeTestClass() {
-		TestSetup.INSTANCE.doSetup();
-	}
 
 	
 	@Test

@@ -8,6 +8,8 @@ TestModel testModelNameA {
 				ReferenceTarget 1-target,1 {} // NOTE "1-target" is deliberately named like that, to make sure that ID are not restrictive, and can e.g. start with a digit and contain hyphens
 				ReferenceTarget target2 {}
 				ReferenceTarget target3 {}
+				ReferenceTarget 4 { }          // NOTE target is deliberately named '4' (only digit); see also NameOneDigitOnlyTest
+				ReferenceTarget 4abc { }       // NOTE target is deliberately named '4abc' (start with digit, then letters); see also NameOneDigitOnlyTest
 			]
 		}
 		ReferenceTestContainer test2 {

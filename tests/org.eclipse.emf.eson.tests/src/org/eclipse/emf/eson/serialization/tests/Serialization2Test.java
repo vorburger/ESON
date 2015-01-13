@@ -16,27 +16,20 @@ import static org.junit.Assert.assertEquals;
 
 import javax.inject.Inject;
 
+import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
+import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import testmodel.TestModel;
 
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
-import org.eclipse.emf.eson.tests.util.ResourceProvider;
-import org.eclipse.emf.eson.tests.util.TestSetup;
-
 @RunWith(XtextRunner.class)
-@InjectWith(EFactoryInjectorProvider.class)
+@InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class Serialization2Test {
 
 	@Inject protected ResourceProvider resourceProvider;
-	
-	@BeforeClass public static void beforeTestClass() {
-		TestSetup.INSTANCE.doSetup();
-	}
 	
 	@Test public void testReferenceTestSimpleAlternative() throws Exception {
 		TestModel testModel = resourceProvider.loadModel("res/SerializationTests/ReferenceTestSimple.efactory", TestModel.class);
