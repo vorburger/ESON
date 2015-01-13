@@ -96,18 +96,14 @@ public class XtextProxyUtil {
 	}
 	
 	/**
-	 * Copy/paste of a method from Xtext LazyURIEncoder.
-	 * Couldn't avoid the copy/paste, because this needs to call NodeModelUtils.getNode() using realEObject, from proxy, not object; see 2nd getNode() below.
-	 * TODO Avoid copy/paste, by making LazyURIEncoder extensible, as needed here.
+	 * Copy/paste of a method only available on LazyURIEncoder in Xtext @since v2.4.
+	 * This will be removed once we have upgraded Xtext.
 	 */
 	protected INode getNode(EObject object, String fragment, EObject proxy) {
-		if (encoder.isUseIndexFragment(object.eResource())) {
-			return encoder.decode(object.eResource(), fragment).getThird();
-		}
-		INode compositeNode = this.getNode(object, proxy); // INSTEAD of NodeModelUtils.getNode(object);
+		List<String> split = Strings.split(fragment, LazyURIEncoder.SEP);
+		INode compositeNode = this.getNode(object, proxy);
 		if (compositeNode == null)
 			throw new IllegalStateException("Couldn't resolve lazy link, because no node model is attached.");
-		List<String> split = Strings.split(fragment, LazyURIEncoder.SEP);
 		INode node = encoder.getNode(compositeNode, split.get(3));
 		return node;
 	}
