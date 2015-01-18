@@ -18,6 +18,15 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eson.eFactory.Attribute;
+import org.eclipse.emf.eson.eFactory.CustomNameMapping;
+import org.eclipse.emf.eson.eFactory.EnumAttribute;
+import org.eclipse.emf.eson.eFactory.Factory;
+import org.eclipse.emf.eson.eFactory.Feature;
+import org.eclipse.emf.eson.eFactory.MultiValue;
+import org.eclipse.emf.eson.eFactory.NewObject;
+import org.eclipse.emf.eson.eFactory.PackageImport;
+import org.eclipse.emf.eson.eFactory.Reference;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
@@ -28,15 +37,6 @@ import org.eclipse.xtext.scoping.impl.SimpleScope;
 
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
-import org.eclipse.emf.eson.eFactory.Attribute;
-import org.eclipse.emf.eson.eFactory.CustomNameMapping;
-import org.eclipse.emf.eson.eFactory.EnumAttribute;
-import org.eclipse.emf.eson.eFactory.Factory;
-import org.eclipse.emf.eson.eFactory.Feature;
-import org.eclipse.emf.eson.eFactory.MultiValue;
-import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.emf.eson.eFactory.PackageImport;
-import org.eclipse.emf.eson.eFactory.Reference;
 
 public class EFactoryScopeProvider extends AbstractDeclarativeScopeProvider {
 
@@ -47,7 +47,7 @@ public class EFactoryScopeProvider extends AbstractDeclarativeScopeProvider {
 		final IScope parent = delegateGetScope(packageImport, eReference);
 		return ePackageScopeProvider.createEPackageScope(packageImport.eResource(), parent);
 	}
-	
+
 	public IScope scope_NewObject_eClass(Factory factory, EReference eReference) {
 		final IScope parent = delegateGetScope(factory, eReference);
 		return ePackageScopeProvider.createEClassScope(factory.eResource(), parent);
@@ -73,6 +73,7 @@ public class EFactoryScopeProvider extends AbstractDeclarativeScopeProvider {
 			
 	}
 
+	
 	// This may look a bit strange, but is required for 
 	// org.eclipse.emf.eson.ui.contentassist.EFactoryProposalProvider.completeFeature_EFeature()
 	public IScope scope_Feature_eFeature(NewObject newObject, EReference reference) {
@@ -111,12 +112,9 @@ public class EFactoryScopeProvider extends AbstractDeclarativeScopeProvider {
 		return IScope.NULLSCOPE;
 	}
 
-	public IScope scope_CustomNameMapping_nameFeature(
-			CustomNameMapping mapping, EReference reference) {
-		Iterable<EAttribute> attributes = EcoreUtil3.getAllAttributes(
-				mapping.getEClass(), String.class);
-		Iterable<IEObjectDescription> elements = Scopes
-				.scopedElementsFor(attributes);
+	public IScope scope_CustomNameMapping_nameFeature(CustomNameMapping mapping, EReference reference) {
+		Iterable<EAttribute> attributes = EcoreUtil3.getAllAttributes(mapping.getEClass(), String.class);
+		Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(attributes);
 		return new SimpleScope(elements);
 	}
 

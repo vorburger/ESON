@@ -12,6 +12,7 @@
  */
 package org.eclipse.emf.eson.building;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -26,6 +27,7 @@ import com.google.common.collect.Iterables;
 
 @NonNullByDefault
 public class NameAccessor {
+	private static Logger logger = Logger.getLogger(ModelBuilder.class);
 
 	protected static final String DEFAULT_NAME_FEATURE = "name";
 
@@ -46,7 +48,11 @@ public class NameAccessor {
 //	}
 	
 	protected void setName(EObject eObject, String name, EAttribute nameAttribute) {
-		eObject.eSet(nameAttribute, name);
+		try {
+			eObject.eSet(nameAttribute, name);
+		} catch (IllegalArgumentException e) {
+			logger.error("setName() failed to eSet, on EObject " + eObject.toString() + ", nameAttribute: " + nameAttribute + ", name: " + name, e);
+		}
 	}
 
 	public @Nullable EAttribute getNameAttribute(NewObject newObject) {
