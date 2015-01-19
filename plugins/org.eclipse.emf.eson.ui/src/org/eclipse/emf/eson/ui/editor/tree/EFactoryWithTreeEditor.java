@@ -636,18 +636,18 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 				NewObject container = (NewObject) feature.eContainer();
 				if (feature.getEFeature() instanceof EAttribute) {
 					// get the container of the feature so we can update properly the properties view
-					selectedObject = eFactoryResource.getEFactoryEObject(container);
+					selectedObject = eFactoryResource.getEFactoryEObject(container).orNull();
 				}
 				else if (feature.getEFeature() instanceof EReference) {
 					EReference reference = (EReference)feature.getEFeature();
 					// for now, consider only single references 
 					if (!reference.isMany()) {
-						selectedObject = eFactoryResource.getEFactoryEObject(container);
+						selectedObject = eFactoryResource.getEFactoryEObject(container).orNull();
 					}
 				}
 			} else if (semanticObject instanceof NewObject) {
 				if (eFactoryResource.isBuilt())
-					selectedObject = eFactoryResource.getEFactoryEObject((NewObject)semanticObject);
+					selectedObject = eFactoryResource.getEFactoryEObject((NewObject)semanticObject).orNull();
 			}
 			return selectedObject;
 		}
@@ -661,9 +661,10 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			if (eFactoryFactory == null)
 				return null;
 			NewObject rootNewObject = eFactoryFactory.getRoot();
-			return eFactoryResource.getEFactoryEObject(rootNewObject);
+			return eFactoryResource.getEFactoryEObject(rootNewObject).orNull();
 		}
 
+		
 		public class EFactoryPropertyDescriptor extends PropertyDescriptor {
 			
 			public class EFactoryEDataTypeCellEditor extends PropertyDescriptor.EDataTypeCellEditor {
