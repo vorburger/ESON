@@ -80,16 +80,34 @@ ruleFactory returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getFactoryAccess().getImportsNamespaceImportParserRuleCall_0_0()); 
 	    }
-		lv_epackages_0_0=rulePackageImport		{
+		lv_imports_0_0=ruleNamespaceImport		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFactoryRule());
+	        }
+       		add(
+       			$current, 
+       			"imports",
+        		lv_imports_0_0, 
+        		"NamespaceImport");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_1_0()); 
+	    }
+		lv_epackages_1_0=rulePackageImport		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFactoryRule());
 	        }
        		add(
        			$current, 
        			"epackages",
-        		lv_epackages_0_0, 
+        		lv_epackages_1_0, 
         		"PackageImport");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -98,16 +116,16 @@ ruleFactory returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFactoryAccess().getAnnotationsAnnotationParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getFactoryAccess().getAnnotationsAnnotationParserRuleCall_2_0()); 
 	    }
-		lv_annotations_1_0=ruleAnnotation		{
+		lv_annotations_2_0=ruleAnnotation		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFactoryRule());
 	        }
        		add(
        			$current, 
        			"annotations",
-        		lv_annotations_1_0, 
+        		lv_annotations_2_0, 
         		"Annotation");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -116,16 +134,16 @@ ruleFactory returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFactoryAccess().getRootNewObjectParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getFactoryAccess().getRootNewObjectParserRuleCall_3_0()); 
 	    }
-		lv_root_2_0=ruleNewObject		{
+		lv_root_3_0=ruleNewObject		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFactoryRule());
 	        }
        		set(
        			$current, 
        			"root",
-        		lv_root_2_0, 
+        		lv_root_3_0, 
         		"NewObject");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -176,6 +194,49 @@ rulePackageImport returns [EObject current=null]
     	newLeafNode(otherlv_2, grammarAccess.getPackageImportAccess().getFullStopAsteriskKeyword_2());
     }
 )
+;
+
+
+
+
+
+// Entry rule entryRuleNamespaceImport
+entryRuleNamespaceImport returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getNamespaceImportRule()); }
+	 iv_ruleNamespaceImport=ruleNamespaceImport 
+	 { $current=$iv_ruleNamespaceImport.current; } 
+	 EOF 
+;
+
+// Rule NamespaceImport
+ruleNamespaceImport returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='import' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getNamespaceImportAccess().getImportKeyword_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getNamespaceImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0()); 
+	    }
+		lv_importedNamespace_1_0=ruleQualifiedNameWithWildcard		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getNamespaceImportRule());
+	        }
+       		set(
+       			$current, 
+       			"importedNamespace",
+        		lv_importedNamespace_1_0, 
+        		"QualifiedNameWithWildcard");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
 ;
 
 
@@ -955,6 +1016,44 @@ ruleBooleanAttribute returns [EObject current=null]
 )
 )
 ;
+
+
+
+
+
+// Entry rule entryRuleQualifiedNameWithWildcard
+entryRuleQualifiedNameWithWildcard returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getQualifiedNameWithWildcardRule()); } 
+	 iv_ruleQualifiedNameWithWildcard=ruleQualifiedNameWithWildcard 
+	 { $current=$iv_ruleQualifiedNameWithWildcard.current.getText(); }  
+	 EOF 
+;
+
+// Rule QualifiedNameWithWildcard
+ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
+    }
+    this_QualifiedName_0=ruleQualifiedName    {
+		$current.merge(this_QualifiedName_0);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
+    }
+(
+	kw='.*' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopAsteriskKeyword_1()); 
+    }
+)?)
+    ;
 
 
 

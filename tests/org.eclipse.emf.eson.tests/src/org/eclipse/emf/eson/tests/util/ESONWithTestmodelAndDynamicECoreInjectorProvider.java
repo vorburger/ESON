@@ -12,7 +12,6 @@
  */
 package org.eclipse.emf.eson.tests.util;
 
-import org.eclipse.emf.eson.EFactoryInjectorProvider;
 import org.eclipse.xtext.ecore.EcoreSupportStandaloneSetup;
 
 import com.google.inject.Injector;
@@ -30,8 +29,9 @@ import com.google.inject.Injector;
  * 
  * @author Michael Vorburger
  */
-public class ESONWithTestmodelAndDynamicECoreInjectorProvider extends EFactoryInjectorProvider // NOT ESONWithTestmodelInjectorProvider, we do NOT want TestmodelPackageImpl.init() in this scenario  
-{
+public class ESONWithTestmodelAndDynamicECoreInjectorProvider extends EFactoryInjectorProviderNG // NOT ESONWithTestmodelInjectorProvider, we do NOT want TestmodelPackageImpl.init() in this scenario  
+{	// We're intentionally extends EFactoryInjectorProviderNG, note *NG, which is the variant with the new simplified Scope provider
+	
 	@Override
 	protected Injector internalCreateInjector() {
 		EcoreSupportStandaloneSetup.setup();

@@ -10,16 +10,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * #L%
  */
-
 package org.eclipse.emf.eson;
-
-import org.eclipse.emf.eson.EFactoryStandaloneSetupGenerated;
 
 /**
  * Initialization support for running Xtext languages 
  * without equinox extension registry
  */
-public class EFactoryStandaloneSetup extends EFactoryStandaloneSetupGenerated{
+public class EFactoryStandaloneSetup extends EFactoryStandaloneSetupGenerated {
 
 	// TODO move this helper class into new TBD *.standalone project
 	
@@ -27,4 +24,3 @@ public class EFactoryStandaloneSetup extends EFactoryStandaloneSetupGenerated{
 		new EFactoryStandaloneSetup().createInjectorAndDoEMFRegistration();
 	}
 }
-

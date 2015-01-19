@@ -23,6 +23,7 @@ import org.eclipse.emf.eson.tests.util.ESONWithTestmodelAndDynamicECoreInjectorP
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -30,21 +31,33 @@ import org.junit.runner.RunWith;
 @InjectWith(ESONWithTestmodelAndDynamicECoreInjectorProvider.class)
 public class SimplestDynamicECoreTest {
 
-	// TODO Support for an ESON with 'use' (soon 'import' ?) instead of FQN
-	static final String ESON = "res/BuilderTests/SimplestDynamicEcore.eson";
-	
 	@Inject ResourceProvider provider;
 
-	@Test public void testSimplest() throws Exception {
+
+	@Test public void testSimplestWithoutUseButFQN() throws Exception {
+		check("res/BuilderTests/SimplestWithoutUseButFQN.eson");
+	}
+
+	@Ignore // OK, this doesn't/cannot/won't work - fine; this just for reference & reminder; will delete athis eventually, when 'use' support gets completely removed 
+	@Test public void testSimplestWithUse() throws Exception {
+		check("res/BuilderTests/Simplest.eson");
+	}
+
+	@Test public void testSimplestWithImport() throws Exception {
+		check("res/BuilderTests/SimplestWithImport.eson");
+	}
+
+	
+	protected void check(String esonPath) throws Exception {
 		EList<EObject> contents = provider.load("model/TestModel.ecore", true);
 		EPackage ePackage = (EPackage) contents.get(0);
 		assertEquals("testmodel", ePackage.getName());
 		// Do NOT DumpIndexUtil.dumpXtextIndex(ePackage.eResource()); as that does not work yet for *.ecore as this stage (later below on an *.eson it works - and dumps the *.ecore as well)
 
-		@SuppressWarnings("unused") EList<EObject> content = provider.load(ESON, false);
+		@SuppressWarnings("unused") EList<EObject> content = provider.load(esonPath, false);
 		// DEBUG: DumpIndexUtil.dumpXtextIndex(content.get(0).eResource());
 
-		EObject em = provider.loadModel(ESON, EObject.class);
+		EObject em = provider.loadModel(esonPath, EObject.class);
 		assertEquals("TestModel", em.eClass().getName());
 // NOTE Even this cannot work, as it mixes the dynamic and static style.. see main problem, below.
 //		assertEquals("abc", em.eGet(TestmodelPackage.Literals.TEST_MODEL__NAME));

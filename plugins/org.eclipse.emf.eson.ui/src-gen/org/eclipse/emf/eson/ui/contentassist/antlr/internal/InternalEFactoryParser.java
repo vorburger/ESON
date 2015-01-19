@@ -23,31 +23,32 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalEFactoryParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_LONG", "RULE_STRING", "RULE_DOUBLE", "RULE_DATE", "RULE_BOOLEAN", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'use'", "'.*'", "'@Name'", "'{'", "'='", "'}'", "':'", "'['", "']'", "'.'", "'NULL'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_LONG", "RULE_STRING", "RULE_DOUBLE", "RULE_DATE", "RULE_BOOLEAN", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'use'", "'.*'", "'import'", "'@Name'", "'{'", "'='", "'}'", "':'", "'['", "']'", "'.'", "'NULL'"
     };
     public static final int RULE_BOOLEAN=9;
-    public static final int RULE_ID=4;
-    public static final int RULE_DATE=8;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int RULE_LONG=5;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=14;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int RULE_SL_COMMENT=12;
-    public static final int EOF=-1;
-    public static final int RULE_DOUBLE=7;
-    public static final int RULE_ML_COMMENT=11;
-    public static final int T__19=19;
     public static final int RULE_STRING=6;
-    public static final int T__16=16;
+    public static final int RULE_SL_COMMENT=12;
+    public static final int T__19=19;
     public static final int T__15=15;
-    public static final int T__18=18;
+    public static final int RULE_DOUBLE=7;
+    public static final int T__16=16;
     public static final int T__17=17;
-    public static final int RULE_INT=10;
+    public static final int T__18=18;
+    public static final int EOF=-1;
+    public static final int RULE_ID=4;
     public static final int RULE_WS=13;
+    public static final int RULE_ANY_OTHER=14;
+    public static final int RULE_DATE=8;
+    public static final int T__26=26;
+    public static final int RULE_INT=10;
+    public static final int T__22=22;
+    public static final int RULE_ML_COMMENT=11;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int RULE_LONG=5;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -256,17 +257,102 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rulePackageImport"
 
 
+    // $ANTLR start "entryRuleNamespaceImport"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:117:1: entryRuleNamespaceImport : ruleNamespaceImport EOF ;
+    public final void entryRuleNamespaceImport() throws RecognitionException {
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:118:1: ( ruleNamespaceImport EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:119:1: ruleNamespaceImport EOF
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getNamespaceImportRule()); 
+            }
+            pushFollow(FOLLOW_ruleNamespaceImport_in_entryRuleNamespaceImport187);
+            ruleNamespaceImport();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getNamespaceImportRule()); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNamespaceImport194); if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleNamespaceImport"
+
+
+    // $ANTLR start "ruleNamespaceImport"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:126:1: ruleNamespaceImport : ( ( rule__NamespaceImport__Group__0 ) ) ;
+    public final void ruleNamespaceImport() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:130:2: ( ( ( rule__NamespaceImport__Group__0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:131:1: ( ( rule__NamespaceImport__Group__0 ) )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:131:1: ( ( rule__NamespaceImport__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:132:1: ( rule__NamespaceImport__Group__0 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getNamespaceImportAccess().getGroup()); 
+            }
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:133:1: ( rule__NamespaceImport__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:133:2: rule__NamespaceImport__Group__0
+            {
+            pushFollow(FOLLOW_rule__NamespaceImport__Group__0_in_ruleNamespaceImport220);
+            rule__NamespaceImport__Group__0();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getNamespaceImportAccess().getGroup()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleNamespaceImport"
+
+
     // $ANTLR start "entryRuleAnnotation"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:117:1: entryRuleAnnotation : ruleAnnotation EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:145:1: entryRuleAnnotation : ruleAnnotation EOF ;
     public final void entryRuleAnnotation() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:118:1: ( ruleAnnotation EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:119:1: ruleAnnotation EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:146:1: ( ruleAnnotation EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:147:1: ruleAnnotation EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationRule()); 
             }
-            pushFollow(FOLLOW_ruleAnnotation_in_entryRuleAnnotation187);
+            pushFollow(FOLLOW_ruleAnnotation_in_entryRuleAnnotation247);
             ruleAnnotation();
 
             state._fsp--;
@@ -274,7 +360,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAnnotationRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotation194); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotation254); if (state.failed) return ;
 
             }
 
@@ -291,22 +377,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleAnnotation"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:126:1: ruleAnnotation : ( ruleCustomNameMapping ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:154:1: ruleAnnotation : ( ruleCustomNameMapping ) ;
     public final void ruleAnnotation() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:130:2: ( ( ruleCustomNameMapping ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:131:1: ( ruleCustomNameMapping )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:158:2: ( ( ruleCustomNameMapping ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:159:1: ( ruleCustomNameMapping )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:131:1: ( ruleCustomNameMapping )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:132:1: ruleCustomNameMapping
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:159:1: ( ruleCustomNameMapping )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:160:1: ruleCustomNameMapping
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getCustomNameMappingParserRuleCall()); 
             }
-            pushFollow(FOLLOW_ruleCustomNameMapping_in_ruleAnnotation220);
+            pushFollow(FOLLOW_ruleCustomNameMapping_in_ruleAnnotation280);
             ruleCustomNameMapping();
 
             state._fsp--;
@@ -336,16 +422,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleCustomNameMapping"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:145:1: entryRuleCustomNameMapping : ruleCustomNameMapping EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:173:1: entryRuleCustomNameMapping : ruleCustomNameMapping EOF ;
     public final void entryRuleCustomNameMapping() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:146:1: ( ruleCustomNameMapping EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:147:1: ruleCustomNameMapping EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:174:1: ( ruleCustomNameMapping EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:175:1: ruleCustomNameMapping EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingRule()); 
             }
-            pushFollow(FOLLOW_ruleCustomNameMapping_in_entryRuleCustomNameMapping246);
+            pushFollow(FOLLOW_ruleCustomNameMapping_in_entryRuleCustomNameMapping306);
             ruleCustomNameMapping();
 
             state._fsp--;
@@ -353,7 +439,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCustomNameMappingRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCustomNameMapping253); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCustomNameMapping313); if (state.failed) return ;
 
             }
 
@@ -370,25 +456,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleCustomNameMapping"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:154:1: ruleCustomNameMapping : ( ( rule__CustomNameMapping__Group__0 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:182:1: ruleCustomNameMapping : ( ( rule__CustomNameMapping__Group__0 ) ) ;
     public final void ruleCustomNameMapping() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:158:2: ( ( ( rule__CustomNameMapping__Group__0 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:159:1: ( ( rule__CustomNameMapping__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:186:2: ( ( ( rule__CustomNameMapping__Group__0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:187:1: ( ( rule__CustomNameMapping__Group__0 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:159:1: ( ( rule__CustomNameMapping__Group__0 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:160:1: ( rule__CustomNameMapping__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:187:1: ( ( rule__CustomNameMapping__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:188:1: ( rule__CustomNameMapping__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:161:1: ( rule__CustomNameMapping__Group__0 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:161:2: rule__CustomNameMapping__Group__0
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:189:1: ( rule__CustomNameMapping__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:189:2: rule__CustomNameMapping__Group__0
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__0_in_ruleCustomNameMapping279);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__0_in_ruleCustomNameMapping339);
             rule__CustomNameMapping__Group__0();
 
             state._fsp--;
@@ -421,16 +507,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleFeature"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:173:1: entryRuleFeature : ruleFeature EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:201:1: entryRuleFeature : ruleFeature EOF ;
     public final void entryRuleFeature() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:174:1: ( ruleFeature EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:175:1: ruleFeature EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:202:1: ( ruleFeature EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:203:1: ruleFeature EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureRule()); 
             }
-            pushFollow(FOLLOW_ruleFeature_in_entryRuleFeature306);
+            pushFollow(FOLLOW_ruleFeature_in_entryRuleFeature366);
             ruleFeature();
 
             state._fsp--;
@@ -438,7 +524,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getFeatureRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFeature313); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFeature373); if (state.failed) return ;
 
             }
 
@@ -455,25 +541,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleFeature"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:182:1: ruleFeature : ( ( rule__Feature__Group__0 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:210:1: ruleFeature : ( ( rule__Feature__Group__0 ) ) ;
     public final void ruleFeature() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:186:2: ( ( ( rule__Feature__Group__0 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:187:1: ( ( rule__Feature__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:214:2: ( ( ( rule__Feature__Group__0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:215:1: ( ( rule__Feature__Group__0 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:187:1: ( ( rule__Feature__Group__0 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:188:1: ( rule__Feature__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:215:1: ( ( rule__Feature__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:216:1: ( rule__Feature__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:189:1: ( rule__Feature__Group__0 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:189:2: rule__Feature__Group__0
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:217:1: ( rule__Feature__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:217:2: rule__Feature__Group__0
             {
-            pushFollow(FOLLOW_rule__Feature__Group__0_in_ruleFeature339);
+            pushFollow(FOLLOW_rule__Feature__Group__0_in_ruleFeature399);
             rule__Feature__Group__0();
 
             state._fsp--;
@@ -506,16 +592,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleNewObject"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:201:1: entryRuleNewObject : ruleNewObject EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:229:1: entryRuleNewObject : ruleNewObject EOF ;
     public final void entryRuleNewObject() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:202:1: ( ruleNewObject EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:203:1: ruleNewObject EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:230:1: ( ruleNewObject EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:231:1: ruleNewObject EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectRule()); 
             }
-            pushFollow(FOLLOW_ruleNewObject_in_entryRuleNewObject366);
+            pushFollow(FOLLOW_ruleNewObject_in_entryRuleNewObject426);
             ruleNewObject();
 
             state._fsp--;
@@ -523,7 +609,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getNewObjectRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNewObject373); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNewObject433); if (state.failed) return ;
 
             }
 
@@ -540,25 +626,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleNewObject"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:210:1: ruleNewObject : ( ( rule__NewObject__Group__0 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:238:1: ruleNewObject : ( ( rule__NewObject__Group__0 ) ) ;
     public final void ruleNewObject() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:214:2: ( ( ( rule__NewObject__Group__0 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:215:1: ( ( rule__NewObject__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:242:2: ( ( ( rule__NewObject__Group__0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:243:1: ( ( rule__NewObject__Group__0 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:215:1: ( ( rule__NewObject__Group__0 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:216:1: ( rule__NewObject__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:243:1: ( ( rule__NewObject__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:244:1: ( rule__NewObject__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:217:1: ( rule__NewObject__Group__0 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:217:2: rule__NewObject__Group__0
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:245:1: ( rule__NewObject__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:245:2: rule__NewObject__Group__0
             {
-            pushFollow(FOLLOW_rule__NewObject__Group__0_in_ruleNewObject399);
+            pushFollow(FOLLOW_rule__NewObject__Group__0_in_ruleNewObject459);
             rule__NewObject__Group__0();
 
             state._fsp--;
@@ -591,16 +677,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleValue"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:229:1: entryRuleValue : ruleValue EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:257:1: entryRuleValue : ruleValue EOF ;
     public final void entryRuleValue() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:230:1: ( ruleValue EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:231:1: ruleValue EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:258:1: ( ruleValue EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:259:1: ruleValue EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getValueRule()); 
             }
-            pushFollow(FOLLOW_ruleValue_in_entryRuleValue426);
+            pushFollow(FOLLOW_ruleValue_in_entryRuleValue486);
             ruleValue();
 
             state._fsp--;
@@ -608,7 +694,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getValueRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValue433); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValue493); if (state.failed) return ;
 
             }
 
@@ -625,25 +711,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleValue"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:238:1: ruleValue : ( ( rule__Value__Alternatives ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:266:1: ruleValue : ( ( rule__Value__Alternatives ) ) ;
     public final void ruleValue() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:242:2: ( ( ( rule__Value__Alternatives ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:243:1: ( ( rule__Value__Alternatives ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:270:2: ( ( ( rule__Value__Alternatives ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:271:1: ( ( rule__Value__Alternatives ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:243:1: ( ( rule__Value__Alternatives ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:244:1: ( rule__Value__Alternatives )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:271:1: ( ( rule__Value__Alternatives ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:272:1: ( rule__Value__Alternatives )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getValueAccess().getAlternatives()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:245:1: ( rule__Value__Alternatives )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:245:2: rule__Value__Alternatives
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:273:1: ( rule__Value__Alternatives )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:273:2: rule__Value__Alternatives
             {
-            pushFollow(FOLLOW_rule__Value__Alternatives_in_ruleValue459);
+            pushFollow(FOLLOW_rule__Value__Alternatives_in_ruleValue519);
             rule__Value__Alternatives();
 
             state._fsp--;
@@ -676,16 +762,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleMultiValue"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:257:1: entryRuleMultiValue : ruleMultiValue EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:285:1: entryRuleMultiValue : ruleMultiValue EOF ;
     public final void entryRuleMultiValue() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:258:1: ( ruleMultiValue EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:259:1: ruleMultiValue EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:286:1: ( ruleMultiValue EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:287:1: ruleMultiValue EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiValueRule()); 
             }
-            pushFollow(FOLLOW_ruleMultiValue_in_entryRuleMultiValue486);
+            pushFollow(FOLLOW_ruleMultiValue_in_entryRuleMultiValue546);
             ruleMultiValue();
 
             state._fsp--;
@@ -693,7 +779,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMultiValueRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMultiValue493); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleMultiValue553); if (state.failed) return ;
 
             }
 
@@ -710,25 +796,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleMultiValue"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:266:1: ruleMultiValue : ( ( rule__MultiValue__Group__0 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:294:1: ruleMultiValue : ( ( rule__MultiValue__Group__0 ) ) ;
     public final void ruleMultiValue() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:270:2: ( ( ( rule__MultiValue__Group__0 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:271:1: ( ( rule__MultiValue__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:298:2: ( ( ( rule__MultiValue__Group__0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:299:1: ( ( rule__MultiValue__Group__0 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:271:1: ( ( rule__MultiValue__Group__0 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:272:1: ( rule__MultiValue__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:299:1: ( ( rule__MultiValue__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:300:1: ( rule__MultiValue__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiValueAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:273:1: ( rule__MultiValue__Group__0 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:273:2: rule__MultiValue__Group__0
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:301:1: ( rule__MultiValue__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:301:2: rule__MultiValue__Group__0
             {
-            pushFollow(FOLLOW_rule__MultiValue__Group__0_in_ruleMultiValue519);
+            pushFollow(FOLLOW_rule__MultiValue__Group__0_in_ruleMultiValue579);
             rule__MultiValue__Group__0();
 
             state._fsp--;
@@ -761,16 +847,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleReference"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:285:1: entryRuleReference : ruleReference EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:313:1: entryRuleReference : ruleReference EOF ;
     public final void entryRuleReference() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:286:1: ( ruleReference EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:287:1: ruleReference EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:314:1: ( ruleReference EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:315:1: ruleReference EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleReference_in_entryRuleReference546);
+            pushFollow(FOLLOW_ruleReference_in_entryRuleReference606);
             ruleReference();
 
             state._fsp--;
@@ -778,7 +864,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getReferenceRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleReference553); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleReference613); if (state.failed) return ;
 
             }
 
@@ -795,25 +881,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleReference"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:294:1: ruleReference : ( ( rule__Reference__ValueAssignment ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:322:1: ruleReference : ( ( rule__Reference__ValueAssignment ) ) ;
     public final void ruleReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:298:2: ( ( ( rule__Reference__ValueAssignment ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:299:1: ( ( rule__Reference__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:326:2: ( ( ( rule__Reference__ValueAssignment ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:327:1: ( ( rule__Reference__ValueAssignment ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:299:1: ( ( rule__Reference__ValueAssignment ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:300:1: ( rule__Reference__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:327:1: ( ( rule__Reference__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:328:1: ( rule__Reference__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReferenceAccess().getValueAssignment()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:301:1: ( rule__Reference__ValueAssignment )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:301:2: rule__Reference__ValueAssignment
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:329:1: ( rule__Reference__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:329:2: rule__Reference__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__Reference__ValueAssignment_in_ruleReference579);
+            pushFollow(FOLLOW_rule__Reference__ValueAssignment_in_ruleReference639);
             rule__Reference__ValueAssignment();
 
             state._fsp--;
@@ -846,16 +932,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleContainment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:313:1: entryRuleContainment : ruleContainment EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:341:1: entryRuleContainment : ruleContainment EOF ;
     public final void entryRuleContainment() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:314:1: ( ruleContainment EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:315:1: ruleContainment EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:342:1: ( ruleContainment EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:343:1: ruleContainment EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getContainmentRule()); 
             }
-            pushFollow(FOLLOW_ruleContainment_in_entryRuleContainment606);
+            pushFollow(FOLLOW_ruleContainment_in_entryRuleContainment666);
             ruleContainment();
 
             state._fsp--;
@@ -863,7 +949,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getContainmentRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleContainment613); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleContainment673); if (state.failed) return ;
 
             }
 
@@ -880,25 +966,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleContainment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:322:1: ruleContainment : ( ( rule__Containment__ValueAssignment ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:350:1: ruleContainment : ( ( rule__Containment__ValueAssignment ) ) ;
     public final void ruleContainment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:326:2: ( ( ( rule__Containment__ValueAssignment ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:327:1: ( ( rule__Containment__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:354:2: ( ( ( rule__Containment__ValueAssignment ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:355:1: ( ( rule__Containment__ValueAssignment ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:327:1: ( ( rule__Containment__ValueAssignment ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:328:1: ( rule__Containment__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:355:1: ( ( rule__Containment__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:356:1: ( rule__Containment__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getContainmentAccess().getValueAssignment()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:329:1: ( rule__Containment__ValueAssignment )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:329:2: rule__Containment__ValueAssignment
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:357:1: ( rule__Containment__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:357:2: rule__Containment__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__Containment__ValueAssignment_in_ruleContainment639);
+            pushFollow(FOLLOW_rule__Containment__ValueAssignment_in_ruleContainment699);
             rule__Containment__ValueAssignment();
 
             state._fsp--;
@@ -931,16 +1017,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:341:1: entryRuleAttribute : ruleAttribute EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:369:1: entryRuleAttribute : ruleAttribute EOF ;
     public final void entryRuleAttribute() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:342:1: ( ruleAttribute EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:343:1: ruleAttribute EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:370:1: ( ruleAttribute EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:371:1: ruleAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute666);
+            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute726);
             ruleAttribute();
 
             state._fsp--;
@@ -948,7 +1034,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute673); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute733); if (state.failed) return ;
 
             }
 
@@ -965,25 +1051,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:350:1: ruleAttribute : ( ( rule__Attribute__Alternatives ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:378:1: ruleAttribute : ( ( rule__Attribute__Alternatives ) ) ;
     public final void ruleAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:354:2: ( ( ( rule__Attribute__Alternatives ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:355:1: ( ( rule__Attribute__Alternatives ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:382:2: ( ( ( rule__Attribute__Alternatives ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:383:1: ( ( rule__Attribute__Alternatives ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:355:1: ( ( rule__Attribute__Alternatives ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:356:1: ( rule__Attribute__Alternatives )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:383:1: ( ( rule__Attribute__Alternatives ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:384:1: ( rule__Attribute__Alternatives )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAttributeAccess().getAlternatives()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:357:1: ( rule__Attribute__Alternatives )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:357:2: rule__Attribute__Alternatives
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:385:1: ( rule__Attribute__Alternatives )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:385:2: rule__Attribute__Alternatives
             {
-            pushFollow(FOLLOW_rule__Attribute__Alternatives_in_ruleAttribute699);
+            pushFollow(FOLLOW_rule__Attribute__Alternatives_in_ruleAttribute759);
             rule__Attribute__Alternatives();
 
             state._fsp--;
@@ -1016,16 +1102,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleEnumAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:369:1: entryRuleEnumAttribute : ruleEnumAttribute EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:397:1: entryRuleEnumAttribute : ruleEnumAttribute EOF ;
     public final void entryRuleEnumAttribute() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:370:1: ( ruleEnumAttribute EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:371:1: ruleEnumAttribute EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:398:1: ( ruleEnumAttribute EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:399:1: ruleEnumAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEnumAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleEnumAttribute_in_entryRuleEnumAttribute726);
+            pushFollow(FOLLOW_ruleEnumAttribute_in_entryRuleEnumAttribute786);
             ruleEnumAttribute();
 
             state._fsp--;
@@ -1033,7 +1119,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getEnumAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumAttribute733); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumAttribute793); if (state.failed) return ;
 
             }
 
@@ -1050,25 +1136,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleEnumAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:378:1: ruleEnumAttribute : ( ( rule__EnumAttribute__Group__0 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:406:1: ruleEnumAttribute : ( ( rule__EnumAttribute__Group__0 ) ) ;
     public final void ruleEnumAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:382:2: ( ( ( rule__EnumAttribute__Group__0 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:383:1: ( ( rule__EnumAttribute__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:410:2: ( ( ( rule__EnumAttribute__Group__0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:411:1: ( ( rule__EnumAttribute__Group__0 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:383:1: ( ( rule__EnumAttribute__Group__0 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:384:1: ( rule__EnumAttribute__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:411:1: ( ( rule__EnumAttribute__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:412:1: ( rule__EnumAttribute__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEnumAttributeAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:385:1: ( rule__EnumAttribute__Group__0 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:385:2: rule__EnumAttribute__Group__0
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:413:1: ( rule__EnumAttribute__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:413:2: rule__EnumAttribute__Group__0
             {
-            pushFollow(FOLLOW_rule__EnumAttribute__Group__0_in_ruleEnumAttribute759);
+            pushFollow(FOLLOW_rule__EnumAttribute__Group__0_in_ruleEnumAttribute819);
             rule__EnumAttribute__Group__0();
 
             state._fsp--;
@@ -1101,16 +1187,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleStringAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:397:1: entryRuleStringAttribute : ruleStringAttribute EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:425:1: entryRuleStringAttribute : ruleStringAttribute EOF ;
     public final void entryRuleStringAttribute() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:398:1: ( ruleStringAttribute EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:399:1: ruleStringAttribute EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:426:1: ( ruleStringAttribute EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:427:1: ruleStringAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getStringAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleStringAttribute_in_entryRuleStringAttribute786);
+            pushFollow(FOLLOW_ruleStringAttribute_in_entryRuleStringAttribute846);
             ruleStringAttribute();
 
             state._fsp--;
@@ -1118,7 +1204,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getStringAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringAttribute793); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringAttribute853); if (state.failed) return ;
 
             }
 
@@ -1135,25 +1221,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleStringAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:406:1: ruleStringAttribute : ( ( rule__StringAttribute__ValueAssignment ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:434:1: ruleStringAttribute : ( ( rule__StringAttribute__ValueAssignment ) ) ;
     public final void ruleStringAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:410:2: ( ( ( rule__StringAttribute__ValueAssignment ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:411:1: ( ( rule__StringAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:438:2: ( ( ( rule__StringAttribute__ValueAssignment ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:439:1: ( ( rule__StringAttribute__ValueAssignment ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:411:1: ( ( rule__StringAttribute__ValueAssignment ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:412:1: ( rule__StringAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:439:1: ( ( rule__StringAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:440:1: ( rule__StringAttribute__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getStringAttributeAccess().getValueAssignment()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:413:1: ( rule__StringAttribute__ValueAssignment )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:413:2: rule__StringAttribute__ValueAssignment
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:441:1: ( rule__StringAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:441:2: rule__StringAttribute__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__StringAttribute__ValueAssignment_in_ruleStringAttribute819);
+            pushFollow(FOLLOW_rule__StringAttribute__ValueAssignment_in_ruleStringAttribute879);
             rule__StringAttribute__ValueAssignment();
 
             state._fsp--;
@@ -1186,16 +1272,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleIntegerAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:425:1: entryRuleIntegerAttribute : ruleIntegerAttribute EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:453:1: entryRuleIntegerAttribute : ruleIntegerAttribute EOF ;
     public final void entryRuleIntegerAttribute() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:426:1: ( ruleIntegerAttribute EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:427:1: ruleIntegerAttribute EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:454:1: ( ruleIntegerAttribute EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:455:1: ruleIntegerAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIntegerAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleIntegerAttribute_in_entryRuleIntegerAttribute846);
+            pushFollow(FOLLOW_ruleIntegerAttribute_in_entryRuleIntegerAttribute906);
             ruleIntegerAttribute();
 
             state._fsp--;
@@ -1203,7 +1289,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getIntegerAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerAttribute853); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerAttribute913); if (state.failed) return ;
 
             }
 
@@ -1220,25 +1306,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleIntegerAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:434:1: ruleIntegerAttribute : ( ( rule__IntegerAttribute__ValueAssignment ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:462:1: ruleIntegerAttribute : ( ( rule__IntegerAttribute__ValueAssignment ) ) ;
     public final void ruleIntegerAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:438:2: ( ( ( rule__IntegerAttribute__ValueAssignment ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:439:1: ( ( rule__IntegerAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:466:2: ( ( ( rule__IntegerAttribute__ValueAssignment ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:467:1: ( ( rule__IntegerAttribute__ValueAssignment ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:439:1: ( ( rule__IntegerAttribute__ValueAssignment ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:440:1: ( rule__IntegerAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:467:1: ( ( rule__IntegerAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:468:1: ( rule__IntegerAttribute__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIntegerAttributeAccess().getValueAssignment()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:441:1: ( rule__IntegerAttribute__ValueAssignment )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:441:2: rule__IntegerAttribute__ValueAssignment
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:469:1: ( rule__IntegerAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:469:2: rule__IntegerAttribute__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__IntegerAttribute__ValueAssignment_in_ruleIntegerAttribute879);
+            pushFollow(FOLLOW_rule__IntegerAttribute__ValueAssignment_in_ruleIntegerAttribute939);
             rule__IntegerAttribute__ValueAssignment();
 
             state._fsp--;
@@ -1271,16 +1357,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleDoubleAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:453:1: entryRuleDoubleAttribute : ruleDoubleAttribute EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:481:1: entryRuleDoubleAttribute : ruleDoubleAttribute EOF ;
     public final void entryRuleDoubleAttribute() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:454:1: ( ruleDoubleAttribute EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:455:1: ruleDoubleAttribute EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:482:1: ( ruleDoubleAttribute EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:483:1: ruleDoubleAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getDoubleAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleDoubleAttribute_in_entryRuleDoubleAttribute906);
+            pushFollow(FOLLOW_ruleDoubleAttribute_in_entryRuleDoubleAttribute966);
             ruleDoubleAttribute();
 
             state._fsp--;
@@ -1288,7 +1374,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getDoubleAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleAttribute913); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleAttribute973); if (state.failed) return ;
 
             }
 
@@ -1305,25 +1391,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleDoubleAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:462:1: ruleDoubleAttribute : ( ( rule__DoubleAttribute__ValueAssignment ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:490:1: ruleDoubleAttribute : ( ( rule__DoubleAttribute__ValueAssignment ) ) ;
     public final void ruleDoubleAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:466:2: ( ( ( rule__DoubleAttribute__ValueAssignment ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:467:1: ( ( rule__DoubleAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:494:2: ( ( ( rule__DoubleAttribute__ValueAssignment ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:495:1: ( ( rule__DoubleAttribute__ValueAssignment ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:467:1: ( ( rule__DoubleAttribute__ValueAssignment ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:468:1: ( rule__DoubleAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:495:1: ( ( rule__DoubleAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:496:1: ( rule__DoubleAttribute__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getDoubleAttributeAccess().getValueAssignment()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:469:1: ( rule__DoubleAttribute__ValueAssignment )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:469:2: rule__DoubleAttribute__ValueAssignment
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:497:1: ( rule__DoubleAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:497:2: rule__DoubleAttribute__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__DoubleAttribute__ValueAssignment_in_ruleDoubleAttribute939);
+            pushFollow(FOLLOW_rule__DoubleAttribute__ValueAssignment_in_ruleDoubleAttribute999);
             rule__DoubleAttribute__ValueAssignment();
 
             state._fsp--;
@@ -1356,16 +1442,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleDateAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:481:1: entryRuleDateAttribute : ruleDateAttribute EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:509:1: entryRuleDateAttribute : ruleDateAttribute EOF ;
     public final void entryRuleDateAttribute() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:482:1: ( ruleDateAttribute EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:483:1: ruleDateAttribute EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:510:1: ( ruleDateAttribute EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:511:1: ruleDateAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getDateAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleDateAttribute_in_entryRuleDateAttribute966);
+            pushFollow(FOLLOW_ruleDateAttribute_in_entryRuleDateAttribute1026);
             ruleDateAttribute();
 
             state._fsp--;
@@ -1373,7 +1459,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getDateAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDateAttribute973); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDateAttribute1033); if (state.failed) return ;
 
             }
 
@@ -1390,25 +1476,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleDateAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:490:1: ruleDateAttribute : ( ( rule__DateAttribute__ValueAssignment ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:518:1: ruleDateAttribute : ( ( rule__DateAttribute__ValueAssignment ) ) ;
     public final void ruleDateAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:494:2: ( ( ( rule__DateAttribute__ValueAssignment ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:495:1: ( ( rule__DateAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:522:2: ( ( ( rule__DateAttribute__ValueAssignment ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:523:1: ( ( rule__DateAttribute__ValueAssignment ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:495:1: ( ( rule__DateAttribute__ValueAssignment ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:496:1: ( rule__DateAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:523:1: ( ( rule__DateAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:524:1: ( rule__DateAttribute__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getDateAttributeAccess().getValueAssignment()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:497:1: ( rule__DateAttribute__ValueAssignment )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:497:2: rule__DateAttribute__ValueAssignment
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:525:1: ( rule__DateAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:525:2: rule__DateAttribute__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__DateAttribute__ValueAssignment_in_ruleDateAttribute999);
+            pushFollow(FOLLOW_rule__DateAttribute__ValueAssignment_in_ruleDateAttribute1059);
             rule__DateAttribute__ValueAssignment();
 
             state._fsp--;
@@ -1441,16 +1527,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleNullAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:509:1: entryRuleNullAttribute : ruleNullAttribute EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:537:1: entryRuleNullAttribute : ruleNullAttribute EOF ;
     public final void entryRuleNullAttribute() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:510:1: ( ruleNullAttribute EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:511:1: ruleNullAttribute EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:538:1: ( ruleNullAttribute EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:539:1: ruleNullAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNullAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleNullAttribute_in_entryRuleNullAttribute1026);
+            pushFollow(FOLLOW_ruleNullAttribute_in_entryRuleNullAttribute1086);
             ruleNullAttribute();
 
             state._fsp--;
@@ -1458,7 +1544,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getNullAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNullAttribute1033); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNullAttribute1093); if (state.failed) return ;
 
             }
 
@@ -1475,25 +1561,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleNullAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:518:1: ruleNullAttribute : ( ( rule__NullAttribute__ValueAssignment ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:546:1: ruleNullAttribute : ( ( rule__NullAttribute__ValueAssignment ) ) ;
     public final void ruleNullAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:522:2: ( ( ( rule__NullAttribute__ValueAssignment ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:523:1: ( ( rule__NullAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:550:2: ( ( ( rule__NullAttribute__ValueAssignment ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:551:1: ( ( rule__NullAttribute__ValueAssignment ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:523:1: ( ( rule__NullAttribute__ValueAssignment ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:524:1: ( rule__NullAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:551:1: ( ( rule__NullAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:552:1: ( rule__NullAttribute__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNullAttributeAccess().getValueAssignment()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:525:1: ( rule__NullAttribute__ValueAssignment )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:525:2: rule__NullAttribute__ValueAssignment
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:553:1: ( rule__NullAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:553:2: rule__NullAttribute__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__NullAttribute__ValueAssignment_in_ruleNullAttribute1059);
+            pushFollow(FOLLOW_rule__NullAttribute__ValueAssignment_in_ruleNullAttribute1119);
             rule__NullAttribute__ValueAssignment();
 
             state._fsp--;
@@ -1526,16 +1612,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleBooleanAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:537:1: entryRuleBooleanAttribute : ruleBooleanAttribute EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:565:1: entryRuleBooleanAttribute : ruleBooleanAttribute EOF ;
     public final void entryRuleBooleanAttribute() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:538:1: ( ruleBooleanAttribute EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:539:1: ruleBooleanAttribute EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:566:1: ( ruleBooleanAttribute EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:567:1: ruleBooleanAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBooleanAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleBooleanAttribute_in_entryRuleBooleanAttribute1086);
+            pushFollow(FOLLOW_ruleBooleanAttribute_in_entryRuleBooleanAttribute1146);
             ruleBooleanAttribute();
 
             state._fsp--;
@@ -1543,7 +1629,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBooleanAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanAttribute1093); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanAttribute1153); if (state.failed) return ;
 
             }
 
@@ -1560,25 +1646,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleBooleanAttribute"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:546:1: ruleBooleanAttribute : ( ( rule__BooleanAttribute__ValueAssignment ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:574:1: ruleBooleanAttribute : ( ( rule__BooleanAttribute__ValueAssignment ) ) ;
     public final void ruleBooleanAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:550:2: ( ( ( rule__BooleanAttribute__ValueAssignment ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:551:1: ( ( rule__BooleanAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:578:2: ( ( ( rule__BooleanAttribute__ValueAssignment ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:579:1: ( ( rule__BooleanAttribute__ValueAssignment ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:551:1: ( ( rule__BooleanAttribute__ValueAssignment ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:552:1: ( rule__BooleanAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:579:1: ( ( rule__BooleanAttribute__ValueAssignment ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:580:1: ( rule__BooleanAttribute__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBooleanAttributeAccess().getValueAssignment()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:553:1: ( rule__BooleanAttribute__ValueAssignment )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:553:2: rule__BooleanAttribute__ValueAssignment
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:581:1: ( rule__BooleanAttribute__ValueAssignment )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:581:2: rule__BooleanAttribute__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__BooleanAttribute__ValueAssignment_in_ruleBooleanAttribute1119);
+            pushFollow(FOLLOW_rule__BooleanAttribute__ValueAssignment_in_ruleBooleanAttribute1179);
             rule__BooleanAttribute__ValueAssignment();
 
             state._fsp--;
@@ -1610,17 +1696,102 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "ruleBooleanAttribute"
 
 
+    // $ANTLR start "entryRuleQualifiedNameWithWildcard"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:593:1: entryRuleQualifiedNameWithWildcard : ruleQualifiedNameWithWildcard EOF ;
+    public final void entryRuleQualifiedNameWithWildcard() throws RecognitionException {
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:594:1: ( ruleQualifiedNameWithWildcard EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:595:1: ruleQualifiedNameWithWildcard EOF
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getQualifiedNameWithWildcardRule()); 
+            }
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard1206);
+            ruleQualifiedNameWithWildcard();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getQualifiedNameWithWildcardRule()); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard1213); if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleQualifiedNameWithWildcard"
+
+
+    // $ANTLR start "ruleQualifiedNameWithWildcard"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:602:1: ruleQualifiedNameWithWildcard : ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) ;
+    public final void ruleQualifiedNameWithWildcard() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:606:2: ( ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:607:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:607:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:608:1: ( rule__QualifiedNameWithWildcard__Group__0 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup()); 
+            }
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:609:1: ( rule__QualifiedNameWithWildcard__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:609:2: rule__QualifiedNameWithWildcard__Group__0
+            {
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__0_in_ruleQualifiedNameWithWildcard1239);
+            rule__QualifiedNameWithWildcard__Group__0();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleQualifiedNameWithWildcard"
+
+
     // $ANTLR start "entryRuleQualifiedName"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:565:1: entryRuleQualifiedName : ruleQualifiedName EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:621:1: entryRuleQualifiedName : ruleQualifiedName EOF ;
     public final void entryRuleQualifiedName() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:566:1: ( ruleQualifiedName EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:567:1: ruleQualifiedName EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:622:1: ( ruleQualifiedName EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:623:1: ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName1146);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName1266);
             ruleQualifiedName();
 
             state._fsp--;
@@ -1628,7 +1799,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName1153); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName1273); if (state.failed) return ;
 
             }
 
@@ -1645,25 +1816,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:574:1: ruleQualifiedName : ( ( rule__QualifiedName__Group__0 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:630:1: ruleQualifiedName : ( ( rule__QualifiedName__Group__0 ) ) ;
     public final void ruleQualifiedName() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:578:2: ( ( ( rule__QualifiedName__Group__0 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:579:1: ( ( rule__QualifiedName__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:634:2: ( ( ( rule__QualifiedName__Group__0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:635:1: ( ( rule__QualifiedName__Group__0 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:579:1: ( ( rule__QualifiedName__Group__0 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:580:1: ( rule__QualifiedName__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:635:1: ( ( rule__QualifiedName__Group__0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:636:1: ( rule__QualifiedName__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:581:1: ( rule__QualifiedName__Group__0 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:581:2: rule__QualifiedName__Group__0
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:637:1: ( rule__QualifiedName__Group__0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:637:2: rule__QualifiedName__Group__0
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName1179);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName1299);
             rule__QualifiedName__Group__0();
 
             state._fsp--;
@@ -1696,16 +1867,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "entryRuleValidID"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:593:1: entryRuleValidID : ruleValidID EOF ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:649:1: entryRuleValidID : ruleValidID EOF ;
     public final void entryRuleValidID() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:594:1: ( ruleValidID EOF )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:595:1: ruleValidID EOF
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:650:1: ( ruleValidID EOF )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:651:1: ruleValidID EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getValidIDRule()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID1206);
+            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID1326);
             ruleValidID();
 
             state._fsp--;
@@ -1713,7 +1884,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             if ( state.backtracking==0 ) {
                after(grammarAccess.getValidIDRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID1213); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID1333); if (state.failed) return ;
 
             }
 
@@ -1730,25 +1901,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "ruleValidID"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:602:1: ruleValidID : ( ( rule__ValidID__Alternatives ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:658:1: ruleValidID : ( ( rule__ValidID__Alternatives ) ) ;
     public final void ruleValidID() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:606:2: ( ( ( rule__ValidID__Alternatives ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:607:1: ( ( rule__ValidID__Alternatives ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:662:2: ( ( ( rule__ValidID__Alternatives ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:663:1: ( ( rule__ValidID__Alternatives ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:607:1: ( ( rule__ValidID__Alternatives ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:608:1: ( rule__ValidID__Alternatives )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:663:1: ( ( rule__ValidID__Alternatives ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:664:1: ( rule__ValidID__Alternatives )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getValidIDAccess().getAlternatives()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:609:1: ( rule__ValidID__Alternatives )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:609:2: rule__ValidID__Alternatives
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:665:1: ( rule__ValidID__Alternatives )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:665:2: rule__ValidID__Alternatives
             {
-            pushFollow(FOLLOW_rule__ValidID__Alternatives_in_ruleValidID1239);
+            pushFollow(FOLLOW_rule__ValidID__Alternatives_in_ruleValidID1359);
             rule__ValidID__Alternatives();
 
             state._fsp--;
@@ -1781,26 +1952,26 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Value__Alternatives"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:621:1: rule__Value__Alternatives : ( ( ruleMultiValue ) | ( ruleAttribute ) | ( ( ruleContainment ) ) | ( ( ruleReference ) ) );
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:677:1: rule__Value__Alternatives : ( ( ruleMultiValue ) | ( ruleAttribute ) | ( ( ruleContainment ) ) | ( ( ruleReference ) ) );
     public final void rule__Value__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:625:1: ( ( ruleMultiValue ) | ( ruleAttribute ) | ( ( ruleContainment ) ) | ( ( ruleReference ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:681:1: ( ( ruleMultiValue ) | ( ruleAttribute ) | ( ( ruleContainment ) ) | ( ( ruleReference ) ) )
             int alt1=4;
             alt1 = dfa1.predict(input);
             switch (alt1) {
                 case 1 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:626:1: ( ruleMultiValue )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:682:1: ( ruleMultiValue )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:626:1: ( ruleMultiValue )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:627:1: ruleMultiValue
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:682:1: ( ruleMultiValue )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:683:1: ruleMultiValue
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getValueAccess().getMultiValueParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleMultiValue_in_rule__Value__Alternatives1275);
+                    pushFollow(FOLLOW_ruleMultiValue_in_rule__Value__Alternatives1395);
                     ruleMultiValue();
 
                     state._fsp--;
@@ -1815,15 +1986,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:632:6: ( ruleAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:688:6: ( ruleAttribute )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:632:6: ( ruleAttribute )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:633:1: ruleAttribute
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:688:6: ( ruleAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:689:1: ruleAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getValueAccess().getAttributeParserRuleCall_1()); 
                     }
-                    pushFollow(FOLLOW_ruleAttribute_in_rule__Value__Alternatives1292);
+                    pushFollow(FOLLOW_ruleAttribute_in_rule__Value__Alternatives1412);
                     ruleAttribute();
 
                     state._fsp--;
@@ -1838,18 +2009,18 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 3 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:638:6: ( ( ruleContainment ) )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:694:6: ( ( ruleContainment ) )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:638:6: ( ( ruleContainment ) )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:639:1: ( ruleContainment )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:694:6: ( ( ruleContainment ) )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:695:1: ( ruleContainment )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getValueAccess().getContainmentParserRuleCall_2()); 
                     }
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:640:1: ( ruleContainment )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:640:3: ruleContainment
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:696:1: ( ruleContainment )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:696:3: ruleContainment
                     {
-                    pushFollow(FOLLOW_ruleContainment_in_rule__Value__Alternatives1310);
+                    pushFollow(FOLLOW_ruleContainment_in_rule__Value__Alternatives1430);
                     ruleContainment();
 
                     state._fsp--;
@@ -1867,18 +2038,18 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 4 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:644:6: ( ( ruleReference ) )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:700:6: ( ( ruleReference ) )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:644:6: ( ( ruleReference ) )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:645:1: ( ruleReference )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:700:6: ( ( ruleReference ) )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:701:1: ( ruleReference )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getValueAccess().getReferenceParserRuleCall_3()); 
                     }
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:646:1: ( ruleReference )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:646:3: ruleReference
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:702:1: ( ruleReference )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:702:3: ruleReference
                     {
-                    pushFollow(FOLLOW_ruleReference_in_rule__Value__Alternatives1329);
+                    pushFollow(FOLLOW_ruleReference_in_rule__Value__Alternatives1449);
                     ruleReference();
 
                     state._fsp--;
@@ -1913,16 +2084,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Attribute__Alternatives"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:655:1: rule__Attribute__Alternatives : ( ( ruleEnumAttribute ) | ( ruleStringAttribute ) | ( ruleIntegerAttribute ) | ( ruleBooleanAttribute ) | ( ruleDoubleAttribute ) | ( ruleDateAttribute ) | ( ruleNullAttribute ) );
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:711:1: rule__Attribute__Alternatives : ( ( ruleEnumAttribute ) | ( ruleStringAttribute ) | ( ruleIntegerAttribute ) | ( ruleBooleanAttribute ) | ( ruleDoubleAttribute ) | ( ruleDateAttribute ) | ( ruleNullAttribute ) );
     public final void rule__Attribute__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:659:1: ( ( ruleEnumAttribute ) | ( ruleStringAttribute ) | ( ruleIntegerAttribute ) | ( ruleBooleanAttribute ) | ( ruleDoubleAttribute ) | ( ruleDateAttribute ) | ( ruleNullAttribute ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:715:1: ( ( ruleEnumAttribute ) | ( ruleStringAttribute ) | ( ruleIntegerAttribute ) | ( ruleBooleanAttribute ) | ( ruleDoubleAttribute ) | ( ruleDateAttribute ) | ( ruleNullAttribute ) )
             int alt2=7;
             switch ( input.LA(1) ) {
-            case 21:
+            case 22:
                 {
                 alt2=1;
                 }
@@ -1952,7 +2123,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                 alt2=6;
                 }
                 break;
-            case 25:
+            case 26:
                 {
                 alt2=7;
                 }
@@ -1967,15 +2138,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
             switch (alt2) {
                 case 1 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:660:1: ( ruleEnumAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:716:1: ( ruleEnumAttribute )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:660:1: ( ruleEnumAttribute )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:661:1: ruleEnumAttribute
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:716:1: ( ruleEnumAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:717:1: ruleEnumAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getEnumAttributeParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleEnumAttribute_in_rule__Attribute__Alternatives1362);
+                    pushFollow(FOLLOW_ruleEnumAttribute_in_rule__Attribute__Alternatives1482);
                     ruleEnumAttribute();
 
                     state._fsp--;
@@ -1990,15 +2161,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:666:6: ( ruleStringAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:722:6: ( ruleStringAttribute )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:666:6: ( ruleStringAttribute )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:667:1: ruleStringAttribute
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:722:6: ( ruleStringAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:723:1: ruleStringAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getStringAttributeParserRuleCall_1()); 
                     }
-                    pushFollow(FOLLOW_ruleStringAttribute_in_rule__Attribute__Alternatives1379);
+                    pushFollow(FOLLOW_ruleStringAttribute_in_rule__Attribute__Alternatives1499);
                     ruleStringAttribute();
 
                     state._fsp--;
@@ -2013,15 +2184,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 3 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:672:6: ( ruleIntegerAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:728:6: ( ruleIntegerAttribute )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:672:6: ( ruleIntegerAttribute )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:673:1: ruleIntegerAttribute
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:728:6: ( ruleIntegerAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:729:1: ruleIntegerAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getIntegerAttributeParserRuleCall_2()); 
                     }
-                    pushFollow(FOLLOW_ruleIntegerAttribute_in_rule__Attribute__Alternatives1396);
+                    pushFollow(FOLLOW_ruleIntegerAttribute_in_rule__Attribute__Alternatives1516);
                     ruleIntegerAttribute();
 
                     state._fsp--;
@@ -2036,15 +2207,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 4 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:678:6: ( ruleBooleanAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:734:6: ( ruleBooleanAttribute )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:678:6: ( ruleBooleanAttribute )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:679:1: ruleBooleanAttribute
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:734:6: ( ruleBooleanAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:735:1: ruleBooleanAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getBooleanAttributeParserRuleCall_3()); 
                     }
-                    pushFollow(FOLLOW_ruleBooleanAttribute_in_rule__Attribute__Alternatives1413);
+                    pushFollow(FOLLOW_ruleBooleanAttribute_in_rule__Attribute__Alternatives1533);
                     ruleBooleanAttribute();
 
                     state._fsp--;
@@ -2059,15 +2230,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 5 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:684:6: ( ruleDoubleAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:740:6: ( ruleDoubleAttribute )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:684:6: ( ruleDoubleAttribute )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:685:1: ruleDoubleAttribute
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:740:6: ( ruleDoubleAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:741:1: ruleDoubleAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getDoubleAttributeParserRuleCall_4()); 
                     }
-                    pushFollow(FOLLOW_ruleDoubleAttribute_in_rule__Attribute__Alternatives1430);
+                    pushFollow(FOLLOW_ruleDoubleAttribute_in_rule__Attribute__Alternatives1550);
                     ruleDoubleAttribute();
 
                     state._fsp--;
@@ -2082,15 +2253,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 6 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:690:6: ( ruleDateAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:746:6: ( ruleDateAttribute )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:690:6: ( ruleDateAttribute )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:691:1: ruleDateAttribute
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:746:6: ( ruleDateAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:747:1: ruleDateAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getDateAttributeParserRuleCall_5()); 
                     }
-                    pushFollow(FOLLOW_ruleDateAttribute_in_rule__Attribute__Alternatives1447);
+                    pushFollow(FOLLOW_ruleDateAttribute_in_rule__Attribute__Alternatives1567);
                     ruleDateAttribute();
 
                     state._fsp--;
@@ -2105,15 +2276,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 7 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:696:6: ( ruleNullAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:752:6: ( ruleNullAttribute )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:696:6: ( ruleNullAttribute )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:697:1: ruleNullAttribute
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:752:6: ( ruleNullAttribute )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:753:1: ruleNullAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getNullAttributeParserRuleCall_6()); 
                     }
-                    pushFollow(FOLLOW_ruleNullAttribute_in_rule__Attribute__Alternatives1464);
+                    pushFollow(FOLLOW_ruleNullAttribute_in_rule__Attribute__Alternatives1584);
                     ruleNullAttribute();
 
                     state._fsp--;
@@ -2145,13 +2316,13 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__ValidID__Alternatives"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:707:1: rule__ValidID__Alternatives : ( ( RULE_ID ) | ( RULE_LONG ) );
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:763:1: rule__ValidID__Alternatives : ( ( RULE_ID ) | ( RULE_LONG ) );
     public final void rule__ValidID__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:711:1: ( ( RULE_ID ) | ( RULE_LONG ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:767:1: ( ( RULE_ID ) | ( RULE_LONG ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -2170,15 +2341,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             }
             switch (alt3) {
                 case 1 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:712:1: ( RULE_ID )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:768:1: ( RULE_ID )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:712:1: ( RULE_ID )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:713:1: RULE_ID
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:768:1: ( RULE_ID )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:769:1: RULE_ID
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getValidIDAccess().getIDTerminalRuleCall_0()); 
                     }
-                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ValidID__Alternatives1496); if (state.failed) return ;
+                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ValidID__Alternatives1616); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getValidIDAccess().getIDTerminalRuleCall_0()); 
                     }
@@ -2189,15 +2360,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:718:6: ( RULE_LONG )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:774:6: ( RULE_LONG )
                     {
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:718:6: ( RULE_LONG )
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:719:1: RULE_LONG
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:774:6: ( RULE_LONG )
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:775:1: RULE_LONG
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getValidIDAccess().getLONGTerminalRuleCall_1()); 
                     }
-                    match(input,RULE_LONG,FOLLOW_RULE_LONG_in_rule__ValidID__Alternatives1513); if (state.failed) return ;
+                    match(input,RULE_LONG,FOLLOW_RULE_LONG_in_rule__ValidID__Alternatives1633); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
                        after(grammarAccess.getValidIDAccess().getLONGTerminalRuleCall_1()); 
                     }
@@ -2225,21 +2396,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Factory__Group__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:731:1: rule__Factory__Group__0 : rule__Factory__Group__0__Impl rule__Factory__Group__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:787:1: rule__Factory__Group__0 : rule__Factory__Group__0__Impl rule__Factory__Group__1 ;
     public final void rule__Factory__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:735:1: ( rule__Factory__Group__0__Impl rule__Factory__Group__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:736:2: rule__Factory__Group__0__Impl rule__Factory__Group__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:791:1: ( rule__Factory__Group__0__Impl rule__Factory__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:792:2: rule__Factory__Group__0__Impl rule__Factory__Group__1
             {
-            pushFollow(FOLLOW_rule__Factory__Group__0__Impl_in_rule__Factory__Group__01543);
+            pushFollow(FOLLOW_rule__Factory__Group__0__Impl_in_rule__Factory__Group__01663);
             rule__Factory__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Factory__Group__1_in_rule__Factory__Group__01546);
+            pushFollow(FOLLOW_rule__Factory__Group__1_in_rule__Factory__Group__01666);
             rule__Factory__Group__1();
 
             state._fsp--;
@@ -2263,38 +2434,38 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Factory__Group__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:743:1: rule__Factory__Group__0__Impl : ( ( rule__Factory__EpackagesAssignment_0 )* ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:799:1: rule__Factory__Group__0__Impl : ( ( rule__Factory__ImportsAssignment_0 )* ) ;
     public final void rule__Factory__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:747:1: ( ( ( rule__Factory__EpackagesAssignment_0 )* ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:748:1: ( ( rule__Factory__EpackagesAssignment_0 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:803:1: ( ( ( rule__Factory__ImportsAssignment_0 )* ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:804:1: ( ( rule__Factory__ImportsAssignment_0 )* )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:748:1: ( ( rule__Factory__EpackagesAssignment_0 )* )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:749:1: ( rule__Factory__EpackagesAssignment_0 )*
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:804:1: ( ( rule__Factory__ImportsAssignment_0 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:805:1: ( rule__Factory__ImportsAssignment_0 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFactoryAccess().getEpackagesAssignment_0()); 
+               before(grammarAccess.getFactoryAccess().getImportsAssignment_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:750:1: ( rule__Factory__EpackagesAssignment_0 )*
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:806:1: ( rule__Factory__ImportsAssignment_0 )*
             loop4:
             do {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==15) ) {
+                if ( (LA4_0==17) ) {
                     alt4=1;
                 }
 
 
                 switch (alt4) {
             	case 1 :
-            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:750:2: rule__Factory__EpackagesAssignment_0
+            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:806:2: rule__Factory__ImportsAssignment_0
             	    {
-            	    pushFollow(FOLLOW_rule__Factory__EpackagesAssignment_0_in_rule__Factory__Group__0__Impl1573);
-            	    rule__Factory__EpackagesAssignment_0();
+            	    pushFollow(FOLLOW_rule__Factory__ImportsAssignment_0_in_rule__Factory__Group__0__Impl1693);
+            	    rule__Factory__ImportsAssignment_0();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -2308,7 +2479,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFactoryAccess().getEpackagesAssignment_0()); 
+               after(grammarAccess.getFactoryAccess().getImportsAssignment_0()); 
             }
 
             }
@@ -2332,21 +2503,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Factory__Group__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:760:1: rule__Factory__Group__1 : rule__Factory__Group__1__Impl rule__Factory__Group__2 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:816:1: rule__Factory__Group__1 : rule__Factory__Group__1__Impl rule__Factory__Group__2 ;
     public final void rule__Factory__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:764:1: ( rule__Factory__Group__1__Impl rule__Factory__Group__2 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:765:2: rule__Factory__Group__1__Impl rule__Factory__Group__2
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:820:1: ( rule__Factory__Group__1__Impl rule__Factory__Group__2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:821:2: rule__Factory__Group__1__Impl rule__Factory__Group__2
             {
-            pushFollow(FOLLOW_rule__Factory__Group__1__Impl_in_rule__Factory__Group__11604);
+            pushFollow(FOLLOW_rule__Factory__Group__1__Impl_in_rule__Factory__Group__11724);
             rule__Factory__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Factory__Group__2_in_rule__Factory__Group__11607);
+            pushFollow(FOLLOW_rule__Factory__Group__2_in_rule__Factory__Group__11727);
             rule__Factory__Group__2();
 
             state._fsp--;
@@ -2370,38 +2541,38 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Factory__Group__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:772:1: rule__Factory__Group__1__Impl : ( ( rule__Factory__AnnotationsAssignment_1 )* ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:828:1: rule__Factory__Group__1__Impl : ( ( rule__Factory__EpackagesAssignment_1 )* ) ;
     public final void rule__Factory__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:776:1: ( ( ( rule__Factory__AnnotationsAssignment_1 )* ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:777:1: ( ( rule__Factory__AnnotationsAssignment_1 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:832:1: ( ( ( rule__Factory__EpackagesAssignment_1 )* ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:833:1: ( ( rule__Factory__EpackagesAssignment_1 )* )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:777:1: ( ( rule__Factory__AnnotationsAssignment_1 )* )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:778:1: ( rule__Factory__AnnotationsAssignment_1 )*
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:833:1: ( ( rule__Factory__EpackagesAssignment_1 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:834:1: ( rule__Factory__EpackagesAssignment_1 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFactoryAccess().getAnnotationsAssignment_1()); 
+               before(grammarAccess.getFactoryAccess().getEpackagesAssignment_1()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:779:1: ( rule__Factory__AnnotationsAssignment_1 )*
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:835:1: ( rule__Factory__EpackagesAssignment_1 )*
             loop5:
             do {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( (LA5_0==17) ) {
+                if ( (LA5_0==15) ) {
                     alt5=1;
                 }
 
 
                 switch (alt5) {
             	case 1 :
-            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:779:2: rule__Factory__AnnotationsAssignment_1
+            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:835:2: rule__Factory__EpackagesAssignment_1
             	    {
-            	    pushFollow(FOLLOW_rule__Factory__AnnotationsAssignment_1_in_rule__Factory__Group__1__Impl1634);
-            	    rule__Factory__AnnotationsAssignment_1();
+            	    pushFollow(FOLLOW_rule__Factory__EpackagesAssignment_1_in_rule__Factory__Group__1__Impl1754);
+            	    rule__Factory__EpackagesAssignment_1();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -2415,7 +2586,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFactoryAccess().getAnnotationsAssignment_1()); 
+               after(grammarAccess.getFactoryAccess().getEpackagesAssignment_1()); 
             }
 
             }
@@ -2439,17 +2610,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Factory__Group__2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:789:1: rule__Factory__Group__2 : rule__Factory__Group__2__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:845:1: rule__Factory__Group__2 : rule__Factory__Group__2__Impl rule__Factory__Group__3 ;
     public final void rule__Factory__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:793:1: ( rule__Factory__Group__2__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:794:2: rule__Factory__Group__2__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:849:1: ( rule__Factory__Group__2__Impl rule__Factory__Group__3 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:850:2: rule__Factory__Group__2__Impl rule__Factory__Group__3
             {
-            pushFollow(FOLLOW_rule__Factory__Group__2__Impl_in_rule__Factory__Group__21665);
+            pushFollow(FOLLOW_rule__Factory__Group__2__Impl_in_rule__Factory__Group__21785);
             rule__Factory__Group__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__Factory__Group__3_in_rule__Factory__Group__21788);
+            rule__Factory__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -2472,34 +2648,52 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Factory__Group__2__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:800:1: rule__Factory__Group__2__Impl : ( ( rule__Factory__RootAssignment_2 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:857:1: rule__Factory__Group__2__Impl : ( ( rule__Factory__AnnotationsAssignment_2 )* ) ;
     public final void rule__Factory__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:804:1: ( ( ( rule__Factory__RootAssignment_2 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:805:1: ( ( rule__Factory__RootAssignment_2 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:861:1: ( ( ( rule__Factory__AnnotationsAssignment_2 )* ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:862:1: ( ( rule__Factory__AnnotationsAssignment_2 )* )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:805:1: ( ( rule__Factory__RootAssignment_2 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:806:1: ( rule__Factory__RootAssignment_2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:862:1: ( ( rule__Factory__AnnotationsAssignment_2 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:863:1: ( rule__Factory__AnnotationsAssignment_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFactoryAccess().getRootAssignment_2()); 
+               before(grammarAccess.getFactoryAccess().getAnnotationsAssignment_2()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:807:1: ( rule__Factory__RootAssignment_2 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:807:2: rule__Factory__RootAssignment_2
-            {
-            pushFollow(FOLLOW_rule__Factory__RootAssignment_2_in_rule__Factory__Group__2__Impl1692);
-            rule__Factory__RootAssignment_2();
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:864:1: ( rule__Factory__AnnotationsAssignment_2 )*
+            loop6:
+            do {
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-            state._fsp--;
-            if (state.failed) return ;
+                if ( (LA6_0==18) ) {
+                    alt6=1;
+                }
 
-            }
+
+                switch (alt6) {
+            	case 1 :
+            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:864:2: rule__Factory__AnnotationsAssignment_2
+            	    {
+            	    pushFollow(FOLLOW_rule__Factory__AnnotationsAssignment_2_in_rule__Factory__Group__2__Impl1815);
+            	    rule__Factory__AnnotationsAssignment_2();
+
+            	    state._fsp--;
+            	    if (state.failed) return ;
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop6;
+                }
+            } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFactoryAccess().getRootAssignment_2()); 
+               after(grammarAccess.getFactoryAccess().getAnnotationsAssignment_2()); 
             }
 
             }
@@ -2522,22 +2716,106 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__Factory__Group__2__Impl"
 
 
+    // $ANTLR start "rule__Factory__Group__3"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:874:1: rule__Factory__Group__3 : rule__Factory__Group__3__Impl ;
+    public final void rule__Factory__Group__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:878:1: ( rule__Factory__Group__3__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:879:2: rule__Factory__Group__3__Impl
+            {
+            pushFollow(FOLLOW_rule__Factory__Group__3__Impl_in_rule__Factory__Group__31846);
+            rule__Factory__Group__3__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Factory__Group__3"
+
+
+    // $ANTLR start "rule__Factory__Group__3__Impl"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:885:1: rule__Factory__Group__3__Impl : ( ( rule__Factory__RootAssignment_3 ) ) ;
+    public final void rule__Factory__Group__3__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:889:1: ( ( ( rule__Factory__RootAssignment_3 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:890:1: ( ( rule__Factory__RootAssignment_3 ) )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:890:1: ( ( rule__Factory__RootAssignment_3 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:891:1: ( rule__Factory__RootAssignment_3 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getFactoryAccess().getRootAssignment_3()); 
+            }
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:892:1: ( rule__Factory__RootAssignment_3 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:892:2: rule__Factory__RootAssignment_3
+            {
+            pushFollow(FOLLOW_rule__Factory__RootAssignment_3_in_rule__Factory__Group__3__Impl1873);
+            rule__Factory__RootAssignment_3();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getFactoryAccess().getRootAssignment_3()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Factory__Group__3__Impl"
+
+
     // $ANTLR start "rule__PackageImport__Group__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:823:1: rule__PackageImport__Group__0 : rule__PackageImport__Group__0__Impl rule__PackageImport__Group__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:910:1: rule__PackageImport__Group__0 : rule__PackageImport__Group__0__Impl rule__PackageImport__Group__1 ;
     public final void rule__PackageImport__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:827:1: ( rule__PackageImport__Group__0__Impl rule__PackageImport__Group__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:828:2: rule__PackageImport__Group__0__Impl rule__PackageImport__Group__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:914:1: ( rule__PackageImport__Group__0__Impl rule__PackageImport__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:915:2: rule__PackageImport__Group__0__Impl rule__PackageImport__Group__1
             {
-            pushFollow(FOLLOW_rule__PackageImport__Group__0__Impl_in_rule__PackageImport__Group__01728);
+            pushFollow(FOLLOW_rule__PackageImport__Group__0__Impl_in_rule__PackageImport__Group__01911);
             rule__PackageImport__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PackageImport__Group__1_in_rule__PackageImport__Group__01731);
+            pushFollow(FOLLOW_rule__PackageImport__Group__1_in_rule__PackageImport__Group__01914);
             rule__PackageImport__Group__1();
 
             state._fsp--;
@@ -2561,22 +2839,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__PackageImport__Group__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:835:1: rule__PackageImport__Group__0__Impl : ( 'use' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:922:1: rule__PackageImport__Group__0__Impl : ( 'use' ) ;
     public final void rule__PackageImport__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:839:1: ( ( 'use' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:840:1: ( 'use' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:926:1: ( ( 'use' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:927:1: ( 'use' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:840:1: ( 'use' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:841:1: 'use'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:927:1: ( 'use' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:928:1: 'use'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageImportAccess().getUseKeyword_0()); 
             }
-            match(input,15,FOLLOW_15_in_rule__PackageImport__Group__0__Impl1759); if (state.failed) return ;
+            match(input,15,FOLLOW_15_in_rule__PackageImport__Group__0__Impl1942); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPackageImportAccess().getUseKeyword_0()); 
             }
@@ -2602,21 +2880,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__PackageImport__Group__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:854:1: rule__PackageImport__Group__1 : rule__PackageImport__Group__1__Impl rule__PackageImport__Group__2 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:941:1: rule__PackageImport__Group__1 : rule__PackageImport__Group__1__Impl rule__PackageImport__Group__2 ;
     public final void rule__PackageImport__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:858:1: ( rule__PackageImport__Group__1__Impl rule__PackageImport__Group__2 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:859:2: rule__PackageImport__Group__1__Impl rule__PackageImport__Group__2
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:945:1: ( rule__PackageImport__Group__1__Impl rule__PackageImport__Group__2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:946:2: rule__PackageImport__Group__1__Impl rule__PackageImport__Group__2
             {
-            pushFollow(FOLLOW_rule__PackageImport__Group__1__Impl_in_rule__PackageImport__Group__11790);
+            pushFollow(FOLLOW_rule__PackageImport__Group__1__Impl_in_rule__PackageImport__Group__11973);
             rule__PackageImport__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PackageImport__Group__2_in_rule__PackageImport__Group__11793);
+            pushFollow(FOLLOW_rule__PackageImport__Group__2_in_rule__PackageImport__Group__11976);
             rule__PackageImport__Group__2();
 
             state._fsp--;
@@ -2640,25 +2918,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__PackageImport__Group__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:866:1: rule__PackageImport__Group__1__Impl : ( ( rule__PackageImport__EPackageAssignment_1 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:953:1: rule__PackageImport__Group__1__Impl : ( ( rule__PackageImport__EPackageAssignment_1 ) ) ;
     public final void rule__PackageImport__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:870:1: ( ( ( rule__PackageImport__EPackageAssignment_1 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:871:1: ( ( rule__PackageImport__EPackageAssignment_1 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:957:1: ( ( ( rule__PackageImport__EPackageAssignment_1 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:958:1: ( ( rule__PackageImport__EPackageAssignment_1 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:871:1: ( ( rule__PackageImport__EPackageAssignment_1 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:872:1: ( rule__PackageImport__EPackageAssignment_1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:958:1: ( ( rule__PackageImport__EPackageAssignment_1 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:959:1: ( rule__PackageImport__EPackageAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageImportAccess().getEPackageAssignment_1()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:873:1: ( rule__PackageImport__EPackageAssignment_1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:873:2: rule__PackageImport__EPackageAssignment_1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:960:1: ( rule__PackageImport__EPackageAssignment_1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:960:2: rule__PackageImport__EPackageAssignment_1
             {
-            pushFollow(FOLLOW_rule__PackageImport__EPackageAssignment_1_in_rule__PackageImport__Group__1__Impl1820);
+            pushFollow(FOLLOW_rule__PackageImport__EPackageAssignment_1_in_rule__PackageImport__Group__1__Impl2003);
             rule__PackageImport__EPackageAssignment_1();
 
             state._fsp--;
@@ -2691,16 +2969,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__PackageImport__Group__2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:883:1: rule__PackageImport__Group__2 : rule__PackageImport__Group__2__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:970:1: rule__PackageImport__Group__2 : rule__PackageImport__Group__2__Impl ;
     public final void rule__PackageImport__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:887:1: ( rule__PackageImport__Group__2__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:888:2: rule__PackageImport__Group__2__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:974:1: ( rule__PackageImport__Group__2__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:975:2: rule__PackageImport__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__PackageImport__Group__2__Impl_in_rule__PackageImport__Group__21850);
+            pushFollow(FOLLOW_rule__PackageImport__Group__2__Impl_in_rule__PackageImport__Group__22033);
             rule__PackageImport__Group__2__Impl();
 
             state._fsp--;
@@ -2724,22 +3002,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__PackageImport__Group__2__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:894:1: rule__PackageImport__Group__2__Impl : ( '.*' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:981:1: rule__PackageImport__Group__2__Impl : ( '.*' ) ;
     public final void rule__PackageImport__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:898:1: ( ( '.*' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:899:1: ( '.*' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:985:1: ( ( '.*' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:986:1: ( '.*' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:899:1: ( '.*' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:900:1: '.*'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:986:1: ( '.*' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:987:1: '.*'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageImportAccess().getFullStopAsteriskKeyword_2()); 
             }
-            match(input,16,FOLLOW_16_in_rule__PackageImport__Group__2__Impl1878); if (state.failed) return ;
+            match(input,16,FOLLOW_16_in_rule__PackageImport__Group__2__Impl2061); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPackageImportAccess().getFullStopAsteriskKeyword_2()); 
             }
@@ -2764,22 +3042,185 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__PackageImport__Group__2__Impl"
 
 
+    // $ANTLR start "rule__NamespaceImport__Group__0"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1006:1: rule__NamespaceImport__Group__0 : rule__NamespaceImport__Group__0__Impl rule__NamespaceImport__Group__1 ;
+    public final void rule__NamespaceImport__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1010:1: ( rule__NamespaceImport__Group__0__Impl rule__NamespaceImport__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1011:2: rule__NamespaceImport__Group__0__Impl rule__NamespaceImport__Group__1
+            {
+            pushFollow(FOLLOW_rule__NamespaceImport__Group__0__Impl_in_rule__NamespaceImport__Group__02098);
+            rule__NamespaceImport__Group__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__NamespaceImport__Group__1_in_rule__NamespaceImport__Group__02101);
+            rule__NamespaceImport__Group__1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__NamespaceImport__Group__0"
+
+
+    // $ANTLR start "rule__NamespaceImport__Group__0__Impl"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1018:1: rule__NamespaceImport__Group__0__Impl : ( 'import' ) ;
+    public final void rule__NamespaceImport__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1022:1: ( ( 'import' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1023:1: ( 'import' )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1023:1: ( 'import' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1024:1: 'import'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getNamespaceImportAccess().getImportKeyword_0()); 
+            }
+            match(input,17,FOLLOW_17_in_rule__NamespaceImport__Group__0__Impl2129); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getNamespaceImportAccess().getImportKeyword_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__NamespaceImport__Group__0__Impl"
+
+
+    // $ANTLR start "rule__NamespaceImport__Group__1"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1037:1: rule__NamespaceImport__Group__1 : rule__NamespaceImport__Group__1__Impl ;
+    public final void rule__NamespaceImport__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1041:1: ( rule__NamespaceImport__Group__1__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1042:2: rule__NamespaceImport__Group__1__Impl
+            {
+            pushFollow(FOLLOW_rule__NamespaceImport__Group__1__Impl_in_rule__NamespaceImport__Group__12160);
+            rule__NamespaceImport__Group__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__NamespaceImport__Group__1"
+
+
+    // $ANTLR start "rule__NamespaceImport__Group__1__Impl"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1048:1: rule__NamespaceImport__Group__1__Impl : ( ( rule__NamespaceImport__ImportedNamespaceAssignment_1 ) ) ;
+    public final void rule__NamespaceImport__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1052:1: ( ( ( rule__NamespaceImport__ImportedNamespaceAssignment_1 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1053:1: ( ( rule__NamespaceImport__ImportedNamespaceAssignment_1 ) )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1053:1: ( ( rule__NamespaceImport__ImportedNamespaceAssignment_1 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1054:1: ( rule__NamespaceImport__ImportedNamespaceAssignment_1 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getNamespaceImportAccess().getImportedNamespaceAssignment_1()); 
+            }
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1055:1: ( rule__NamespaceImport__ImportedNamespaceAssignment_1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1055:2: rule__NamespaceImport__ImportedNamespaceAssignment_1
+            {
+            pushFollow(FOLLOW_rule__NamespaceImport__ImportedNamespaceAssignment_1_in_rule__NamespaceImport__Group__1__Impl2187);
+            rule__NamespaceImport__ImportedNamespaceAssignment_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getNamespaceImportAccess().getImportedNamespaceAssignment_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__NamespaceImport__Group__1__Impl"
+
+
     // $ANTLR start "rule__CustomNameMapping__Group__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:919:1: rule__CustomNameMapping__Group__0 : rule__CustomNameMapping__Group__0__Impl rule__CustomNameMapping__Group__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1069:1: rule__CustomNameMapping__Group__0 : rule__CustomNameMapping__Group__0__Impl rule__CustomNameMapping__Group__1 ;
     public final void rule__CustomNameMapping__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:923:1: ( rule__CustomNameMapping__Group__0__Impl rule__CustomNameMapping__Group__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:924:2: rule__CustomNameMapping__Group__0__Impl rule__CustomNameMapping__Group__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1073:1: ( rule__CustomNameMapping__Group__0__Impl rule__CustomNameMapping__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1074:2: rule__CustomNameMapping__Group__0__Impl rule__CustomNameMapping__Group__1
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__0__Impl_in_rule__CustomNameMapping__Group__01915);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__0__Impl_in_rule__CustomNameMapping__Group__02221);
             rule__CustomNameMapping__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__1_in_rule__CustomNameMapping__Group__01918);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__1_in_rule__CustomNameMapping__Group__02224);
             rule__CustomNameMapping__Group__1();
 
             state._fsp--;
@@ -2803,22 +3244,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:931:1: rule__CustomNameMapping__Group__0__Impl : ( '@Name' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1081:1: rule__CustomNameMapping__Group__0__Impl : ( '@Name' ) ;
     public final void rule__CustomNameMapping__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:935:1: ( ( '@Name' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:936:1: ( '@Name' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1085:1: ( ( '@Name' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1086:1: ( '@Name' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:936:1: ( '@Name' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:937:1: '@Name'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1086:1: ( '@Name' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1087:1: '@Name'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getNameKeyword_0()); 
             }
-            match(input,17,FOLLOW_17_in_rule__CustomNameMapping__Group__0__Impl1946); if (state.failed) return ;
+            match(input,18,FOLLOW_18_in_rule__CustomNameMapping__Group__0__Impl2252); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCustomNameMappingAccess().getNameKeyword_0()); 
             }
@@ -2844,21 +3285,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:950:1: rule__CustomNameMapping__Group__1 : rule__CustomNameMapping__Group__1__Impl rule__CustomNameMapping__Group__2 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1100:1: rule__CustomNameMapping__Group__1 : rule__CustomNameMapping__Group__1__Impl rule__CustomNameMapping__Group__2 ;
     public final void rule__CustomNameMapping__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:954:1: ( rule__CustomNameMapping__Group__1__Impl rule__CustomNameMapping__Group__2 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:955:2: rule__CustomNameMapping__Group__1__Impl rule__CustomNameMapping__Group__2
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1104:1: ( rule__CustomNameMapping__Group__1__Impl rule__CustomNameMapping__Group__2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1105:2: rule__CustomNameMapping__Group__1__Impl rule__CustomNameMapping__Group__2
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__1__Impl_in_rule__CustomNameMapping__Group__11977);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__1__Impl_in_rule__CustomNameMapping__Group__12283);
             rule__CustomNameMapping__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__2_in_rule__CustomNameMapping__Group__11980);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__2_in_rule__CustomNameMapping__Group__12286);
             rule__CustomNameMapping__Group__2();
 
             state._fsp--;
@@ -2882,22 +3323,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:962:1: rule__CustomNameMapping__Group__1__Impl : ( '{' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1112:1: rule__CustomNameMapping__Group__1__Impl : ( '{' ) ;
     public final void rule__CustomNameMapping__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:966:1: ( ( '{' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:967:1: ( '{' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1116:1: ( ( '{' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1117:1: ( '{' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:967:1: ( '{' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:968:1: '{'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1117:1: ( '{' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1118:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getLeftCurlyBracketKeyword_1()); 
             }
-            match(input,18,FOLLOW_18_in_rule__CustomNameMapping__Group__1__Impl2008); if (state.failed) return ;
+            match(input,19,FOLLOW_19_in_rule__CustomNameMapping__Group__1__Impl2314); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCustomNameMappingAccess().getLeftCurlyBracketKeyword_1()); 
             }
@@ -2923,21 +3364,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:981:1: rule__CustomNameMapping__Group__2 : rule__CustomNameMapping__Group__2__Impl rule__CustomNameMapping__Group__3 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1131:1: rule__CustomNameMapping__Group__2 : rule__CustomNameMapping__Group__2__Impl rule__CustomNameMapping__Group__3 ;
     public final void rule__CustomNameMapping__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:985:1: ( rule__CustomNameMapping__Group__2__Impl rule__CustomNameMapping__Group__3 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:986:2: rule__CustomNameMapping__Group__2__Impl rule__CustomNameMapping__Group__3
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1135:1: ( rule__CustomNameMapping__Group__2__Impl rule__CustomNameMapping__Group__3 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1136:2: rule__CustomNameMapping__Group__2__Impl rule__CustomNameMapping__Group__3
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__2__Impl_in_rule__CustomNameMapping__Group__22039);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__2__Impl_in_rule__CustomNameMapping__Group__22345);
             rule__CustomNameMapping__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__3_in_rule__CustomNameMapping__Group__22042);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__3_in_rule__CustomNameMapping__Group__22348);
             rule__CustomNameMapping__Group__3();
 
             state._fsp--;
@@ -2961,25 +3402,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__2__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:993:1: rule__CustomNameMapping__Group__2__Impl : ( ( rule__CustomNameMapping__EClassAssignment_2 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1143:1: rule__CustomNameMapping__Group__2__Impl : ( ( rule__CustomNameMapping__EClassAssignment_2 ) ) ;
     public final void rule__CustomNameMapping__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:997:1: ( ( ( rule__CustomNameMapping__EClassAssignment_2 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:998:1: ( ( rule__CustomNameMapping__EClassAssignment_2 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1147:1: ( ( ( rule__CustomNameMapping__EClassAssignment_2 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1148:1: ( ( rule__CustomNameMapping__EClassAssignment_2 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:998:1: ( ( rule__CustomNameMapping__EClassAssignment_2 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:999:1: ( rule__CustomNameMapping__EClassAssignment_2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1148:1: ( ( rule__CustomNameMapping__EClassAssignment_2 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1149:1: ( rule__CustomNameMapping__EClassAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getEClassAssignment_2()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1000:1: ( rule__CustomNameMapping__EClassAssignment_2 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1000:2: rule__CustomNameMapping__EClassAssignment_2
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1150:1: ( rule__CustomNameMapping__EClassAssignment_2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1150:2: rule__CustomNameMapping__EClassAssignment_2
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__EClassAssignment_2_in_rule__CustomNameMapping__Group__2__Impl2069);
+            pushFollow(FOLLOW_rule__CustomNameMapping__EClassAssignment_2_in_rule__CustomNameMapping__Group__2__Impl2375);
             rule__CustomNameMapping__EClassAssignment_2();
 
             state._fsp--;
@@ -3012,21 +3453,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__3"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1010:1: rule__CustomNameMapping__Group__3 : rule__CustomNameMapping__Group__3__Impl rule__CustomNameMapping__Group__4 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1160:1: rule__CustomNameMapping__Group__3 : rule__CustomNameMapping__Group__3__Impl rule__CustomNameMapping__Group__4 ;
     public final void rule__CustomNameMapping__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1014:1: ( rule__CustomNameMapping__Group__3__Impl rule__CustomNameMapping__Group__4 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1015:2: rule__CustomNameMapping__Group__3__Impl rule__CustomNameMapping__Group__4
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1164:1: ( rule__CustomNameMapping__Group__3__Impl rule__CustomNameMapping__Group__4 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1165:2: rule__CustomNameMapping__Group__3__Impl rule__CustomNameMapping__Group__4
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__3__Impl_in_rule__CustomNameMapping__Group__32099);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__3__Impl_in_rule__CustomNameMapping__Group__32405);
             rule__CustomNameMapping__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__4_in_rule__CustomNameMapping__Group__32102);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__4_in_rule__CustomNameMapping__Group__32408);
             rule__CustomNameMapping__Group__4();
 
             state._fsp--;
@@ -3050,22 +3491,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__3__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1022:1: rule__CustomNameMapping__Group__3__Impl : ( '=' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1172:1: rule__CustomNameMapping__Group__3__Impl : ( '=' ) ;
     public final void rule__CustomNameMapping__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1026:1: ( ( '=' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1027:1: ( '=' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1176:1: ( ( '=' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1177:1: ( '=' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1027:1: ( '=' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1028:1: '='
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1177:1: ( '=' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1178:1: '='
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getEqualsSignKeyword_3()); 
             }
-            match(input,19,FOLLOW_19_in_rule__CustomNameMapping__Group__3__Impl2130); if (state.failed) return ;
+            match(input,20,FOLLOW_20_in_rule__CustomNameMapping__Group__3__Impl2436); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCustomNameMappingAccess().getEqualsSignKeyword_3()); 
             }
@@ -3091,21 +3532,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__4"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1041:1: rule__CustomNameMapping__Group__4 : rule__CustomNameMapping__Group__4__Impl rule__CustomNameMapping__Group__5 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1191:1: rule__CustomNameMapping__Group__4 : rule__CustomNameMapping__Group__4__Impl rule__CustomNameMapping__Group__5 ;
     public final void rule__CustomNameMapping__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1045:1: ( rule__CustomNameMapping__Group__4__Impl rule__CustomNameMapping__Group__5 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1046:2: rule__CustomNameMapping__Group__4__Impl rule__CustomNameMapping__Group__5
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1195:1: ( rule__CustomNameMapping__Group__4__Impl rule__CustomNameMapping__Group__5 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1196:2: rule__CustomNameMapping__Group__4__Impl rule__CustomNameMapping__Group__5
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__4__Impl_in_rule__CustomNameMapping__Group__42161);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__4__Impl_in_rule__CustomNameMapping__Group__42467);
             rule__CustomNameMapping__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__5_in_rule__CustomNameMapping__Group__42164);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__5_in_rule__CustomNameMapping__Group__42470);
             rule__CustomNameMapping__Group__5();
 
             state._fsp--;
@@ -3129,25 +3570,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__4__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1053:1: rule__CustomNameMapping__Group__4__Impl : ( ( rule__CustomNameMapping__NameFeatureAssignment_4 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1203:1: rule__CustomNameMapping__Group__4__Impl : ( ( rule__CustomNameMapping__NameFeatureAssignment_4 ) ) ;
     public final void rule__CustomNameMapping__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1057:1: ( ( ( rule__CustomNameMapping__NameFeatureAssignment_4 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1058:1: ( ( rule__CustomNameMapping__NameFeatureAssignment_4 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1207:1: ( ( ( rule__CustomNameMapping__NameFeatureAssignment_4 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1208:1: ( ( rule__CustomNameMapping__NameFeatureAssignment_4 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1058:1: ( ( rule__CustomNameMapping__NameFeatureAssignment_4 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1059:1: ( rule__CustomNameMapping__NameFeatureAssignment_4 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1208:1: ( ( rule__CustomNameMapping__NameFeatureAssignment_4 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1209:1: ( rule__CustomNameMapping__NameFeatureAssignment_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getNameFeatureAssignment_4()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1060:1: ( rule__CustomNameMapping__NameFeatureAssignment_4 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1060:2: rule__CustomNameMapping__NameFeatureAssignment_4
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1210:1: ( rule__CustomNameMapping__NameFeatureAssignment_4 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1210:2: rule__CustomNameMapping__NameFeatureAssignment_4
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__NameFeatureAssignment_4_in_rule__CustomNameMapping__Group__4__Impl2191);
+            pushFollow(FOLLOW_rule__CustomNameMapping__NameFeatureAssignment_4_in_rule__CustomNameMapping__Group__4__Impl2497);
             rule__CustomNameMapping__NameFeatureAssignment_4();
 
             state._fsp--;
@@ -3180,16 +3621,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__5"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1070:1: rule__CustomNameMapping__Group__5 : rule__CustomNameMapping__Group__5__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1220:1: rule__CustomNameMapping__Group__5 : rule__CustomNameMapping__Group__5__Impl ;
     public final void rule__CustomNameMapping__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1074:1: ( rule__CustomNameMapping__Group__5__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1075:2: rule__CustomNameMapping__Group__5__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1224:1: ( rule__CustomNameMapping__Group__5__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1225:2: rule__CustomNameMapping__Group__5__Impl
             {
-            pushFollow(FOLLOW_rule__CustomNameMapping__Group__5__Impl_in_rule__CustomNameMapping__Group__52221);
+            pushFollow(FOLLOW_rule__CustomNameMapping__Group__5__Impl_in_rule__CustomNameMapping__Group__52527);
             rule__CustomNameMapping__Group__5__Impl();
 
             state._fsp--;
@@ -3213,22 +3654,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__Group__5__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1081:1: rule__CustomNameMapping__Group__5__Impl : ( '}' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1231:1: rule__CustomNameMapping__Group__5__Impl : ( '}' ) ;
     public final void rule__CustomNameMapping__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1085:1: ( ( '}' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1086:1: ( '}' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1235:1: ( ( '}' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1236:1: ( '}' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1086:1: ( '}' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1087:1: '}'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1236:1: ( '}' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1237:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getRightCurlyBracketKeyword_5()); 
             }
-            match(input,20,FOLLOW_20_in_rule__CustomNameMapping__Group__5__Impl2249); if (state.failed) return ;
+            match(input,21,FOLLOW_21_in_rule__CustomNameMapping__Group__5__Impl2555); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCustomNameMappingAccess().getRightCurlyBracketKeyword_5()); 
             }
@@ -3254,21 +3695,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__Group__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1112:1: rule__Feature__Group__0 : rule__Feature__Group__0__Impl rule__Feature__Group__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1262:1: rule__Feature__Group__0 : rule__Feature__Group__0__Impl rule__Feature__Group__1 ;
     public final void rule__Feature__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1116:1: ( rule__Feature__Group__0__Impl rule__Feature__Group__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1117:2: rule__Feature__Group__0__Impl rule__Feature__Group__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1266:1: ( rule__Feature__Group__0__Impl rule__Feature__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1267:2: rule__Feature__Group__0__Impl rule__Feature__Group__1
             {
-            pushFollow(FOLLOW_rule__Feature__Group__0__Impl_in_rule__Feature__Group__02292);
+            pushFollow(FOLLOW_rule__Feature__Group__0__Impl_in_rule__Feature__Group__02598);
             rule__Feature__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Feature__Group__1_in_rule__Feature__Group__02295);
+            pushFollow(FOLLOW_rule__Feature__Group__1_in_rule__Feature__Group__02601);
             rule__Feature__Group__1();
 
             state._fsp--;
@@ -3292,25 +3733,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__Group__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1124:1: rule__Feature__Group__0__Impl : ( ( rule__Feature__EFeatureAssignment_0 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1274:1: rule__Feature__Group__0__Impl : ( ( rule__Feature__EFeatureAssignment_0 ) ) ;
     public final void rule__Feature__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1128:1: ( ( ( rule__Feature__EFeatureAssignment_0 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1129:1: ( ( rule__Feature__EFeatureAssignment_0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1278:1: ( ( ( rule__Feature__EFeatureAssignment_0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1279:1: ( ( rule__Feature__EFeatureAssignment_0 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1129:1: ( ( rule__Feature__EFeatureAssignment_0 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1130:1: ( rule__Feature__EFeatureAssignment_0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1279:1: ( ( rule__Feature__EFeatureAssignment_0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1280:1: ( rule__Feature__EFeatureAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureAccess().getEFeatureAssignment_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1131:1: ( rule__Feature__EFeatureAssignment_0 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1131:2: rule__Feature__EFeatureAssignment_0
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1281:1: ( rule__Feature__EFeatureAssignment_0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1281:2: rule__Feature__EFeatureAssignment_0
             {
-            pushFollow(FOLLOW_rule__Feature__EFeatureAssignment_0_in_rule__Feature__Group__0__Impl2322);
+            pushFollow(FOLLOW_rule__Feature__EFeatureAssignment_0_in_rule__Feature__Group__0__Impl2628);
             rule__Feature__EFeatureAssignment_0();
 
             state._fsp--;
@@ -3343,21 +3784,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__Group__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1141:1: rule__Feature__Group__1 : rule__Feature__Group__1__Impl rule__Feature__Group__2 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1291:1: rule__Feature__Group__1 : rule__Feature__Group__1__Impl rule__Feature__Group__2 ;
     public final void rule__Feature__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1145:1: ( rule__Feature__Group__1__Impl rule__Feature__Group__2 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1146:2: rule__Feature__Group__1__Impl rule__Feature__Group__2
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1295:1: ( rule__Feature__Group__1__Impl rule__Feature__Group__2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1296:2: rule__Feature__Group__1__Impl rule__Feature__Group__2
             {
-            pushFollow(FOLLOW_rule__Feature__Group__1__Impl_in_rule__Feature__Group__12352);
+            pushFollow(FOLLOW_rule__Feature__Group__1__Impl_in_rule__Feature__Group__12658);
             rule__Feature__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Feature__Group__2_in_rule__Feature__Group__12355);
+            pushFollow(FOLLOW_rule__Feature__Group__2_in_rule__Feature__Group__12661);
             rule__Feature__Group__2();
 
             state._fsp--;
@@ -3381,22 +3822,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__Group__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1153:1: rule__Feature__Group__1__Impl : ( ':' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1303:1: rule__Feature__Group__1__Impl : ( ':' ) ;
     public final void rule__Feature__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1157:1: ( ( ':' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1158:1: ( ':' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1307:1: ( ( ':' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1308:1: ( ':' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1158:1: ( ':' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1159:1: ':'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1308:1: ( ':' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1309:1: ':'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureAccess().getColonKeyword_1()); 
             }
-            match(input,21,FOLLOW_21_in_rule__Feature__Group__1__Impl2383); if (state.failed) return ;
+            match(input,22,FOLLOW_22_in_rule__Feature__Group__1__Impl2689); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getFeatureAccess().getColonKeyword_1()); 
             }
@@ -3422,16 +3863,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__Group__2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1172:1: rule__Feature__Group__2 : rule__Feature__Group__2__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1322:1: rule__Feature__Group__2 : rule__Feature__Group__2__Impl ;
     public final void rule__Feature__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1176:1: ( rule__Feature__Group__2__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1177:2: rule__Feature__Group__2__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1326:1: ( rule__Feature__Group__2__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1327:2: rule__Feature__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__Feature__Group__2__Impl_in_rule__Feature__Group__22414);
+            pushFollow(FOLLOW_rule__Feature__Group__2__Impl_in_rule__Feature__Group__22720);
             rule__Feature__Group__2__Impl();
 
             state._fsp--;
@@ -3455,40 +3896,40 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__Group__2__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1183:1: rule__Feature__Group__2__Impl : ( ( rule__Feature__ValueAssignment_2 )? ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1333:1: rule__Feature__Group__2__Impl : ( ( rule__Feature__ValueAssignment_2 )? ) ;
     public final void rule__Feature__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1187:1: ( ( ( rule__Feature__ValueAssignment_2 )? ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1188:1: ( ( rule__Feature__ValueAssignment_2 )? )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1337:1: ( ( ( rule__Feature__ValueAssignment_2 )? ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1338:1: ( ( rule__Feature__ValueAssignment_2 )? )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1188:1: ( ( rule__Feature__ValueAssignment_2 )? )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1189:1: ( rule__Feature__ValueAssignment_2 )?
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1338:1: ( ( rule__Feature__ValueAssignment_2 )? )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1339:1: ( rule__Feature__ValueAssignment_2 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureAccess().getValueAssignment_2()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1190:1: ( rule__Feature__ValueAssignment_2 )?
-            int alt6=2;
-            int LA6_0 = input.LA(1);
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1340:1: ( rule__Feature__ValueAssignment_2 )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
 
-            if ( ((LA6_0>=RULE_LONG && LA6_0<=RULE_BOOLEAN)||(LA6_0>=21 && LA6_0<=22)||LA6_0==25) ) {
-                alt6=1;
+            if ( ((LA7_0>=RULE_LONG && LA7_0<=RULE_BOOLEAN)||(LA7_0>=22 && LA7_0<=23)||LA7_0==26) ) {
+                alt7=1;
             }
-            else if ( (LA6_0==RULE_ID) ) {
-                int LA6_2 = input.LA(2);
+            else if ( (LA7_0==RULE_ID) ) {
+                int LA7_2 = input.LA(2);
 
-                if ( (LA6_2==EOF||(LA6_2>=RULE_ID && LA6_2<=RULE_LONG)||LA6_2==18||LA6_2==20||LA6_2==24) ) {
-                    alt6=1;
+                if ( (LA7_2==EOF||(LA7_2>=RULE_ID && LA7_2<=RULE_LONG)||LA7_2==19||LA7_2==21||LA7_2==25) ) {
+                    alt7=1;
                 }
             }
-            switch (alt6) {
+            switch (alt7) {
                 case 1 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1190:2: rule__Feature__ValueAssignment_2
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1340:2: rule__Feature__ValueAssignment_2
                     {
-                    pushFollow(FOLLOW_rule__Feature__ValueAssignment_2_in_rule__Feature__Group__2__Impl2441);
+                    pushFollow(FOLLOW_rule__Feature__ValueAssignment_2_in_rule__Feature__Group__2__Impl2747);
                     rule__Feature__ValueAssignment_2();
 
                     state._fsp--;
@@ -3524,21 +3965,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1206:1: rule__NewObject__Group__0 : rule__NewObject__Group__0__Impl rule__NewObject__Group__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1356:1: rule__NewObject__Group__0 : rule__NewObject__Group__0__Impl rule__NewObject__Group__1 ;
     public final void rule__NewObject__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1210:1: ( rule__NewObject__Group__0__Impl rule__NewObject__Group__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1211:2: rule__NewObject__Group__0__Impl rule__NewObject__Group__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1360:1: ( rule__NewObject__Group__0__Impl rule__NewObject__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1361:2: rule__NewObject__Group__0__Impl rule__NewObject__Group__1
             {
-            pushFollow(FOLLOW_rule__NewObject__Group__0__Impl_in_rule__NewObject__Group__02478);
+            pushFollow(FOLLOW_rule__NewObject__Group__0__Impl_in_rule__NewObject__Group__02784);
             rule__NewObject__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__NewObject__Group__1_in_rule__NewObject__Group__02481);
+            pushFollow(FOLLOW_rule__NewObject__Group__1_in_rule__NewObject__Group__02787);
             rule__NewObject__Group__1();
 
             state._fsp--;
@@ -3562,25 +4003,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1218:1: rule__NewObject__Group__0__Impl : ( ( rule__NewObject__EClassAssignment_0 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1368:1: rule__NewObject__Group__0__Impl : ( ( rule__NewObject__EClassAssignment_0 ) ) ;
     public final void rule__NewObject__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1222:1: ( ( ( rule__NewObject__EClassAssignment_0 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1223:1: ( ( rule__NewObject__EClassAssignment_0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1372:1: ( ( ( rule__NewObject__EClassAssignment_0 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1373:1: ( ( rule__NewObject__EClassAssignment_0 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1223:1: ( ( rule__NewObject__EClassAssignment_0 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1224:1: ( rule__NewObject__EClassAssignment_0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1373:1: ( ( rule__NewObject__EClassAssignment_0 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1374:1: ( rule__NewObject__EClassAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getEClassAssignment_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1225:1: ( rule__NewObject__EClassAssignment_0 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1225:2: rule__NewObject__EClassAssignment_0
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1375:1: ( rule__NewObject__EClassAssignment_0 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1375:2: rule__NewObject__EClassAssignment_0
             {
-            pushFollow(FOLLOW_rule__NewObject__EClassAssignment_0_in_rule__NewObject__Group__0__Impl2508);
+            pushFollow(FOLLOW_rule__NewObject__EClassAssignment_0_in_rule__NewObject__Group__0__Impl2814);
             rule__NewObject__EClassAssignment_0();
 
             state._fsp--;
@@ -3613,21 +4054,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1235:1: rule__NewObject__Group__1 : rule__NewObject__Group__1__Impl rule__NewObject__Group__2 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1385:1: rule__NewObject__Group__1 : rule__NewObject__Group__1__Impl rule__NewObject__Group__2 ;
     public final void rule__NewObject__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1239:1: ( rule__NewObject__Group__1__Impl rule__NewObject__Group__2 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1240:2: rule__NewObject__Group__1__Impl rule__NewObject__Group__2
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1389:1: ( rule__NewObject__Group__1__Impl rule__NewObject__Group__2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1390:2: rule__NewObject__Group__1__Impl rule__NewObject__Group__2
             {
-            pushFollow(FOLLOW_rule__NewObject__Group__1__Impl_in_rule__NewObject__Group__12538);
+            pushFollow(FOLLOW_rule__NewObject__Group__1__Impl_in_rule__NewObject__Group__12844);
             rule__NewObject__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__NewObject__Group__2_in_rule__NewObject__Group__12541);
+            pushFollow(FOLLOW_rule__NewObject__Group__2_in_rule__NewObject__Group__12847);
             rule__NewObject__Group__2();
 
             state._fsp--;
@@ -3651,33 +4092,33 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1247:1: rule__NewObject__Group__1__Impl : ( ( rule__NewObject__NameAssignment_1 )? ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1397:1: rule__NewObject__Group__1__Impl : ( ( rule__NewObject__NameAssignment_1 )? ) ;
     public final void rule__NewObject__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1251:1: ( ( ( rule__NewObject__NameAssignment_1 )? ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1252:1: ( ( rule__NewObject__NameAssignment_1 )? )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1401:1: ( ( ( rule__NewObject__NameAssignment_1 )? ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1402:1: ( ( rule__NewObject__NameAssignment_1 )? )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1252:1: ( ( rule__NewObject__NameAssignment_1 )? )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1253:1: ( rule__NewObject__NameAssignment_1 )?
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1402:1: ( ( rule__NewObject__NameAssignment_1 )? )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1403:1: ( rule__NewObject__NameAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getNameAssignment_1()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1254:1: ( rule__NewObject__NameAssignment_1 )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1404:1: ( rule__NewObject__NameAssignment_1 )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( ((LA7_0>=RULE_ID && LA7_0<=RULE_LONG)) ) {
-                alt7=1;
+            if ( ((LA8_0>=RULE_ID && LA8_0<=RULE_LONG)) ) {
+                alt8=1;
             }
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
-                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1254:2: rule__NewObject__NameAssignment_1
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1404:2: rule__NewObject__NameAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__NewObject__NameAssignment_1_in_rule__NewObject__Group__1__Impl2568);
+                    pushFollow(FOLLOW_rule__NewObject__NameAssignment_1_in_rule__NewObject__Group__1__Impl2874);
                     rule__NewObject__NameAssignment_1();
 
                     state._fsp--;
@@ -3713,21 +4154,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1264:1: rule__NewObject__Group__2 : rule__NewObject__Group__2__Impl rule__NewObject__Group__3 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1414:1: rule__NewObject__Group__2 : rule__NewObject__Group__2__Impl rule__NewObject__Group__3 ;
     public final void rule__NewObject__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1268:1: ( rule__NewObject__Group__2__Impl rule__NewObject__Group__3 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1269:2: rule__NewObject__Group__2__Impl rule__NewObject__Group__3
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1418:1: ( rule__NewObject__Group__2__Impl rule__NewObject__Group__3 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1419:2: rule__NewObject__Group__2__Impl rule__NewObject__Group__3
             {
-            pushFollow(FOLLOW_rule__NewObject__Group__2__Impl_in_rule__NewObject__Group__22599);
+            pushFollow(FOLLOW_rule__NewObject__Group__2__Impl_in_rule__NewObject__Group__22905);
             rule__NewObject__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__NewObject__Group__3_in_rule__NewObject__Group__22602);
+            pushFollow(FOLLOW_rule__NewObject__Group__3_in_rule__NewObject__Group__22908);
             rule__NewObject__Group__3();
 
             state._fsp--;
@@ -3751,22 +4192,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__2__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1276:1: rule__NewObject__Group__2__Impl : ( '{' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1426:1: rule__NewObject__Group__2__Impl : ( '{' ) ;
     public final void rule__NewObject__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1280:1: ( ( '{' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1281:1: ( '{' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1430:1: ( ( '{' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1431:1: ( '{' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1281:1: ( '{' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1282:1: '{'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1431:1: ( '{' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1432:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,18,FOLLOW_18_in_rule__NewObject__Group__2__Impl2630); if (state.failed) return ;
+            match(input,19,FOLLOW_19_in_rule__NewObject__Group__2__Impl2936); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getNewObjectAccess().getLeftCurlyBracketKeyword_2()); 
             }
@@ -3792,21 +4233,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__3"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1295:1: rule__NewObject__Group__3 : rule__NewObject__Group__3__Impl rule__NewObject__Group__4 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1445:1: rule__NewObject__Group__3 : rule__NewObject__Group__3__Impl rule__NewObject__Group__4 ;
     public final void rule__NewObject__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1299:1: ( rule__NewObject__Group__3__Impl rule__NewObject__Group__4 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1300:2: rule__NewObject__Group__3__Impl rule__NewObject__Group__4
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1449:1: ( rule__NewObject__Group__3__Impl rule__NewObject__Group__4 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1450:2: rule__NewObject__Group__3__Impl rule__NewObject__Group__4
             {
-            pushFollow(FOLLOW_rule__NewObject__Group__3__Impl_in_rule__NewObject__Group__32661);
+            pushFollow(FOLLOW_rule__NewObject__Group__3__Impl_in_rule__NewObject__Group__32967);
             rule__NewObject__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__NewObject__Group__4_in_rule__NewObject__Group__32664);
+            pushFollow(FOLLOW_rule__NewObject__Group__4_in_rule__NewObject__Group__32970);
             rule__NewObject__Group__4();
 
             state._fsp--;
@@ -3830,37 +4271,37 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__3__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1307:1: rule__NewObject__Group__3__Impl : ( ( rule__NewObject__FeaturesAssignment_3 )* ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1457:1: rule__NewObject__Group__3__Impl : ( ( rule__NewObject__FeaturesAssignment_3 )* ) ;
     public final void rule__NewObject__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1311:1: ( ( ( rule__NewObject__FeaturesAssignment_3 )* ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1312:1: ( ( rule__NewObject__FeaturesAssignment_3 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1461:1: ( ( ( rule__NewObject__FeaturesAssignment_3 )* ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1462:1: ( ( rule__NewObject__FeaturesAssignment_3 )* )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1312:1: ( ( rule__NewObject__FeaturesAssignment_3 )* )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1313:1: ( rule__NewObject__FeaturesAssignment_3 )*
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1462:1: ( ( rule__NewObject__FeaturesAssignment_3 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1463:1: ( rule__NewObject__FeaturesAssignment_3 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getFeaturesAssignment_3()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1314:1: ( rule__NewObject__FeaturesAssignment_3 )*
-            loop8:
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1464:1: ( rule__NewObject__FeaturesAssignment_3 )*
+            loop9:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( (LA8_0==RULE_ID) ) {
-                    alt8=1;
+                if ( (LA9_0==RULE_ID) ) {
+                    alt9=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt9) {
             	case 1 :
-            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1314:2: rule__NewObject__FeaturesAssignment_3
+            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1464:2: rule__NewObject__FeaturesAssignment_3
             	    {
-            	    pushFollow(FOLLOW_rule__NewObject__FeaturesAssignment_3_in_rule__NewObject__Group__3__Impl2691);
+            	    pushFollow(FOLLOW_rule__NewObject__FeaturesAssignment_3_in_rule__NewObject__Group__3__Impl2997);
             	    rule__NewObject__FeaturesAssignment_3();
 
             	    state._fsp--;
@@ -3870,7 +4311,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop9;
                 }
             } while (true);
 
@@ -3899,16 +4340,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__4"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1324:1: rule__NewObject__Group__4 : rule__NewObject__Group__4__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1474:1: rule__NewObject__Group__4 : rule__NewObject__Group__4__Impl ;
     public final void rule__NewObject__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1328:1: ( rule__NewObject__Group__4__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1329:2: rule__NewObject__Group__4__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1478:1: ( rule__NewObject__Group__4__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1479:2: rule__NewObject__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__NewObject__Group__4__Impl_in_rule__NewObject__Group__42722);
+            pushFollow(FOLLOW_rule__NewObject__Group__4__Impl_in_rule__NewObject__Group__43028);
             rule__NewObject__Group__4__Impl();
 
             state._fsp--;
@@ -3932,22 +4373,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__Group__4__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1335:1: rule__NewObject__Group__4__Impl : ( '}' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1485:1: rule__NewObject__Group__4__Impl : ( '}' ) ;
     public final void rule__NewObject__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1339:1: ( ( '}' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1340:1: ( '}' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1489:1: ( ( '}' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1490:1: ( '}' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1340:1: ( '}' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1341:1: '}'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1490:1: ( '}' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1491:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,20,FOLLOW_20_in_rule__NewObject__Group__4__Impl2750); if (state.failed) return ;
+            match(input,21,FOLLOW_21_in_rule__NewObject__Group__4__Impl3056); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getNewObjectAccess().getRightCurlyBracketKeyword_4()); 
             }
@@ -3973,21 +4414,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__Group__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1364:1: rule__MultiValue__Group__0 : rule__MultiValue__Group__0__Impl rule__MultiValue__Group__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1514:1: rule__MultiValue__Group__0 : rule__MultiValue__Group__0__Impl rule__MultiValue__Group__1 ;
     public final void rule__MultiValue__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1368:1: ( rule__MultiValue__Group__0__Impl rule__MultiValue__Group__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1369:2: rule__MultiValue__Group__0__Impl rule__MultiValue__Group__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1518:1: ( rule__MultiValue__Group__0__Impl rule__MultiValue__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1519:2: rule__MultiValue__Group__0__Impl rule__MultiValue__Group__1
             {
-            pushFollow(FOLLOW_rule__MultiValue__Group__0__Impl_in_rule__MultiValue__Group__02791);
+            pushFollow(FOLLOW_rule__MultiValue__Group__0__Impl_in_rule__MultiValue__Group__03097);
             rule__MultiValue__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__MultiValue__Group__1_in_rule__MultiValue__Group__02794);
+            pushFollow(FOLLOW_rule__MultiValue__Group__1_in_rule__MultiValue__Group__03100);
             rule__MultiValue__Group__1();
 
             state._fsp--;
@@ -4011,23 +4452,23 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__Group__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1376:1: rule__MultiValue__Group__0__Impl : ( () ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1526:1: rule__MultiValue__Group__0__Impl : ( () ) ;
     public final void rule__MultiValue__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1380:1: ( ( () ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1381:1: ( () )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1530:1: ( ( () ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1531:1: ( () )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1381:1: ( () )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1382:1: ()
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1531:1: ( () )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1532:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiValueAccess().getMultiValueAction_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1383:1: ()
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1385:1: 
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1533:1: ()
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1535:1: 
             {
             }
 
@@ -4052,21 +4493,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__Group__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1395:1: rule__MultiValue__Group__1 : rule__MultiValue__Group__1__Impl rule__MultiValue__Group__2 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1545:1: rule__MultiValue__Group__1 : rule__MultiValue__Group__1__Impl rule__MultiValue__Group__2 ;
     public final void rule__MultiValue__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1399:1: ( rule__MultiValue__Group__1__Impl rule__MultiValue__Group__2 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1400:2: rule__MultiValue__Group__1__Impl rule__MultiValue__Group__2
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1549:1: ( rule__MultiValue__Group__1__Impl rule__MultiValue__Group__2 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1550:2: rule__MultiValue__Group__1__Impl rule__MultiValue__Group__2
             {
-            pushFollow(FOLLOW_rule__MultiValue__Group__1__Impl_in_rule__MultiValue__Group__12852);
+            pushFollow(FOLLOW_rule__MultiValue__Group__1__Impl_in_rule__MultiValue__Group__13158);
             rule__MultiValue__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__MultiValue__Group__2_in_rule__MultiValue__Group__12855);
+            pushFollow(FOLLOW_rule__MultiValue__Group__2_in_rule__MultiValue__Group__13161);
             rule__MultiValue__Group__2();
 
             state._fsp--;
@@ -4090,22 +4531,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__Group__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1407:1: rule__MultiValue__Group__1__Impl : ( '[' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1557:1: rule__MultiValue__Group__1__Impl : ( '[' ) ;
     public final void rule__MultiValue__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1411:1: ( ( '[' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1412:1: ( '[' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1561:1: ( ( '[' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1562:1: ( '[' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1412:1: ( '[' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1413:1: '['
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1562:1: ( '[' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1563:1: '['
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiValueAccess().getLeftSquareBracketKeyword_1()); 
             }
-            match(input,22,FOLLOW_22_in_rule__MultiValue__Group__1__Impl2883); if (state.failed) return ;
+            match(input,23,FOLLOW_23_in_rule__MultiValue__Group__1__Impl3189); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMultiValueAccess().getLeftSquareBracketKeyword_1()); 
             }
@@ -4131,21 +4572,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__Group__2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1426:1: rule__MultiValue__Group__2 : rule__MultiValue__Group__2__Impl rule__MultiValue__Group__3 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1576:1: rule__MultiValue__Group__2 : rule__MultiValue__Group__2__Impl rule__MultiValue__Group__3 ;
     public final void rule__MultiValue__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1430:1: ( rule__MultiValue__Group__2__Impl rule__MultiValue__Group__3 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1431:2: rule__MultiValue__Group__2__Impl rule__MultiValue__Group__3
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1580:1: ( rule__MultiValue__Group__2__Impl rule__MultiValue__Group__3 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1581:2: rule__MultiValue__Group__2__Impl rule__MultiValue__Group__3
             {
-            pushFollow(FOLLOW_rule__MultiValue__Group__2__Impl_in_rule__MultiValue__Group__22914);
+            pushFollow(FOLLOW_rule__MultiValue__Group__2__Impl_in_rule__MultiValue__Group__23220);
             rule__MultiValue__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__MultiValue__Group__3_in_rule__MultiValue__Group__22917);
+            pushFollow(FOLLOW_rule__MultiValue__Group__3_in_rule__MultiValue__Group__23223);
             rule__MultiValue__Group__3();
 
             state._fsp--;
@@ -4169,37 +4610,37 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__Group__2__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1438:1: rule__MultiValue__Group__2__Impl : ( ( rule__MultiValue__ValuesAssignment_2 )* ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1588:1: rule__MultiValue__Group__2__Impl : ( ( rule__MultiValue__ValuesAssignment_2 )* ) ;
     public final void rule__MultiValue__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1442:1: ( ( ( rule__MultiValue__ValuesAssignment_2 )* ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1443:1: ( ( rule__MultiValue__ValuesAssignment_2 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1592:1: ( ( ( rule__MultiValue__ValuesAssignment_2 )* ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1593:1: ( ( rule__MultiValue__ValuesAssignment_2 )* )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1443:1: ( ( rule__MultiValue__ValuesAssignment_2 )* )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1444:1: ( rule__MultiValue__ValuesAssignment_2 )*
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1593:1: ( ( rule__MultiValue__ValuesAssignment_2 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1594:1: ( rule__MultiValue__ValuesAssignment_2 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiValueAccess().getValuesAssignment_2()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1445:1: ( rule__MultiValue__ValuesAssignment_2 )*
-            loop9:
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1595:1: ( rule__MultiValue__ValuesAssignment_2 )*
+            loop10:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-                if ( ((LA9_0>=RULE_ID && LA9_0<=RULE_BOOLEAN)||(LA9_0>=21 && LA9_0<=22)||LA9_0==25) ) {
-                    alt9=1;
+                if ( ((LA10_0>=RULE_ID && LA10_0<=RULE_BOOLEAN)||(LA10_0>=22 && LA10_0<=23)||LA10_0==26) ) {
+                    alt10=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt10) {
             	case 1 :
-            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1445:2: rule__MultiValue__ValuesAssignment_2
+            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1595:2: rule__MultiValue__ValuesAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__MultiValue__ValuesAssignment_2_in_rule__MultiValue__Group__2__Impl2944);
+            	    pushFollow(FOLLOW_rule__MultiValue__ValuesAssignment_2_in_rule__MultiValue__Group__2__Impl3250);
             	    rule__MultiValue__ValuesAssignment_2();
 
             	    state._fsp--;
@@ -4209,7 +4650,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop10;
                 }
             } while (true);
 
@@ -4238,16 +4679,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__Group__3"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1455:1: rule__MultiValue__Group__3 : rule__MultiValue__Group__3__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1605:1: rule__MultiValue__Group__3 : rule__MultiValue__Group__3__Impl ;
     public final void rule__MultiValue__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1459:1: ( rule__MultiValue__Group__3__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1460:2: rule__MultiValue__Group__3__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1609:1: ( rule__MultiValue__Group__3__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1610:2: rule__MultiValue__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__MultiValue__Group__3__Impl_in_rule__MultiValue__Group__32975);
+            pushFollow(FOLLOW_rule__MultiValue__Group__3__Impl_in_rule__MultiValue__Group__33281);
             rule__MultiValue__Group__3__Impl();
 
             state._fsp--;
@@ -4271,22 +4712,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__Group__3__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1466:1: rule__MultiValue__Group__3__Impl : ( ']' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1616:1: rule__MultiValue__Group__3__Impl : ( ']' ) ;
     public final void rule__MultiValue__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1470:1: ( ( ']' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1471:1: ( ']' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1620:1: ( ( ']' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1621:1: ( ']' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1471:1: ( ']' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1472:1: ']'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1621:1: ( ']' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1622:1: ']'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiValueAccess().getRightSquareBracketKeyword_3()); 
             }
-            match(input,23,FOLLOW_23_in_rule__MultiValue__Group__3__Impl3003); if (state.failed) return ;
+            match(input,24,FOLLOW_24_in_rule__MultiValue__Group__3__Impl3309); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getMultiValueAccess().getRightSquareBracketKeyword_3()); 
             }
@@ -4312,21 +4753,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumAttribute__Group__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1493:1: rule__EnumAttribute__Group__0 : rule__EnumAttribute__Group__0__Impl rule__EnumAttribute__Group__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1643:1: rule__EnumAttribute__Group__0 : rule__EnumAttribute__Group__0__Impl rule__EnumAttribute__Group__1 ;
     public final void rule__EnumAttribute__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1497:1: ( rule__EnumAttribute__Group__0__Impl rule__EnumAttribute__Group__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1498:2: rule__EnumAttribute__Group__0__Impl rule__EnumAttribute__Group__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1647:1: ( rule__EnumAttribute__Group__0__Impl rule__EnumAttribute__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1648:2: rule__EnumAttribute__Group__0__Impl rule__EnumAttribute__Group__1
             {
-            pushFollow(FOLLOW_rule__EnumAttribute__Group__0__Impl_in_rule__EnumAttribute__Group__03042);
+            pushFollow(FOLLOW_rule__EnumAttribute__Group__0__Impl_in_rule__EnumAttribute__Group__03348);
             rule__EnumAttribute__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__EnumAttribute__Group__1_in_rule__EnumAttribute__Group__03045);
+            pushFollow(FOLLOW_rule__EnumAttribute__Group__1_in_rule__EnumAttribute__Group__03351);
             rule__EnumAttribute__Group__1();
 
             state._fsp--;
@@ -4350,22 +4791,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumAttribute__Group__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1505:1: rule__EnumAttribute__Group__0__Impl : ( ':' ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1655:1: rule__EnumAttribute__Group__0__Impl : ( ':' ) ;
     public final void rule__EnumAttribute__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1509:1: ( ( ':' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1510:1: ( ':' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1659:1: ( ( ':' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1660:1: ( ':' )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1510:1: ( ':' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1511:1: ':'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1660:1: ( ':' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1661:1: ':'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEnumAttributeAccess().getColonKeyword_0()); 
             }
-            match(input,21,FOLLOW_21_in_rule__EnumAttribute__Group__0__Impl3073); if (state.failed) return ;
+            match(input,22,FOLLOW_22_in_rule__EnumAttribute__Group__0__Impl3379); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getEnumAttributeAccess().getColonKeyword_0()); 
             }
@@ -4391,16 +4832,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumAttribute__Group__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1524:1: rule__EnumAttribute__Group__1 : rule__EnumAttribute__Group__1__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1674:1: rule__EnumAttribute__Group__1 : rule__EnumAttribute__Group__1__Impl ;
     public final void rule__EnumAttribute__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1528:1: ( rule__EnumAttribute__Group__1__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1529:2: rule__EnumAttribute__Group__1__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1678:1: ( rule__EnumAttribute__Group__1__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1679:2: rule__EnumAttribute__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__EnumAttribute__Group__1__Impl_in_rule__EnumAttribute__Group__13104);
+            pushFollow(FOLLOW_rule__EnumAttribute__Group__1__Impl_in_rule__EnumAttribute__Group__13410);
             rule__EnumAttribute__Group__1__Impl();
 
             state._fsp--;
@@ -4424,25 +4865,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumAttribute__Group__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1535:1: rule__EnumAttribute__Group__1__Impl : ( ( rule__EnumAttribute__ValueAssignment_1 ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1685:1: rule__EnumAttribute__Group__1__Impl : ( ( rule__EnumAttribute__ValueAssignment_1 ) ) ;
     public final void rule__EnumAttribute__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1539:1: ( ( ( rule__EnumAttribute__ValueAssignment_1 ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1540:1: ( ( rule__EnumAttribute__ValueAssignment_1 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1689:1: ( ( ( rule__EnumAttribute__ValueAssignment_1 ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1690:1: ( ( rule__EnumAttribute__ValueAssignment_1 ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1540:1: ( ( rule__EnumAttribute__ValueAssignment_1 ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1541:1: ( rule__EnumAttribute__ValueAssignment_1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1690:1: ( ( rule__EnumAttribute__ValueAssignment_1 ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1691:1: ( rule__EnumAttribute__ValueAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEnumAttributeAccess().getValueAssignment_1()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1542:1: ( rule__EnumAttribute__ValueAssignment_1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1542:2: rule__EnumAttribute__ValueAssignment_1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1692:1: ( rule__EnumAttribute__ValueAssignment_1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1692:2: rule__EnumAttribute__ValueAssignment_1
             {
-            pushFollow(FOLLOW_rule__EnumAttribute__ValueAssignment_1_in_rule__EnumAttribute__Group__1__Impl3131);
+            pushFollow(FOLLOW_rule__EnumAttribute__ValueAssignment_1_in_rule__EnumAttribute__Group__1__Impl3437);
             rule__EnumAttribute__ValueAssignment_1();
 
             state._fsp--;
@@ -4474,22 +4915,196 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__EnumAttribute__Group__1__Impl"
 
 
+    // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1706:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
+    public final void rule__QualifiedNameWithWildcard__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1710:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1711:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
+            {
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__03471);
+            rule__QualifiedNameWithWildcard__Group__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__03474);
+            rule__QualifiedNameWithWildcard__Group__1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__QualifiedNameWithWildcard__Group__0"
+
+
+    // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0__Impl"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1718:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
+    public final void rule__QualifiedNameWithWildcard__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1722:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1723:1: ( ruleQualifiedName )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1723:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1724:1: ruleQualifiedName
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
+            }
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl3501);
+            ruleQualifiedName();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__QualifiedNameWithWildcard__Group__0__Impl"
+
+
+    // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1735:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl ;
+    public final void rule__QualifiedNameWithWildcard__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1739:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1740:2: rule__QualifiedNameWithWildcard__Group__1__Impl
+            {
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__13530);
+            rule__QualifiedNameWithWildcard__Group__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__QualifiedNameWithWildcard__Group__1"
+
+
+    // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1__Impl"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1746:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( ( '.*' )? ) ;
+    public final void rule__QualifiedNameWithWildcard__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1750:1: ( ( ( '.*' )? ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1751:1: ( ( '.*' )? )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1751:1: ( ( '.*' )? )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1752:1: ( '.*' )?
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopAsteriskKeyword_1()); 
+            }
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1753:1: ( '.*' )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
+
+            if ( (LA11_0==16) ) {
+                alt11=1;
+            }
+            switch (alt11) {
+                case 1 :
+                    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1754:2: '.*'
+                    {
+                    match(input,16,FOLLOW_16_in_rule__QualifiedNameWithWildcard__Group__1__Impl3559); if (state.failed) return ;
+
+                    }
+                    break;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopAsteriskKeyword_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__QualifiedNameWithWildcard__Group__1__Impl"
+
+
     // $ANTLR start "rule__QualifiedName__Group__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1556:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1769:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
     public final void rule__QualifiedName__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1560:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1561:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1773:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1774:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__03165);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__03596);
             rule__QualifiedName__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__03168);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__03599);
             rule__QualifiedName__Group__1();
 
             state._fsp--;
@@ -4513,22 +5128,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__QualifiedName__Group__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1568:1: rule__QualifiedName__Group__0__Impl : ( ruleValidID ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1781:1: rule__QualifiedName__Group__0__Impl : ( ruleValidID ) ;
     public final void rule__QualifiedName__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1572:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1573:1: ( ruleValidID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1785:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1786:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1573:1: ( ruleValidID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1574:1: ruleValidID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1786:1: ( ruleValidID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1787:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl3195);
+            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl3626);
             ruleValidID();
 
             state._fsp--;
@@ -4558,16 +5173,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__QualifiedName__Group__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1585:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1798:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
     public final void rule__QualifiedName__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1589:1: ( rule__QualifiedName__Group__1__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1590:2: rule__QualifiedName__Group__1__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1802:1: ( rule__QualifiedName__Group__1__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1803:2: rule__QualifiedName__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__13224);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__13655);
             rule__QualifiedName__Group__1__Impl();
 
             state._fsp--;
@@ -4591,37 +5206,37 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__QualifiedName__Group__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1596:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1809:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
     public final void rule__QualifiedName__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1600:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1601:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1813:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1814:1: ( ( rule__QualifiedName__Group_1__0 )* )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1601:1: ( ( rule__QualifiedName__Group_1__0 )* )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1602:1: ( rule__QualifiedName__Group_1__0 )*
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1814:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1815:1: ( rule__QualifiedName__Group_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getGroup_1()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1603:1: ( rule__QualifiedName__Group_1__0 )*
-            loop10:
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1816:1: ( rule__QualifiedName__Group_1__0 )*
+            loop12:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA10_0==24) ) {
-                    alt10=1;
+                if ( (LA12_0==25) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt12) {
             	case 1 :
-            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1603:2: rule__QualifiedName__Group_1__0
+            	    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1816:2: rule__QualifiedName__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl3251);
+            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl3682);
             	    rule__QualifiedName__Group_1__0();
 
             	    state._fsp--;
@@ -4631,7 +5246,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop12;
                 }
             } while (true);
 
@@ -4660,21 +5275,21 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1617:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1830:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
     public final void rule__QualifiedName__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1621:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1622:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1834:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1835:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__03286);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__03717);
             rule__QualifiedName__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__03289);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__03720);
             rule__QualifiedName__Group_1__1();
 
             state._fsp--;
@@ -4698,25 +5313,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1629:1: rule__QualifiedName__Group_1__0__Impl : ( ( '.' ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1842:1: rule__QualifiedName__Group_1__0__Impl : ( ( '.' ) ) ;
     public final void rule__QualifiedName__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1633:1: ( ( ( '.' ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1634:1: ( ( '.' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1846:1: ( ( ( '.' ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1847:1: ( ( '.' ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1634:1: ( ( '.' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1635:1: ( '.' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1847:1: ( ( '.' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1848:1: ( '.' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1636:1: ( '.' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1637:2: '.'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1849:1: ( '.' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1850:2: '.'
             {
-            match(input,24,FOLLOW_24_in_rule__QualifiedName__Group_1__0__Impl3318); if (state.failed) return ;
+            match(input,25,FOLLOW_25_in_rule__QualifiedName__Group_1__0__Impl3749); if (state.failed) return ;
 
             }
 
@@ -4745,16 +5360,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1648:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1861:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
     public final void rule__QualifiedName__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1652:1: ( rule__QualifiedName__Group_1__1__Impl )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1653:2: rule__QualifiedName__Group_1__1__Impl
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1865:1: ( rule__QualifiedName__Group_1__1__Impl )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1866:2: rule__QualifiedName__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__13350);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__13781);
             rule__QualifiedName__Group_1__1__Impl();
 
             state._fsp--;
@@ -4778,22 +5393,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1__Impl"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1659:1: rule__QualifiedName__Group_1__1__Impl : ( ruleValidID ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1872:1: rule__QualifiedName__Group_1__1__Impl : ( ruleValidID ) ;
     public final void rule__QualifiedName__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1663:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1664:1: ( ruleValidID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1876:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1877:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1664:1: ( ruleValidID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1665:1: ruleValidID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1877:1: ( ruleValidID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1878:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_1_1()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl3377);
+            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl3808);
             ruleValidID();
 
             state._fsp--;
@@ -4822,29 +5437,74 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__QualifiedName__Group_1__1__Impl"
 
 
-    // $ANTLR start "rule__Factory__EpackagesAssignment_0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1681:1: rule__Factory__EpackagesAssignment_0 : ( rulePackageImport ) ;
-    public final void rule__Factory__EpackagesAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__Factory__ImportsAssignment_0"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1894:1: rule__Factory__ImportsAssignment_0 : ( ruleNamespaceImport ) ;
+    public final void rule__Factory__ImportsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1685:1: ( ( rulePackageImport ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1686:1: ( rulePackageImport )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1898:1: ( ( ruleNamespaceImport ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1899:1: ( ruleNamespaceImport )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1686:1: ( rulePackageImport )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1687:1: rulePackageImport
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1899:1: ( ruleNamespaceImport )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1900:1: ruleNamespaceImport
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_0_0()); 
+               before(grammarAccess.getFactoryAccess().getImportsNamespaceImportParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_rulePackageImport_in_rule__Factory__EpackagesAssignment_03415);
+            pushFollow(FOLLOW_ruleNamespaceImport_in_rule__Factory__ImportsAssignment_03846);
+            ruleNamespaceImport();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getFactoryAccess().getImportsNamespaceImportParserRuleCall_0_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Factory__ImportsAssignment_0"
+
+
+    // $ANTLR start "rule__Factory__EpackagesAssignment_1"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1909:1: rule__Factory__EpackagesAssignment_1 : ( rulePackageImport ) ;
+    public final void rule__Factory__EpackagesAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1913:1: ( ( rulePackageImport ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1914:1: ( rulePackageImport )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1914:1: ( rulePackageImport )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1915:1: rulePackageImport
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_1_0()); 
+            }
+            pushFollow(FOLLOW_rulePackageImport_in_rule__Factory__EpackagesAssignment_13877);
             rulePackageImport();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_0_0()); 
+               after(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_1_0()); 
             }
 
             }
@@ -4864,32 +5524,32 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Factory__EpackagesAssignment_0"
+    // $ANTLR end "rule__Factory__EpackagesAssignment_1"
 
 
-    // $ANTLR start "rule__Factory__AnnotationsAssignment_1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1696:1: rule__Factory__AnnotationsAssignment_1 : ( ruleAnnotation ) ;
-    public final void rule__Factory__AnnotationsAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__Factory__AnnotationsAssignment_2"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1924:1: rule__Factory__AnnotationsAssignment_2 : ( ruleAnnotation ) ;
+    public final void rule__Factory__AnnotationsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1700:1: ( ( ruleAnnotation ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1701:1: ( ruleAnnotation )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1928:1: ( ( ruleAnnotation ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1929:1: ( ruleAnnotation )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1701:1: ( ruleAnnotation )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1702:1: ruleAnnotation
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1929:1: ( ruleAnnotation )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1930:1: ruleAnnotation
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFactoryAccess().getAnnotationsAnnotationParserRuleCall_1_0()); 
+               before(grammarAccess.getFactoryAccess().getAnnotationsAnnotationParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleAnnotation_in_rule__Factory__AnnotationsAssignment_13446);
+            pushFollow(FOLLOW_ruleAnnotation_in_rule__Factory__AnnotationsAssignment_23908);
             ruleAnnotation();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFactoryAccess().getAnnotationsAnnotationParserRuleCall_1_0()); 
+               after(grammarAccess.getFactoryAccess().getAnnotationsAnnotationParserRuleCall_2_0()); 
             }
 
             }
@@ -4909,32 +5569,32 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Factory__AnnotationsAssignment_1"
+    // $ANTLR end "rule__Factory__AnnotationsAssignment_2"
 
 
-    // $ANTLR start "rule__Factory__RootAssignment_2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1711:1: rule__Factory__RootAssignment_2 : ( ruleNewObject ) ;
-    public final void rule__Factory__RootAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Factory__RootAssignment_3"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1939:1: rule__Factory__RootAssignment_3 : ( ruleNewObject ) ;
+    public final void rule__Factory__RootAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1715:1: ( ( ruleNewObject ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1716:1: ( ruleNewObject )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1943:1: ( ( ruleNewObject ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1944:1: ( ruleNewObject )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1716:1: ( ruleNewObject )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1717:1: ruleNewObject
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1944:1: ( ruleNewObject )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1945:1: ruleNewObject
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFactoryAccess().getRootNewObjectParserRuleCall_2_0()); 
+               before(grammarAccess.getFactoryAccess().getRootNewObjectParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleNewObject_in_rule__Factory__RootAssignment_23477);
+            pushFollow(FOLLOW_ruleNewObject_in_rule__Factory__RootAssignment_33939);
             ruleNewObject();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFactoryAccess().getRootNewObjectParserRuleCall_2_0()); 
+               after(grammarAccess.getFactoryAccess().getRootNewObjectParserRuleCall_3_0()); 
             }
 
             }
@@ -4954,32 +5614,32 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__Factory__RootAssignment_2"
+    // $ANTLR end "rule__Factory__RootAssignment_3"
 
 
     // $ANTLR start "rule__PackageImport__EPackageAssignment_1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1726:1: rule__PackageImport__EPackageAssignment_1 : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1954:1: rule__PackageImport__EPackageAssignment_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__PackageImport__EPackageAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1730:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1731:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1958:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1959:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1731:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1732:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1959:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1960:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageImportAccess().getEPackageEPackageCrossReference_1_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1733:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1734:1: ruleQualifiedName
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1961:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1962:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPackageImportAccess().getEPackageEPackageQualifiedNameParserRuleCall_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__PackageImport__EPackageAssignment_13512);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__PackageImport__EPackageAssignment_13974);
             ruleQualifiedName();
 
             state._fsp--;
@@ -5014,29 +5674,74 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__PackageImport__EPackageAssignment_1"
 
 
+    // $ANTLR start "rule__NamespaceImport__ImportedNamespaceAssignment_1"
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1973:1: rule__NamespaceImport__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildcard ) ;
+    public final void rule__NamespaceImport__ImportedNamespaceAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1977:1: ( ( ruleQualifiedNameWithWildcard ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1978:1: ( ruleQualifiedNameWithWildcard )
+            {
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1978:1: ( ruleQualifiedNameWithWildcard )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1979:1: ruleQualifiedNameWithWildcard
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getNamespaceImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0()); 
+            }
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_rule__NamespaceImport__ImportedNamespaceAssignment_14009);
+            ruleQualifiedNameWithWildcard();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getNamespaceImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__NamespaceImport__ImportedNamespaceAssignment_1"
+
+
     // $ANTLR start "rule__CustomNameMapping__EClassAssignment_2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1745:1: rule__CustomNameMapping__EClassAssignment_2 : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1988:1: rule__CustomNameMapping__EClassAssignment_2 : ( ( ruleQualifiedName ) ) ;
     public final void rule__CustomNameMapping__EClassAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1749:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1750:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1992:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1993:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1750:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1751:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1993:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1994:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getEClassEClassCrossReference_2_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1752:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1753:1: ruleQualifiedName
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1995:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1996:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getEClassEClassQualifiedNameParserRuleCall_2_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__CustomNameMapping__EClassAssignment_23551);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__CustomNameMapping__EClassAssignment_24044);
             ruleQualifiedName();
 
             state._fsp--;
@@ -5072,28 +5777,28 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__NameFeatureAssignment_4"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1764:1: rule__CustomNameMapping__NameFeatureAssignment_4 : ( ( RULE_ID ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2007:1: rule__CustomNameMapping__NameFeatureAssignment_4 : ( ( RULE_ID ) ) ;
     public final void rule__CustomNameMapping__NameFeatureAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1768:1: ( ( ( RULE_ID ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1769:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2011:1: ( ( ( RULE_ID ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2012:1: ( ( RULE_ID ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1769:1: ( ( RULE_ID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1770:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2012:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2013:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1771:1: ( RULE_ID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1772:1: RULE_ID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2014:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2015:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeIDTerminalRuleCall_4_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__CustomNameMapping__NameFeatureAssignment_43590); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__CustomNameMapping__NameFeatureAssignment_44083); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeIDTerminalRuleCall_4_0_1()); 
             }
@@ -5125,28 +5830,28 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__EFeatureAssignment_0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1783:1: rule__Feature__EFeatureAssignment_0 : ( ( RULE_ID ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2026:1: rule__Feature__EFeatureAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__Feature__EFeatureAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1787:1: ( ( ( RULE_ID ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1788:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2030:1: ( ( ( RULE_ID ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2031:1: ( ( RULE_ID ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1788:1: ( ( RULE_ID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1789:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2031:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2032:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1790:1: ( RULE_ID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1791:1: RULE_ID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2033:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2034:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Feature__EFeatureAssignment_03629); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Feature__EFeatureAssignment_04122); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1()); 
             }
@@ -5178,22 +5883,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__ValueAssignment_2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1802:1: rule__Feature__ValueAssignment_2 : ( ruleValue ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2045:1: rule__Feature__ValueAssignment_2 : ( ruleValue ) ;
     public final void rule__Feature__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1806:1: ( ( ruleValue ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1807:1: ( ruleValue )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2049:1: ( ( ruleValue ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2050:1: ( ruleValue )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1807:1: ( ruleValue )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1808:1: ruleValue
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2050:1: ( ruleValue )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2051:1: ruleValue
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureAccess().getValueValueParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleValue_in_rule__Feature__ValueAssignment_23664);
+            pushFollow(FOLLOW_ruleValue_in_rule__Feature__ValueAssignment_24157);
             ruleValue();
 
             state._fsp--;
@@ -5223,28 +5928,28 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__EClassAssignment_0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1817:1: rule__NewObject__EClassAssignment_0 : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2060:1: rule__NewObject__EClassAssignment_0 : ( ( ruleQualifiedName ) ) ;
     public final void rule__NewObject__EClassAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1821:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1822:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2064:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2065:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1822:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1823:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2065:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2066:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getEClassEClassCrossReference_0_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1824:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1825:1: ruleQualifiedName
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2067:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2068:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getEClassEClassQualifiedNameParserRuleCall_0_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__NewObject__EClassAssignment_03699);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__NewObject__EClassAssignment_04192);
             ruleQualifiedName();
 
             state._fsp--;
@@ -5280,22 +5985,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__NameAssignment_1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1836:1: rule__NewObject__NameAssignment_1 : ( ruleValidID ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2079:1: rule__NewObject__NameAssignment_1 : ( ruleValidID ) ;
     public final void rule__NewObject__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1840:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1841:1: ( ruleValidID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2083:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2084:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1841:1: ( ruleValidID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1842:1: ruleValidID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2084:1: ( ruleValidID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2085:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getNameValidIDParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__NewObject__NameAssignment_13734);
+            pushFollow(FOLLOW_ruleValidID_in_rule__NewObject__NameAssignment_14227);
             ruleValidID();
 
             state._fsp--;
@@ -5325,22 +6030,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NewObject__FeaturesAssignment_3"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1851:1: rule__NewObject__FeaturesAssignment_3 : ( ruleFeature ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2094:1: rule__NewObject__FeaturesAssignment_3 : ( ruleFeature ) ;
     public final void rule__NewObject__FeaturesAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1855:1: ( ( ruleFeature ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1856:1: ( ruleFeature )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2098:1: ( ( ruleFeature ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2099:1: ( ruleFeature )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1856:1: ( ruleFeature )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1857:1: ruleFeature
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2099:1: ( ruleFeature )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2100:1: ruleFeature
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNewObjectAccess().getFeaturesFeatureParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleFeature_in_rule__NewObject__FeaturesAssignment_33765);
+            pushFollow(FOLLOW_ruleFeature_in_rule__NewObject__FeaturesAssignment_34258);
             ruleFeature();
 
             state._fsp--;
@@ -5370,22 +6075,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__MultiValue__ValuesAssignment_2"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1866:1: rule__MultiValue__ValuesAssignment_2 : ( ruleValue ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2109:1: rule__MultiValue__ValuesAssignment_2 : ( ruleValue ) ;
     public final void rule__MultiValue__ValuesAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1870:1: ( ( ruleValue ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1871:1: ( ruleValue )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2113:1: ( ( ruleValue ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2114:1: ( ruleValue )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1871:1: ( ruleValue )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1872:1: ruleValue
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2114:1: ( ruleValue )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2115:1: ruleValue
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMultiValueAccess().getValuesValueParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleValue_in_rule__MultiValue__ValuesAssignment_23796);
+            pushFollow(FOLLOW_ruleValue_in_rule__MultiValue__ValuesAssignment_24289);
             ruleValue();
 
             state._fsp--;
@@ -5415,28 +6120,28 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Reference__ValueAssignment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1881:1: rule__Reference__ValueAssignment : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2124:1: rule__Reference__ValueAssignment : ( ( ruleQualifiedName ) ) ;
     public final void rule__Reference__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1885:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1886:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2128:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2129:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1886:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1887:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2129:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2130:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReferenceAccess().getValueEObjectCrossReference_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1888:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1889:1: ruleQualifiedName
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2131:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2132:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReferenceAccess().getValueEObjectQualifiedNameParserRuleCall_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Reference__ValueAssignment3831);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Reference__ValueAssignment4324);
             ruleQualifiedName();
 
             state._fsp--;
@@ -5472,22 +6177,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Containment__ValueAssignment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1900:1: rule__Containment__ValueAssignment : ( ruleNewObject ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2143:1: rule__Containment__ValueAssignment : ( ruleNewObject ) ;
     public final void rule__Containment__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1904:1: ( ( ruleNewObject ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1905:1: ( ruleNewObject )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2147:1: ( ( ruleNewObject ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2148:1: ( ruleNewObject )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1905:1: ( ruleNewObject )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1906:1: ruleNewObject
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2148:1: ( ruleNewObject )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2149:1: ruleNewObject
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getContainmentAccess().getValueNewObjectParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleNewObject_in_rule__Containment__ValueAssignment3866);
+            pushFollow(FOLLOW_ruleNewObject_in_rule__Containment__ValueAssignment4359);
             ruleNewObject();
 
             state._fsp--;
@@ -5517,28 +6222,28 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumAttribute__ValueAssignment_1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1915:1: rule__EnumAttribute__ValueAssignment_1 : ( ( RULE_ID ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2158:1: rule__EnumAttribute__ValueAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__EnumAttribute__ValueAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1919:1: ( ( ( RULE_ID ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1920:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2162:1: ( ( ( RULE_ID ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2163:1: ( ( RULE_ID ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1920:1: ( ( RULE_ID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1921:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2163:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2164:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1922:1: ( RULE_ID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1923:1: RULE_ID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2165:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2166:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumAttribute__ValueAssignment_13901); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumAttribute__ValueAssignment_14394); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1()); 
             }
@@ -5570,22 +6275,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__StringAttribute__ValueAssignment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1934:1: rule__StringAttribute__ValueAssignment : ( RULE_STRING ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2177:1: rule__StringAttribute__ValueAssignment : ( RULE_STRING ) ;
     public final void rule__StringAttribute__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1938:1: ( ( RULE_STRING ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1939:1: ( RULE_STRING )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2181:1: ( ( RULE_STRING ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2182:1: ( RULE_STRING )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1939:1: ( RULE_STRING )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1940:1: RULE_STRING
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2182:1: ( RULE_STRING )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2183:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getStringAttributeAccess().getValueSTRINGTerminalRuleCall_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__StringAttribute__ValueAssignment3936); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__StringAttribute__ValueAssignment4429); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getStringAttributeAccess().getValueSTRINGTerminalRuleCall_0()); 
             }
@@ -5611,22 +6316,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__IntegerAttribute__ValueAssignment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1949:1: rule__IntegerAttribute__ValueAssignment : ( RULE_LONG ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2192:1: rule__IntegerAttribute__ValueAssignment : ( RULE_LONG ) ;
     public final void rule__IntegerAttribute__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1953:1: ( ( RULE_LONG ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1954:1: ( RULE_LONG )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2196:1: ( ( RULE_LONG ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2197:1: ( RULE_LONG )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1954:1: ( RULE_LONG )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1955:1: RULE_LONG
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2197:1: ( RULE_LONG )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2198:1: RULE_LONG
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIntegerAttributeAccess().getValueLONGTerminalRuleCall_0()); 
             }
-            match(input,RULE_LONG,FOLLOW_RULE_LONG_in_rule__IntegerAttribute__ValueAssignment3967); if (state.failed) return ;
+            match(input,RULE_LONG,FOLLOW_RULE_LONG_in_rule__IntegerAttribute__ValueAssignment4460); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getIntegerAttributeAccess().getValueLONGTerminalRuleCall_0()); 
             }
@@ -5652,22 +6357,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__DoubleAttribute__ValueAssignment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1964:1: rule__DoubleAttribute__ValueAssignment : ( RULE_DOUBLE ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2207:1: rule__DoubleAttribute__ValueAssignment : ( RULE_DOUBLE ) ;
     public final void rule__DoubleAttribute__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1968:1: ( ( RULE_DOUBLE ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1969:1: ( RULE_DOUBLE )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2211:1: ( ( RULE_DOUBLE ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2212:1: ( RULE_DOUBLE )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1969:1: ( RULE_DOUBLE )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1970:1: RULE_DOUBLE
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2212:1: ( RULE_DOUBLE )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2213:1: RULE_DOUBLE
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getDoubleAttributeAccess().getValueDOUBLETerminalRuleCall_0()); 
             }
-            match(input,RULE_DOUBLE,FOLLOW_RULE_DOUBLE_in_rule__DoubleAttribute__ValueAssignment3998); if (state.failed) return ;
+            match(input,RULE_DOUBLE,FOLLOW_RULE_DOUBLE_in_rule__DoubleAttribute__ValueAssignment4491); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getDoubleAttributeAccess().getValueDOUBLETerminalRuleCall_0()); 
             }
@@ -5693,22 +6398,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__DateAttribute__ValueAssignment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1979:1: rule__DateAttribute__ValueAssignment : ( RULE_DATE ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2222:1: rule__DateAttribute__ValueAssignment : ( RULE_DATE ) ;
     public final void rule__DateAttribute__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1983:1: ( ( RULE_DATE ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1984:1: ( RULE_DATE )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2226:1: ( ( RULE_DATE ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2227:1: ( RULE_DATE )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1984:1: ( RULE_DATE )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1985:1: RULE_DATE
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2227:1: ( RULE_DATE )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2228:1: RULE_DATE
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getDateAttributeAccess().getValueDATETerminalRuleCall_0()); 
             }
-            match(input,RULE_DATE,FOLLOW_RULE_DATE_in_rule__DateAttribute__ValueAssignment4029); if (state.failed) return ;
+            match(input,RULE_DATE,FOLLOW_RULE_DATE_in_rule__DateAttribute__ValueAssignment4522); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getDateAttributeAccess().getValueDATETerminalRuleCall_0()); 
             }
@@ -5734,28 +6439,28 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__NullAttribute__ValueAssignment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1994:1: rule__NullAttribute__ValueAssignment : ( ( 'NULL' ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2237:1: rule__NullAttribute__ValueAssignment : ( ( 'NULL' ) ) ;
     public final void rule__NullAttribute__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1998:1: ( ( ( 'NULL' ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1999:1: ( ( 'NULL' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2241:1: ( ( ( 'NULL' ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2242:1: ( ( 'NULL' ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1999:1: ( ( 'NULL' ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2000:1: ( 'NULL' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getNullAttributeAccess().getValueNULLKeyword_0()); 
-            }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2001:1: ( 'NULL' )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2002:1: 'NULL'
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2242:1: ( ( 'NULL' ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2243:1: ( 'NULL' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNullAttributeAccess().getValueNULLKeyword_0()); 
             }
-            match(input,25,FOLLOW_25_in_rule__NullAttribute__ValueAssignment4065); if (state.failed) return ;
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2244:1: ( 'NULL' )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2245:1: 'NULL'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getNullAttributeAccess().getValueNULLKeyword_0()); 
+            }
+            match(input,26,FOLLOW_26_in_rule__NullAttribute__ValueAssignment4558); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getNullAttributeAccess().getValueNULLKeyword_0()); 
             }
@@ -5787,22 +6492,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__BooleanAttribute__ValueAssignment"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2017:1: rule__BooleanAttribute__ValueAssignment : ( RULE_BOOLEAN ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2260:1: rule__BooleanAttribute__ValueAssignment : ( RULE_BOOLEAN ) ;
     public final void rule__BooleanAttribute__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2021:1: ( ( RULE_BOOLEAN ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2022:1: ( RULE_BOOLEAN )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2264:1: ( ( RULE_BOOLEAN ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2265:1: ( RULE_BOOLEAN )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2022:1: ( RULE_BOOLEAN )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2023:1: RULE_BOOLEAN
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2265:1: ( RULE_BOOLEAN )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2266:1: RULE_BOOLEAN
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBooleanAttributeAccess().getValueBOOLEANTerminalRuleCall_0()); 
             }
-            match(input,RULE_BOOLEAN,FOLLOW_RULE_BOOLEAN_in_rule__BooleanAttribute__ValueAssignment4104); if (state.failed) return ;
+            match(input,RULE_BOOLEAN,FOLLOW_RULE_BOOLEAN_in_rule__BooleanAttribute__ValueAssignment4597); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBooleanAttributeAccess().getValueBOOLEANTerminalRuleCall_0()); 
             }
@@ -5828,16 +6533,16 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
     // $ANTLR start synpred2_InternalEFactory
     public final void synpred2_InternalEFactory_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:632:6: ( ( ruleAttribute ) )
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:632:6: ( ruleAttribute )
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:688:6: ( ( ruleAttribute ) )
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:688:6: ( ruleAttribute )
         {
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:632:6: ( ruleAttribute )
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:633:1: ruleAttribute
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:688:6: ( ruleAttribute )
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:689:1: ruleAttribute
         {
         if ( state.backtracking==0 ) {
            before(grammarAccess.getValueAccess().getAttributeParserRuleCall_1()); 
         }
-        pushFollow(FOLLOW_ruleAttribute_in_synpred2_InternalEFactory1292);
+        pushFollow(FOLLOW_ruleAttribute_in_synpred2_InternalEFactory1412);
         ruleAttribute();
 
         state._fsp--;
@@ -5852,19 +6557,19 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
     // $ANTLR start synpred3_InternalEFactory
     public final void synpred3_InternalEFactory_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:638:6: ( ( ( ruleContainment ) ) )
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:638:6: ( ( ruleContainment ) )
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:694:6: ( ( ( ruleContainment ) ) )
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:694:6: ( ( ruleContainment ) )
         {
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:638:6: ( ( ruleContainment ) )
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:639:1: ( ruleContainment )
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:694:6: ( ( ruleContainment ) )
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:695:1: ( ruleContainment )
         {
         if ( state.backtracking==0 ) {
            before(grammarAccess.getValueAccess().getContainmentParserRuleCall_2()); 
         }
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:640:1: ( ruleContainment )
-        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:640:3: ruleContainment
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:696:1: ( ruleContainment )
+        // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:696:3: ruleContainment
         {
-        pushFollow(FOLLOW_ruleContainment_in_synpred3_InternalEFactory1310);
+        pushFollow(FOLLOW_ruleContainment_in_synpred3_InternalEFactory1430);
         ruleContainment();
 
         state._fsp--;
@@ -5920,24 +6625,24 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     static final String DFA1_minS =
         "\1\4\2\uffff\2\4\2\uffff\1\4\2\0\2\4";
     static final String DFA1_maxS =
-        "\1\31\2\uffff\1\30\1\31\2\uffff\1\5\2\0\2\31";
+        "\1\32\2\uffff\1\31\1\32\2\uffff\1\5\2\0\2\32";
     static final String DFA1_acceptS =
         "\1\uffff\1\1\1\2\2\uffff\1\3\1\4\5\uffff";
     static final String DFA1_specialS =
-        "\3\uffff\1\0\4\uffff\1\2\1\1\2\uffff}>";
+        "\3\uffff\1\2\4\uffff\1\0\1\1\2\uffff}>";
     static final String[] DFA1_transitionS = {
-            "\1\4\1\3\4\2\13\uffff\1\2\1\1\2\uffff\1\2",
+            "\1\4\1\3\4\2\14\uffff\1\2\1\1\2\uffff\1\2",
             "",
             "",
-            "\2\5\14\uffff\1\5\5\uffff\1\5",
-            "\1\10\1\11\4\6\10\uffff\1\5\1\uffff\4\6\1\7\1\6",
+            "\2\5\15\uffff\1\5\5\uffff\1\5",
+            "\1\10\1\11\4\6\11\uffff\1\5\1\uffff\4\6\1\7\1\6",
             "",
             "",
             "\1\12\1\13",
             "\1\uffff",
             "\1\uffff",
-            "\1\10\1\11\4\6\10\uffff\1\5\1\uffff\4\6\1\7\1\6",
-            "\1\10\1\11\4\6\10\uffff\1\5\1\uffff\4\6\1\7\1\6"
+            "\1\10\1\11\4\6\11\uffff\1\5\1\uffff\4\6\1\7\1\6",
+            "\1\10\1\11\4\6\11\uffff\1\5\1\uffff\4\6\1\7\1\6"
     };
 
     static final short[] DFA1_eot = DFA.unpackEncodedString(DFA1_eotS);
@@ -5970,27 +6675,25 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             this.transition = DFA1_transition;
         }
         public String getDescription() {
-            return "621:1: rule__Value__Alternatives : ( ( ruleMultiValue ) | ( ruleAttribute ) | ( ( ruleContainment ) ) | ( ( ruleReference ) ) );";
+            return "677:1: rule__Value__Alternatives : ( ( ruleMultiValue ) | ( ruleAttribute ) | ( ( ruleContainment ) ) | ( ( ruleReference ) ) );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA1_3 = input.LA(1);
+                        int LA1_8 = input.LA(1);
 
                          
-                        int index1_3 = input.index();
+                        int index1_8 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( ((LA1_3>=RULE_ID && LA1_3<=RULE_LONG)||LA1_3==18||LA1_3==24) ) {s = 5;}
-
-                        else if ( (synpred2_InternalEFactory()) ) {s = 2;}
+                        if ( (synpred3_InternalEFactory()) ) {s = 5;}
 
                         else if ( (true) ) {s = 6;}
 
                          
-                        input.seek(index1_3);
+                        input.seek(index1_8);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
@@ -6009,18 +6712,20 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA1_8 = input.LA(1);
+                        int LA1_3 = input.LA(1);
 
                          
-                        int index1_8 = input.index();
+                        int index1_3 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred3_InternalEFactory()) ) {s = 5;}
+                        if ( ((LA1_3>=RULE_ID && LA1_3<=RULE_LONG)||LA1_3==19||LA1_3==25) ) {s = 5;}
+
+                        else if ( (synpred2_InternalEFactory()) ) {s = 2;}
 
                         else if ( (true) ) {s = 6;}
 
                          
-                        input.seek(index1_8);
+                        input.seek(index1_3);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -6039,175 +6744,196 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rulePackageImport_in_entryRulePackageImport127 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePackageImport134 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PackageImport__Group__0_in_rulePackageImport160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotation_in_entryRuleAnnotation187 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotation194 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCustomNameMapping_in_ruleAnnotation220 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCustomNameMapping_in_entryRuleCustomNameMapping246 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCustomNameMapping253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__0_in_ruleCustomNameMapping279 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeature_in_entryRuleFeature306 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFeature313 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Feature__Group__0_in_ruleFeature339 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNewObject_in_entryRuleNewObject366 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNewObject373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__0_in_ruleNewObject399 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValue_in_entryRuleValue426 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValue433 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Value__Alternatives_in_ruleValue459 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMultiValue_in_entryRuleMultiValue486 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMultiValue493 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MultiValue__Group__0_in_ruleMultiValue519 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReference_in_entryRuleReference546 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleReference553 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Reference__ValueAssignment_in_ruleReference579 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleContainment_in_entryRuleContainment606 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleContainment613 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Containment__ValueAssignment_in_ruleContainment639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute666 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__Alternatives_in_ruleAttribute699 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumAttribute_in_entryRuleEnumAttribute726 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumAttribute733 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumAttribute__Group__0_in_ruleEnumAttribute759 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringAttribute_in_entryRuleStringAttribute786 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringAttribute793 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__StringAttribute__ValueAssignment_in_ruleStringAttribute819 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerAttribute_in_entryRuleIntegerAttribute846 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerAttribute853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IntegerAttribute__ValueAssignment_in_ruleIntegerAttribute879 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleAttribute_in_entryRuleDoubleAttribute906 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleAttribute913 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DoubleAttribute__ValueAssignment_in_ruleDoubleAttribute939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDateAttribute_in_entryRuleDateAttribute966 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDateAttribute973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DateAttribute__ValueAssignment_in_ruleDateAttribute999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNullAttribute_in_entryRuleNullAttribute1026 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNullAttribute1033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NullAttribute__ValueAssignment_in_ruleNullAttribute1059 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanAttribute_in_entryRuleBooleanAttribute1086 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanAttribute1093 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BooleanAttribute__ValueAssignment_in_ruleBooleanAttribute1119 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName1146 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName1153 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName1179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID1206 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValidID1213 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ValidID__Alternatives_in_ruleValidID1239 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMultiValue_in_rule__Value__Alternatives1275 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_rule__Value__Alternatives1292 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleContainment_in_rule__Value__Alternatives1310 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReference_in_rule__Value__Alternatives1329 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumAttribute_in_rule__Attribute__Alternatives1362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringAttribute_in_rule__Attribute__Alternatives1379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerAttribute_in_rule__Attribute__Alternatives1396 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanAttribute_in_rule__Attribute__Alternatives1413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleAttribute_in_rule__Attribute__Alternatives1430 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDateAttribute_in_rule__Attribute__Alternatives1447 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNullAttribute_in_rule__Attribute__Alternatives1464 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ValidID__Alternatives1496 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_LONG_in_rule__ValidID__Alternatives1513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Factory__Group__0__Impl_in_rule__Factory__Group__01543 = new BitSet(new long[]{0x0000000000020030L});
-    public static final BitSet FOLLOW_rule__Factory__Group__1_in_rule__Factory__Group__01546 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Factory__EpackagesAssignment_0_in_rule__Factory__Group__0__Impl1573 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_rule__Factory__Group__1__Impl_in_rule__Factory__Group__11604 = new BitSet(new long[]{0x0000000000020030L});
-    public static final BitSet FOLLOW_rule__Factory__Group__2_in_rule__Factory__Group__11607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Factory__AnnotationsAssignment_1_in_rule__Factory__Group__1__Impl1634 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_rule__Factory__Group__2__Impl_in_rule__Factory__Group__21665 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Factory__RootAssignment_2_in_rule__Factory__Group__2__Impl1692 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageImport__Group__0__Impl_in_rule__PackageImport__Group__01728 = new BitSet(new long[]{0x0000000000020030L});
-    public static final BitSet FOLLOW_rule__PackageImport__Group__1_in_rule__PackageImport__Group__01731 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__PackageImport__Group__0__Impl1759 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageImport__Group__1__Impl_in_rule__PackageImport__Group__11790 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__PackageImport__Group__2_in_rule__PackageImport__Group__11793 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageImport__EPackageAssignment_1_in_rule__PackageImport__Group__1__Impl1820 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PackageImport__Group__2__Impl_in_rule__PackageImport__Group__21850 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__PackageImport__Group__2__Impl1878 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__0__Impl_in_rule__CustomNameMapping__Group__01915 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__1_in_rule__CustomNameMapping__Group__01918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__CustomNameMapping__Group__0__Impl1946 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__1__Impl_in_rule__CustomNameMapping__Group__11977 = new BitSet(new long[]{0x0000000000020030L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__2_in_rule__CustomNameMapping__Group__11980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__CustomNameMapping__Group__1__Impl2008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__2__Impl_in_rule__CustomNameMapping__Group__22039 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__3_in_rule__CustomNameMapping__Group__22042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__EClassAssignment_2_in_rule__CustomNameMapping__Group__2__Impl2069 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__3__Impl_in_rule__CustomNameMapping__Group__32099 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__4_in_rule__CustomNameMapping__Group__32102 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__CustomNameMapping__Group__3__Impl2130 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__4__Impl_in_rule__CustomNameMapping__Group__42161 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__5_in_rule__CustomNameMapping__Group__42164 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__NameFeatureAssignment_4_in_rule__CustomNameMapping__Group__4__Impl2191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__5__Impl_in_rule__CustomNameMapping__Group__52221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__CustomNameMapping__Group__5__Impl2249 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Feature__Group__0__Impl_in_rule__Feature__Group__02292 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_rule__Feature__Group__1_in_rule__Feature__Group__02295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Feature__EFeatureAssignment_0_in_rule__Feature__Group__0__Impl2322 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Feature__Group__1__Impl_in_rule__Feature__Group__12352 = new BitSet(new long[]{0x00000000026203F0L});
-    public static final BitSet FOLLOW_rule__Feature__Group__2_in_rule__Feature__Group__12355 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__Feature__Group__1__Impl2383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Feature__Group__2__Impl_in_rule__Feature__Group__22414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Feature__ValueAssignment_2_in_rule__Feature__Group__2__Impl2441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__0__Impl_in_rule__NewObject__Group__02478 = new BitSet(new long[]{0x0000000000060030L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__1_in_rule__NewObject__Group__02481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__EClassAssignment_0_in_rule__NewObject__Group__0__Impl2508 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__1__Impl_in_rule__NewObject__Group__12538 = new BitSet(new long[]{0x0000000000060030L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__2_in_rule__NewObject__Group__12541 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__NameAssignment_1_in_rule__NewObject__Group__1__Impl2568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__2__Impl_in_rule__NewObject__Group__22599 = new BitSet(new long[]{0x0000000000100010L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__3_in_rule__NewObject__Group__22602 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__NewObject__Group__2__Impl2630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__3__Impl_in_rule__NewObject__Group__32661 = new BitSet(new long[]{0x0000000000100010L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__4_in_rule__NewObject__Group__32664 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__FeaturesAssignment_3_in_rule__NewObject__Group__3__Impl2691 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__4__Impl_in_rule__NewObject__Group__42722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__NewObject__Group__4__Impl2750 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MultiValue__Group__0__Impl_in_rule__MultiValue__Group__02791 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_rule__MultiValue__Group__1_in_rule__MultiValue__Group__02794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MultiValue__Group__1__Impl_in_rule__MultiValue__Group__12852 = new BitSet(new long[]{0x0000000002E203F0L});
-    public static final BitSet FOLLOW_rule__MultiValue__Group__2_in_rule__MultiValue__Group__12855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__MultiValue__Group__1__Impl2883 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MultiValue__Group__2__Impl_in_rule__MultiValue__Group__22914 = new BitSet(new long[]{0x0000000002E203F0L});
-    public static final BitSet FOLLOW_rule__MultiValue__Group__3_in_rule__MultiValue__Group__22917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MultiValue__ValuesAssignment_2_in_rule__MultiValue__Group__2__Impl2944 = new BitSet(new long[]{0x00000000026203F2L});
-    public static final BitSet FOLLOW_rule__MultiValue__Group__3__Impl_in_rule__MultiValue__Group__32975 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__MultiValue__Group__3__Impl3003 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumAttribute__Group__0__Impl_in_rule__EnumAttribute__Group__03042 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__EnumAttribute__Group__1_in_rule__EnumAttribute__Group__03045 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__EnumAttribute__Group__0__Impl3073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumAttribute__Group__1__Impl_in_rule__EnumAttribute__Group__13104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumAttribute__ValueAssignment_1_in_rule__EnumAttribute__Group__1__Impl3131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__03165 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__03168 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl3195 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__13224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl3251 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__03286 = new BitSet(new long[]{0x0000000000020030L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__03289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__QualifiedName__Group_1__0__Impl3318 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__13350 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl3377 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePackageImport_in_rule__Factory__EpackagesAssignment_03415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotation_in_rule__Factory__AnnotationsAssignment_13446 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNewObject_in_rule__Factory__RootAssignment_23477 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PackageImport__EPackageAssignment_13512 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CustomNameMapping__EClassAssignment_23551 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__CustomNameMapping__NameFeatureAssignment_43590 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Feature__EFeatureAssignment_03629 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValue_in_rule__Feature__ValueAssignment_23664 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__NewObject__EClassAssignment_03699 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__NewObject__NameAssignment_13734 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeature_in_rule__NewObject__FeaturesAssignment_33765 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValue_in_rule__MultiValue__ValuesAssignment_23796 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Reference__ValueAssignment3831 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNewObject_in_rule__Containment__ValueAssignment3866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumAttribute__ValueAssignment_13901 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__StringAttribute__ValueAssignment3936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_LONG_in_rule__IntegerAttribute__ValueAssignment3967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__DoubleAttribute__ValueAssignment3998 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DATE_in_rule__DateAttribute__ValueAssignment4029 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__NullAttribute__ValueAssignment4065 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_BOOLEAN_in_rule__BooleanAttribute__ValueAssignment4104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_synpred2_InternalEFactory1292 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleContainment_in_synpred3_InternalEFactory1310 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNamespaceImport_in_entryRuleNamespaceImport187 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNamespaceImport194 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NamespaceImport__Group__0_in_ruleNamespaceImport220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_entryRuleAnnotation247 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotation254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCustomNameMapping_in_ruleAnnotation280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCustomNameMapping_in_entryRuleCustomNameMapping306 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCustomNameMapping313 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__0_in_ruleCustomNameMapping339 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeature_in_entryRuleFeature366 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFeature373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Feature__Group__0_in_ruleFeature399 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNewObject_in_entryRuleNewObject426 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNewObject433 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__0_in_ruleNewObject459 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValue_in_entryRuleValue486 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValue493 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Value__Alternatives_in_ruleValue519 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMultiValue_in_entryRuleMultiValue546 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleMultiValue553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__MultiValue__Group__0_in_ruleMultiValue579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleReference_in_entryRuleReference606 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleReference613 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__ValueAssignment_in_ruleReference639 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleContainment_in_entryRuleContainment666 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleContainment673 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Containment__ValueAssignment_in_ruleContainment699 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute726 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute733 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__Alternatives_in_ruleAttribute759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumAttribute_in_entryRuleEnumAttribute786 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumAttribute793 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumAttribute__Group__0_in_ruleEnumAttribute819 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringAttribute_in_entryRuleStringAttribute846 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringAttribute853 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StringAttribute__ValueAssignment_in_ruleStringAttribute879 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerAttribute_in_entryRuleIntegerAttribute906 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerAttribute913 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IntegerAttribute__ValueAssignment_in_ruleIntegerAttribute939 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleAttribute_in_entryRuleDoubleAttribute966 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleAttribute973 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DoubleAttribute__ValueAssignment_in_ruleDoubleAttribute999 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDateAttribute_in_entryRuleDateAttribute1026 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDateAttribute1033 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DateAttribute__ValueAssignment_in_ruleDateAttribute1059 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNullAttribute_in_entryRuleNullAttribute1086 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNullAttribute1093 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NullAttribute__ValueAssignment_in_ruleNullAttribute1119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanAttribute_in_entryRuleBooleanAttribute1146 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanAttribute1153 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BooleanAttribute__ValueAssignment_in_ruleBooleanAttribute1179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard1206 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard1213 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0_in_ruleQualifiedNameWithWildcard1239 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName1266 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName1273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName1299 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID1326 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValidID1333 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ValidID__Alternatives_in_ruleValidID1359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMultiValue_in_rule__Value__Alternatives1395 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_rule__Value__Alternatives1412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleContainment_in_rule__Value__Alternatives1430 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleReference_in_rule__Value__Alternatives1449 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumAttribute_in_rule__Attribute__Alternatives1482 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringAttribute_in_rule__Attribute__Alternatives1499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerAttribute_in_rule__Attribute__Alternatives1516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanAttribute_in_rule__Attribute__Alternatives1533 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleAttribute_in_rule__Attribute__Alternatives1550 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDateAttribute_in_rule__Attribute__Alternatives1567 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNullAttribute_in_rule__Attribute__Alternatives1584 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__ValidID__Alternatives1616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LONG_in_rule__ValidID__Alternatives1633 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Factory__Group__0__Impl_in_rule__Factory__Group__01663 = new BitSet(new long[]{0x0000000000048030L});
+    public static final BitSet FOLLOW_rule__Factory__Group__1_in_rule__Factory__Group__01666 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Factory__ImportsAssignment_0_in_rule__Factory__Group__0__Impl1693 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_rule__Factory__Group__1__Impl_in_rule__Factory__Group__11724 = new BitSet(new long[]{0x0000000000048030L});
+    public static final BitSet FOLLOW_rule__Factory__Group__2_in_rule__Factory__Group__11727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Factory__EpackagesAssignment_1_in_rule__Factory__Group__1__Impl1754 = new BitSet(new long[]{0x0000000000008002L});
+    public static final BitSet FOLLOW_rule__Factory__Group__2__Impl_in_rule__Factory__Group__21785 = new BitSet(new long[]{0x0000000000048030L});
+    public static final BitSet FOLLOW_rule__Factory__Group__3_in_rule__Factory__Group__21788 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Factory__AnnotationsAssignment_2_in_rule__Factory__Group__2__Impl1815 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_rule__Factory__Group__3__Impl_in_rule__Factory__Group__31846 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Factory__RootAssignment_3_in_rule__Factory__Group__3__Impl1873 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageImport__Group__0__Impl_in_rule__PackageImport__Group__01911 = new BitSet(new long[]{0x0000000000048030L});
+    public static final BitSet FOLLOW_rule__PackageImport__Group__1_in_rule__PackageImport__Group__01914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__PackageImport__Group__0__Impl1942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageImport__Group__1__Impl_in_rule__PackageImport__Group__11973 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__PackageImport__Group__2_in_rule__PackageImport__Group__11976 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageImport__EPackageAssignment_1_in_rule__PackageImport__Group__1__Impl2003 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageImport__Group__2__Impl_in_rule__PackageImport__Group__22033 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__PackageImport__Group__2__Impl2061 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NamespaceImport__Group__0__Impl_in_rule__NamespaceImport__Group__02098 = new BitSet(new long[]{0x0000000000048030L});
+    public static final BitSet FOLLOW_rule__NamespaceImport__Group__1_in_rule__NamespaceImport__Group__02101 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__NamespaceImport__Group__0__Impl2129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NamespaceImport__Group__1__Impl_in_rule__NamespaceImport__Group__12160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NamespaceImport__ImportedNamespaceAssignment_1_in_rule__NamespaceImport__Group__1__Impl2187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__0__Impl_in_rule__CustomNameMapping__Group__02221 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__1_in_rule__CustomNameMapping__Group__02224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__CustomNameMapping__Group__0__Impl2252 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__1__Impl_in_rule__CustomNameMapping__Group__12283 = new BitSet(new long[]{0x0000000000048030L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__2_in_rule__CustomNameMapping__Group__12286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__CustomNameMapping__Group__1__Impl2314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__2__Impl_in_rule__CustomNameMapping__Group__22345 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__3_in_rule__CustomNameMapping__Group__22348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__EClassAssignment_2_in_rule__CustomNameMapping__Group__2__Impl2375 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__3__Impl_in_rule__CustomNameMapping__Group__32405 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__4_in_rule__CustomNameMapping__Group__32408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__CustomNameMapping__Group__3__Impl2436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__4__Impl_in_rule__CustomNameMapping__Group__42467 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__5_in_rule__CustomNameMapping__Group__42470 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__NameFeatureAssignment_4_in_rule__CustomNameMapping__Group__4__Impl2497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__5__Impl_in_rule__CustomNameMapping__Group__52527 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__CustomNameMapping__Group__5__Impl2555 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Feature__Group__0__Impl_in_rule__Feature__Group__02598 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_rule__Feature__Group__1_in_rule__Feature__Group__02601 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Feature__EFeatureAssignment_0_in_rule__Feature__Group__0__Impl2628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Feature__Group__1__Impl_in_rule__Feature__Group__12658 = new BitSet(new long[]{0x0000000004C483F0L});
+    public static final BitSet FOLLOW_rule__Feature__Group__2_in_rule__Feature__Group__12661 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_rule__Feature__Group__1__Impl2689 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Feature__Group__2__Impl_in_rule__Feature__Group__22720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Feature__ValueAssignment_2_in_rule__Feature__Group__2__Impl2747 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__0__Impl_in_rule__NewObject__Group__02784 = new BitSet(new long[]{0x00000000000C8030L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__1_in_rule__NewObject__Group__02787 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NewObject__EClassAssignment_0_in_rule__NewObject__Group__0__Impl2814 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__1__Impl_in_rule__NewObject__Group__12844 = new BitSet(new long[]{0x00000000000C8030L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__2_in_rule__NewObject__Group__12847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NewObject__NameAssignment_1_in_rule__NewObject__Group__1__Impl2874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__2__Impl_in_rule__NewObject__Group__22905 = new BitSet(new long[]{0x0000000000200010L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__3_in_rule__NewObject__Group__22908 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__NewObject__Group__2__Impl2936 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__3__Impl_in_rule__NewObject__Group__32967 = new BitSet(new long[]{0x0000000000200010L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__4_in_rule__NewObject__Group__32970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__NewObject__FeaturesAssignment_3_in_rule__NewObject__Group__3__Impl2997 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__4__Impl_in_rule__NewObject__Group__43028 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__NewObject__Group__4__Impl3056 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__MultiValue__Group__0__Impl_in_rule__MultiValue__Group__03097 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_rule__MultiValue__Group__1_in_rule__MultiValue__Group__03100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__MultiValue__Group__1__Impl_in_rule__MultiValue__Group__13158 = new BitSet(new long[]{0x0000000005C483F0L});
+    public static final BitSet FOLLOW_rule__MultiValue__Group__2_in_rule__MultiValue__Group__13161 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__MultiValue__Group__1__Impl3189 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__MultiValue__Group__2__Impl_in_rule__MultiValue__Group__23220 = new BitSet(new long[]{0x0000000005C483F0L});
+    public static final BitSet FOLLOW_rule__MultiValue__Group__3_in_rule__MultiValue__Group__23223 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__MultiValue__ValuesAssignment_2_in_rule__MultiValue__Group__2__Impl3250 = new BitSet(new long[]{0x0000000004C483F2L});
+    public static final BitSet FOLLOW_rule__MultiValue__Group__3__Impl_in_rule__MultiValue__Group__33281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__MultiValue__Group__3__Impl3309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumAttribute__Group__0__Impl_in_rule__EnumAttribute__Group__03348 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__EnumAttribute__Group__1_in_rule__EnumAttribute__Group__03351 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_rule__EnumAttribute__Group__0__Impl3379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumAttribute__Group__1__Impl_in_rule__EnumAttribute__Group__13410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumAttribute__ValueAssignment_1_in_rule__EnumAttribute__Group__1__Impl3437 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__03471 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__03474 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl3501 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__13530 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__QualifiedNameWithWildcard__Group__1__Impl3559 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__03596 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__03599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl3626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__13655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl3682 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__03717 = new BitSet(new long[]{0x0000000000048030L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__03720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__QualifiedName__Group_1__0__Impl3749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__13781 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl3808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNamespaceImport_in_rule__Factory__ImportsAssignment_03846 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePackageImport_in_rule__Factory__EpackagesAssignment_13877 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_rule__Factory__AnnotationsAssignment_23908 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNewObject_in_rule__Factory__RootAssignment_33939 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PackageImport__EPackageAssignment_13974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__NamespaceImport__ImportedNamespaceAssignment_14009 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CustomNameMapping__EClassAssignment_24044 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__CustomNameMapping__NameFeatureAssignment_44083 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Feature__EFeatureAssignment_04122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValue_in_rule__Feature__ValueAssignment_24157 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__NewObject__EClassAssignment_04192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__NewObject__NameAssignment_14227 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeature_in_rule__NewObject__FeaturesAssignment_34258 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValue_in_rule__MultiValue__ValuesAssignment_24289 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Reference__ValueAssignment4324 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNewObject_in_rule__Containment__ValueAssignment4359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumAttribute__ValueAssignment_14394 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__StringAttribute__ValueAssignment4429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LONG_in_rule__IntegerAttribute__ValueAssignment4460 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DOUBLE_in_rule__DoubleAttribute__ValueAssignment4491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DATE_in_rule__DateAttribute__ValueAssignment4522 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__NullAttribute__ValueAssignment4558 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_BOOLEAN_in_rule__BooleanAttribute__ValueAssignment4597 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_synpred2_InternalEFactory1412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleContainment_in_synpred3_InternalEFactory1430 = new BitSet(new long[]{0x0000000000000002L});
 
 }

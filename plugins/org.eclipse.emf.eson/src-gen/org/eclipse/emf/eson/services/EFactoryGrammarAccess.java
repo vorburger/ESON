@@ -21,37 +21,45 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	public class FactoryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Factory");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cEpackagesAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cEpackagesPackageImportParserRuleCall_0_0 = (RuleCall)cEpackagesAssignment_0.eContents().get(0);
-		private final Assignment cAnnotationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cAnnotationsAnnotationParserRuleCall_1_0 = (RuleCall)cAnnotationsAssignment_1.eContents().get(0);
-		private final Assignment cRootAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRootNewObjectParserRuleCall_2_0 = (RuleCall)cRootAssignment_2.eContents().get(0);
+		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cImportsNamespaceImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
+		private final Assignment cEpackagesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cEpackagesPackageImportParserRuleCall_1_0 = (RuleCall)cEpackagesAssignment_1.eContents().get(0);
+		private final Assignment cAnnotationsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cAnnotationsAnnotationParserRuleCall_2_0 = (RuleCall)cAnnotationsAssignment_2.eContents().get(0);
+		private final Assignment cRootAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRootNewObjectParserRuleCall_3_0 = (RuleCall)cRootAssignment_3.eContents().get(0);
 		
 		//Factory:
-		//	epackages+=PackageImport* annotations+=Annotation* root=NewObject;
+		//	imports+=NamespaceImport* epackages+=PackageImport* annotations+=Annotation* root=NewObject;
 		public ParserRule getRule() { return rule; }
 
-		//epackages+=PackageImport* annotations+=Annotation* root=NewObject
+		//imports+=NamespaceImport* epackages+=PackageImport* annotations+=Annotation* root=NewObject
 		public Group getGroup() { return cGroup; }
 
+		//imports+=NamespaceImport*
+		public Assignment getImportsAssignment_0() { return cImportsAssignment_0; }
+
+		//NamespaceImport
+		public RuleCall getImportsNamespaceImportParserRuleCall_0_0() { return cImportsNamespaceImportParserRuleCall_0_0; }
+
 		//epackages+=PackageImport*
-		public Assignment getEpackagesAssignment_0() { return cEpackagesAssignment_0; }
+		public Assignment getEpackagesAssignment_1() { return cEpackagesAssignment_1; }
 
 		//PackageImport
-		public RuleCall getEpackagesPackageImportParserRuleCall_0_0() { return cEpackagesPackageImportParserRuleCall_0_0; }
+		public RuleCall getEpackagesPackageImportParserRuleCall_1_0() { return cEpackagesPackageImportParserRuleCall_1_0; }
 
 		//annotations+=Annotation*
-		public Assignment getAnnotationsAssignment_1() { return cAnnotationsAssignment_1; }
+		public Assignment getAnnotationsAssignment_2() { return cAnnotationsAssignment_2; }
 
 		//Annotation
-		public RuleCall getAnnotationsAnnotationParserRuleCall_1_0() { return cAnnotationsAnnotationParserRuleCall_1_0; }
+		public RuleCall getAnnotationsAnnotationParserRuleCall_2_0() { return cAnnotationsAnnotationParserRuleCall_2_0; }
 
 		//root=NewObject
-		public Assignment getRootAssignment_2() { return cRootAssignment_2; }
+		public Assignment getRootAssignment_3() { return cRootAssignment_3; }
 
 		//NewObject
-		public RuleCall getRootNewObjectParserRuleCall_2_0() { return cRootNewObjectParserRuleCall_2_0; }
+		public RuleCall getRootNewObjectParserRuleCall_3_0() { return cRootNewObjectParserRuleCall_3_0; }
 	}
 
 	public class PackageImportElements extends AbstractParserRuleElementFinder {
@@ -63,15 +71,15 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEPackageEPackageQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cEPackageEPackageCrossReference_1_0.eContents().get(1);
 		private final Keyword cFullStopAsteriskKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//PackageImport: // TODO maybe we'll rename this 'use' to 'import' later (not short term, as it's in use)
+		//PackageImport: // TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
 		//	"use" ePackage=[ecore::EPackage|QualifiedName] ".*";
 		public ParserRule getRule() { return rule; }
 
-		//// TODO maybe we'll rename this 'use' to 'import' later (not short term, as it's in use)
+		//// TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
 		//"use" ePackage=[ecore::EPackage|QualifiedName] ".*"
 		public Group getGroup() { return cGroup; }
 
-		//// TODO maybe we'll rename this 'use' to 'import' later (not short term, as it's in use)
+		//// TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
 		//"use"
 		public Keyword getUseKeyword_0() { return cUseKeyword_0; }
 
@@ -88,11 +96,36 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getFullStopAsteriskKeyword_2() { return cFullStopAsteriskKeyword_2; }
 	}
 
+	public class NamespaceImportElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NamespaceImport");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
+		
+		//// TODO like the *.Xtext grammar itself does, support namespace and package name based (try the 'import' above!) + maybe support an "as" syntax
+		//// TODO Content Assist for EPackage .. but one COULD also import other named NewObject / EObject, instead of EPackages.. hm. As EPackage will be much more common, just support that.	
+		//NamespaceImport:
+		//	"import" importedNamespace=QualifiedNameWithWildcard;
+		public ParserRule getRule() { return rule; }
+
+		//"import" importedNamespace=QualifiedNameWithWildcard
+		public Group getGroup() { return cGroup; }
+
+		//"import"
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+
+		//importedNamespace=QualifiedNameWithWildcard
+		public Assignment getImportedNamespaceAssignment_1() { return cImportedNamespaceAssignment_1; }
+
+		//QualifiedNameWithWildcard
+		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0; }
+	}
+
 	public class AnnotationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Annotation");
 		private final RuleCall cCustomNameMappingParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//// TODO like the *.Xtext grammar itself does, support namespace and package name based (try the 'import' above!) + maybe support an "as" syntax
 		//Annotation:
 		//	CustomNameMapping;
 		public ParserRule getRule() { return rule; }
@@ -514,6 +547,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueBOOLEANTerminalRuleCall_0() { return cValueBOOLEANTerminalRuleCall_0; }
 	}
 
+	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildcard");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopAsteriskKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//QualifiedNameWithWildcard:
+		//	QualifiedName ".*"?;
+		public ParserRule getRule() { return rule; }
+
+		//QualifiedName ".*"?
+		public Group getGroup() { return cGroup; }
+
+		//QualifiedName
+		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
+
+		//".*"?
+		public Keyword getFullStopAsteriskKeyword_1() { return cFullStopAsteriskKeyword_1; }
+	}
+
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -548,6 +601,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cLONGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
+		//// This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
 		//ValidID:
 		//	ID / * | LONG_ID * / | LONG;
 		public ParserRule getRule() { return rule; }
@@ -565,6 +619,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final FactoryElements pFactory;
 	private final PackageImportElements pPackageImport;
+	private final NamespaceImportElements pNamespaceImport;
 	private final AnnotationElements pAnnotation;
 	private final CustomNameMappingElements pCustomNameMapping;
 	private final FeatureElements pFeature;
@@ -581,6 +636,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	private final DateAttributeElements pDateAttribute;
 	private final NullAttributeElements pNullAttribute;
 	private final BooleanAttributeElements pBooleanAttribute;
+	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final QualifiedNameElements pQualifiedName;
 	private final ValidIDElements pValidID;
 	private final TerminalRule tBOOLEAN;
@@ -600,6 +656,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pFactory = new FactoryElements();
 		this.pPackageImport = new PackageImportElements();
+		this.pNamespaceImport = new NamespaceImportElements();
 		this.pAnnotation = new AnnotationElements();
 		this.pCustomNameMapping = new CustomNameMappingElements();
 		this.pFeature = new FeatureElements();
@@ -616,6 +673,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDateAttribute = new DateAttributeElements();
 		this.pNullAttribute = new NullAttributeElements();
 		this.pBooleanAttribute = new BooleanAttributeElements();
+		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pValidID = new ValidIDElements();
 		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN");
@@ -653,7 +711,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Factory:
-	//	epackages+=PackageImport* annotations+=Annotation* root=NewObject;
+	//	imports+=NamespaceImport* epackages+=PackageImport* annotations+=Annotation* root=NewObject;
 	public FactoryElements getFactoryAccess() {
 		return pFactory;
 	}
@@ -662,7 +720,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getFactoryAccess().getRule();
 	}
 
-	//PackageImport: // TODO maybe we'll rename this 'use' to 'import' later (not short term, as it's in use)
+	//PackageImport: // TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
 	//	"use" ePackage=[ecore::EPackage|QualifiedName] ".*";
 	public PackageImportElements getPackageImportAccess() {
 		return pPackageImport;
@@ -673,6 +731,17 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// TODO like the *.Xtext grammar itself does, support namespace and package name based (try the 'import' above!) + maybe support an "as" syntax
+	//// TODO Content Assist for EPackage .. but one COULD also import other named NewObject / EObject, instead of EPackages.. hm. As EPackage will be much more common, just support that.	
+	//NamespaceImport:
+	//	"import" importedNamespace=QualifiedNameWithWildcard;
+	public NamespaceImportElements getNamespaceImportAccess() {
+		return pNamespaceImport;
+	}
+	
+	public ParserRule getNamespaceImportRule() {
+		return getNamespaceImportAccess().getRule();
+	}
+
 	//Annotation:
 	//	CustomNameMapping;
 	public AnnotationElements getAnnotationAccess() {
@@ -844,6 +913,16 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getBooleanAttributeAccess().getRule();
 	}
 
+	//QualifiedNameWithWildcard:
+	//	QualifiedName ".*"?;
+	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
+		return pQualifiedNameWithWildcard;
+	}
+	
+	public ParserRule getQualifiedNameWithWildcardRule() {
+		return getQualifiedNameWithWildcardAccess().getRule();
+	}
+
 	//QualifiedName:
 	//	ValidID ("." ValidID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
@@ -854,6 +933,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getQualifiedNameAccess().getRule();
 	}
 
+	//// This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
 	//ValidID:
 	//	ID / * | LONG_ID * / | LONG;
 	public ValidIDElements getValidIDAccess() {
@@ -893,7 +973,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//// Due to historic reasons in a closed source an in-house product which uses ESON
 	//// we need to add ',' and '-' to be allowed in IDs.  We also permit ID starting with digits, via the ValidID: ID | LONG above.
 	//// (NOTE: This terminal must be named 'ID' as well, not some new ID2 - unless you write a new ValueConverter for it.)
-	//// TODO terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')* ;
+	//// TODO try this: terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')* ;
 	//// PS: Order of terminals appears to matter - ID needs to come after BOOLEAN
 	//// TODO copy/paste org.eclipse.xtext.common.Terminals 
 	////terminal STRING	: 
