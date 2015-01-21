@@ -434,5 +434,14 @@
 	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
         </page>
     </extension>
+    <extension
+          point="org.eclipse.ui.contexts">
+       <context
+             description="ESON"
+             id="org.eclipse.emf.eson.ui.context"
+             name="ESON"
+             parentId="org.eclipse.xtext.ui.XtextEditorScope">
+       </context>
+    </extension>
 
 </plugin>

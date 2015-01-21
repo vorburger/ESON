@@ -718,6 +718,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			super.init(site, input);
 			IContextService contextService = (IContextService) getSite().getService(IContextService.class);
 			if (contextService != null) {
+				// This String constant is referenced in the plugin.xml
 				contextService.activateContext("org.eclipse.emf.eson.ui.context");
 			}
 		}
