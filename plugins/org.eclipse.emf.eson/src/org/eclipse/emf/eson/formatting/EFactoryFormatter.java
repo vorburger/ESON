@@ -13,11 +13,10 @@
 package org.eclipse.emf.eson.formatting;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 import org.eclipse.xtext.formatting.impl.FormattingConfig.LinewrapLocator;
-
-import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 
 /**
  * Xtext Formatter.
@@ -33,9 +32,11 @@ public class EFactoryFormatter extends AbstractDeclarativeFormatter {
 		
 		// NOTE: Please use our setPreservingLinewrap() instead of just setLinewrap(...)
 		
+		setPreservingLinewraps(c, 2).after(f.getNamespaceImportRule());
+
 		setPreservingLinewraps(c, 2).after(f.getPackageImportRule());
 		c.setNoSpace().after(f.getPackageImportAccess().getEPackageAssignment_1());
-		
+
 		setIndentationIncrementAndDecrementAndLinewrapAfter(c,
 				f.getNewObjectAccess().getLeftCurlyBracketKeyword_2(),
 				f.getNewObjectAccess().getRightCurlyBracketKeyword_4());
