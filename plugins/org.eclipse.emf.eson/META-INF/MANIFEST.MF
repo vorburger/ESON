@@ -7,7 +7,6 @@ Eclipse-RegisterBuddy: org.eclipse.xtext.log4j
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="2.5.3";visibility:=reexport,
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional;visibility:=reexport,
- org.apache.log4j;bundle-version="1.2.15";visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
@@ -37,5 +36,5 @@ Export-Package: org.eclipse.emf.eson.eFactory,
  org.eclipse.emf.eson.serialization,
  org.eclipse.emf.eson.util,
  org.eclipse.emf.eson.validation
-Import-Package: org.apache.log4j
 Bundle-Vendor: Sebastian Benz & Michael Vorburger
+Import-Package: org.apache.log4j
