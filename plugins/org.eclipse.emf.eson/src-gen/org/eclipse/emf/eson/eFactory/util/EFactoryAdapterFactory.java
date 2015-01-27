@@ -125,11 +125,6 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
         return createReferenceAdapter();
       }
       @Override
-      public Adapter caseContainment(Containment object)
-      {
-        return createContainmentAdapter();
-      }
-      @Override
       public Adapter caseAttribute(Attribute object)
       {
         return createAttributeAdapter();
@@ -168,6 +163,11 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
       public Adapter caseBooleanAttribute(BooleanAttribute object)
       {
         return createBooleanAttributeAdapter();
+      }
+      @Override
+      public Adapter caseContainment(Containment object)
+      {
+        return createContainmentAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -342,21 +342,6 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.Containment <em>Containment</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.Containment
-   * @generated
-   */
-  public Adapter createContainmentAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.Attribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -472,6 +457,21 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBooleanAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.Containment <em>Containment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.emf.eson.eFactory.Containment
+   * @generated
+   */
+  public Adapter createContainmentAdapter()
   {
     return null;
   }

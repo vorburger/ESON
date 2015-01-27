@@ -40,9 +40,6 @@
     <genClasses ecoreClass="EFactory.ecore#//Reference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EFactory.ecore#//Reference/value"/>
     </genClasses>
-    <genClasses ecoreClass="EFactory.ecore#//Containment">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//Containment/value"/>
-    </genClasses>
     <genClasses ecoreClass="EFactory.ecore#//Attribute"/>
     <genClasses ecoreClass="EFactory.ecore#//EnumAttribute">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EFactory.ecore#//EnumAttribute/value"/>
@@ -64,6 +61,9 @@
     </genClasses>
     <genClasses ecoreClass="EFactory.ecore#//BooleanAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EFactory.ecore#//BooleanAttribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="EFactory.ecore#//Containment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//Containment/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

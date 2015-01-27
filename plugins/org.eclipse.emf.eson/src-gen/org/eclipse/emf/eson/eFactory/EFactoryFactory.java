@@ -113,15 +113,6 @@ public interface EFactoryFactory extends EFactory
   Reference createReference();
 
   /**
-   * Returns a new object of class '<em>Containment</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Containment</em>'.
-   * @generated
-   */
-  Containment createContainment();
-
-  /**
    * Returns a new object of class '<em>Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -192,6 +183,15 @@ public interface EFactoryFactory extends EFactory
    * @generated
    */
   BooleanAttribute createBooleanAttribute();
+
+  /**
+   * Returns a new object of class '<em>Containment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Containment</em>'.
+   * @generated
+   */
+  Containment createContainment();
 
   /**
    * Returns the package supported by this factory.

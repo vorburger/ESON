@@ -114,13 +114,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass containmentEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass attributeEClass = null;
 
   /**
@@ -171,6 +164,13 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * @generated
    */
   private EClass booleanAttributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass containmentEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -490,26 +490,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getContainment()
-  {
-    return containmentEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getContainment_Value()
-  {
-    return (EReference)containmentEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getAttribute()
   {
     return attributeEClass;
@@ -660,6 +640,26 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getContainment()
+  {
+    return containmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContainment_Value()
+  {
+    return (EReference)containmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EFactoryFactory getEFactoryFactory()
   {
     return (EFactoryFactory)getEFactoryInstance();
@@ -720,9 +720,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     referenceEClass = createEClass(REFERENCE);
     createEReference(referenceEClass, REFERENCE__VALUE);
 
-    containmentEClass = createEClass(CONTAINMENT);
-    createEReference(containmentEClass, CONTAINMENT__VALUE);
-
     attributeEClass = createEClass(ATTRIBUTE);
 
     enumAttributeEClass = createEClass(ENUM_ATTRIBUTE);
@@ -745,6 +742,9 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
 
     booleanAttributeEClass = createEClass(BOOLEAN_ATTRIBUTE);
     createEAttribute(booleanAttributeEClass, BOOLEAN_ATTRIBUTE__VALUE);
+
+    containmentEClass = createEClass(CONTAINMENT);
+    createEReference(containmentEClass, CONTAINMENT__VALUE);
   }
 
   /**
@@ -777,9 +777,9 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
 
     // Add supertypes to classes
     customNameMappingEClass.getESuperTypes().add(this.getAnnotation());
+    newObjectEClass.getESuperTypes().add(this.getValue());
     multiValueEClass.getESuperTypes().add(this.getValue());
     referenceEClass.getESuperTypes().add(this.getValue());
-    containmentEClass.getESuperTypes().add(this.getValue());
     attributeEClass.getESuperTypes().add(this.getValue());
     enumAttributeEClass.getESuperTypes().add(this.getAttribute());
     stringAttributeEClass.getESuperTypes().add(this.getAttribute());
@@ -788,6 +788,7 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     dateAttributeEClass.getESuperTypes().add(this.getAttribute());
     nullAttributeEClass.getESuperTypes().add(this.getAttribute());
     booleanAttributeEClass.getESuperTypes().add(this.getAttribute());
+    containmentEClass.getESuperTypes().add(this.getValue());
 
     // Initialize classes and features; add operations and parameters
     initEClass(factoryEClass, Factory.class, "Factory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -825,9 +826,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getReference_Value(), ecorePackage.getEObject(), null, "value", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(containmentEClass, Containment.class, "Containment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getContainment_Value(), this.getNewObject(), null, "value", null, 0, 1, Containment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(enumAttributeEClass, EnumAttribute.class, "EnumAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -850,6 +848,9 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
 
     initEClass(booleanAttributeEClass, BooleanAttribute.class, "BooleanAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBooleanAttribute_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, BooleanAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(containmentEClass, Containment.class, "Containment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContainment_Value(), this.getNewObject(), null, "value", null, 0, 1, Containment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

@@ -3,11 +3,18 @@ use testmodel.*
 // TODO should not need this! 
 // import "ReferenceCrossResourceTestA.efactory"
  
+ // The object names here deliberately cover a variety of name and digit combinations (DS-8268):
+//   (1) a:  Only chars, normal Xtext ID
+//   (2) a3: Chars followed by digit, normal Xtext ID
+//   (3) 3a: ID starting with a digit (PITA)
+//   (4) 3:  Only digit (PITA)
+ 
 TestModel testModelNameB {
 	
 	referenceTestContainer: [
 		ReferenceTestContainer test1 {
 			referenceToOne: testModelNameA.test1.1-target,1
+			
 			referenceToMany: [ 
 				testModelNameA.test1.1-target,1
 				testModelNameA.test1.target2 
@@ -22,6 +29,8 @@ TestModel testModelNameB {
 				testModelNameA.test2.target21
 				testModelNameA.test2.target22
 				testModelNameA.test2.target23
+				
+				testModelNameA.3.target31 // DS-8268
 			]		
 		}
 	]
@@ -31,5 +40,4 @@ TestModel testModelNameB {
 		// parentReference: testModelNameA
 	} 
 } 
-
  

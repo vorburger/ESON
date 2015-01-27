@@ -1,4 +1,10 @@
 use testmodel.* 
+
+// The object names here deliberately cover a variety of name and digit combinations (DS-8268):
+//   (1) a:  Only chars, normal Xtext ID
+//   (2) a3: Chars followed by digit, normal Xtext ID
+//   (3) 3a: ID starting with a digit (PITA)
+//   (4) 3:  Only digit (PITA)
  
 TestModel testModelNameA {
 	
@@ -20,6 +26,11 @@ TestModel testModelNameA {
 			]
 		}
 		
+		ReferenceTestContainer 3 {             //  NOTE target is deliberately named '3' (only digit; DS-8268) 
+			containments: [
+				ReferenceTarget target31 {}
+			]
+		}
 		
 	]
 	

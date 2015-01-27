@@ -49,9 +49,8 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 				}
 				else break;
 			case EFactoryPackage.CONTAINMENT:
-				if(context == grammarAccess.getContainmentRule() ||
-				   context == grammarAccess.getValueRule()) {
-					sequence_Containment(context, (Containment) semanticObject); 
+				if(context == grammarAccess.getValueRule()) {
+					sequence_Value(context, (Containment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -124,6 +123,10 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 					sequence_NewObject(context, (NewObject) semanticObject); 
 					return; 
 				}
+				else if(context == grammarAccess.getValueAccess().getContainmentValueAction_2_3()) {
+					sequence_Value_Containment_2_3(context, (NewObject) semanticObject); 
+					return; 
+				}
 				else break;
 			case EFactoryPackage.NULL_ATTRIBUTE:
 				if(context == grammarAccess.getAttributeRule() ||
@@ -160,7 +163,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=BOOLEAN
+	 *     value=Boolean
 	 */
 	protected void sequence_BooleanAttribute(EObject context, BooleanAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -169,23 +172,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBooleanAttributeAccess().getValueBOOLEANTerminalRuleCall_0(), semanticObject.isValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     value=NewObject
-	 */
-	protected void sequence_Containment(EObject context, Containment semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EFactoryPackage.Literals.CONTAINMENT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EFactoryPackage.Literals.CONTAINMENT__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getContainmentAccess().getValueNewObjectParserRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getBooleanAttributeAccess().getValueBooleanParserRuleCall_0(), semanticObject.isValue());
 		feeder.finish();
 	}
 	
@@ -211,7 +198,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=DATE
+	 *     value=Date
 	 */
 	protected void sequence_DateAttribute(EObject context, DateAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -220,14 +207,14 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDateAttributeAccess().getValueDATETerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getDateAttributeAccess().getValueDateParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     value=DOUBLE
+	 *     value=Double
 	 */
 	protected void sequence_DoubleAttribute(EObject context, DoubleAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -236,7 +223,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDoubleAttributeAccess().getValueDOUBLETerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getDoubleAttributeAccess().getValueDoubleParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -277,7 +264,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=LONG
+	 *     value=Long
 	 */
 	protected void sequence_IntegerAttribute(EObject context, IntegerAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -286,7 +273,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIntegerAttributeAccess().getValueLONGTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getIntegerAttributeAccess().getValueLongParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -386,5 +373,30 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getStringAttributeAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=Value_Containment_2_3
+	 */
+	protected void sequence_Value(EObject context, Containment semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EFactoryPackage.Literals.CONTAINMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EFactoryPackage.Literals.CONTAINMENT__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getValueAccess().getContainmentValueAction_2_3(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (eClass=[EClass|QualifiedName] name=ValidID? features+=Feature*)
+	 */
+	protected void sequence_Value_Containment_2_3(EObject context, NewObject semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

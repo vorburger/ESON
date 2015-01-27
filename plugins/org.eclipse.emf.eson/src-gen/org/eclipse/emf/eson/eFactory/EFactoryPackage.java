@@ -261,52 +261,6 @@ public interface EFactoryPackage extends EPackage
   int FEATURE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.NewObjectImpl <em>New Object</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.NewObjectImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getNewObject()
-   * @generated
-   */
-  int NEW_OBJECT = 6;
-
-  /**
-   * The feature id for the '<em><b>EClass</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NEW_OBJECT__ECLASS = 0;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NEW_OBJECT__NAME = 1;
-
-  /**
-   * The feature id for the '<em><b>Features</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NEW_OBJECT__FEATURES = 2;
-
-  /**
-   * The number of structural features of the '<em>New Object</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NEW_OBJECT_FEATURE_COUNT = 3;
-
-  /**
    * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.ValueImpl <em>Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -324,6 +278,52 @@ public interface EFactoryPackage extends EPackage
    * @ordered
    */
   int VALUE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.NewObjectImpl <em>New Object</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.emf.eson.eFactory.impl.NewObjectImpl
+   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getNewObject()
+   * @generated
+   */
+  int NEW_OBJECT = 6;
+
+  /**
+   * The feature id for the '<em><b>EClass</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEW_OBJECT__ECLASS = VALUE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEW_OBJECT__NAME = VALUE_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Features</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEW_OBJECT__FEATURES = VALUE_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>New Object</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEW_OBJECT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.MultiValueImpl <em>Multi Value</em>}' class.
@@ -382,34 +382,6 @@ public interface EFactoryPackage extends EPackage
   int REFERENCE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.ContainmentImpl <em>Containment</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.ContainmentImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getContainment()
-   * @generated
-   */
-  int CONTAINMENT = 10;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINMENT__VALUE = VALUE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Containment</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINMENT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.AttributeImpl <em>Attribute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -417,7 +389,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 11;
+  int ATTRIBUTE = 10;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -436,7 +408,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getEnumAttribute()
    * @generated
    */
-  int ENUM_ATTRIBUTE = 12;
+  int ENUM_ATTRIBUTE = 11;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -464,7 +436,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getStringAttribute()
    * @generated
    */
-  int STRING_ATTRIBUTE = 13;
+  int STRING_ATTRIBUTE = 12;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -492,7 +464,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getIntegerAttribute()
    * @generated
    */
-  int INTEGER_ATTRIBUTE = 14;
+  int INTEGER_ATTRIBUTE = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -520,7 +492,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getDoubleAttribute()
    * @generated
    */
-  int DOUBLE_ATTRIBUTE = 15;
+  int DOUBLE_ATTRIBUTE = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -548,7 +520,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getDateAttribute()
    * @generated
    */
-  int DATE_ATTRIBUTE = 16;
+  int DATE_ATTRIBUTE = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -576,7 +548,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getNullAttribute()
    * @generated
    */
-  int NULL_ATTRIBUTE = 17;
+  int NULL_ATTRIBUTE = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -604,7 +576,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getBooleanAttribute()
    * @generated
    */
-  int BOOLEAN_ATTRIBUTE = 18;
+  int BOOLEAN_ATTRIBUTE = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -623,6 +595,34 @@ public interface EFactoryPackage extends EPackage
    * @ordered
    */
   int BOOLEAN_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.ContainmentImpl <em>Containment</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.emf.eson.eFactory.impl.ContainmentImpl
+   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getContainment()
+   * @generated
+   */
+  int CONTAINMENT = 18;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINMENT__VALUE = VALUE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Containment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINMENT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
 
   /**
@@ -891,27 +891,6 @@ public interface EFactoryPackage extends EPackage
   EReference getReference_Value();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.Containment <em>Containment</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Containment</em>'.
-   * @see org.eclipse.emf.eson.eFactory.Containment
-   * @generated
-   */
-  EClass getContainment();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.emf.eson.eFactory.Containment#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see org.eclipse.emf.eson.eFactory.Containment#getValue()
-   * @see #getContainment()
-   * @generated
-   */
-  EReference getContainment_Value();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.Attribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1067,6 +1046,27 @@ public interface EFactoryPackage extends EPackage
    * @generated
    */
   EAttribute getBooleanAttribute_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.Containment <em>Containment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Containment</em>'.
+   * @see org.eclipse.emf.eson.eFactory.Containment
+   * @generated
+   */
+  EClass getContainment();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.eson.eFactory.Containment#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see org.eclipse.emf.eson.eFactory.Containment#getValue()
+   * @see #getContainment()
+   * @generated
+   */
+  EReference getContainment_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1312,24 +1312,6 @@ public interface EFactoryPackage extends EPackage
     EReference REFERENCE__VALUE = eINSTANCE.getReference_Value();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.ContainmentImpl <em>Containment</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.ContainmentImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getContainment()
-     * @generated
-     */
-    EClass CONTAINMENT = eINSTANCE.getContainment();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONTAINMENT__VALUE = eINSTANCE.getContainment_Value();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.AttributeImpl <em>Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1464,6 +1446,24 @@ public interface EFactoryPackage extends EPackage
      * @generated
      */
     EAttribute BOOLEAN_ATTRIBUTE__VALUE = eINSTANCE.getBooleanAttribute_Value();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.ContainmentImpl <em>Containment</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.emf.eson.eFactory.impl.ContainmentImpl
+     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getContainment()
+     * @generated
+     */
+    EClass CONTAINMENT = eINSTANCE.getContainment();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONTAINMENT__VALUE = eINSTANCE.getContainment_Value();
 
   }
 

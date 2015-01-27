@@ -43,7 +43,7 @@ public class ReferenceCrossResourceTest {
 		
 		Assert.assertEquals("1-target,1", bModel.getReferenceTestContainer().get(0).getReferenceToOne().getName());
 		Assert.assertEquals("4", bModel.getReferenceTestContainer().get(0).getReferenceToMany().get(3).getName());
-		// TODO Assert.assertEquals("target31", bModel.getReferenceTestContainer().get(1).getReferenceToMany().get(3).getName());
+		Assert.assertEquals("target31", bModel.getReferenceTestContainer().get(1).getReferenceToMany().get(3).getName());
 	}
 	
 }

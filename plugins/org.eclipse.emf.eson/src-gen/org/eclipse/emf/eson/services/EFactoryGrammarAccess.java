@@ -241,6 +241,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//// but because it may be missing while typing, this works out much better in practice like this
 		//// the EFactoryJavaValidator flags it up if it's really missing
 		//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
+		//// Note that this is also in-lined below; if making changes, adapt below too
 		//NewObject:
 		//	eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}";
 		public ParserRule getRule() { return rule; }
@@ -281,26 +282,83 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMultiValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cContainmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cGroup_2.eContents().get(0);
+		private final Group cGroup_2_0_0 = (Group)cGroup_2_0.eContents().get(0);
+		private final Action cNewObjectAction_2_0_0_0 = (Action)cGroup_2_0_0.eContents().get(0);
+		private final Assignment cEClassAssignment_2_0_0_1 = (Assignment)cGroup_2_0_0.eContents().get(1);
+		private final CrossReference cEClassEClassCrossReference_2_0_0_1_0 = (CrossReference)cEClassAssignment_2_0_0_1.eContents().get(0);
+		private final RuleCall cEClassEClassQualifiedNameParserRuleCall_2_0_0_1_0_1 = (RuleCall)cEClassEClassCrossReference_2_0_0_1_0.eContents().get(1);
+		private final Assignment cNameAssignment_2_0_0_2 = (Assignment)cGroup_2_0_0.eContents().get(2);
+		private final RuleCall cNameValidIDParserRuleCall_2_0_0_2_0 = (RuleCall)cNameAssignment_2_0_0_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2_0_0_3 = (Keyword)cGroup_2_0_0.eContents().get(3);
+		private final Assignment cFeaturesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cFeaturesFeatureParserRuleCall_2_1_0 = (RuleCall)cFeaturesAssignment_2_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Action cContainmentValueAction_2_3 = (Action)cGroup_2.eContents().get(3);
 		private final RuleCall cReferenceParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//Value: // The two (!) Syntactic Predicates => are needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-		//	MultiValue | Attribute | => Containment | => Reference;
+		//Value:
+		//	MultiValue // Following is an inlinedNewObject, if making changes, adapt above too
+		//	// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
+		//	| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{") features+=Feature* "}"
+		//	{Containment.value=current} | => Reference;
 		public ParserRule getRule() { return rule; }
 
-		//// The two (!) Syntactic Predicates => are needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-		//MultiValue | Attribute | => Containment | => Reference
+		//MultiValue // Following is an inlinedNewObject, if making changes, adapt above too
+		//// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
+		//| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{") features+=Feature* "}"
+		//{Containment.value=current} | => Reference
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//// The two (!) Syntactic Predicates => are needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
 		//MultiValue
 		public RuleCall getMultiValueParserRuleCall_0() { return cMultiValueParserRuleCall_0; }
 
 		//Attribute
 		public RuleCall getAttributeParserRuleCall_1() { return cAttributeParserRuleCall_1; }
 
-		//=> Containment
-		public RuleCall getContainmentParserRuleCall_2() { return cContainmentParserRuleCall_2; }
+		//=> ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{") features+=Feature* "}"
+		//{Containment.value=current}
+		public Group getGroup_2() { return cGroup_2; }
+
+		//=> ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{")
+		public Group getGroup_2_0() { return cGroup_2_0; }
+
+		//{NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{"
+		public Group getGroup_2_0_0() { return cGroup_2_0_0; }
+
+		//{NewObject}
+		public Action getNewObjectAction_2_0_0_0() { return cNewObjectAction_2_0_0_0; }
+
+		//eClass=[ecore::EClass|QualifiedName]
+		public Assignment getEClassAssignment_2_0_0_1() { return cEClassAssignment_2_0_0_1; }
+
+		//[ecore::EClass|QualifiedName]
+		public CrossReference getEClassEClassCrossReference_2_0_0_1_0() { return cEClassEClassCrossReference_2_0_0_1_0; }
+
+		//QualifiedName
+		public RuleCall getEClassEClassQualifiedNameParserRuleCall_2_0_0_1_0_1() { return cEClassEClassQualifiedNameParserRuleCall_2_0_0_1_0_1; }
+
+		//name=ValidID?
+		public Assignment getNameAssignment_2_0_0_2() { return cNameAssignment_2_0_0_2; }
+
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_2_0_0_2_0() { return cNameValidIDParserRuleCall_2_0_0_2_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2_0_0_3() { return cLeftCurlyBracketKeyword_2_0_0_3; }
+
+		//features+=Feature*
+		public Assignment getFeaturesAssignment_2_1() { return cFeaturesAssignment_2_1; }
+
+		//Feature
+		public RuleCall getFeaturesFeatureParserRuleCall_2_1_0() { return cFeaturesFeatureParserRuleCall_2_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_2_2() { return cRightCurlyBracketKeyword_2_2; }
+
+		//{Containment.value=current}
+		public Action getContainmentValueAction_2_3() { return cContainmentValueAction_2_3; }
 
 		//=> Reference
 		public RuleCall getReferenceParserRuleCall_3() { return cReferenceParserRuleCall_3; }
@@ -363,22 +421,6 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 
 		//QualifiedName
 		public RuleCall getValueEObjectQualifiedNameParserRuleCall_0_1() { return cValueEObjectQualifiedNameParserRuleCall_0_1; }
-	}
-
-	public class ContainmentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Containment");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueNewObjectParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//Containment:
-		//	value=NewObject;
-		public ParserRule getRule() { return rule; }
-
-		//value=NewObject
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//NewObject
-		public RuleCall getValueNewObjectParserRuleCall_0() { return cValueNewObjectParserRuleCall_0; }
 	}
 
 	public class AttributeElements extends AbstractParserRuleElementFinder {
@@ -470,49 +512,49 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	public class IntegerAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntegerAttribute");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueLONGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueLongParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//IntegerAttribute:
-		//	value=LONG;
+		//	value=Long;
 		public ParserRule getRule() { return rule; }
 
-		//value=LONG
+		//value=Long
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//LONG
-		public RuleCall getValueLONGTerminalRuleCall_0() { return cValueLONGTerminalRuleCall_0; }
+		//Long
+		public RuleCall getValueLongParserRuleCall_0() { return cValueLongParserRuleCall_0; }
 	}
 
 	public class DoubleAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DoubleAttribute");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueDOUBLETerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueDoubleParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//DoubleAttribute:
-		//	value=DOUBLE;
+		//	value=Double;
 		public ParserRule getRule() { return rule; }
 
-		//value=DOUBLE
+		//value=Double
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//DOUBLE
-		public RuleCall getValueDOUBLETerminalRuleCall_0() { return cValueDOUBLETerminalRuleCall_0; }
+		//Double
+		public RuleCall getValueDoubleParserRuleCall_0() { return cValueDoubleParserRuleCall_0; }
 	}
 
 	public class DateAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DateAttribute");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueDATETerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueDateParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//DateAttribute:
-		//	value=DATE;
+		//	value=Date;
 		public ParserRule getRule() { return rule; }
 
-		//value=DATE
+		//value=Date
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//DATE
-		public RuleCall getValueDATETerminalRuleCall_0() { return cValueDATETerminalRuleCall_0; }
+		//Date
+		public RuleCall getValueDateParserRuleCall_0() { return cValueDateParserRuleCall_0; }
 	}
 
 	public class NullAttributeElements extends AbstractParserRuleElementFinder {
@@ -534,17 +576,17 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	public class BooleanAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanAttribute");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueBOOLEANTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueBooleanParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//BooleanAttribute:
-		//	value=BOOLEAN;
+		//	value=Boolean;
 		public ParserRule getRule() { return rule; }
 
-		//value=BOOLEAN
+		//value=Boolean
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//BOOLEAN
-		public RuleCall getValueBOOLEANTerminalRuleCall_0() { return cValueBOOLEANTerminalRuleCall_0; }
+		//Boolean
+		public RuleCall getValueBooleanParserRuleCall_0() { return cValueBooleanParserRuleCall_0; }
 	}
 
 	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
@@ -599,21 +641,122 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidID");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cLONGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cLONG_IDTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cLONG_UNSIGNEDTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//// This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
 		//ValidID:
-		//	ID / * | LONG_ID * / | LONG;
+		//	ID | LONG_ID | LONG_UNSIGNED;
 		public ParserRule getRule() { return rule; }
 
-		//ID / * | LONG_ID * / | LONG
+		//ID | LONG_ID | LONG_UNSIGNED
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//LONG
-		public RuleCall getLONGTerminalRuleCall_1() { return cLONGTerminalRuleCall_1; }
+		//LONG_ID
+		public RuleCall getLONG_IDTerminalRuleCall_1() { return cLONG_IDTerminalRuleCall_1; }
+
+		//LONG_UNSIGNED
+		public RuleCall getLONG_UNSIGNEDTerminalRuleCall_2() { return cLONG_UNSIGNEDTerminalRuleCall_2; }
+	}
+
+	public class BooleanElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Boolean");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//// Double and Date are Xtext data types instead of terminals, because if they are terminals there is some confusion about the '.' in them vs. the QualifiedName dot in case a QualifiedName has parts consisting only of numbers  
+		//Boolean returns ecore::EBoolean:
+		//	"true" | "false";
+		public ParserRule getRule() { return rule; }
+
+		//"true" | "false"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"true"
+		public Keyword getTrueKeyword_0() { return cTrueKeyword_0; }
+
+		//"false"
+		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
+	}
+
+	public class LongElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Long");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cLONG_UNSIGNEDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//Long returns ecore::ELong:
+		//	"-"? LONG_UNSIGNED;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? LONG_UNSIGNED
+		public Group getGroup() { return cGroup; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//LONG_UNSIGNED
+		public RuleCall getLONG_UNSIGNEDTerminalRuleCall_1() { return cLONG_UNSIGNEDTerminalRuleCall_1; }
+	}
+
+	public class DoubleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Double");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cLongParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cLONG_UNSIGNEDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		
+		//Double returns ecore::EDouble:
+		//	Long "." LONG_UNSIGNED;
+		public ParserRule getRule() { return rule; }
+
+		//Long "." LONG_UNSIGNED
+		public Group getGroup() { return cGroup; }
+
+		//Long
+		public RuleCall getLongParserRuleCall_0() { return cLongParserRuleCall_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+
+		//LONG_UNSIGNED
+		public RuleCall getLONG_UNSIGNEDTerminalRuleCall_2() { return cLONG_UNSIGNEDTerminalRuleCall_2; }
+	}
+
+	public class DateElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Date");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cLONG_UNSIGNEDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cLONG_UNSIGNEDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final RuleCall cLONG_UNSIGNEDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		
+		//Date returns ecore::EDate:
+		//	LONG_UNSIGNED "." LONG_UNSIGNED "." LONG_UNSIGNED;
+		public ParserRule getRule() { return rule; }
+
+		//LONG_UNSIGNED "." LONG_UNSIGNED "." LONG_UNSIGNED
+		public Group getGroup() { return cGroup; }
+
+		//LONG_UNSIGNED
+		public RuleCall getLONG_UNSIGNEDTerminalRuleCall_0() { return cLONG_UNSIGNEDTerminalRuleCall_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+
+		//LONG_UNSIGNED
+		public RuleCall getLONG_UNSIGNEDTerminalRuleCall_2() { return cLONG_UNSIGNEDTerminalRuleCall_2; }
+
+		//"."
+		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
+
+		//LONG_UNSIGNED
+		public RuleCall getLONG_UNSIGNEDTerminalRuleCall_4() { return cLONG_UNSIGNEDTerminalRuleCall_4; }
 	}
 	
 	
@@ -627,7 +770,6 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	private final ValueElements pValue;
 	private final MultiValueElements pMultiValue;
 	private final ReferenceElements pReference;
-	private final ContainmentElements pContainment;
 	private final AttributeElements pAttribute;
 	private final EnumAttributeElements pEnumAttribute;
 	private final StringAttributeElements pStringAttribute;
@@ -639,10 +781,12 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final QualifiedNameElements pQualifiedName;
 	private final ValidIDElements pValidID;
-	private final TerminalRule tBOOLEAN;
-	private final TerminalRule tLONG;
-	private final TerminalRule tDOUBLE;
-	private final TerminalRule tDATE;
+	private final BooleanElements pBoolean;
+	private final LongElements pLong;
+	private final DoubleElements pDouble;
+	private final DateElements pDate;
+	private final TerminalRule tLONG_ID;
+	private final TerminalRule tLONG_UNSIGNED;
 	private final TerminalRule tID;
 	
 	private final Grammar grammar;
@@ -664,7 +808,6 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		this.pValue = new ValueElements();
 		this.pMultiValue = new MultiValueElements();
 		this.pReference = new ReferenceElements();
-		this.pContainment = new ContainmentElements();
 		this.pAttribute = new AttributeElements();
 		this.pEnumAttribute = new EnumAttributeElements();
 		this.pStringAttribute = new StringAttributeElements();
@@ -676,10 +819,12 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pValidID = new ValidIDElements();
-		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN");
-		this.tLONG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LONG");
-		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE");
-		this.tDATE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DATE");
+		this.pBoolean = new BooleanElements();
+		this.pLong = new LongElements();
+		this.pDouble = new DoubleElements();
+		this.pDate = new DateElements();
+		this.tLONG_ID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LONG_ID");
+		this.tLONG_UNSIGNED = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LONG_UNSIGNED");
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID");
 	}
 	
@@ -778,6 +923,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//// but because it may be missing while typing, this works out much better in practice like this
 	//// the EFactoryJavaValidator flags it up if it's really missing
 	//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
+	//// Note that this is also in-lined below; if making changes, adapt below too
 	//NewObject:
 	//	eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}";
 	public NewObjectElements getNewObjectAccess() {
@@ -788,8 +934,11 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getNewObjectAccess().getRule();
 	}
 
-	//Value: // The two (!) Syntactic Predicates => are needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-	//	MultiValue | Attribute | => Containment | => Reference;
+	//Value:
+	//	MultiValue // Following is an inlinedNewObject, if making changes, adapt above too
+	//	// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
+	//	| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{") features+=Feature* "}"
+	//	{Containment.value=current} | => Reference;
 	public ValueElements getValueAccess() {
 		return pValue;
 	}
@@ -819,16 +968,6 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getReferenceRule() {
 		return getReferenceAccess().getRule();
-	}
-
-	//Containment:
-	//	value=NewObject;
-	public ContainmentElements getContainmentAccess() {
-		return pContainment;
-	}
-	
-	public ParserRule getContainmentRule() {
-		return getContainmentAccess().getRule();
 	}
 
 	//Attribute:
@@ -864,7 +1003,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntegerAttribute:
-	//	value=LONG;
+	//	value=Long;
 	public IntegerAttributeElements getIntegerAttributeAccess() {
 		return pIntegerAttribute;
 	}
@@ -874,7 +1013,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DoubleAttribute:
-	//	value=DOUBLE;
+	//	value=Double;
 	public DoubleAttributeElements getDoubleAttributeAccess() {
 		return pDoubleAttribute;
 	}
@@ -884,7 +1023,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DateAttribute:
-	//	value=DATE;
+	//	value=Date;
 	public DateAttributeElements getDateAttributeAccess() {
 		return pDateAttribute;
 	}
@@ -904,7 +1043,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BooleanAttribute:
-	//	value=BOOLEAN;
+	//	value=Boolean;
 	public BooleanAttributeElements getBooleanAttributeAccess() {
 		return pBooleanAttribute;
 	}
@@ -935,7 +1074,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
 	//ValidID:
-	//	ID / * | LONG_ID * / | LONG;
+	//	ID | LONG_ID | LONG_UNSIGNED;
 	public ValidIDElements getValidIDAccess() {
 		return pValidID;
 	}
@@ -944,37 +1083,64 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getValidIDAccess().getRule();
 	}
 
-	//// terminal LONG_ID: ('0'..'9')* ID;
-	//terminal BOOLEAN returns ecore::EBoolean:
+	//// Double and Date are Xtext data types instead of terminals, because if they are terminals there is some confusion about the '.' in them vs. the QualifiedName dot in case a QualifiedName has parts consisting only of numbers  
+	//Boolean returns ecore::EBoolean:
 	//	"true" | "false";
-	public TerminalRule getBOOLEANRule() {
-		return tBOOLEAN;
+	public BooleanElements getBooleanAccess() {
+		return pBoolean;
+	}
+	
+	public ParserRule getBooleanRule() {
+		return getBooleanAccess().getRule();
+	}
+
+	//Long returns ecore::ELong:
+	//	"-"? LONG_UNSIGNED;
+	public LongElements getLongAccess() {
+		return pLong;
+	}
+	
+	public ParserRule getLongRule() {
+		return getLongAccess().getRule();
+	}
+
+	//Double returns ecore::EDouble:
+	//	Long "." LONG_UNSIGNED;
+	public DoubleElements getDoubleAccess() {
+		return pDouble;
+	}
+	
+	public ParserRule getDoubleRule() {
+		return getDoubleAccess().getRule();
+	}
+
+	//Date returns ecore::EDate:
+	//	LONG_UNSIGNED "." LONG_UNSIGNED "." LONG_UNSIGNED;
+	public DateElements getDateAccess() {
+		return pDate;
+	}
+	
+	public ParserRule getDateRule() {
+		return getDateAccess().getRule();
+	}
+
+	//// TODO Date and other attribute values syntax should later not be hard-coded here anymore at all.. Grammar should be more open & generic.
+	//terminal LONG_ID:
+	//	LONG_UNSIGNED ID;
+	public TerminalRule getLONG_IDRule() {
+		return tLONG_ID;
 	} 
 
-	//terminal LONG returns ecore::ELong:
-	//	"-"? "0".."9"+;
-	public TerminalRule getLONGRule() {
-		return tLONG;
-	} 
-
-	//terminal DOUBLE returns ecore::EDouble:
-	//	"-"? "0".."9"+ "." "0".."9"+;
-	public TerminalRule getDOUBLERule() {
-		return tDOUBLE;
-	} 
-
-	//// TODO Date RegExp should later not be hard-coded here anymore at all.. Grammar should be more open & generic.
-	//terminal DATE returns ecore::EDate:
-	//	"0".."9"+ "." "0".."9"+ "." "0".."9"+;
-	public TerminalRule getDATERule() {
-		return tDATE;
+	//terminal LONG_UNSIGNED returns ecore::ELong:
+	//	"0".."9"+;
+	public TerminalRule getLONG_UNSIGNEDRule() {
+		return tLONG_UNSIGNED;
 	} 
 
 	//// Due to historic reasons in a closed source an in-house product which uses ESON
 	//// we need to add ',' and '-' to be allowed in IDs.  We also permit ID starting with digits, via the ValidID: ID | LONG above.
 	//// (NOTE: This terminal must be named 'ID' as well, not some new ID2 - unless you write a new ValueConverter for it.)
-	//// TODO try this: terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')* ;
-	//// PS: Order of terminals appears to matter - ID needs to come after BOOLEAN
+	//// PS: Order of terminals appears to matter - ID needs to come last (at least it used to matter; perhaps no longer after grammar changes which made attribute value data type rules instead of terminals)
 	//// TODO copy/paste org.eclipse.xtext.common.Terminals 
 	////terminal STRING	: 
 	////			'"' ( '\\' . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !('\\'|'"') )* '"' |
@@ -984,7 +1150,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	////
 	////terminal WS			: (' '|'\t'|'\r'|'\n')+;
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_" | "," | "-" | "0".."9")+;
+	//	"^"? ("a".."z" | "A".."Z" | "_" | "," | "-") ("a".."z" | "A".."Z" | "_" | "," | "-" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return tID;
 	} 

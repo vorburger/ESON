@@ -54,7 +54,8 @@ public class NodeFixer {
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.MULTI_VALUE))
 				associateNode(astElement, grammarAccess.getMultiValueRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.CONTAINMENT))
-				associateNode(astElement, grammarAccess.getContainmentRule());
+				// NOTE This seems.. curious, but is the "closest approximation" - and works
+				associateNode(astElement, grammarAccess.getValueAccess().getRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.NEW_OBJECT))
 				associateNode(astElement, grammarAccess.getNewObjectRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.STRING_ATTRIBUTE))

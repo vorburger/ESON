@@ -5,7 +5,6 @@ package org.eclipse.emf.eson.eFactory;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface NewObject extends EObject
+public interface NewObject extends Value
 {
   /**
    * Returns the value of the '<em><b>EClass</b></em>' reference.

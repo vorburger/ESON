@@ -49,6 +49,10 @@ public class EFactoryFormatter extends AbstractDeclarativeFormatter {
 				f.getMultiValueAccess().getRightSquareBracketKeyword_3());
 		setPreservingLinewrap(c).after(f.getMultiValueAccess().getValuesAssignment_2());
 		
+		setIndentationIncrementAndDecrementAndLinewrapAfter(c,
+				f.getValueAccess().getLeftCurlyBracketKeyword_2_0_0_3(),
+				f.getValueAccess().getRightCurlyBracketKeyword_2_2());
+		
 		c.setNoSpace().after(f.getEnumAttributeAccess().getColonKeyword_0());
 		
 		setPreservingLinewrap(c).before(f.getML_COMMENTRule());

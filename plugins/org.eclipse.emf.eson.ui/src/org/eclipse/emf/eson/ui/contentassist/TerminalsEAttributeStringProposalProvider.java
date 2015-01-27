@@ -24,11 +24,10 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.conversion.IValueConverterService;
-
-import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 
 /**
  * IEAttributeProposalProvider for common basic types.
@@ -50,13 +49,13 @@ public class TerminalsEAttributeStringProposalProvider implements IEAttributeStr
 			return proposals(grammarAccess.getSTRINGRule(), getStringProposal());
 
 		} else if (EcoreUtil3.isIntegerAttribute(dataType)) {
-			return proposals(grammarAccess.getLONGRule(), getLongProposal());
+			return proposals(grammarAccess.getLongRule(), getLongProposal());
 		} else if (EcoreUtil3.isDoubleAttribute(dataType)) {
-			return proposals(grammarAccess.getDOUBLERule(), getDoubleProposal());
+			return proposals(grammarAccess.getDoubleRule(), getDoubleProposal());
 		} else if (EcoreUtil3.isBooleanAttribute(dataType)) {
-			return proposals(grammarAccess.getBOOLEANRule(), (Object[]) getBooleanProposals());
+			return proposals(grammarAccess.getBooleanRule(), (Object[]) getBooleanProposals());
 		} else if (EcorePackage.Literals.EDATE.equals(dataType) || EcoreUtil3.isDateAttribute(dataType)) {
-			return proposals(grammarAccess.getDATERule(), getDateProposal());
+			return proposals(grammarAccess.getDateRule(), getDateProposal());
 
 		} else if (EcoreUtil3.isEnum(dataType)) {
 			return getEnumProposals((EEnum) dataType);

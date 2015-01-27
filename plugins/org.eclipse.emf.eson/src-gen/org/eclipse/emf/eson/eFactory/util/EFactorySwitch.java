@@ -119,6 +119,7 @@ public class EFactorySwitch<T> extends Switch<T>
       {
         NewObject newObject = (NewObject)theEObject;
         T result = caseNewObject(newObject);
+        if (result == null) result = caseValue(newObject);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -142,14 +143,6 @@ public class EFactorySwitch<T> extends Switch<T>
         Reference reference = (Reference)theEObject;
         T result = caseReference(reference);
         if (result == null) result = caseValue(reference);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EFactoryPackage.CONTAINMENT:
-      {
-        Containment containment = (Containment)theEObject;
-        T result = caseContainment(containment);
-        if (result == null) result = caseValue(containment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -221,6 +214,14 @@ public class EFactorySwitch<T> extends Switch<T>
         T result = caseBooleanAttribute(booleanAttribute);
         if (result == null) result = caseAttribute(booleanAttribute);
         if (result == null) result = caseValue(booleanAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EFactoryPackage.CONTAINMENT:
+      {
+        Containment containment = (Containment)theEObject;
+        T result = caseContainment(containment);
+        if (result == null) result = caseValue(containment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -389,22 +390,6 @@ public class EFactorySwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Containment</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Containment</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseContainment(Containment object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -528,6 +513,22 @@ public class EFactorySwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBooleanAttribute(BooleanAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Containment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Containment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContainment(Containment object)
   {
     return null;
   }
