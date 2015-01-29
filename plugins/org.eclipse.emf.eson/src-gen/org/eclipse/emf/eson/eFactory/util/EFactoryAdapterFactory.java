@@ -115,6 +115,11 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
         return createValueAdapter();
       }
       @Override
+      public Adapter caseAttribute(Attribute object)
+      {
+        return createAttributeAdapter();
+      }
+      @Override
       public Adapter caseMultiValue(MultiValue object)
       {
         return createMultiValueAdapter();
@@ -130,44 +135,14 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
         return createContainmentAdapter();
       }
       @Override
-      public Adapter caseAttribute(Attribute object)
-      {
-        return createAttributeAdapter();
-      }
-      @Override
       public Adapter caseEnumAttribute(EnumAttribute object)
       {
         return createEnumAttributeAdapter();
       }
       @Override
-      public Adapter caseStringAttribute(StringAttribute object)
+      public Adapter caseAnyAttribute(AnyAttribute object)
       {
-        return createStringAttributeAdapter();
-      }
-      @Override
-      public Adapter caseIntegerAttribute(IntegerAttribute object)
-      {
-        return createIntegerAttributeAdapter();
-      }
-      @Override
-      public Adapter caseDoubleAttribute(DoubleAttribute object)
-      {
-        return createDoubleAttributeAdapter();
-      }
-      @Override
-      public Adapter caseDateAttribute(DateAttribute object)
-      {
-        return createDateAttributeAdapter();
-      }
-      @Override
-      public Adapter caseNullAttribute(NullAttribute object)
-      {
-        return createNullAttributeAdapter();
-      }
-      @Override
-      public Adapter caseBooleanAttribute(BooleanAttribute object)
-      {
-        return createBooleanAttributeAdapter();
+        return createAnyAttributeAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -312,6 +287,21 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.Attribute <em>Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.emf.eson.eFactory.Attribute
+   * @generated
+   */
+  public Adapter createAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.MultiValue <em>Multi Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -357,21 +347,6 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.Attribute <em>Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.Attribute
-   * @generated
-   */
-  public Adapter createAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.EnumAttribute <em>Enum Attribute</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -387,91 +362,16 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.StringAttribute <em>String Attribute</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.AnyAttribute <em>Any Attribute</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.StringAttribute
+   * @see org.eclipse.emf.eson.eFactory.AnyAttribute
    * @generated
    */
-  public Adapter createStringAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.IntegerAttribute <em>Integer Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.IntegerAttribute
-   * @generated
-   */
-  public Adapter createIntegerAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.DoubleAttribute <em>Double Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.DoubleAttribute
-   * @generated
-   */
-  public Adapter createDoubleAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.DateAttribute <em>Date Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.DateAttribute
-   * @generated
-   */
-  public Adapter createDateAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.NullAttribute <em>Null Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.NullAttribute
-   * @generated
-   */
-  public Adapter createNullAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.BooleanAttribute <em>Boolean Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.BooleanAttribute
-   * @generated
-   */
-  public Adapter createBooleanAttributeAdapter()
+  public Adapter createAnyAttributeAdapter()
   {
     return null;
   }

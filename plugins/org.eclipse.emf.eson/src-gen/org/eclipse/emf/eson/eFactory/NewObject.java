@@ -62,12 +62,12 @@ public interface NewObject extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
+   * @see #setName(Object)
    * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getNewObject_Name()
    * @model
    * @generated
    */
-  String getName();
+  Object getName();
 
   /**
    * Sets the value of the '{@link org.eclipse.emf.eson.eFactory.NewObject#getName <em>Name</em>}' attribute.
@@ -77,7 +77,7 @@ public interface NewObject extends EObject
    * @see #getName()
    * @generated
    */
-  void setName(String value);
+  void setName(Object value);
 
   /**
    * Returns the value of the '<em><b>Features</b></em>' containment reference list.

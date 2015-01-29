@@ -8,23 +8,23 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.eson.eFactory.AnyAttribute;
 import org.eclipse.emf.eson.eFactory.EFactoryPackage;
-import org.eclipse.emf.eson.eFactory.IntegerAttribute;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Integer Attribute</b></em>'.
+ * An implementation of the model object '<em><b>Any Attribute</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.eson.eFactory.impl.IntegerAttributeImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.eson.eFactory.impl.AnyAttributeImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttribute
+public class AnyAttributeImpl extends AttributeImpl implements AnyAttribute
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -34,7 +34,7 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
    * @generated
    * @ordered
    */
-  protected static final long VALUE_EDEFAULT = 0L;
+  protected static final Object VALUE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -44,14 +44,14 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
    * @generated
    * @ordered
    */
-  protected long value = VALUE_EDEFAULT;
+  protected Object value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected IntegerAttributeImpl()
+  protected AnyAttributeImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
   @Override
   protected EClass eStaticClass()
   {
-    return EFactoryPackage.Literals.INTEGER_ATTRIBUTE;
+    return EFactoryPackage.Literals.ANY_ATTRIBUTE;
   }
 
   /**
@@ -72,7 +72,7 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
    * <!-- end-user-doc -->
    * @generated
    */
-  public long getValue()
+  public Object getValue()
   {
     return value;
   }
@@ -82,12 +82,12 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(long newValue)
+  public void setValue(Object newValue)
   {
-    long oldValue = value;
+    Object oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EFactoryPackage.INTEGER_ATTRIBUTE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, EFactoryPackage.ANY_ATTRIBUTE__VALUE, oldValue, value));
   }
 
   /**
@@ -100,7 +100,7 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
   {
     switch (featureID)
     {
-      case EFactoryPackage.INTEGER_ATTRIBUTE__VALUE:
+      case EFactoryPackage.ANY_ATTRIBUTE__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -116,8 +116,8 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
   {
     switch (featureID)
     {
-      case EFactoryPackage.INTEGER_ATTRIBUTE__VALUE:
-        setValue((Long)newValue);
+      case EFactoryPackage.ANY_ATTRIBUTE__VALUE:
+        setValue(newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,7 +133,7 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
   {
     switch (featureID)
     {
-      case EFactoryPackage.INTEGER_ATTRIBUTE__VALUE:
+      case EFactoryPackage.ANY_ATTRIBUTE__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
     }
@@ -150,8 +150,8 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
   {
     switch (featureID)
     {
-      case EFactoryPackage.INTEGER_ATTRIBUTE__VALUE:
-        return value != VALUE_EDEFAULT;
+      case EFactoryPackage.ANY_ATTRIBUTE__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }
@@ -173,4 +173,4 @@ public class IntegerAttributeImpl extends AttributeImpl implements IntegerAttrib
     return result.toString();
   }
 
-} //IntegerAttributeImpl
+} //AnyAttributeImpl

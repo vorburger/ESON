@@ -72,17 +72,12 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
       case EFactoryPackage.FEATURE: return createFeature();
       case EFactoryPackage.NEW_OBJECT: return createNewObject();
       case EFactoryPackage.VALUE: return createValue();
+      case EFactoryPackage.ATTRIBUTE: return createAttribute();
       case EFactoryPackage.MULTI_VALUE: return createMultiValue();
       case EFactoryPackage.REFERENCE: return createReference();
       case EFactoryPackage.CONTAINMENT: return createContainment();
-      case EFactoryPackage.ATTRIBUTE: return createAttribute();
       case EFactoryPackage.ENUM_ATTRIBUTE: return createEnumAttribute();
-      case EFactoryPackage.STRING_ATTRIBUTE: return createStringAttribute();
-      case EFactoryPackage.INTEGER_ATTRIBUTE: return createIntegerAttribute();
-      case EFactoryPackage.DOUBLE_ATTRIBUTE: return createDoubleAttribute();
-      case EFactoryPackage.DATE_ATTRIBUTE: return createDateAttribute();
-      case EFactoryPackage.NULL_ATTRIBUTE: return createNullAttribute();
-      case EFactoryPackage.BOOLEAN_ATTRIBUTE: return createBooleanAttribute();
+      case EFactoryPackage.ANY_ATTRIBUTE: return createAnyAttribute();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -181,6 +176,17 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Attribute createAttribute()
+  {
+    AttributeImpl attribute = new AttributeImpl();
+    return attribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public MultiValue createMultiValue()
   {
     MultiValueImpl multiValue = new MultiValueImpl();
@@ -214,17 +220,6 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Attribute createAttribute()
-  {
-    AttributeImpl attribute = new AttributeImpl();
-    return attribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EnumAttribute createEnumAttribute()
   {
     EnumAttributeImpl enumAttribute = new EnumAttributeImpl();
@@ -236,65 +231,10 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public StringAttribute createStringAttribute()
+  public AnyAttribute createAnyAttribute()
   {
-    StringAttributeImpl stringAttribute = new StringAttributeImpl();
-    return stringAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IntegerAttribute createIntegerAttribute()
-  {
-    IntegerAttributeImpl integerAttribute = new IntegerAttributeImpl();
-    return integerAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DoubleAttribute createDoubleAttribute()
-  {
-    DoubleAttributeImpl doubleAttribute = new DoubleAttributeImpl();
-    return doubleAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DateAttribute createDateAttribute()
-  {
-    DateAttributeImpl dateAttribute = new DateAttributeImpl();
-    return dateAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NullAttribute createNullAttribute()
-  {
-    NullAttributeImpl nullAttribute = new NullAttributeImpl();
-    return nullAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public BooleanAttribute createBooleanAttribute()
-  {
-    BooleanAttributeImpl booleanAttribute = new BooleanAttributeImpl();
-    return booleanAttribute;
+    AnyAttributeImpl anyAttribute = new AnyAttributeImpl();
+    return anyAttribute;
   }
 
   /**

@@ -2,25 +2,24 @@
  */
 package org.eclipse.emf.eson.eFactory;
 
-import java.util.Date;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Date Attribute</b></em>'.
+ * A representation of the model object '<em><b>Any Attribute</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.eson.eFactory.DateAttribute#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.eson.eFactory.AnyAttribute#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getDateAttribute()
+ * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getAnyAttribute()
  * @model
  * @generated
  */
-public interface DateAttribute extends Attribute
+public interface AnyAttribute extends Attribute
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.
@@ -31,21 +30,21 @@ public interface DateAttribute extends Attribute
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(Date)
-   * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getDateAttribute_Value()
+   * @see #setValue(Object)
+   * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getAnyAttribute_Value()
    * @model
    * @generated
    */
-  Date getValue();
+  Object getValue();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.eson.eFactory.DateAttribute#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.emf.eson.eFactory.AnyAttribute#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' attribute.
    * @see #getValue()
    * @generated
    */
-  void setValue(Date value);
+  void setValue(Object value);
 
-} // DateAttribute
+} // AnyAttribute

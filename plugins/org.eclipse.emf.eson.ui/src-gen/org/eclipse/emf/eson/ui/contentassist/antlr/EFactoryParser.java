@@ -39,7 +39,6 @@ public class EFactoryParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getAttributeAccess().getAlternatives(), "rule__Attribute__Alternatives");
-					put(grammarAccess.getValidIDAccess().getAlternatives(), "rule__ValidID__Alternatives");
 					put(grammarAccess.getFactoryAccess().getGroup(), "rule__Factory__Group__0");
 					put(grammarAccess.getPackageImportAccess().getGroup(), "rule__PackageImport__Group__0");
 					put(grammarAccess.getNamespaceImportAccess().getGroup(), "rule__NamespaceImport__Group__0");
@@ -68,12 +67,7 @@ public class EFactoryParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReferenceAccess().getValueAssignment(), "rule__Reference__ValueAssignment");
 					put(grammarAccess.getContainmentAccess().getValueAssignment(), "rule__Containment__ValueAssignment");
 					put(grammarAccess.getEnumAttributeAccess().getValueAssignment_1(), "rule__EnumAttribute__ValueAssignment_1");
-					put(grammarAccess.getStringAttributeAccess().getValueAssignment(), "rule__StringAttribute__ValueAssignment");
-					put(grammarAccess.getIntegerAttributeAccess().getValueAssignment(), "rule__IntegerAttribute__ValueAssignment");
-					put(grammarAccess.getDoubleAttributeAccess().getValueAssignment(), "rule__DoubleAttribute__ValueAssignment");
-					put(grammarAccess.getDateAttributeAccess().getValueAssignment(), "rule__DateAttribute__ValueAssignment");
-					put(grammarAccess.getNullAttributeAccess().getValueAssignment(), "rule__NullAttribute__ValueAssignment");
-					put(grammarAccess.getBooleanAttributeAccess().getValueAssignment(), "rule__BooleanAttribute__ValueAssignment");
+					put(grammarAccess.getAnyAttributeAccess().getValueAssignment(), "rule__AnyAttribute__ValueAssignment");
 				}
 			};
 		}

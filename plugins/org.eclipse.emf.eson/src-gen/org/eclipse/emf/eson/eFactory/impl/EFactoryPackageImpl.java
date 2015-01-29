@@ -10,25 +10,20 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.eson.eFactory.Annotation;
+import org.eclipse.emf.eson.eFactory.AnyAttribute;
 import org.eclipse.emf.eson.eFactory.Attribute;
-import org.eclipse.emf.eson.eFactory.BooleanAttribute;
 import org.eclipse.emf.eson.eFactory.Containment;
 import org.eclipse.emf.eson.eFactory.CustomNameMapping;
-import org.eclipse.emf.eson.eFactory.DateAttribute;
-import org.eclipse.emf.eson.eFactory.DoubleAttribute;
 import org.eclipse.emf.eson.eFactory.EFactoryFactory;
 import org.eclipse.emf.eson.eFactory.EFactoryPackage;
 import org.eclipse.emf.eson.eFactory.EnumAttribute;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
-import org.eclipse.emf.eson.eFactory.IntegerAttribute;
 import org.eclipse.emf.eson.eFactory.MultiValue;
 import org.eclipse.emf.eson.eFactory.NamespaceImport;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.emf.eson.eFactory.NullAttribute;
 import org.eclipse.emf.eson.eFactory.PackageImport;
 import org.eclipse.emf.eson.eFactory.Reference;
-import org.eclipse.emf.eson.eFactory.StringAttribute;
 import org.eclipse.emf.eson.eFactory.Value;
 
 /**
@@ -100,6 +95,13 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass attributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass multiValueEClass = null;
 
   /**
@@ -121,13 +123,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass attributeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass enumAttributeEClass = null;
 
   /**
@@ -135,42 +130,7 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass stringAttributeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass integerAttributeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass doubleAttributeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass dateAttributeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass nullAttributeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass booleanAttributeEClass = null;
+  private EClass anyAttributeEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -450,6 +410,16 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getAttribute()
+  {
+    return attributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMultiValue()
   {
     return multiValueEClass;
@@ -510,16 +480,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAttribute()
-  {
-    return attributeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getEnumAttribute()
   {
     return enumAttributeEClass;
@@ -540,9 +500,9 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getStringAttribute()
+  public EClass getAnyAttribute()
   {
-    return stringAttributeEClass;
+    return anyAttributeEClass;
   }
 
   /**
@@ -550,109 +510,9 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStringAttribute_Value()
+  public EAttribute getAnyAttribute_Value()
   {
-    return (EAttribute)stringAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIntegerAttribute()
-  {
-    return integerAttributeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIntegerAttribute_Value()
-  {
-    return (EAttribute)integerAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDoubleAttribute()
-  {
-    return doubleAttributeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDoubleAttribute_Value()
-  {
-    return (EAttribute)doubleAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDateAttribute()
-  {
-    return dateAttributeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDateAttribute_Value()
-  {
-    return (EAttribute)dateAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getNullAttribute()
-  {
-    return nullAttributeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getNullAttribute_Value()
-  {
-    return (EAttribute)nullAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getBooleanAttribute()
-  {
-    return booleanAttributeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getBooleanAttribute_Value()
-  {
-    return (EAttribute)booleanAttributeEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)anyAttributeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -714,6 +574,8 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
 
     valueEClass = createEClass(VALUE);
 
+    attributeEClass = createEClass(ATTRIBUTE);
+
     multiValueEClass = createEClass(MULTI_VALUE);
     createEReference(multiValueEClass, MULTI_VALUE__VALUES);
 
@@ -723,28 +585,11 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     containmentEClass = createEClass(CONTAINMENT);
     createEReference(containmentEClass, CONTAINMENT__VALUE);
 
-    attributeEClass = createEClass(ATTRIBUTE);
-
     enumAttributeEClass = createEClass(ENUM_ATTRIBUTE);
     createEReference(enumAttributeEClass, ENUM_ATTRIBUTE__VALUE);
 
-    stringAttributeEClass = createEClass(STRING_ATTRIBUTE);
-    createEAttribute(stringAttributeEClass, STRING_ATTRIBUTE__VALUE);
-
-    integerAttributeEClass = createEClass(INTEGER_ATTRIBUTE);
-    createEAttribute(integerAttributeEClass, INTEGER_ATTRIBUTE__VALUE);
-
-    doubleAttributeEClass = createEClass(DOUBLE_ATTRIBUTE);
-    createEAttribute(doubleAttributeEClass, DOUBLE_ATTRIBUTE__VALUE);
-
-    dateAttributeEClass = createEClass(DATE_ATTRIBUTE);
-    createEAttribute(dateAttributeEClass, DATE_ATTRIBUTE__VALUE);
-
-    nullAttributeEClass = createEClass(NULL_ATTRIBUTE);
-    createEAttribute(nullAttributeEClass, NULL_ATTRIBUTE__VALUE);
-
-    booleanAttributeEClass = createEClass(BOOLEAN_ATTRIBUTE);
-    createEAttribute(booleanAttributeEClass, BOOLEAN_ATTRIBUTE__VALUE);
+    anyAttributeEClass = createEClass(ANY_ATTRIBUTE);
+    createEAttribute(anyAttributeEClass, ANY_ATTRIBUTE__VALUE);
   }
 
   /**
@@ -777,17 +622,12 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
 
     // Add supertypes to classes
     customNameMappingEClass.getESuperTypes().add(this.getAnnotation());
+    attributeEClass.getESuperTypes().add(this.getValue());
     multiValueEClass.getESuperTypes().add(this.getValue());
     referenceEClass.getESuperTypes().add(this.getValue());
     containmentEClass.getESuperTypes().add(this.getValue());
-    attributeEClass.getESuperTypes().add(this.getValue());
     enumAttributeEClass.getESuperTypes().add(this.getAttribute());
-    stringAttributeEClass.getESuperTypes().add(this.getAttribute());
-    integerAttributeEClass.getESuperTypes().add(this.getAttribute());
-    doubleAttributeEClass.getESuperTypes().add(this.getAttribute());
-    dateAttributeEClass.getESuperTypes().add(this.getAttribute());
-    nullAttributeEClass.getESuperTypes().add(this.getAttribute());
-    booleanAttributeEClass.getESuperTypes().add(this.getAttribute());
+    anyAttributeEClass.getESuperTypes().add(this.getAttribute());
 
     // Initialize classes and features; add operations and parameters
     initEClass(factoryEClass, Factory.class, "Factory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -814,10 +654,12 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
 
     initEClass(newObjectEClass, NewObject.class, "NewObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNewObject_EClass(), ecorePackage.getEClass(), null, "eClass", null, 0, 1, NewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getNewObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, NewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNewObject_Name(), ecorePackage.getEJavaObject(), "name", null, 0, 1, NewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNewObject_Features(), this.getFeature(), null, "features", null, 0, -1, NewObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(multiValueEClass, MultiValue.class, "MultiValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMultiValue_Values(), this.getValue(), null, "values", null, 0, -1, MultiValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -828,28 +670,11 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     initEClass(containmentEClass, Containment.class, "Containment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getContainment_Value(), this.getNewObject(), null, "value", null, 0, 1, Containment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(enumAttributeEClass, EnumAttribute.class, "EnumAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEnumAttribute_Value(), ecorePackage.getEEnumLiteral(), null, "value", null, 0, 1, EnumAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(stringAttributeEClass, StringAttribute.class, "StringAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStringAttribute_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(integerAttributeEClass, IntegerAttribute.class, "IntegerAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIntegerAttribute_Value(), ecorePackage.getELong(), "value", null, 0, 1, IntegerAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(doubleAttributeEClass, DoubleAttribute.class, "DoubleAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDoubleAttribute_Value(), ecorePackage.getEDouble(), "value", null, 0, 1, DoubleAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(dateAttributeEClass, DateAttribute.class, "DateAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDateAttribute_Value(), ecorePackage.getEDate(), "value", null, 0, 1, DateAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(nullAttributeEClass, NullAttribute.class, "NullAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNullAttribute_Value(), ecorePackage.getEString(), "value", null, 0, 1, NullAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(booleanAttributeEClass, BooleanAttribute.class, "BooleanAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBooleanAttribute_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, BooleanAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(anyAttributeEClass, AnyAttribute.class, "AnyAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAnyAttribute_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, AnyAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

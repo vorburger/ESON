@@ -57,7 +57,7 @@ public class NewObjectImpl extends MinimalEObjectImpl.Container implements NewOb
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final Object NAME_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -67,7 +67,7 @@ public class NewObjectImpl extends MinimalEObjectImpl.Container implements NewOb
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected Object name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
@@ -148,7 +148,7 @@ public class NewObjectImpl extends MinimalEObjectImpl.Container implements NewOb
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public Object getName()
   {
     return name;
   }
@@ -158,9 +158,9 @@ public class NewObjectImpl extends MinimalEObjectImpl.Container implements NewOb
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setName(Object newName)
   {
-    String oldName = name;
+    Object oldName = name;
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, EFactoryPackage.NEW_OBJECT__NAME, oldName, name));
@@ -232,7 +232,7 @@ public class NewObjectImpl extends MinimalEObjectImpl.Container implements NewOb
         setEClass((EClass)newValue);
         return;
       case EFactoryPackage.NEW_OBJECT__NAME:
-        setName((String)newValue);
+        setName(newValue);
         return;
       case EFactoryPackage.NEW_OBJECT__FEATURES:
         getFeatures().clear();

@@ -19,14 +19,14 @@ import java.util.List;
 import javax.inject.Singleton;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eson.eFactory.EFactoryPackage;
+import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.impl.NodeModelBuilder;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
-import org.eclipse.emf.eson.eFactory.EFactoryPackage;
-import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 
 /**
  * Adds missing INode to new AST objects created in EFactoryAdapter.
@@ -57,22 +57,12 @@ public class NodeFixer {
 				associateNode(astElement, grammarAccess.getContainmentRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.NEW_OBJECT))
 				associateNode(astElement, grammarAccess.getNewObjectRule());
-			else if (astElement.eClass().equals(EFactoryPackage.Literals.STRING_ATTRIBUTE))
-				associateNode(astElement, grammarAccess.getStringAttributeRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.REFERENCE))
-				associateNode(astElement, grammarAccess.getNullAttributeRule());
+				associateNode(astElement, grammarAccess.getReferenceRule());
+			else if (astElement.eClass().equals(EFactoryPackage.Literals.ANY_ATTRIBUTE))
+				associateNode(astElement, grammarAccess.getAnyAttributeRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.ENUM_ATTRIBUTE))
 				associateNode(astElement, grammarAccess.getEnumAttributeRule());
-			else if (astElement.eClass().equals(EFactoryPackage.Literals.INTEGER_ATTRIBUTE))
-				associateNode(astElement, grammarAccess.getIntegerAttributeRule());
-			else if (astElement.eClass().equals(EFactoryPackage.Literals.BOOLEAN_ATTRIBUTE))
-				associateNode(astElement, grammarAccess.getBooleanAttributeRule());
-			else if (astElement.eClass().equals(EFactoryPackage.Literals.DATE_ATTRIBUTE))
-				associateNode(astElement, grammarAccess.getDateAttributeRule());
-			else if (astElement.eClass().equals(EFactoryPackage.Literals.DOUBLE_ATTRIBUTE))
-				associateNode(astElement, grammarAccess.getDoubleAttributeRule());
-			else if (astElement.eClass().equals(EFactoryPackage.Literals.NULL_ATTRIBUTE))
-				associateNode(astElement, grammarAccess.getNullAttributeRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.FACTORY))
 				associateNode(astElement, grammarAccess.getFactoryRule());
 			else

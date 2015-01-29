@@ -34,6 +34,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//NewObject/features"/>
     </genClasses>
     <genClasses ecoreClass="EFactory.ecore#//Value"/>
+    <genClasses ecoreClass="EFactory.ecore#//Attribute"/>
     <genClasses ecoreClass="EFactory.ecore#//MultiValue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//MultiValue/values"/>
     </genClasses>
@@ -43,27 +44,11 @@
     <genClasses ecoreClass="EFactory.ecore#//Containment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//Containment/value"/>
     </genClasses>
-    <genClasses ecoreClass="EFactory.ecore#//Attribute"/>
     <genClasses ecoreClass="EFactory.ecore#//EnumAttribute">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EFactory.ecore#//EnumAttribute/value"/>
     </genClasses>
-    <genClasses ecoreClass="EFactory.ecore#//StringAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EFactory.ecore#//StringAttribute/value"/>
-    </genClasses>
-    <genClasses ecoreClass="EFactory.ecore#//IntegerAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EFactory.ecore#//IntegerAttribute/value"/>
-    </genClasses>
-    <genClasses ecoreClass="EFactory.ecore#//DoubleAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EFactory.ecore#//DoubleAttribute/value"/>
-    </genClasses>
-    <genClasses ecoreClass="EFactory.ecore#//DateAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EFactory.ecore#//DateAttribute/value"/>
-    </genClasses>
-    <genClasses ecoreClass="EFactory.ecore#//NullAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EFactory.ecore#//NullAttribute/value"/>
-    </genClasses>
-    <genClasses ecoreClass="EFactory.ecore#//BooleanAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EFactory.ecore#//BooleanAttribute/value"/>
+    <genClasses ecoreClass="EFactory.ecore#//AnyAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EFactory.ecore#//AnyAttribute/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

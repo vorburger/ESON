@@ -129,6 +129,14 @@ public class EFactorySwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case EFactoryPackage.ATTRIBUTE:
+      {
+        Attribute attribute = (Attribute)theEObject;
+        T result = caseAttribute(attribute);
+        if (result == null) result = caseValue(attribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case EFactoryPackage.MULTI_VALUE:
       {
         MultiValue multiValue = (MultiValue)theEObject;
@@ -153,14 +161,6 @@ public class EFactorySwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case EFactoryPackage.ATTRIBUTE:
-      {
-        Attribute attribute = (Attribute)theEObject;
-        T result = caseAttribute(attribute);
-        if (result == null) result = caseValue(attribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case EFactoryPackage.ENUM_ATTRIBUTE:
       {
         EnumAttribute enumAttribute = (EnumAttribute)theEObject;
@@ -170,57 +170,12 @@ public class EFactorySwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case EFactoryPackage.STRING_ATTRIBUTE:
+      case EFactoryPackage.ANY_ATTRIBUTE:
       {
-        StringAttribute stringAttribute = (StringAttribute)theEObject;
-        T result = caseStringAttribute(stringAttribute);
-        if (result == null) result = caseAttribute(stringAttribute);
-        if (result == null) result = caseValue(stringAttribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EFactoryPackage.INTEGER_ATTRIBUTE:
-      {
-        IntegerAttribute integerAttribute = (IntegerAttribute)theEObject;
-        T result = caseIntegerAttribute(integerAttribute);
-        if (result == null) result = caseAttribute(integerAttribute);
-        if (result == null) result = caseValue(integerAttribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EFactoryPackage.DOUBLE_ATTRIBUTE:
-      {
-        DoubleAttribute doubleAttribute = (DoubleAttribute)theEObject;
-        T result = caseDoubleAttribute(doubleAttribute);
-        if (result == null) result = caseAttribute(doubleAttribute);
-        if (result == null) result = caseValue(doubleAttribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EFactoryPackage.DATE_ATTRIBUTE:
-      {
-        DateAttribute dateAttribute = (DateAttribute)theEObject;
-        T result = caseDateAttribute(dateAttribute);
-        if (result == null) result = caseAttribute(dateAttribute);
-        if (result == null) result = caseValue(dateAttribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EFactoryPackage.NULL_ATTRIBUTE:
-      {
-        NullAttribute nullAttribute = (NullAttribute)theEObject;
-        T result = caseNullAttribute(nullAttribute);
-        if (result == null) result = caseAttribute(nullAttribute);
-        if (result == null) result = caseValue(nullAttribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EFactoryPackage.BOOLEAN_ATTRIBUTE:
-      {
-        BooleanAttribute booleanAttribute = (BooleanAttribute)theEObject;
-        T result = caseBooleanAttribute(booleanAttribute);
-        if (result == null) result = caseAttribute(booleanAttribute);
-        if (result == null) result = caseValue(booleanAttribute);
+        AnyAttribute anyAttribute = (AnyAttribute)theEObject;
+        T result = caseAnyAttribute(anyAttribute);
+        if (result == null) result = caseAttribute(anyAttribute);
+        if (result == null) result = caseValue(anyAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -357,6 +312,22 @@ public class EFactorySwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAttribute(Attribute object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Multi Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -405,22 +376,6 @@ public class EFactorySwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAttribute(Attribute object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Enum Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -437,97 +392,17 @@ public class EFactorySwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>String Attribute</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Any Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Attribute</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Any Attribute</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseStringAttribute(StringAttribute object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Integer Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Integer Attribute</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIntegerAttribute(IntegerAttribute object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Double Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Double Attribute</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDoubleAttribute(DoubleAttribute object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Date Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Date Attribute</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDateAttribute(DateAttribute object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Null Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Null Attribute</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNullAttribute(NullAttribute object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean Attribute</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseBooleanAttribute(BooleanAttribute object)
+  public T caseAnyAttribute(AnyAttribute object)
   {
     return null;
   }

@@ -12,53 +12,26 @@
  */
 package org.eclipse.emf.eson.conversion;
 
-import java.util.Date;
-
-import org.eclipse.xtext.common.services.DefaultTerminalConverters;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
+import org.eclipse.xtext.conversion.impl.AbstractDeclarativeValueConverterService;
 import org.eclipse.xtext.conversion.impl.AbstractIDValueConverter;
 
 import com.google.inject.Inject;
 
-public class TerminalConverters extends DefaultTerminalConverters {
-
-	@Inject
-	private LONGValueConverter longValueConverter;
-	
-	@ValueConverter(rule = "LONG")
-	public IValueConverter<Long> LONG() {
-		return longValueConverter;
-	}
+public class TerminalConverters extends AbstractDeclarativeValueConverterService {
 
 	@Inject
 	private AbstractIDValueConverter idValueConverter;
+	
+	@ValueConverter(rule = "ID")
+	public IValueConverter<String> ID() {
+		return idValueConverter;
+	}
 	
 	@ValueConverter(rule = "ID_WITHDOT")
 	public IValueConverter<String> ID_WITHDOT() {
 		return idValueConverter;
 	}
 
-	@Inject
-	private DOUBLEValueConverter doubleValueConverter;
-	
-	@ValueConverter(rule = "DOUBLE")
-	public IValueConverter<Double> DOUBLE() {
-		return doubleValueConverter;
-	}
-
-	@Inject
-	private DATEValueConverter dateValueConverter;
-	
-	@ValueConverter(rule = "DATE")
-	public IValueConverter<Date> DATE() {
-		return dateValueConverter;
-	}
-
-	@Inject BOOLEANValueConverter booleanValueConverter;
-
-	@ValueConverter(rule = "BOOLEAN")
-	public IValueConverter<Boolean> BOOLEAN() {
-		return booleanValueConverter;
-	}
 }

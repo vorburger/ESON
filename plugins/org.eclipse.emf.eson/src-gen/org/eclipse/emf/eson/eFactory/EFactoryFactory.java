@@ -95,6 +95,15 @@ public interface EFactoryFactory extends EFactory
   Value createValue();
 
   /**
+   * Returns a new object of class '<em>Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Attribute</em>'.
+   * @generated
+   */
+  Attribute createAttribute();
+
+  /**
    * Returns a new object of class '<em>Multi Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -122,15 +131,6 @@ public interface EFactoryFactory extends EFactory
   Containment createContainment();
 
   /**
-   * Returns a new object of class '<em>Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Attribute</em>'.
-   * @generated
-   */
-  Attribute createAttribute();
-
-  /**
    * Returns a new object of class '<em>Enum Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -140,58 +140,13 @@ public interface EFactoryFactory extends EFactory
   EnumAttribute createEnumAttribute();
 
   /**
-   * Returns a new object of class '<em>String Attribute</em>'.
+   * Returns a new object of class '<em>Any Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Attribute</em>'.
+   * @return a new object of class '<em>Any Attribute</em>'.
    * @generated
    */
-  StringAttribute createStringAttribute();
-
-  /**
-   * Returns a new object of class '<em>Integer Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Integer Attribute</em>'.
-   * @generated
-   */
-  IntegerAttribute createIntegerAttribute();
-
-  /**
-   * Returns a new object of class '<em>Double Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Double Attribute</em>'.
-   * @generated
-   */
-  DoubleAttribute createDoubleAttribute();
-
-  /**
-   * Returns a new object of class '<em>Date Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Date Attribute</em>'.
-   * @generated
-   */
-  DateAttribute createDateAttribute();
-
-  /**
-   * Returns a new object of class '<em>Null Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Null Attribute</em>'.
-   * @generated
-   */
-  NullAttribute createNullAttribute();
-
-  /**
-   * Returns a new object of class '<em>Boolean Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean Attribute</em>'.
-   * @generated
-   */
-  BooleanAttribute createBooleanAttribute();
+  AnyAttribute createAnyAttribute();
 
   /**
    * Returns the package supported by this factory.

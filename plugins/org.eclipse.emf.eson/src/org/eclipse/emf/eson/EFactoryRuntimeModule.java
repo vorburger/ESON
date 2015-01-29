@@ -12,10 +12,7 @@
  */
 package org.eclipse.emf.eson;
 
-import java.text.SimpleDateFormat;
-
 import org.apache.log4j.Logger;
-import org.eclipse.emf.eson.conversion.DATEValueConverter;
 import org.eclipse.emf.eson.conversion.TerminalConverters;
 import org.eclipse.emf.eson.resource.EFactoryDerivedStateComputer;
 import org.eclipse.emf.eson.resource.EFactoryLocationInFileProvider;
@@ -53,9 +50,6 @@ public class EFactoryRuntimeModule extends AbstractEFactoryRuntimeModule {
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
-		binder.bind(SimpleDateFormat.class)
-				.annotatedWith(Names.named(DATEValueConverter.DATE_FORMAT_KEY))
-				.toInstance(new SimpleDateFormat("MM.dd.yyyy"));
 		binder.bind(IReferableElementsUnloader.class).to(GenericUnloader.class);
 	}
 	

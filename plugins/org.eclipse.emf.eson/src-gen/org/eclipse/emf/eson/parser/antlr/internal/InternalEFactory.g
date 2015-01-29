@@ -425,19 +425,19 @@ ruleNewObject returns [EObject current=null]
 )
 )(
 (
-		{ 
-	        newCompositeNode(grammarAccess.getNewObjectAccess().getNameValidIDParserRuleCall_1_0()); 
-	    }
-		lv_name_1_0=ruleValidID		{
+		lv_name_1_0=RULE_ANY
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getNewObjectAccess().getNameANYTerminalRuleCall_1_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getNewObjectRule());
+	            $current = createModelElement(grammarAccess.getNewObjectRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ValidID");
-	        afterParserOrEnumRuleCall();
+        		"ANY");
 	    }
 
 )
@@ -528,6 +528,46 @@ ruleValue returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 ))
+;
+
+
+
+
+
+// Entry rule entryRuleAttribute
+entryRuleAttribute returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAttributeRule()); }
+	 iv_ruleAttribute=ruleAttribute 
+	 { $current=$iv_ruleAttribute.current; } 
+	 EOF 
+;
+
+// Rule Attribute
+ruleAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getAttributeAccess().getEnumAttributeParserRuleCall_0()); 
+    }
+    this_EnumAttribute_0=ruleEnumAttribute
+    { 
+        $current = $this_EnumAttribute_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getAttributeAccess().getAnyAttributeParserRuleCall_1()); 
+    }
+    this_AnyAttribute_1=ruleAnyAttribute
+    { 
+        $current = $this_AnyAttribute_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
 ;
 
 
@@ -662,96 +702,6 @@ ruleContainment returns [EObject current=null]
 
 
 
-// Entry rule entryRuleAttribute
-entryRuleAttribute returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getAttributeRule()); }
-	 iv_ruleAttribute=ruleAttribute 
-	 { $current=$iv_ruleAttribute.current; } 
-	 EOF 
-;
-
-// Rule Attribute
-ruleAttribute returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getEnumAttributeParserRuleCall_0()); 
-    }
-    this_EnumAttribute_0=ruleEnumAttribute
-    { 
-        $current = $this_EnumAttribute_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getStringAttributeParserRuleCall_1()); 
-    }
-    this_StringAttribute_1=ruleStringAttribute
-    { 
-        $current = $this_StringAttribute_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getIntegerAttributeParserRuleCall_2()); 
-    }
-    this_IntegerAttribute_2=ruleIntegerAttribute
-    { 
-        $current = $this_IntegerAttribute_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getBooleanAttributeParserRuleCall_3()); 
-    }
-    this_BooleanAttribute_3=ruleBooleanAttribute
-    { 
-        $current = $this_BooleanAttribute_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getDoubleAttributeParserRuleCall_4()); 
-    }
-    this_DoubleAttribute_4=ruleDoubleAttribute
-    { 
-        $current = $this_DoubleAttribute_4.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getDateAttributeParserRuleCall_5()); 
-    }
-    this_DateAttribute_5=ruleDateAttribute
-    { 
-        $current = $this_DateAttribute_5.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getNullAttributeParserRuleCall_6()); 
-    }
-    this_NullAttribute_6=ruleNullAttribute
-    { 
-        $current = $this_NullAttribute_6.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
 // Entry rule entryRuleEnumAttribute
 entryRuleEnumAttribute returns [EObject current=null] 
 	:
@@ -790,227 +740,35 @@ ruleEnumAttribute returns [EObject current=null]
 
 
 
-// Entry rule entryRuleStringAttribute
-entryRuleStringAttribute returns [EObject current=null] 
+// Entry rule entryRuleAnyAttribute
+entryRuleAnyAttribute returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getStringAttributeRule()); }
-	 iv_ruleStringAttribute=ruleStringAttribute 
-	 { $current=$iv_ruleStringAttribute.current; } 
+	{ newCompositeNode(grammarAccess.getAnyAttributeRule()); }
+	 iv_ruleAnyAttribute=ruleAnyAttribute 
+	 { $current=$iv_ruleAnyAttribute.current; } 
 	 EOF 
 ;
 
-// Rule StringAttribute
-ruleStringAttribute returns [EObject current=null] 
+// Rule AnyAttribute
+ruleAnyAttribute returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (
 (
-		lv_value_0_0=RULE_STRING
+		lv_value_0_0=RULE_ANY
 		{
-			newLeafNode(lv_value_0_0, grammarAccess.getStringAttributeAccess().getValueSTRINGTerminalRuleCall_0()); 
+			newLeafNode(lv_value_0_0, grammarAccess.getAnyAttributeAccess().getValueANYTerminalRuleCall_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getStringAttributeRule());
+	            $current = createModelElement(grammarAccess.getAnyAttributeRule());
 	        }
        		setWithLastConsumed(
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"STRING");
-	    }
-
-)
-)
-;
-
-
-
-
-
-// Entry rule entryRuleIntegerAttribute
-entryRuleIntegerAttribute returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getIntegerAttributeRule()); }
-	 iv_ruleIntegerAttribute=ruleIntegerAttribute 
-	 { $current=$iv_ruleIntegerAttribute.current; } 
-	 EOF 
-;
-
-// Rule IntegerAttribute
-ruleIntegerAttribute returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		lv_value_0_0=RULE_LONG
-		{
-			newLeafNode(lv_value_0_0, grammarAccess.getIntegerAttributeAccess().getValueLONGTerminalRuleCall_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getIntegerAttributeRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"value",
-        		lv_value_0_0, 
-        		"LONG");
-	    }
-
-)
-)
-;
-
-
-
-
-
-// Entry rule entryRuleDoubleAttribute
-entryRuleDoubleAttribute returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getDoubleAttributeRule()); }
-	 iv_ruleDoubleAttribute=ruleDoubleAttribute 
-	 { $current=$iv_ruleDoubleAttribute.current; } 
-	 EOF 
-;
-
-// Rule DoubleAttribute
-ruleDoubleAttribute returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		lv_value_0_0=RULE_DOUBLE
-		{
-			newLeafNode(lv_value_0_0, grammarAccess.getDoubleAttributeAccess().getValueDOUBLETerminalRuleCall_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getDoubleAttributeRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"value",
-        		lv_value_0_0, 
-        		"DOUBLE");
-	    }
-
-)
-)
-;
-
-
-
-
-
-// Entry rule entryRuleDateAttribute
-entryRuleDateAttribute returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getDateAttributeRule()); }
-	 iv_ruleDateAttribute=ruleDateAttribute 
-	 { $current=$iv_ruleDateAttribute.current; } 
-	 EOF 
-;
-
-// Rule DateAttribute
-ruleDateAttribute returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		lv_value_0_0=RULE_DATE
-		{
-			newLeafNode(lv_value_0_0, grammarAccess.getDateAttributeAccess().getValueDATETerminalRuleCall_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getDateAttributeRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"value",
-        		lv_value_0_0, 
-        		"DATE");
-	    }
-
-)
-)
-;
-
-
-
-
-
-// Entry rule entryRuleNullAttribute
-entryRuleNullAttribute returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getNullAttributeRule()); }
-	 iv_ruleNullAttribute=ruleNullAttribute 
-	 { $current=$iv_ruleNullAttribute.current; } 
-	 EOF 
-;
-
-// Rule NullAttribute
-ruleNullAttribute returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		lv_value_0_0=	'NULL' 
-    {
-        newLeafNode(lv_value_0_0, grammarAccess.getNullAttributeAccess().getValueNULLKeyword_0());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getNullAttributeRule());
-	        }
-       		setWithLastConsumed($current, "value", lv_value_0_0, "NULL");
-	    }
-
-)
-)
-;
-
-
-
-
-
-// Entry rule entryRuleBooleanAttribute
-entryRuleBooleanAttribute returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getBooleanAttributeRule()); }
-	 iv_ruleBooleanAttribute=ruleBooleanAttribute 
-	 { $current=$iv_ruleBooleanAttribute.current; } 
-	 EOF 
-;
-
-// Rule BooleanAttribute
-ruleBooleanAttribute returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		lv_value_0_0=RULE_BOOLEAN
-		{
-			newLeafNode(lv_value_0_0, grammarAccess.getBooleanAttributeAccess().getValueBOOLEANTerminalRuleCall_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getBooleanAttributeRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"value",
-        		lv_value_0_0, 
-        		"BOOLEAN");
+        		"ANY");
 	    }
 
 )
@@ -1073,16 +831,12 @@ ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_0()); 
-    }
-    this_ValidID_0=ruleValidID    {
-		$current.merge(this_ValidID_0);
+(    this_ID_0=RULE_ID    {
+		$current.merge(this_ID_0);
     }
 
     { 
-        afterParserOrEnumRuleCall();
+    newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
     }
 (((
 	'.' 
@@ -1092,16 +846,12 @@ ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
     }
-)
-    { 
-        newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_1_1()); 
-    }
-    this_ValidID_2=ruleValidID    {
-		$current.merge(this_ValidID_2);
+)    this_ID_2=RULE_ID    {
+		$current.merge(this_ID_2);
     }
 
     { 
-        afterParserOrEnumRuleCall();
+    newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
     }
 )*)
     ;
@@ -1110,53 +860,11 @@ ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 
 
 
-// Entry rule entryRuleValidID
-entryRuleValidID returns [String current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getValidIDRule()); } 
-	 iv_ruleValidID=ruleValidID 
-	 { $current=$iv_ruleValidID.current.getText(); }  
-	 EOF 
-;
-
-// Rule ValidID
-ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(    this_ID_0=RULE_ID    {
-		$current.merge(this_ID_0);
-    }
-
-    { 
-    newLeafNode(this_ID_0, grammarAccess.getValidIDAccess().getIDTerminalRuleCall_0()); 
-    }
-
-    |    this_LONG_1=RULE_LONG    {
-		$current.merge(this_LONG_1);
-    }
-
-    { 
-    newLeafNode(this_LONG_1, grammarAccess.getValidIDAccess().getLONGTerminalRuleCall_1()); 
-    }
-)
-    ;
-
-
-
-
-
-RULE_BOOLEAN : ('true'|'false');
-
-RULE_LONG : '-'? ('0'..'9')+;
-
-RULE_DOUBLE : '-'? ('0'..'9')+ '.' ('0'..'9')+;
-
-RULE_DATE : ('0'..'9')+ '.' ('0'..'9')+ '.' ('0'..'9')+;
-
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')+;
 
-RULE_INT : ('0'..'9')+;
+RULE_ID_WITHDOT : '^'? ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9'|'.')+;
+
+RULE_ANY : (RULE_STRING|RULE_ID_WITHDOT);
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 

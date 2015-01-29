@@ -326,6 +326,25 @@ public interface EFactoryPackage extends EPackage
   int VALUE_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.AttributeImpl <em>Attribute</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.emf.eson.eFactory.impl.AttributeImpl
+   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAttribute()
+   * @generated
+   */
+  int ATTRIBUTE = 8;
+
+  /**
+   * The number of structural features of the '<em>Attribute</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.MultiValueImpl <em>Multi Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -333,7 +352,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getMultiValue()
    * @generated
    */
-  int MULTI_VALUE = 8;
+  int MULTI_VALUE = 9;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -361,7 +380,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getReference()
    * @generated
    */
-  int REFERENCE = 9;
+  int REFERENCE = 10;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -389,7 +408,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getContainment()
    * @generated
    */
-  int CONTAINMENT = 10;
+  int CONTAINMENT = 11;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -408,25 +427,6 @@ public interface EFactoryPackage extends EPackage
    * @ordered
    */
   int CONTAINMENT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.AttributeImpl <em>Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.AttributeImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAttribute()
-   * @generated
-   */
-  int ATTRIBUTE = 11;
-
-  /**
-   * The number of structural features of the '<em>Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.EnumAttributeImpl <em>Enum Attribute</em>}' class.
@@ -457,14 +457,14 @@ public interface EFactoryPackage extends EPackage
   int ENUM_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.StringAttributeImpl <em>String Attribute</em>}' class.
+   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.AnyAttributeImpl <em>Any Attribute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.StringAttributeImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getStringAttribute()
+   * @see org.eclipse.emf.eson.eFactory.impl.AnyAttributeImpl
+   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAnyAttribute()
    * @generated
    */
-  int STRING_ATTRIBUTE = 13;
+  int ANY_ATTRIBUTE = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -473,156 +473,16 @@ public interface EFactoryPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 0;
+  int ANY_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>String Attribute</em>' class.
+   * The number of structural features of the '<em>Any Attribute</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.IntegerAttributeImpl <em>Integer Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.IntegerAttributeImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getIntegerAttribute()
-   * @generated
-   */
-  int INTEGER_ATTRIBUTE = 14;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTEGER_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Integer Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTEGER_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.DoubleAttributeImpl <em>Double Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.DoubleAttributeImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getDoubleAttribute()
-   * @generated
-   */
-  int DOUBLE_ATTRIBUTE = 15;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DOUBLE_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Double Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DOUBLE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.DateAttributeImpl <em>Date Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.DateAttributeImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getDateAttribute()
-   * @generated
-   */
-  int DATE_ATTRIBUTE = 16;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Date Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.NullAttributeImpl <em>Null Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.NullAttributeImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getNullAttribute()
-   * @generated
-   */
-  int NULL_ATTRIBUTE = 17;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NULL_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Null Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NULL_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.BooleanAttributeImpl <em>Boolean Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.BooleanAttributeImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getBooleanAttribute()
-   * @generated
-   */
-  int BOOLEAN_ATTRIBUTE = 18;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Boolean Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
+  int ANY_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
 
 
   /**
@@ -849,6 +709,16 @@ public interface EFactoryPackage extends EPackage
   EClass getValue();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.Attribute <em>Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Attribute</em>'.
+   * @see org.eclipse.emf.eson.eFactory.Attribute
+   * @generated
+   */
+  EClass getAttribute();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.MultiValue <em>Multi Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -912,16 +782,6 @@ public interface EFactoryPackage extends EPackage
   EReference getContainment_Value();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.Attribute <em>Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Attribute</em>'.
-   * @see org.eclipse.emf.eson.eFactory.Attribute
-   * @generated
-   */
-  EClass getAttribute();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.EnumAttribute <em>Enum Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -943,130 +803,25 @@ public interface EFactoryPackage extends EPackage
   EReference getEnumAttribute_Value();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.StringAttribute <em>String Attribute</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.AnyAttribute <em>Any Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Attribute</em>'.
-   * @see org.eclipse.emf.eson.eFactory.StringAttribute
+   * @return the meta object for class '<em>Any Attribute</em>'.
+   * @see org.eclipse.emf.eson.eFactory.AnyAttribute
    * @generated
    */
-  EClass getStringAttribute();
+  EClass getAnyAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.emf.eson.eFactory.StringAttribute#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.emf.eson.eFactory.AnyAttribute#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.eclipse.emf.eson.eFactory.StringAttribute#getValue()
-   * @see #getStringAttribute()
+   * @see org.eclipse.emf.eson.eFactory.AnyAttribute#getValue()
+   * @see #getAnyAttribute()
    * @generated
    */
-  EAttribute getStringAttribute_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.IntegerAttribute <em>Integer Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Integer Attribute</em>'.
-   * @see org.eclipse.emf.eson.eFactory.IntegerAttribute
-   * @generated
-   */
-  EClass getIntegerAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.emf.eson.eFactory.IntegerAttribute#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.eclipse.emf.eson.eFactory.IntegerAttribute#getValue()
-   * @see #getIntegerAttribute()
-   * @generated
-   */
-  EAttribute getIntegerAttribute_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.DoubleAttribute <em>Double Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Double Attribute</em>'.
-   * @see org.eclipse.emf.eson.eFactory.DoubleAttribute
-   * @generated
-   */
-  EClass getDoubleAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.emf.eson.eFactory.DoubleAttribute#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.eclipse.emf.eson.eFactory.DoubleAttribute#getValue()
-   * @see #getDoubleAttribute()
-   * @generated
-   */
-  EAttribute getDoubleAttribute_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.DateAttribute <em>Date Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Date Attribute</em>'.
-   * @see org.eclipse.emf.eson.eFactory.DateAttribute
-   * @generated
-   */
-  EClass getDateAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.emf.eson.eFactory.DateAttribute#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.eclipse.emf.eson.eFactory.DateAttribute#getValue()
-   * @see #getDateAttribute()
-   * @generated
-   */
-  EAttribute getDateAttribute_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.NullAttribute <em>Null Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Null Attribute</em>'.
-   * @see org.eclipse.emf.eson.eFactory.NullAttribute
-   * @generated
-   */
-  EClass getNullAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.emf.eson.eFactory.NullAttribute#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.eclipse.emf.eson.eFactory.NullAttribute#getValue()
-   * @see #getNullAttribute()
-   * @generated
-   */
-  EAttribute getNullAttribute_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.BooleanAttribute <em>Boolean Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Boolean Attribute</em>'.
-   * @see org.eclipse.emf.eson.eFactory.BooleanAttribute
-   * @generated
-   */
-  EClass getBooleanAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.emf.eson.eFactory.BooleanAttribute#isValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.eclipse.emf.eson.eFactory.BooleanAttribute#isValue()
-   * @see #getBooleanAttribute()
-   * @generated
-   */
-  EAttribute getBooleanAttribute_Value();
+  EAttribute getAnyAttribute_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1276,6 +1031,16 @@ public interface EFactoryPackage extends EPackage
     EClass VALUE = eINSTANCE.getValue();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.AttributeImpl <em>Attribute</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.emf.eson.eFactory.impl.AttributeImpl
+     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAttribute()
+     * @generated
+     */
+    EClass ATTRIBUTE = eINSTANCE.getAttribute();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.MultiValueImpl <em>Multi Value</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1330,16 +1095,6 @@ public interface EFactoryPackage extends EPackage
     EReference CONTAINMENT__VALUE = eINSTANCE.getContainment_Value();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.AttributeImpl <em>Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.AttributeImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAttribute()
-     * @generated
-     */
-    EClass ATTRIBUTE = eINSTANCE.getAttribute();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.EnumAttributeImpl <em>Enum Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1358,14 +1113,14 @@ public interface EFactoryPackage extends EPackage
     EReference ENUM_ATTRIBUTE__VALUE = eINSTANCE.getEnumAttribute_Value();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.StringAttributeImpl <em>String Attribute</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.AnyAttributeImpl <em>Any Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.StringAttributeImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getStringAttribute()
+     * @see org.eclipse.emf.eson.eFactory.impl.AnyAttributeImpl
+     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAnyAttribute()
      * @generated
      */
-    EClass STRING_ATTRIBUTE = eINSTANCE.getStringAttribute();
+    EClass ANY_ATTRIBUTE = eINSTANCE.getAnyAttribute();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -1373,97 +1128,7 @@ public interface EFactoryPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute STRING_ATTRIBUTE__VALUE = eINSTANCE.getStringAttribute_Value();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.IntegerAttributeImpl <em>Integer Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.IntegerAttributeImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getIntegerAttribute()
-     * @generated
-     */
-    EClass INTEGER_ATTRIBUTE = eINSTANCE.getIntegerAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INTEGER_ATTRIBUTE__VALUE = eINSTANCE.getIntegerAttribute_Value();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.DoubleAttributeImpl <em>Double Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.DoubleAttributeImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getDoubleAttribute()
-     * @generated
-     */
-    EClass DOUBLE_ATTRIBUTE = eINSTANCE.getDoubleAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DOUBLE_ATTRIBUTE__VALUE = eINSTANCE.getDoubleAttribute_Value();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.DateAttributeImpl <em>Date Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.DateAttributeImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getDateAttribute()
-     * @generated
-     */
-    EClass DATE_ATTRIBUTE = eINSTANCE.getDateAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DATE_ATTRIBUTE__VALUE = eINSTANCE.getDateAttribute_Value();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.NullAttributeImpl <em>Null Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.NullAttributeImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getNullAttribute()
-     * @generated
-     */
-    EClass NULL_ATTRIBUTE = eINSTANCE.getNullAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute NULL_ATTRIBUTE__VALUE = eINSTANCE.getNullAttribute_Value();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.BooleanAttributeImpl <em>Boolean Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.BooleanAttributeImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getBooleanAttribute()
-     * @generated
-     */
-    EClass BOOLEAN_ATTRIBUTE = eINSTANCE.getBooleanAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BOOLEAN_ATTRIBUTE__VALUE = eINSTANCE.getBooleanAttribute_Value();
+    EAttribute ANY_ATTRIBUTE__VALUE = eINSTANCE.getAnyAttribute_Value();
 
   }
 

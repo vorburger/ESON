@@ -1,4 +1,4 @@
-grammar org.eclipse.emf.eson.EFactory with org.eclipse.xtext.common.Terminals
+grammar org.eclipse.emf.eson.EFactory hidden(WS, ML_COMMENT, SL_COMMENT)
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
@@ -43,7 +43,9 @@ NewObject:
 
 Value:
 	// The two (!) Syntactic Predicates => are needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-	MultiValue | EnumAttribute | AnyAttribute | =>Containment | =>Reference;
+	MultiValue | Attribute | =>Containment | =>Reference;
+
+Attribute: EnumAttribute | AnyAttribute;
 
 MultiValue:
 	{MultiValue} "[" (values += Value)* "]" ;
@@ -71,3 +73,20 @@ QualifiedName: ID (=>'.' ID)*;
 terminal ID         : '^'? ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')+ ;
 terminal ID_WITHDOT : '^'? ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9'|'.')+ ;
 terminal ANY returns ecore::EJavaObject: STRING | ID_WITHDOT; 
+
+
+// Copy/pasted from org.eclipse.xtext.common.Terminals (partial) 
+// We do this, instead of just "grammar .. with org.eclipse.xtext.common.Terminals" on top
+// just to avoid Xtext generation errors such as "The following token definitions can never be matched because prior tokens match the same input: RULE_INT,RULE_STRING"
+
+terminal STRING	: 
+			'"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"' |
+			"'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )* "'"
+		; 
+		
+terminal ML_COMMENT	: '/*' -> '*/';
+terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal WS			: (' '|'\t'|'\r'|'\n')+;
+
+terminal ANY_OTHER: .;

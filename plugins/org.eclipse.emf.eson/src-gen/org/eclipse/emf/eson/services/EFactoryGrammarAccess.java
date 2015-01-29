@@ -12,7 +12,6 @@ import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
 import org.eclipse.xtext.service.AbstractElementFinder.*;
 
-import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 
 @Singleton
 public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
@@ -231,7 +230,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cEClassEClassCrossReference_0_0 = (CrossReference)cEClassAssignment_0.eContents().get(0);
 		private final RuleCall cEClassEClassQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEClassEClassCrossReference_0_0.eContents().get(1);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameANYTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cFeaturesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cFeaturesFeatureParserRuleCall_3_0 = (RuleCall)cFeaturesAssignment_3.eContents().get(0);
@@ -242,10 +241,10 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//// the EFactoryJavaValidator flags it up if it's really missing
 		//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
 		//NewObject:
-		//	eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}";
+		//	eClass=[ecore::EClass|QualifiedName] name=ANY? "{" features+=Feature* "}";
 		public ParserRule getRule() { return rule; }
 
-		//eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}"
+		//eClass=[ecore::EClass|QualifiedName] name=ANY? "{" features+=Feature* "}"
 		public Group getGroup() { return cGroup; }
 
 		//eClass=[ecore::EClass|QualifiedName]
@@ -257,11 +256,11 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getEClassEClassQualifiedNameParserRuleCall_0_0_1() { return cEClassEClassQualifiedNameParserRuleCall_0_0_1; }
 
-		//name=ValidID?
+		//name=ANY?
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
-		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
+		//ANY
+		public RuleCall getNameANYTerminalRuleCall_1_0() { return cNameANYTerminalRuleCall_1_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -304,6 +303,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 
 		//=> Reference
 		public RuleCall getReferenceParserRuleCall_3() { return cReferenceParserRuleCall_3; }
+	}
+
+	public class AttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Attribute");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cEnumAttributeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cAnyAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Attribute:
+		//	EnumAttribute | AnyAttribute;
+		public ParserRule getRule() { return rule; }
+
+		//EnumAttribute | AnyAttribute
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//EnumAttribute
+		public RuleCall getEnumAttributeParserRuleCall_0() { return cEnumAttributeParserRuleCall_0; }
+
+		//AnyAttribute
+		public RuleCall getAnyAttributeParserRuleCall_1() { return cAnyAttributeParserRuleCall_1; }
 	}
 
 	public class MultiValueElements extends AbstractParserRuleElementFinder {
@@ -381,47 +400,6 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueNewObjectParserRuleCall_0() { return cValueNewObjectParserRuleCall_0; }
 	}
 
-	public class AttributeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Attribute");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cEnumAttributeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cStringAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cIntegerAttributeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cBooleanAttributeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cDoubleAttributeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cDateAttributeParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cNullAttributeParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		
-		//Attribute:
-		//	EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute |
-		//	NullAttribute;
-		public ParserRule getRule() { return rule; }
-
-		//EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute | NullAttribute
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//EnumAttribute
-		public RuleCall getEnumAttributeParserRuleCall_0() { return cEnumAttributeParserRuleCall_0; }
-
-		//StringAttribute
-		public RuleCall getStringAttributeParserRuleCall_1() { return cStringAttributeParserRuleCall_1; }
-
-		//IntegerAttribute
-		public RuleCall getIntegerAttributeParserRuleCall_2() { return cIntegerAttributeParserRuleCall_2; }
-
-		//BooleanAttribute
-		public RuleCall getBooleanAttributeParserRuleCall_3() { return cBooleanAttributeParserRuleCall_3; }
-
-		//DoubleAttribute
-		public RuleCall getDoubleAttributeParserRuleCall_4() { return cDoubleAttributeParserRuleCall_4; }
-
-		//DateAttribute
-		public RuleCall getDateAttributeParserRuleCall_5() { return cDateAttributeParserRuleCall_5; }
-
-		//NullAttribute
-		public RuleCall getNullAttributeParserRuleCall_6() { return cNullAttributeParserRuleCall_6; }
-	}
-
 	public class EnumAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EnumAttribute");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -430,6 +408,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cValueEEnumLiteralCrossReference_1_0 = (CrossReference)cValueAssignment_1.eContents().get(0);
 		private final RuleCall cValueEEnumLiteralIDTerminalRuleCall_1_0_1 = (RuleCall)cValueEEnumLiteralCrossReference_1_0.eContents().get(1);
 		
+		//// TODO better for the lexer/parser if we use another character than ":" to mark enums.. say # (like Symbols in Smalltalk) ?
 		//EnumAttribute:
 		//	":" value=[ecore::EEnumLiteral];
 		public ParserRule getRule() { return rule; }
@@ -450,101 +429,20 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueEEnumLiteralIDTerminalRuleCall_1_0_1() { return cValueEEnumLiteralIDTerminalRuleCall_1_0_1; }
 	}
 
-	public class StringAttributeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringAttribute");
+	public class AnyAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AnyAttribute");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueANYTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
-		//// TODO Attribute Types should later not be hard-coded here anymore.. Grammar should be more open & generic.
-		//StringAttribute:
-		//	value=STRING;
+		//AnyAttribute:
+		//	value=ANY;
 		public ParserRule getRule() { return rule; }
 
-		//value=STRING
+		//value=ANY
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_0() { return cValueSTRINGTerminalRuleCall_0; }
-	}
-
-	public class IntegerAttributeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntegerAttribute");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueLONGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//IntegerAttribute:
-		//	value=LONG;
-		public ParserRule getRule() { return rule; }
-
-		//value=LONG
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//LONG
-		public RuleCall getValueLONGTerminalRuleCall_0() { return cValueLONGTerminalRuleCall_0; }
-	}
-
-	public class DoubleAttributeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DoubleAttribute");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueDOUBLETerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//DoubleAttribute:
-		//	value=DOUBLE;
-		public ParserRule getRule() { return rule; }
-
-		//value=DOUBLE
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//DOUBLE
-		public RuleCall getValueDOUBLETerminalRuleCall_0() { return cValueDOUBLETerminalRuleCall_0; }
-	}
-
-	public class DateAttributeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DateAttribute");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueDATETerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//DateAttribute:
-		//	value=DATE;
-		public ParserRule getRule() { return rule; }
-
-		//value=DATE
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//DATE
-		public RuleCall getValueDATETerminalRuleCall_0() { return cValueDATETerminalRuleCall_0; }
-	}
-
-	public class NullAttributeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NullAttribute");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final Keyword cValueNULLKeyword_0 = (Keyword)cValueAssignment.eContents().get(0);
-		
-		//NullAttribute:
-		//	value="NULL";
-		public ParserRule getRule() { return rule; }
-
-		//value="NULL"
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//"NULL"
-		public Keyword getValueNULLKeyword_0() { return cValueNULLKeyword_0; }
-	}
-
-	public class BooleanAttributeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanAttribute");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueBOOLEANTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//BooleanAttribute:
-		//	value=BOOLEAN;
-		public ParserRule getRule() { return rule; }
-
-		//value=BOOLEAN
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//BOOLEAN
-		public RuleCall getValueBOOLEANTerminalRuleCall_0() { return cValueBOOLEANTerminalRuleCall_0; }
+		//ANY
+		public RuleCall getValueANYTerminalRuleCall_0() { return cValueANYTerminalRuleCall_0; }
 	}
 
 	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
@@ -570,50 +468,29 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cValidIDParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final RuleCall cValidIDParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
 		//QualifiedName:
-		//	ValidID ("." ValidID)*;
+		//	ID ("." ID)*;
 		public ParserRule getRule() { return rule; }
 
-		//ValidID ("." ValidID)*
+		//ID ("." ID)*
 		public Group getGroup() { return cGroup; }
 
-		//ValidID
-		public RuleCall getValidIDParserRuleCall_0() { return cValidIDParserRuleCall_0; }
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//(=> "." ValidID)*
+		//(=> "." ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//=> "."
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
-		//ValidID
-		public RuleCall getValidIDParserRuleCall_1_1() { return cValidIDParserRuleCall_1_1; }
-	}
-
-	public class ValidIDElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ValidID");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cLONGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//// This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
-		//ValidID:
-		//	ID / * | LONG_ID * / | LONG;
-		public ParserRule getRule() { return rule; }
-
-		//ID / * | LONG_ID * / | LONG
-		public Alternatives getAlternatives() { return cAlternatives; }
-
 		//ID
-		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
-
-		//LONG
-		public RuleCall getLONGTerminalRuleCall_1() { return cLONGTerminalRuleCall_1; }
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
 	
 	
@@ -625,35 +502,28 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	private final FeatureElements pFeature;
 	private final NewObjectElements pNewObject;
 	private final ValueElements pValue;
+	private final AttributeElements pAttribute;
 	private final MultiValueElements pMultiValue;
 	private final ReferenceElements pReference;
 	private final ContainmentElements pContainment;
-	private final AttributeElements pAttribute;
 	private final EnumAttributeElements pEnumAttribute;
-	private final StringAttributeElements pStringAttribute;
-	private final IntegerAttributeElements pIntegerAttribute;
-	private final DoubleAttributeElements pDoubleAttribute;
-	private final DateAttributeElements pDateAttribute;
-	private final NullAttributeElements pNullAttribute;
-	private final BooleanAttributeElements pBooleanAttribute;
+	private final AnyAttributeElements pAnyAttribute;
 	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final QualifiedNameElements pQualifiedName;
-	private final ValidIDElements pValidID;
-	private final TerminalRule tBOOLEAN;
-	private final TerminalRule tLONG;
-	private final TerminalRule tDOUBLE;
-	private final TerminalRule tDATE;
 	private final TerminalRule tID;
+	private final TerminalRule tID_WITHDOT;
+	private final TerminalRule tANY;
+	private final TerminalRule tSTRING;
+	private final TerminalRule tML_COMMENT;
+	private final TerminalRule tSL_COMMENT;
+	private final TerminalRule tWS;
+	private final TerminalRule tANY_OTHER;
 	
 	private final Grammar grammar;
 
-	private final TerminalsGrammarAccess gaTerminals;
-
 	@Inject
-	public EFactoryGrammarAccess(GrammarProvider grammarProvider,
-		TerminalsGrammarAccess gaTerminals) {
+	public EFactoryGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
-		this.gaTerminals = gaTerminals;
 		this.pFactory = new FactoryElements();
 		this.pPackageImport = new PackageImportElements();
 		this.pNamespaceImport = new NamespaceImportElements();
@@ -662,25 +532,22 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		this.pFeature = new FeatureElements();
 		this.pNewObject = new NewObjectElements();
 		this.pValue = new ValueElements();
+		this.pAttribute = new AttributeElements();
 		this.pMultiValue = new MultiValueElements();
 		this.pReference = new ReferenceElements();
 		this.pContainment = new ContainmentElements();
-		this.pAttribute = new AttributeElements();
 		this.pEnumAttribute = new EnumAttributeElements();
-		this.pStringAttribute = new StringAttributeElements();
-		this.pIntegerAttribute = new IntegerAttributeElements();
-		this.pDoubleAttribute = new DoubleAttributeElements();
-		this.pDateAttribute = new DateAttributeElements();
-		this.pNullAttribute = new NullAttributeElements();
-		this.pBooleanAttribute = new BooleanAttributeElements();
+		this.pAnyAttribute = new AnyAttributeElements();
 		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.pQualifiedName = new QualifiedNameElements();
-		this.pValidID = new ValidIDElements();
-		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN");
-		this.tLONG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LONG");
-		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE");
-		this.tDATE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DATE");
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID");
+		this.tID_WITHDOT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID_WITHDOT");
+		this.tANY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ANY");
+		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING");
+		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ML_COMMENT");
+		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SL_COMMENT");
+		this.tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS");
+		this.tANY_OTHER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ANY_OTHER");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -704,10 +571,6 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return grammar;
 	}
 	
-
-	public TerminalsGrammarAccess getTerminalsGrammarAccess() {
-		return gaTerminals;
-	}
 
 	
 	//Factory:
@@ -779,7 +642,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//// the EFactoryJavaValidator flags it up if it's really missing
 	//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
 	//NewObject:
-	//	eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}";
+	//	eClass=[ecore::EClass|QualifiedName] name=ANY? "{" features+=Feature* "}";
 	public NewObjectElements getNewObjectAccess() {
 		return pNewObject;
 	}
@@ -796,6 +659,16 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getValueRule() {
 		return getValueAccess().getRule();
+	}
+
+	//Attribute:
+	//	EnumAttribute | AnyAttribute;
+	public AttributeElements getAttributeAccess() {
+		return pAttribute;
+	}
+	
+	public ParserRule getAttributeRule() {
+		return getAttributeAccess().getRule();
 	}
 
 	//MultiValue:
@@ -831,17 +704,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getContainmentAccess().getRule();
 	}
 
-	//Attribute:
-	//	EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute |
-	//	NullAttribute;
-	public AttributeElements getAttributeAccess() {
-		return pAttribute;
-	}
-	
-	public ParserRule getAttributeRule() {
-		return getAttributeAccess().getRule();
-	}
-
+	//// TODO better for the lexer/parser if we use another character than ":" to mark enums.. say # (like Symbols in Smalltalk) ?
 	//EnumAttribute:
 	//	":" value=[ecore::EEnumLiteral];
 	public EnumAttributeElements getEnumAttributeAccess() {
@@ -852,65 +715,14 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getEnumAttributeAccess().getRule();
 	}
 
-	//// TODO Attribute Types should later not be hard-coded here anymore.. Grammar should be more open & generic.
-	//StringAttribute:
-	//	value=STRING;
-	public StringAttributeElements getStringAttributeAccess() {
-		return pStringAttribute;
+	//AnyAttribute:
+	//	value=ANY;
+	public AnyAttributeElements getAnyAttributeAccess() {
+		return pAnyAttribute;
 	}
 	
-	public ParserRule getStringAttributeRule() {
-		return getStringAttributeAccess().getRule();
-	}
-
-	//IntegerAttribute:
-	//	value=LONG;
-	public IntegerAttributeElements getIntegerAttributeAccess() {
-		return pIntegerAttribute;
-	}
-	
-	public ParserRule getIntegerAttributeRule() {
-		return getIntegerAttributeAccess().getRule();
-	}
-
-	//DoubleAttribute:
-	//	value=DOUBLE;
-	public DoubleAttributeElements getDoubleAttributeAccess() {
-		return pDoubleAttribute;
-	}
-	
-	public ParserRule getDoubleAttributeRule() {
-		return getDoubleAttributeAccess().getRule();
-	}
-
-	//DateAttribute:
-	//	value=DATE;
-	public DateAttributeElements getDateAttributeAccess() {
-		return pDateAttribute;
-	}
-	
-	public ParserRule getDateAttributeRule() {
-		return getDateAttributeAccess().getRule();
-	}
-
-	//NullAttribute:
-	//	value="NULL";
-	public NullAttributeElements getNullAttributeAccess() {
-		return pNullAttribute;
-	}
-	
-	public ParserRule getNullAttributeRule() {
-		return getNullAttributeAccess().getRule();
-	}
-
-	//BooleanAttribute:
-	//	value=BOOLEAN;
-	public BooleanAttributeElements getBooleanAttributeAccess() {
-		return pBooleanAttribute;
-	}
-	
-	public ParserRule getBooleanAttributeRule() {
-		return getBooleanAttributeAccess().getRule();
+	public ParserRule getAnyAttributeRule() {
+		return getAnyAttributeAccess().getRule();
 	}
 
 	//QualifiedNameWithWildcard:
@@ -924,7 +736,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//QualifiedName:
-	//	ValidID ("." ValidID)*;
+	//	ID ("." ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
 		return pQualifiedName;
 	}
@@ -933,96 +745,58 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getQualifiedNameAccess().getRule();
 	}
 
-	//// This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
-	//ValidID:
-	//	ID / * | LONG_ID * / | LONG;
-	public ValidIDElements getValidIDAccess() {
-		return pValidID;
-	}
-	
-	public ParserRule getValidIDRule() {
-		return getValidIDAccess().getRule();
-	}
-
-	//// terminal LONG_ID: ('0'..'9')* ID;
-	//terminal BOOLEAN returns ecore::EBoolean:
-	//	"true" | "false";
-	public TerminalRule getBOOLEANRule() {
-		return tBOOLEAN;
-	} 
-
-	//terminal LONG returns ecore::ELong:
-	//	"-"? "0".."9"+;
-	public TerminalRule getLONGRule() {
-		return tLONG;
-	} 
-
-	//terminal DOUBLE returns ecore::EDouble:
-	//	"-"? "0".."9"+ "." "0".."9"+;
-	public TerminalRule getDOUBLERule() {
-		return tDOUBLE;
-	} 
-
-	//// TODO Date RegExp should later not be hard-coded here anymore at all.. Grammar should be more open & generic.
-	//terminal DATE returns ecore::EDate:
-	//	"0".."9"+ "." "0".."9"+ "." "0".."9"+;
-	public TerminalRule getDATERule() {
-		return tDATE;
-	} 
-
 	//// Due to historic reasons in a closed source an in-house product which uses ESON
 	//// we need to add ',' and '-' to be allowed in IDs.  We also permit ID starting with digits, via the ValidID: ID | LONG above.
 	//// (NOTE: This terminal must be named 'ID' as well, not some new ID2 - unless you write a new ValueConverter for it.)
-	//// TODO try this: terminal ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|','|'-'|'0'..'9')* ;
-	//// PS: Order of terminals appears to matter - ID needs to come after BOOLEAN
-	//// TODO copy/paste org.eclipse.xtext.common.Terminals 
-	////terminal STRING	: 
-	////			'"' ( '\\' . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !('\\'|'"') )* '"' |
-	////			"'" ( '\\' . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !('\\'|"'") )* "'" ; 
-	////terminal ML_COMMENT	: '/ *' -> '* /';
-	////terminal SL_COMMENT : '//' !('\n'|'\r')* ('\r'? '\n')?;
-	////
-	////terminal WS			: (' '|'\t'|'\r'|'\n')+;
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_" | "," | "-" | "0".."9")+;
 	public TerminalRule getIDRule() {
 		return tID;
 	} 
 
-	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
-	public TerminalRule getINTRule() {
-		return gaTerminals.getINTRule();
+	//terminal ID_WITHDOT:
+	//	"^"? ("a".."z" | "A".."Z" | "_" | "," | "-" | "0".."9" | ".")+;
+	public TerminalRule getID_WITHDOTRule() {
+		return tID_WITHDOT;
 	} 
 
+	//terminal ANY returns ecore::EJavaObject:
+	//	STRING | ID_WITHDOT;
+	public TerminalRule getANYRule() {
+		return tANY;
+	} 
+
+	//// Copy/pasted from org.eclipse.xtext.common.Terminals (partial) 
+	//// We do this, instead of just "grammar .. with org.eclipse.xtext.common.Terminals" on top
+	//// just to avoid Xtext generation errors such as "The following token definitions can never be matched because prior tokens match the same input: RULE_INT,RULE_STRING"
 	//terminal STRING:
 	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
 	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
-		return gaTerminals.getSTRINGRule();
+		return tSTRING;
 	} 
 
 	//terminal ML_COMMENT:
 	//	"/ *"->"* /";
 	public TerminalRule getML_COMMENTRule() {
-		return gaTerminals.getML_COMMENTRule();
+		return tML_COMMENT;
 	} 
 
 	//terminal SL_COMMENT:
 	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
-		return gaTerminals.getSL_COMMENTRule();
+		return tSL_COMMENT;
 	} 
 
 	//terminal WS:
 	//	(" " | "\t" | "\r" | "\n")+;
 	public TerminalRule getWSRule() {
-		return gaTerminals.getWSRule();
+		return tWS;
 	} 
 
 	//terminal ANY_OTHER:
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
-		return gaTerminals.getANY_OTHERRule();
+		return tANY_OTHER;
 	} 
 }

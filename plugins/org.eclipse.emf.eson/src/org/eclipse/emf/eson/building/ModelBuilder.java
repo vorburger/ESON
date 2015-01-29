@@ -114,9 +114,9 @@ public class ModelBuilder {
 	
 	@SuppressWarnings("null")
 	private void setName(EObject target, NewObject source) {
-		String name = source.getName();
+		Object name = source.getName();
 		if (name != null) {
-			nameSetter.setName(source, target, name);
+			nameSetter.setName(source, target, name.toString());
 		}
 	}
 
