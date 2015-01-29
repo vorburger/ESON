@@ -50,15 +50,15 @@ public class AttributeBuilder extends FeatureBuilder {
 		}
 		
 		Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
-		try {
-			newValue = convertToTargetType(clazz, newValue, getFeature());
-		} catch (RuntimeException e) {
-			throw new ModelBuilderException("convertToTargetType() failed for feature: " + eAttribute.toString(), e);
+		Object convertedNewValue = convertToTargetType(clazz, newValue, getFeature());
+		if (convertedNewValue == null) {
+			// We do this for EFactoryJavaValidator et al
+			convertedNewValue = newValue;
 		}
-		EcoreUtil3.setOrAddValue(getContainer(), eAttribute, newValue);
+		EcoreUtil3.setOrAddValue(getContainer(), eAttribute, convertedNewValue);
 	}
 
-	protected Object convertToTargetType(Class<?> clazz, Object newValue, Feature feature) throws IllegalArgumentException {
+	protected Object convertToTargetType(Class<?> clazz, Object newValue, Feature feature) {
 		Object o = new ValueSwitch().doSwitch(clazz, newValue);
 		if (!clazz.isPrimitive() && o != null && !clazz.isInstance(o)) {
 			logger.warn("Likely upcoming ClassCastException 'heads up' - failed to convert value '"
