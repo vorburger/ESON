@@ -45,7 +45,7 @@ NewObject:
 
 Value:
 	// The two (!) Syntactic Predicates => are needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-	MultiValue | Attribute | =>Containment | =>Reference;
+	MultiValue | EnumAttribute | AnyAttribute | =>Containment | =>Reference;
 
 MultiValue:
 	{MultiValue} "[" (values += Value)* "]" ;
@@ -59,10 +59,14 @@ Reference:
 	
 Containment:
 	value = NewObject;
-	
-Attribute: (EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute | NullAttribute);
 
 EnumAttribute: ":" value = [ecore::EEnumLiteral];
+
+AnyAttribute: value = ANY;
+
+terminal ANY returns ecore::EJavaObject: STRING | ANY_OTHER+; // TODO ok to use ANY_OTHER+ instead? 
+
+Attribute: (EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute | NullAttribute);
 
 
 // TODO Attribute Types should later not be hard-coded here anymore.. Grammar should be more open & generic.
