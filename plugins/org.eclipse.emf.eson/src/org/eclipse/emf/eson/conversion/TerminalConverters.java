@@ -17,6 +17,7 @@ import java.util.Date;
 import org.eclipse.xtext.common.services.DefaultTerminalConverters;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
+import org.eclipse.xtext.conversion.impl.AbstractIDValueConverter;
 
 import com.google.inject.Inject;
 
@@ -29,7 +30,15 @@ public class TerminalConverters extends DefaultTerminalConverters {
 	public IValueConverter<Long> LONG() {
 		return longValueConverter;
 	}
+
+	@Inject
+	private AbstractIDValueConverter idValueConverter;
 	
+	@ValueConverter(rule = "ID_WITHDOT")
+	public IValueConverter<String> ID_WITHDOT() {
+		return idValueConverter;
+	}
+
 	@Inject
 	private DOUBLEValueConverter doubleValueConverter;
 	
@@ -37,7 +46,7 @@ public class TerminalConverters extends DefaultTerminalConverters {
 	public IValueConverter<Double> DOUBLE() {
 		return doubleValueConverter;
 	}
-	
+
 	@Inject
 	private DATEValueConverter dateValueConverter;
 	
@@ -45,9 +54,9 @@ public class TerminalConverters extends DefaultTerminalConverters {
 	public IValueConverter<Date> DATE() {
 		return dateValueConverter;
 	}
-	
+
 	@Inject BOOLEANValueConverter booleanValueConverter;
-	
+
 	@ValueConverter(rule = "BOOLEAN")
 	public IValueConverter<Boolean> BOOLEAN() {
 		return booleanValueConverter;
