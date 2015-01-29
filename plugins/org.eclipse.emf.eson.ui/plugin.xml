@@ -25,7 +25,6 @@
             extensions="efactory,eson">
         </editor>
     </extension>
-	
     
 	<!-- ====================================================================================================== -->
 	
@@ -393,16 +392,6 @@
             extensions="efactory,eson">
     </provider>
   </extension>
-
-  <extension point="org.eclipse.ui.editors">
-      <editor
-            id="org.eclipse.emf.eson.ui.EFactoryEcoreEditorID"
-            name="EFactory Ecore Editor"
-            class="org.eclipse.emf.eson.ui.EFactoryExecutableExtensionFactory:org.eclipse.emf.eson.ui.ecoreedit.EFactoryEcoreEditor"
-            contributorClass="org.eclipse.emf.ecore.presentation.EcoreActionBarContributor"
-            default="false"
-            extensions="efactory,eson"/>
-   </extension>
 
    <!-- Builder here is hand-written, not from plug.xml_gen
         Normally this is autoamtically available (from.. where?) and just works OOB - I had to add it - maybe because EFactory isn't Xbase derrived?!
