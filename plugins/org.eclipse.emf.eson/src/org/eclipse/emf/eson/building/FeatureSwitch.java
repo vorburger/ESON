@@ -37,7 +37,8 @@ public class FeatureSwitch extends EFactorySwitch<FeatureBuilder> {
 	
 	@Override
 	public FeatureBuilder caseContainment(Containment object) {
-		if (!EcoreUtil3.isEContainment(getEFeature(object)))
+		EStructuralFeature eFeature = getEFeature(object);
+		if (!EcoreUtil3.isEContainment(eFeature))
 			return null;
 		
 		if (object.getValue() == null)

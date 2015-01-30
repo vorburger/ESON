@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.eson.eFactory.Annotation;
 import org.eclipse.emf.eson.eFactory.EFactoryPackage;
 import org.eclipse.emf.eson.eFactory.Factory;
+import org.eclipse.emf.eson.eFactory.NamespaceImport;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.PackageImport;
 
@@ -31,6 +32,7 @@ import org.eclipse.emf.eson.eFactory.PackageImport;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getEpackages <em>Epackages</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getRoot <em>Root</em>}</li>
@@ -41,6 +43,16 @@ import org.eclipse.emf.eson.eFactory.PackageImport;
  */
 public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
 {
+  /**
+   * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImports()
+   * @generated
+   * @ordered
+   */
+  protected EList<NamespaceImport> imports;
+
   /**
    * The cached value of the '{@link #getEpackages() <em>Epackages</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -90,6 +102,20 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
   protected EClass eStaticClass()
   {
     return EFactoryPackage.Literals.FACTORY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<NamespaceImport> getImports()
+  {
+    if (imports == null)
+    {
+      imports = new EObjectContainmentEList<NamespaceImport>(NamespaceImport.class, this, EFactoryPackage.FACTORY__IMPORTS);
+    }
+    return imports;
   }
 
   /**
@@ -178,6 +204,8 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
   {
     switch (featureID)
     {
+      case EFactoryPackage.FACTORY__IMPORTS:
+        return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case EFactoryPackage.FACTORY__EPACKAGES:
         return ((InternalEList<?>)getEpackages()).basicRemove(otherEnd, msgs);
       case EFactoryPackage.FACTORY__ANNOTATIONS:
@@ -198,6 +226,8 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
   {
     switch (featureID)
     {
+      case EFactoryPackage.FACTORY__IMPORTS:
+        return getImports();
       case EFactoryPackage.FACTORY__EPACKAGES:
         return getEpackages();
       case EFactoryPackage.FACTORY__ANNOTATIONS:
@@ -219,6 +249,10 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
   {
     switch (featureID)
     {
+      case EFactoryPackage.FACTORY__IMPORTS:
+        getImports().clear();
+        getImports().addAll((Collection<? extends NamespaceImport>)newValue);
+        return;
       case EFactoryPackage.FACTORY__EPACKAGES:
         getEpackages().clear();
         getEpackages().addAll((Collection<? extends PackageImport>)newValue);
@@ -244,6 +278,9 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
   {
     switch (featureID)
     {
+      case EFactoryPackage.FACTORY__IMPORTS:
+        getImports().clear();
+        return;
       case EFactoryPackage.FACTORY__EPACKAGES:
         getEpackages().clear();
         return;
@@ -267,6 +304,8 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
   {
     switch (featureID)
     {
+      case EFactoryPackage.FACTORY__IMPORTS:
+        return imports != null && !imports.isEmpty();
       case EFactoryPackage.FACTORY__EPACKAGES:
         return epackages != null && !epackages.isEmpty();
       case EFactoryPackage.FACTORY__ANNOTATIONS:

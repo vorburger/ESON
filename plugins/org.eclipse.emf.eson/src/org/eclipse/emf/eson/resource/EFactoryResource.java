@@ -24,6 +24,7 @@ import org.eclipse.xtext.resource.DerivedStateAwareResource;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.concurrent.IWriteAccess;
 
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
@@ -60,8 +61,12 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		return newObject ;
 	}
 	
-	public EObject getEFactoryEObject(NewObject nObject) throws ModelBuilderException {
-		return getBuilder().getBuilt(nObject);
+	public Optional<EObject> getEFactoryEObject(NewObject nObject) throws ModelBuilderException {
+		ModelBuilder _builder = getBuilder();
+		if (_builder.isBuilt())
+			return Optional.of(_builder.getBuilt(nObject));
+		else
+			return Optional.absent();
 	}
 
 	// package-private, as only used by EFactoryDerivedStateComputer
@@ -133,7 +138,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		if (factory == null)
 			return null;
 		try {
-			return eFactoryResource.getEFactoryEObject(factory.getRoot());
+			return eFactoryResource.getEFactoryEObject(factory.getRoot()).orNull();
 		} catch (ModelBuilderException e) {
 			return null;
 		}

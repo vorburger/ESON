@@ -23,33 +23,11 @@ import com.google.inject.Inject;
 public class TerminalConverters extends DefaultTerminalConverters {
 
 	@Inject
-	private LONGValueConverter longValueConverter;
-	
-	@ValueConverter(rule = "LONG")
-	public IValueConverter<Long> LONG() {
-		return longValueConverter;
-	}
-	
-	@Inject
-	private DOUBLEValueConverter doubleValueConverter;
-	
-	@ValueConverter(rule = "DOUBLE")
-	public IValueConverter<Double> DOUBLE() {
-		return doubleValueConverter;
-	}
-	
-	@Inject
 	private DATEValueConverter dateValueConverter;
 	
-	@ValueConverter(rule = "DATE")
-	public IValueConverter<Date> DATE() {
+	@ValueConverter(rule = "Date")
+	public IValueConverter<Date> Date() {
 		return dateValueConverter;
 	}
 	
-	@Inject BOOLEANValueConverter booleanValueConverter;
-	
-	@ValueConverter(rule = "BOOLEAN")
-	public IValueConverter<Boolean> BOOLEAN() {
-		return booleanValueConverter;
-	}
 }

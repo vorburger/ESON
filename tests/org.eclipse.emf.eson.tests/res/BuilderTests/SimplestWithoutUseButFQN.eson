@@ -1,0 +1,7 @@
+//use testmodel.* 
+ 
+testmodel.TestModel abc {
+	
+	// singleRequired: testmodel.SingleRequired { }
+	singleRequired: testmodel.SingleRequired { }
+} 

@@ -66,6 +66,7 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
     {
       case EFactoryPackage.FACTORY: return createFactory();
       case EFactoryPackage.PACKAGE_IMPORT: return createPackageImport();
+      case EFactoryPackage.NAMESPACE_IMPORT: return createNamespaceImport();
       case EFactoryPackage.ANNOTATION: return createAnnotation();
       case EFactoryPackage.CUSTOM_NAME_MAPPING: return createCustomNameMapping();
       case EFactoryPackage.FEATURE: return createFeature();
@@ -73,7 +74,6 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
       case EFactoryPackage.VALUE: return createValue();
       case EFactoryPackage.MULTI_VALUE: return createMultiValue();
       case EFactoryPackage.REFERENCE: return createReference();
-      case EFactoryPackage.CONTAINMENT: return createContainment();
       case EFactoryPackage.ATTRIBUTE: return createAttribute();
       case EFactoryPackage.ENUM_ATTRIBUTE: return createEnumAttribute();
       case EFactoryPackage.STRING_ATTRIBUTE: return createStringAttribute();
@@ -82,6 +82,7 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
       case EFactoryPackage.DATE_ATTRIBUTE: return createDateAttribute();
       case EFactoryPackage.NULL_ATTRIBUTE: return createNullAttribute();
       case EFactoryPackage.BOOLEAN_ATTRIBUTE: return createBooleanAttribute();
+      case EFactoryPackage.CONTAINMENT: return createContainment();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -107,6 +108,17 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
   {
     PackageImportImpl packageImport = new PackageImportImpl();
     return packageImport;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NamespaceImport createNamespaceImport()
+  {
+    NamespaceImportImpl namespaceImport = new NamespaceImportImpl();
+    return namespaceImport;
   }
 
   /**
@@ -184,17 +196,6 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
   {
     ReferenceImpl reference = new ReferenceImpl();
     return reference;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Containment createContainment()
-  {
-    ContainmentImpl containment = new ContainmentImpl();
-    return containment;
   }
 
   /**
@@ -283,6 +284,17 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
   {
     BooleanAttributeImpl booleanAttribute = new BooleanAttributeImpl();
     return booleanAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Containment createContainment()
+  {
+    ContainmentImpl containment = new ContainmentImpl();
+    return containment;
   }
 
   /**

@@ -12,9 +12,12 @@
  */
 package org.eclipse.emf.eson.builder.tests;
 
+import javax.inject.Inject;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.resource.EFactoryResource;
+import org.eclipse.emf.eson.tests.util.DumpParsedStructureUtil;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.Find;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
@@ -34,12 +37,14 @@ public abstract class AbstractModelBuilderTest {
 	private ResourceProvider resourceProvider;
 	protected Factory factory;
 	protected TestModel testModel;
+	protected @Inject DumpParsedStructureUtil dumper;
 
 	@Before
 	public void setUp() throws Exception {
 		this.resourceProvider = new ResourceProvider(TestConstants.PLUGIN_ID);
 		this.testModel = resourceProvider.loadModel("res/BuilderTests/" + getTestModelName(), TestModel.class, /* HACK TODO UNDO */ false);
 		this.factory = ((EFactoryResource) testModel.eResource()).getEFactoryFactory();
+		// dumper.dump(this.factory);
 	}
 
 	protected abstract String getTestModelName();

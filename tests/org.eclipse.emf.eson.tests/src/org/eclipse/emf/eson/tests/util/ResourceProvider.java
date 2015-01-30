@@ -90,27 +90,33 @@ public class ResourceProvider {
 		
 		// This is IMPORTANT - without this, some tests won't catch what they're supposed to catch!
 		if (validate) {
-			BasicDiagnostic chain = new BasicDiagnostic();
-			for (EObject content : contents) {
-				Diagnostician.INSTANCE.validate(content, chain);
-			}
-			if (!BasicDiagnostic.toIStatus(chain).isOK()) {
-				throw new DiagnosticExceptionWithURIAndToString(chain, uri);
-			}
-			
-			logResourceDiagnostics(resource);
-			if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
-				// This is important, because as the case of a completely empty resource used in 
-				// org.eclipse.emf.eson.builder.resync.tests.BuilderResyncTest.testCreateCompletelyNew()
-				// shows (change validate = true to see it), the BasicDiagnostic.toIStatus(chain).isOK()
-				// ignores resource.getErrors() problems!
-				throw new IOException(uri.toString() + " resource load produced warnings or errors (see log on System.out console)");
-			}
+			validate(resource);
 		}
 		
 		if (contents.isEmpty())
 			throw new IOException("Could no load / no content (see log!) in resource: " + uri.toPlatformString(true));
 		return contents;
+	}
+
+	public void validate(Resource resource) throws DiagnosticExceptionWithURIAndToString, IOException {
+		URI uri = resource.getURI();
+		EList<EObject> contents = resource.getContents();
+		BasicDiagnostic chain = new BasicDiagnostic();
+		for (EObject content : contents ) {
+			Diagnostician.INSTANCE.validate(content, chain);
+		}
+		if (!BasicDiagnostic.toIStatus(chain).isOK()) {
+			throw new DiagnosticExceptionWithURIAndToString(chain, uri);
+		}
+		
+		logResourceDiagnostics(resource);
+		if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
+			// This is important, because as the case of a completely empty resource used in 
+			// org.eclipse.emf.eson.builder.resync.tests.BuilderResyncTest.testCreateCompletelyNew()
+			// shows (change validate = true to see it), the BasicDiagnostic.toIStatus(chain).isOK()
+			// ignores resource.getErrors() problems!
+			throw new IOException(uri.toString() + " resource load produced warnings or errors (see log on System.out console)");
+		}
 	}
 	
 	public <T> T loadModel(String plugInRootRelativePath, Class<T> clazz, boolean validate) throws IOException, DiagnosticException {

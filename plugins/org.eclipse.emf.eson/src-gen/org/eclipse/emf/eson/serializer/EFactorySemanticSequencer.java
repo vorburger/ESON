@@ -14,6 +14,7 @@ import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.IntegerAttribute;
 import org.eclipse.emf.eson.eFactory.MultiValue;
+import org.eclipse.emf.eson.eFactory.NamespaceImport;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.NullAttribute;
 import org.eclipse.emf.eson.eFactory.PackageImport;
@@ -48,9 +49,8 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 				}
 				else break;
 			case EFactoryPackage.CONTAINMENT:
-				if(context == grammarAccess.getContainmentRule() ||
-				   context == grammarAccess.getValueRule()) {
-					sequence_Containment(context, (Containment) semanticObject); 
+				if(context == grammarAccess.getValueRule()) {
+					sequence_Value(context, (Containment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -112,9 +112,19 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 					return; 
 				}
 				else break;
+			case EFactoryPackage.NAMESPACE_IMPORT:
+				if(context == grammarAccess.getNamespaceImportRule()) {
+					sequence_NamespaceImport(context, (NamespaceImport) semanticObject); 
+					return; 
+				}
+				else break;
 			case EFactoryPackage.NEW_OBJECT:
 				if(context == grammarAccess.getNewObjectRule()) {
 					sequence_NewObject(context, (NewObject) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getValueAccess().getContainmentValueAction_2_3()) {
+					sequence_Value_Containment_2_3(context, (NewObject) semanticObject); 
 					return; 
 				}
 				else break;
@@ -153,7 +163,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=BOOLEAN
+	 *     value=Boolean
 	 */
 	protected void sequence_BooleanAttribute(EObject context, BooleanAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -162,23 +172,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBooleanAttributeAccess().getValueBOOLEANTerminalRuleCall_0(), semanticObject.isValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     value=NewObject
-	 */
-	protected void sequence_Containment(EObject context, Containment semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EFactoryPackage.Literals.CONTAINMENT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EFactoryPackage.Literals.CONTAINMENT__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getContainmentAccess().getValueNewObjectParserRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getBooleanAttributeAccess().getValueBooleanParserRuleCall_0(), semanticObject.isValue());
 		feeder.finish();
 	}
 	
@@ -204,7 +198,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=DATE
+	 *     value=Date
 	 */
 	protected void sequence_DateAttribute(EObject context, DateAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -213,14 +207,14 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDateAttributeAccess().getValueDATETerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getDateAttributeAccess().getValueDateParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     value=DOUBLE
+	 *     value=Double
 	 */
 	protected void sequence_DoubleAttribute(EObject context, DoubleAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -229,7 +223,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDoubleAttributeAccess().getValueDOUBLETerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getDoubleAttributeAccess().getValueDoubleParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -252,7 +246,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (epackages+=PackageImport* annotations+=Annotation* root=NewObject)
+	 *     (imports+=NamespaceImport* epackages+=PackageImport* annotations+=Annotation* root=NewObject)
 	 */
 	protected void sequence_Factory(EObject context, Factory semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -270,7 +264,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=LONG
+	 *     value=Long
 	 */
 	protected void sequence_IntegerAttribute(EObject context, IntegerAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -279,7 +273,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIntegerAttributeAccess().getValueLONGTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getIntegerAttributeAccess().getValueLongParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -290,6 +284,22 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 */
 	protected void sequence_MultiValue(EObject context, MultiValue semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     importedNamespace=QualifiedNameWithWildcard
+	 */
+	protected void sequence_NamespaceImport(EObject context, NamespaceImport semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EFactoryPackage.Literals.NAMESPACE_IMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EFactoryPackage.Literals.NAMESPACE_IMPORT__IMPORTED_NAMESPACE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getNamespaceImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
+		feeder.finish();
 	}
 	
 	
@@ -363,5 +373,30 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getStringAttributeAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=Value_Containment_2_3
+	 */
+	protected void sequence_Value(EObject context, Containment semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EFactoryPackage.Literals.CONTAINMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EFactoryPackage.Literals.CONTAINMENT__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getValueAccess().getContainmentValueAction_2_3(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (eClass=[EClass|QualifiedName] name=ValidID? features+=Feature*)
+	 */
+	protected void sequence_Value_Containment_2_3(EObject context, NewObject semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

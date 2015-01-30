@@ -4,5 +4,3 @@ TestModel abc { // TODO abc // TODO 1
 	
 	singleRequired: SingleRequired { }
 } 
-
- 

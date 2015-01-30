@@ -41,6 +41,15 @@ public interface EFactoryFactory extends EFactory
   PackageImport createPackageImport();
 
   /**
+   * Returns a new object of class '<em>Namespace Import</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Namespace Import</em>'.
+   * @generated
+   */
+  NamespaceImport createNamespaceImport();
+
+  /**
    * Returns a new object of class '<em>Annotation</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -102,15 +111,6 @@ public interface EFactoryFactory extends EFactory
    * @generated
    */
   Reference createReference();
-
-  /**
-   * Returns a new object of class '<em>Containment</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Containment</em>'.
-   * @generated
-   */
-  Containment createContainment();
 
   /**
    * Returns a new object of class '<em>Attribute</em>'.
@@ -183,6 +183,15 @@ public interface EFactoryFactory extends EFactory
    * @generated
    */
   BooleanAttribute createBooleanAttribute();
+
+  /**
+   * Returns a new object of class '<em>Containment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Containment</em>'.
+   * @generated
+   */
+  Containment createContainment();
 
   /**
    * Returns the package supported by this factory.

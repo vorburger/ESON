@@ -19,14 +19,14 @@ import java.util.List;
 import javax.inject.Singleton;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eson.eFactory.EFactoryPackage;
+import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.impl.NodeModelBuilder;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
-import org.eclipse.emf.eson.eFactory.EFactoryPackage;
-import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 
 /**
  * Adds missing INode to new AST objects created in EFactoryAdapter.
@@ -54,13 +54,14 @@ public class NodeFixer {
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.MULTI_VALUE))
 				associateNode(astElement, grammarAccess.getMultiValueRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.CONTAINMENT))
-				associateNode(astElement, grammarAccess.getContainmentRule());
+				// NOTE This seems.. curious, but is the "closest approximation" - and works
+				associateNode(astElement, grammarAccess.getValueAccess().getRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.NEW_OBJECT))
 				associateNode(astElement, grammarAccess.getNewObjectRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.STRING_ATTRIBUTE))
 				associateNode(astElement, grammarAccess.getStringAttributeRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.REFERENCE))
-				associateNode(astElement, grammarAccess.getNullAttributeRule());
+				associateNode(astElement, grammarAccess.getReferenceRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.ENUM_ATTRIBUTE))
 				associateNode(astElement, grammarAccess.getEnumAttributeRule());
 			else if (astElement.eClass().equals(EFactoryPackage.Literals.INTEGER_ATTRIBUTE))

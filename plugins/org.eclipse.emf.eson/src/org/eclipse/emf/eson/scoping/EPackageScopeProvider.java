@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.util.EFactoryUtil;
 import org.eclipse.emf.eson.util.EPackageResolver;
 import org.eclipse.emf.eson.util.EcoreUtil3;
@@ -31,7 +32,6 @@ import org.eclipse.xtext.scoping.impl.SimpleScope;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import org.eclipse.emf.eson.eFactory.Factory;
 
 public class EPackageScopeProvider implements IEPackageScopeProvider {
 
@@ -44,10 +44,8 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 	public IScope createEClassScope(Resource resource, EClass type, IScope parent) {
 		Iterable<EPackage> ePackages = resolvePackages(resource);
 		Iterable<EClass> eClasses = getAllEClasses(ePackages);
-		Iterable<EClass> filteredEClasses = filterAssignableEClasses(eClasses,
-				type);
-		Iterable<IEObjectDescription> scopedElements = Scopes
-				.scopedElementsFor(filteredEClasses);
+		Iterable<EClass> filteredEClasses = filterAssignableEClasses(eClasses, type);
+		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(filteredEClasses);
 		return new SimpleScope(parent, scopedElements);
 	}
 
@@ -74,19 +72,14 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 
 	}
 
-	public Iterable<EClass> getAllEClasses(
-			Iterable<? extends EPackage> ePackages) {
-		Class<EClass> type = EClass.class;
-		return getAllInstances(ePackages, type);
+	public Iterable<EClass> getAllEClasses(Iterable<? extends EPackage> ePackages) {
+		return getAllInstances(ePackages, EClass.class);
 	}
 
-	private <T extends EObject> Iterable<T> getAllInstances(
-			Iterable<? extends EPackage> ePackages, Class<T> type) {
+	private <T extends EObject> Iterable<T> getAllInstances(Iterable<? extends EPackage> ePackages, Class<T> type) {
 		Iterable<T> result = Collections.emptyList();
 		for (EPackage ePackage : ePackages) {
-			List<T> allContents = EcoreUtil2.getAllContentsOfType(ePackage,
-					type);
-
+			List<T> allContents = EcoreUtil2.getAllContentsOfType(ePackage, type);
 			result = Iterables.concat(result, allContents);
 		}
 		return result;
@@ -95,8 +88,7 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 	public IScope createEClassScope(Resource resource, IScope parent) {
 		Iterable<EPackage> ePackages = resolvePackages(resource);
 		Iterable<EClass> eClasses = getAllEClasses(ePackages);
-		Iterable<IEObjectDescription> scopedElements = Scopes
-				.scopedElementsFor(eClasses);
+		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(eClasses);
 		return new SimpleScope(parent, scopedElements);
 	}
 

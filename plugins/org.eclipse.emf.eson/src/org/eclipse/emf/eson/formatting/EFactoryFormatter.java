@@ -13,11 +13,10 @@
 package org.eclipse.emf.eson.formatting;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 import org.eclipse.xtext.formatting.impl.FormattingConfig.LinewrapLocator;
-
-import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
 
 /**
  * Xtext Formatter.
@@ -33,9 +32,11 @@ public class EFactoryFormatter extends AbstractDeclarativeFormatter {
 		
 		// NOTE: Please use our setPreservingLinewrap() instead of just setLinewrap(...)
 		
+		setPreservingLinewraps(c, 2).after(f.getNamespaceImportRule());
+
 		setPreservingLinewraps(c, 2).after(f.getPackageImportRule());
 		c.setNoSpace().after(f.getPackageImportAccess().getEPackageAssignment_1());
-		
+
 		setIndentationIncrementAndDecrementAndLinewrapAfter(c,
 				f.getNewObjectAccess().getLeftCurlyBracketKeyword_2(),
 				f.getNewObjectAccess().getRightCurlyBracketKeyword_4());
@@ -47,6 +48,10 @@ public class EFactoryFormatter extends AbstractDeclarativeFormatter {
 				f.getMultiValueAccess().getLeftSquareBracketKeyword_1(),
 				f.getMultiValueAccess().getRightSquareBracketKeyword_3());
 		setPreservingLinewrap(c).after(f.getMultiValueAccess().getValuesAssignment_2());
+		
+		setIndentationIncrementAndDecrementAndLinewrapAfter(c,
+				f.getValueAccess().getLeftCurlyBracketKeyword_2_0_0_3(),
+				f.getValueAccess().getRightCurlyBracketKeyword_2_2());
 		
 		c.setNoSpace().after(f.getEnumAttributeAccess().getColonKeyword_0());
 		

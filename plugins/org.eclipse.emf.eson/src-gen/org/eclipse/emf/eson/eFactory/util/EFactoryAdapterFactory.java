@@ -85,6 +85,11 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
         return createPackageImportAdapter();
       }
       @Override
+      public Adapter caseNamespaceImport(NamespaceImport object)
+      {
+        return createNamespaceImportAdapter();
+      }
+      @Override
       public Adapter caseAnnotation(Annotation object)
       {
         return createAnnotationAdapter();
@@ -118,11 +123,6 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
       public Adapter caseReference(Reference object)
       {
         return createReferenceAdapter();
-      }
-      @Override
-      public Adapter caseContainment(Containment object)
-      {
-        return createContainmentAdapter();
       }
       @Override
       public Adapter caseAttribute(Attribute object)
@@ -163,6 +163,11 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
       public Adapter caseBooleanAttribute(BooleanAttribute object)
       {
         return createBooleanAttributeAdapter();
+      }
+      @Override
+      public Adapter caseContainment(Containment object)
+      {
+        return createContainmentAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -212,6 +217,21 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPackageImportAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.NamespaceImport <em>Namespace Import</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.emf.eson.eFactory.NamespaceImport
+   * @generated
+   */
+  public Adapter createNamespaceImportAdapter()
   {
     return null;
   }
@@ -317,21 +337,6 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReferenceAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.Containment <em>Containment</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.Containment
-   * @generated
-   */
-  public Adapter createContainmentAdapter()
   {
     return null;
   }
@@ -452,6 +457,21 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBooleanAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.Containment <em>Containment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.emf.eson.eFactory.Containment
+   * @generated
+   */
+  public Adapter createContainmentAdapter()
   {
     return null;
   }
