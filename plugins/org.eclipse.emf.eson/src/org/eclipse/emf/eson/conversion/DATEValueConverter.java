@@ -30,10 +30,19 @@ public class DATEValueConverter extends AbstractLexerBasedConverter<Date> {
 
 	@Inject
 	@Named(value = DATE_FORMAT_KEY)
-	private SimpleDateFormat dateFormat = null;
+	private String dateFormatPattern = null;
 
+	// NOTE We store the Pattern, but not the SimpleDateFormat,
+	// as that is not thread safe (an IValueConverter may be used multi-threaded).
+	// (Using org.apache.commons.lang.time.FastDateFormat would be an alternative,
+	// but this approach makes ESON independent of Commons Lang from Orbit.)
+	
 	@Override
 	protected String toEscapedString(Date value) {
+		if (value == null) {
+			throw new ValueConverterException("Value may not be null.", null, null);
+		}
+		SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern); // see above  
 		return dateFormat.format(value);
 	}
 	
@@ -46,6 +55,7 @@ public class DATEValueConverter extends AbstractLexerBasedConverter<Date> {
 		if (Strings.isEmpty(string))
 			throw new ValueConverterException("Couldn't convert empty string to a date value.", node, null);
 		try {
+			SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern); // see above  
 			return dateFormat.parse(string);
 		} catch (ParseException e) {
 			throw new ValueConverterException("Couldn't convert '" + string + "' to a date value.", node, e);
