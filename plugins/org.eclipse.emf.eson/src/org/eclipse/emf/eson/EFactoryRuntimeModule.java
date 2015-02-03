@@ -46,7 +46,7 @@ import com.google.inject.name.Names;
 /**
  * Use this class to register components to be used within the IDE.
  * 
- * yo la la Gerrit test
+ * yo la la Gerrit test II
  */
 public class EFactoryRuntimeModule extends AbstractEFactoryRuntimeModule {
 
