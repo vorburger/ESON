@@ -15,12 +15,12 @@ package org.eclipse.emf.eson.xcore.tests;
 import javax.inject.Inject;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelAndXcoreInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -34,15 +34,12 @@ public class XcoreTest {
 	@Inject ResourceProvider resourceProvider;
 
 	@Test
-	@Ignore // TODO re-enable after having found correct latest Xcore update site, matching Xtext version used in build.. due to https://www.eclipse.org/forums/index.php/t/772047/
-	//@Ignore // TODO re-enable after clarification of https://bugs.eclipse.org/bugs/show_bug.cgi?id=414416
 	@SuppressWarnings("unused")
 	public void testXcore() throws Exception {
-		// do NOT validate the *.xcore - this is to prevent Diagnostic ERROR "A generic type in this context must refer to a classifier or a type parameter" in Xcore v1.1.0.v20130612 (fixed later, I think)
-		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=414416
-		// https://raw.github.com/vorburger/xtext-sandbox/master/XcoreGenericType/src/XcoreGenericType/XcoreGenericTypeTest.java
+		resourceProvider.load(URI.createURI("classpath:/model/Ecore.ecore"), true);
+		resourceProvider.load(URI.createURI("classpath:/model/Ecore.genmodel"), true);
 		GenModel genModel = (GenModel) resourceProvider.loadModel("model/TestModel2.xcore");
-		// feature = how to get the 'age' out of this??
+		// TODO feature = how to get the 'age' out of this?
 		EObject eObject = resourceProvider.loadModel("res/xcore/XcoreTest.efactory");
 		// TODO ideally should eObject.eGet(feature) - to check age is 99
 	}
