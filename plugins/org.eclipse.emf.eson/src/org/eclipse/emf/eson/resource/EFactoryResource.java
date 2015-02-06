@@ -19,24 +19,17 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eson.building.ModelBuilder;
 import org.eclipse.emf.eson.building.ModelBuilderException;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.emf.eson.serialization.EFactoryAdapter;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
-import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.util.concurrent.IWriteAccess;
 
 import com.google.common.base.Optional;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 public class EFactoryResource extends DerivedStateAwareResource {
 	private static final Logger logger = Logger.getLogger(EFactoryDerivedStateComputer.class);
 
 	@Inject private ModelBuilder builder;
-	@Inject private Provider<EFactoryAdapter> eFactoryAdapterProvider;
-	
-	protected IWriteAccess<XtextResource> documentWriteAccess;
 	
 	public boolean isBuilt() {
 		return getBuilder().isBuilt();
@@ -88,42 +81,6 @@ public class EFactoryResource extends DerivedStateAwareResource {
 			return null;
 		}
 		return (org.eclipse.emf.eson.eFactory.Factory) getContents().get(0);
-	}
-
-	public void setWriteAccess(IWriteAccess<XtextResource> xtextDocument) {
-		this.documentWriteAccess = xtextDocument;
-	}
-
-	// package-private, as only used by EFactoryDerivedStateComputer
-	@NonNull Provider<IWriteAccess<XtextResource>> getWriteAccessProvider() {
-		return new Provider<IWriteAccess<XtextResource>>() {
-			@SuppressWarnings("null") // JDT null check even in Kepler is still too dumb to understand the if null means return will never return null.. :( 
-			public @NonNull IWriteAccess<XtextResource> get() {
-				if (documentWriteAccess == null)
-					// throw new IllegalStateException("setWriteAccess(IWriteAccess<XtextResource>) should have been called by org.eclipse.emf.eson.ui.editor.EFactoryXtextDocument.setInput(XtextResource), but wasnt't (yet) - how come?");
-					return new XtextResourceDirectAccess(EFactoryResource.this);
-				return documentWriteAccess;
-			}
-		};
-	}
-
-	/**
-	 * The "back synchronization" is done by the EFactoryAdapter we add here.
-	 * In the special case of an empty resource to which the first root EObject is added, as illustrated by the
-	 * org.eclipse.emf.eson.builder.resync.tests.BuilderResyncTest.testCreateCompletelyNew(),
-	 * we need this handling. 
-	 */
-	@Override
-	public void attached(EObject eObject) {
-		super.attached(eObject);
-		if (contents.size() > 1 && contents.get(1).equals(eObject)) {
-			EFactoryAdapter adapter = eFactoryAdapterProvider.get();
-			adapter.setWriteAccessProvider(getWriteAccessProvider());
-			if (getEFactoryNewObject(eObject) == null) {
-				adapter.setRootNewObject(eObject);
-			}
-			eObject.eAdapters().add(adapter);
-		}
 	}
 
 	public void putEObjectNewObjectPair(EObject eObject, NewObject newObject) {

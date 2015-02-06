@@ -15,13 +15,16 @@ package org.eclipse.emf.eson.resource;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eson.building.ModelBuilder;
 import org.eclipse.emf.eson.building.ModelBuilderException;
 import org.eclipse.emf.eson.eFactory.Factory;
-import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.emf.eson.eFactory.NewObject;
+import org.eclipse.emf.eson.serialization.EFactoryAdapter;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.parser.antlr.IReferableElementsUnloader;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
 import org.eclipse.xtext.resource.IDerivedStateComputer;
@@ -29,6 +32,7 @@ import org.eclipse.xtext.resource.IDerivedStateComputer;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /**
  * Adds the actual EObject. Uses the FactoryBuilder.
@@ -46,12 +50,17 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 	@Inject
 	private IReferableElementsUnloader unloader;
 	
+	@Inject 
+	private Provider<EFactoryAdapter> eFactoryAdapterProvider;
+	
 	public void installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
 		// @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=437848 (AKA DS-7543)
 		try {
 			safeInstallDerivedState(resource, preLinkingPhase);
 		} catch (RuntimeException e) {
 			handleRuntimeException("installDerivedState", resource, e);
+		} finally {
+			resource.eAdapters().add(eFactoryAdapterProvider.get());
 		}
 	}
 
@@ -60,12 +69,13 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 		Factory model = getFactory(resource);
 		if (model == null)
 			return;
-    	if (model.getRoot() != null && model.getRoot().getEClass() == null) {
+    	NewObject newObjectRoot = model.getRoot();
+		if (newObjectRoot != null && newObjectRoot.getEClass() == null) {
     		// Special handling for common use case of completely empty *.efactory.
     		// It would work without this as well, but this avoids the Exception & log below.
     		return;
     	}
-    	if (model.getRoot() != null && model.getRoot().getEClass() != null && model.getRoot().getEClass().eIsProxy()) {
+    	if (newObjectRoot != null && newObjectRoot.getEClass() != null && newObjectRoot.getEClass().eIsProxy()) {
     		// If linking to the used eClass is not available yet,
     		// then just give up (as it will come back and retry)
     		return;
@@ -84,10 +94,8 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 				// because we don't want/need to get the notifications from our
 				// ModelBuilder - only from external clients (e.g. Generic Ecore
 				// editor UI, etc.)
-				//
-				// Note that our EFactoryAdapter change notification listener
-				// gets added by org.eclipse.emf.eson.resource.EFactoryResource.attached(EObject)
-				resource.getContents().add(eModel.get());
+				EObject object = eModel.get();
+				resource.getContents().add(object);
 			} else {
 				builder.clear();
 			}
@@ -104,32 +112,22 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 	}
 
 	protected Factory getFactory(DerivedStateAwareResource resource) {
-		EObject rootEObject = null;
-	    final IParseResult parseResult = resource.getParseResult();
-		if (parseResult != null && parseResult.getRootASTElement() != null)
-	    {
-			rootEObject = parseResult.getRootASTElement();
-	    } else if (resource.getContents().size() == 1) {
-	    	// This can happen from tests which programmatically add Factory
-	    	rootEObject = resource.getContents().get(0);
-	    }
-		if (rootEObject != null) {
-			if (!(rootEObject instanceof Factory)) {
-				logger.warn("Resource's parseResult rootASTElement was not an instanceof Factory, but " + rootEObject + ": " + resource.getURI());
-				return null;
-			}
-	    	Factory model = (Factory)rootEObject;
-	    	return model;
+		if (resource.getContents().isEmpty()) {
+			return null;
 		}
-		return null;
+		return (Factory) resource.getContents().get(0);
 	}
 	
 	public void discardDerivedState(DerivedStateAwareResource resource) {
+		EList<Adapter> eAdapters = resource.eAdapters();
+		Adapter adapter = EcoreUtil2.getAdapter(eAdapters, EFactoryAdapter.class);
+		eAdapters.remove(adapter);
+		
 		// @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=437848 (AKA DS-7543)
 		try {
 			safeDiscardDerivedState(resource);
 		} catch (RuntimeException e) {
-			handleRuntimeException("discardDerivedState", resource, e);
+			handleRuntimeException("discardDerivedState()", resource, e);
 		}
 	}
 	

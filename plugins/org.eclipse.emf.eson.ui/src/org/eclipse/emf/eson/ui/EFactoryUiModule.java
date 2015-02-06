@@ -17,7 +17,7 @@ import org.eclipse.emf.eson.ui.contentassist.EFactoryContentAssistantFactory;
 import org.eclipse.emf.eson.ui.contentassist.IEAttributeStringProposalProvider;
 import org.eclipse.emf.eson.ui.contentassist.TerminalsEAttributeStringProposalProvider;
 import org.eclipse.emf.eson.ui.editor.EFactoryFoldingRegionProvider;
-import org.eclipse.emf.eson.ui.editor.EFactoryXtextDocument;
+import org.eclipse.emf.eson.ui.editor.model.edit.EFactoryTextEditComposer;
 import org.eclipse.emf.eson.ui.highlighting.EFactoryHighlightingCalculator;
 import org.eclipse.emf.eson.ui.highlighting.EFactorySemanticHighlightingConfiguration;
 import org.eclipse.emf.eson.ui.highlighting.EFactoryTokenTypeToStringMapper;
@@ -26,7 +26,7 @@ import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.ui.editor.contentassist.IContentAssistantFactory;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
-import org.eclipse.xtext.ui.editor.model.XtextDocument;
+import org.eclipse.xtext.ui.editor.model.edit.ITextEditComposer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
@@ -53,11 +53,10 @@ public class EFactoryUiModule extends AbstractEFactoryUiModule {
 				.toInstance(":{"); //$NON-NLS-1$
 
 		binder.bind(IResourceFactory.class).to(EFactoryResourceFactory.class);
-		
-		// it's important to bind to XtextDocument instead of to IXtextDocument
-		// (I think), because there is no default declaration, and @Inject in
-		// Xtext code base directly uses XtextDocument instead of IXtextDocument
-		binder.bind(XtextDocument.class).to(EFactoryXtextDocument.class);
+	}
+	
+	public Class<? extends ITextEditComposer> bindITextEditComposer() {
+		return EFactoryTextEditComposer.class;
 	}
 
 	@Override
