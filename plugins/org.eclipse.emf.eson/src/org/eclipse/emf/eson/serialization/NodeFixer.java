@@ -103,17 +103,17 @@ public class NodeFixer {
 		Preconditions.checkNotNull(astElement);
 		Preconditions.checkNotNull(grammarElement);
 		NodeModelBuilder newNodeModelBuilder = new NodeModelBuilder();
-		int lookahead = 0;
 		EObject valueContainer = astElement.eContainer();
 		if ( valueContainer == null )
 			throw new IllegalStateException("value.eContainer() == null");
 		ICompositeNode parent = NodeModelUtils.findActualNodeFor(valueContainer); // TODO or just NodeModelUtils.getNode() ?
 		if ( parent == null )
 			throw new IllegalStateException("NodeModelUtils.findActualNodeFor() ICompositeNode parent == null");
-		ICompositeNode node = newNodeModelBuilder.newCompositeNode(astElement, lookahead, parent);// TODO or, sometimes, newLeafNode() ?
-		if (astElement.eClass().equals(EFactoryPackage.Literals.FEATURE)){
-			newNodeModelBuilder.newLeafNode(parent.getTotalEndOffset()-1,parent.getLength(), astElement, false, null, parent);			
-		}
+
+		ICompositeNode node = newNodeModelBuilder.newCompositeNode(grammarElement, 0, parent); // TODO or, sometimes, newLeafNode() ?
+//		if (astElement.eClass().equals(EFactoryPackage.Literals.FEATURE)){
+//			newNodeModelBuilder.newLeafNode(parent.getTotalEndOffset() - 1, parent.getLength(), grammarElement, false, null, parent);
+//		}
 		newNodeModelBuilder.associateWithSemanticElement(node, astElement);
 	}
 

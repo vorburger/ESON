@@ -123,6 +123,7 @@ public class EFactoryAdapter extends EContentAdapter {
 			public Boolean exec(XtextResource resource) throws Exception {
 				NewObject localNewObject = (NewObject) resource.getEObject(uriFragment);
 				//Factory contextFactory = getEFactoryResource(eNotifier).getEFactoryFactory();
+				@SuppressWarnings("null")
 				EAttribute nameAttribute = nameAccessor.getNameAttribute(localNewObject);
 				if (nameAttribute != null && nameAttribute.equals(msg.getFeature())) {
 					String newName = msg.getNewStringValue();

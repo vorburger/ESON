@@ -150,6 +150,11 @@ public class ResourceProvider {
 		}
 	}
 	
+	public String loadAsString(String plugInRootRelativePath) throws IOException {
+		URI uri = getUri(plugInRootRelativePath);
+		return loadAsStringFromURI(uri);
+	}
+
 	private void logResourceDiagnostics(Resource resource) {
 		for (Diagnostic diag : resource.getErrors()) {
 			System.err.println("ERR in test resource: " + resource.getURI() + " :: " + diag.getMessage());
