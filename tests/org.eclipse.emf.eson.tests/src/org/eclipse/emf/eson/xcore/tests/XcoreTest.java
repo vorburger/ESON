@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelAndXcoreInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
@@ -36,6 +37,10 @@ public class XcoreTest {
 	@Test
 	@SuppressWarnings("unused")
 	public void testXcore() throws Exception {
+		// This is needed so that this test can run as Plug-in test too (as it
+		// does during the build), and not only as standalone test:
+		resourceProvider.rs.setClasspathURIContext(EcoreFactory.class);
+		
 		resourceProvider.load(URI.createURI("classpath:/model/Ecore.ecore"), true);
 		resourceProvider.load(URI.createURI("classpath:/model/Ecore.genmodel"), true);
 		GenModel genModel = (GenModel) resourceProvider.loadModel("model/TestModel2.xcore");
