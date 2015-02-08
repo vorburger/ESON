@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: EFactory with Xtext Model Integration Tests
+Bundle-Name: ESON with Xtext Model Integration Tests
 Bundle-Vendor: Michael Vorburger
 Bundle-Version: 0.10.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.eson.tests.xtextintegration.tests;singleton:=true

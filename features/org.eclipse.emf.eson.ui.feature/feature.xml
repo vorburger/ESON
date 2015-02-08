@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.eson.ui.feature"
-      label="EFactory UI"
+      label="ESON UI"
       version="0.10.0.qualifier">
 
    <description url="http://git.eclipse.org/c/emf/org.eclipse.emf.eson.git/">
