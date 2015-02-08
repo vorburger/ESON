@@ -1,15 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<artifactId>eson</artifactId>
 		<groupId>org.eclipse.emf.eson</groupId>
 		<version>0.10.0-SNAPSHOT</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
+
 	<groupId>org.eclipse.emf.eson</groupId>
 	<artifactId>org.eclipse.emf.eson.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
-	
+
+	<!-- mvn -Pdownload.eclipse.org -Ddownload.eclipse.org.dir=/tmp/ verify -->
+	<profiles>
+		<profile>
+			<id>download.eclipse.org</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-clean-plugin</artifactId>
+						<version>2.6.1</version>
+						<executions>
+							<execution>
+								<id>clean-download.eclipse.org</id>
+								<!-- Intentionally bound to 'verify', as that's what's needed to 
+									build ESON (for integration tests to also run), and to avoid needing to mvn 
+									install / deploy, which is not needed. -->
+								<phase>verify</phase>
+								<goals>
+									<goal>clean</goal>
+								</goals>
+								<configuration>
+									<excludeDefaultDirectories>true</excludeDefaultDirectories>
+									<verbose>true</verbose>
+									<filesets>
+										<fileset>
+											<directory>${download.eclipse.org.dir}</directory>
+										</fileset>
+									</filesets>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>2.7</version>
+						<executions>
+							<execution>
+								<id>copy-download.eclipse.org</id>
+								<!-- Intentionally bound to 'verify', as that's what's needed to 
+									build ESON (for integration tests to also run), and to avoid needing to mvn 
+									install / deploy, which is not needed. -->
+								<phase>verify</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${download.eclipse.org.dir}</outputDirectory>
+									<resources>
+										<resource>
+											<directory>target/repository</directory>
+											<filtering>false</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
