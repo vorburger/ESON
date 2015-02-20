@@ -33,7 +33,6 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
-import com.google.common.io.Closer;
 
 public class ResourceProvider {
 	
@@ -134,16 +133,10 @@ public class ResourceProvider {
 	
 	public String loadAsStringFromURI(URI uri) throws IOException {
 		URIConverter uriConverter = rs.getURIConverter();
-		Closer closer = Closer.create(); // https://code.google.com/p/guava-libraries/wiki/ClosingResourcesExplained
-		try {
-			InputStream is = closer.register(uriConverter.createInputStream(uri));
-			String content = CharStreams.toString(new InputStreamReader(is, Charsets.UTF_8));
-			return content;
-		} catch (Throwable e) { // must catch Throwable
-			throw closer.rethrow(e);
-		} finally {
-			closer.close();
-		}
+		InputStream is = uriConverter.createInputStream(uri);
+		String content = CharStreams.toString(new InputStreamReader(is, Charsets.UTF_8));
+		is.close();
+		return content;
 	}
 	
 	public String loadAsString(String plugInRootRelativePath) throws IOException {

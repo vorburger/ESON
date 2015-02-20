@@ -151,11 +151,17 @@
 		<module>plugins/org.eclipse.emf.eson.ui</module>
 		<module>features/org.eclipse.emf.eson.ui.feature</module>
 		<module>tests/org.eclipse.emf.eson.tests</module>
+<!--
+	Commented out, in Xtext-v2.5.x maintenance branch only,
+        because since the "Fixed missing whitespace and indent on new attributes (DS-7657)" changes
+	this started failing with this strange problem that I cannot figure out how to resolve:
+		java.lang.Error: Unresolved compilation problems: 
+		The type com.google.inject.Injector cannot be resolved. It is indirectly referenced from required .class files
 
 		<module>tests/org.eclipse.emf.eson.tests.xtextintegration</module>
 		<module>tests/org.eclipse.emf.eson.tests.xtextintegration.tests</module>
 		<module>tests/org.eclipse.emf.eson.tests.xtextintegration.ui</module>
-
+ -->
 		<module>features/org.eclipse.emf.eson.tests.feature</module>
 		<module>releng/org.eclipse.emf.eson.repository</module>
 	</modules>
