@@ -183,12 +183,6 @@ public class BuilderResyncTest {
 		XtextResource resource = (XtextResource) eFactory.eResource();
 		ISerializer serializer = resource.getSerializer();
 		String dsl = serializer.serialize(eFactory);
-		// NOTE The result is not as perfectly indented as we'd like it to
-		// ideally be, this is because of https://bugs.eclipse.org/bugs/show_bug.cgi?id=396283;
-		// see also EFactoryTextEditComposer.  However we do NOT want to force
-		// format it, not in tests and not in real editor UI etc. because one of
-		// the main points of ESON is that it doesn't have to reformat
-		// everything.
 		String expectedDSL = resourceProvider.loadAsString("res/BuilderResyncTests/1TestModelWithNamePropertyEXPECTED.efactory");
 		assertEquals(expectedDSL, dsl);
 		checkNodes(eFactory);
