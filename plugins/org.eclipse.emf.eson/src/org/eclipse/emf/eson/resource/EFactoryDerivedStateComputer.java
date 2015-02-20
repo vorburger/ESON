@@ -53,6 +53,22 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 	@Inject 
 	private Provider<EFactoryAdapter> eFactoryAdapterProvider;
 	
+	/**
+	 * Creates the "real" EObjects, represented by ESON.
+	 * 
+	 * Care must be taken here to not resolve cross references in preLinkingPhase.
+	 * This implementation ensures this is respected for the value EReference in Reference,
+	 * but must make an exception to the rule, because it HAS to resolve the references
+	 * to the metamodel, namely NewObject eClass (i.e. getEClass(), NOT its eClass())
+	 * and Feature's eFeature EStructuralFeature, etc.  In practice this is not a
+	 * problem, because the Ecore model for an ESON in a workspace is either in
+	 * some plug-in behind, or in a different project in the same workspace;
+	 * this constraint is verified by a Validator check. 
+	 * 
+	 * @param preLinkingPhase see also org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer.infer(EObject, IJvmDeclaredTypeAcceptor, boolean) for documentation.
+	 * 		true -> create EObjects which should be exported, don't resolve any cross references
+	 * 		false -> create all EObjects, also cross references can be resolved
+	 */
 	public void installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
 		// @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=437848 (AKA DS-7543)
 		try {
@@ -84,7 +100,7 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
     	EFactoryResource efResource = (EFactoryResource) resource;
 		ModelBuilder builder = efResource.getBuilder();
 		try {
-			Optional<EObject> eModel = builder.buildWithoutLinking(model);
+			Optional<EObject> eModel = builder.buildWithoutLinking(model, preLinkingPhase);
 			
 			if (eModel.isPresent()) {
 				if (!preLinkingPhase) {

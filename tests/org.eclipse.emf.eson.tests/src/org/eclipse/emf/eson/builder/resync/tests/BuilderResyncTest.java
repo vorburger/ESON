@@ -92,7 +92,7 @@ public class BuilderResyncTest {
 		// Change the EFactory model and re-check the test model (ModelBuilder recreated it)
 		efStringValue.setValue("testit");
 		((EFactoryResource)eFactory.eResource()).discardDerivedState();
-		((EFactoryResource)eFactory.eResource()).installDerivedState(true);
+		((EFactoryResource)eFactory.eResource()).installDerivedState(true); // intentionally true instead of false, because it simulates indexing, and makes sure attributes named "name" attributes are indexed (not just NewObject name) - unless we decide otherwise, see discussion point a) in ModelBuilder
 		testModel = (TestModel) resourceContents.get(1);
 		assertEquals("testit", testModel.getName());
 		

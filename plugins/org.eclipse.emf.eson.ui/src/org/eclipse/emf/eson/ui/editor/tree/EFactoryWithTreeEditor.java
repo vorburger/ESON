@@ -86,6 +86,9 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
@@ -196,8 +199,16 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	@Override
     public void createPartControl(Composite parent) {
 		sashForm = new SashForm(parent, SWT.HORIZONTAL);
-             super.createPartControl(sashForm);
-             
+		// composite to have control on the xtextEditor control created by super class.
+		final Composite leftComposite = new Composite(sashForm, SWT.NONE);
+		leftComposite.setLayout(new FillLayout());
+			super.createPartControl(leftComposite);
+			getSourceViewer().getTextWidget().addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseDoubleClick(MouseEvent e) {
+					maximizeControl(leftComposite);
+				}
+			}); 
              document = getDocument();
              resourceSet = document.readOnly(new IUnitOfWork<ResourceSet, XtextResource>() {
 				public ResourceSet exec(final XtextResource xtextResource) throws Exception {
@@ -217,7 +228,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
     			((IPostSelectionProvider) getSelectionProvider()).addPostSelectionChangedListener(propertiesViewUpdater);
     		}
     		
-             Tree tree = new Tree(sashForm, SWT.MULTI);
+             final Tree tree = new Tree(sashForm, SWT.MULTI);
              selectionViewer = new TreeViewer(tree);
              setCurrentViewer(selectionViewer);
 
@@ -227,6 +238,12 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
              selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
              selectionViewer.addSelectionChangedListener(propertiesViewUpdater);
              selectionViewer.expandAll();
+             tree.addMouseListener(new MouseAdapter() {
+     			@Override
+     			public void mouseDoubleClick(MouseEvent e) {
+     				maximizeControl(tree);
+     			}
+     		 });
              
              new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
              new ColumnViewerInformationControlToolTipSupport(selectionViewer, new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, selectionViewer));
@@ -601,4 +618,19 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 				contextService.activateContext("org.eclipse.emf.eson.ui.context");
 			}
 		}
+		
+	/**
+	 * Maximize the child control of sashform passed.
+	 * 
+	 * @param control
+	 *            - the child control of sashform to maximize or restore
+	 */
+	private void maximizeControl(Control control) {
+		if (sashForm.getMaximizedControl() == control) {
+			sashForm.setMaximizedControl(null);
+		} else {
+			sashForm.setMaximizedControl(control);
+		}
+	}
+
 }

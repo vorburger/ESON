@@ -42,7 +42,7 @@ public class ModelBuilder {
 
 	// intentionally package local - outside clients shouldn't need to build individual NewObject, they only build(Factory)
 	// NOTE: It is the caller's (!) responsibility to add the returned EObject into another EObject (or a Resource) eContainer. 
-	Optional<EObject> build(NewObject newObject) throws ModelBuilderException {
+	Optional<EObject> build(NewObject newObject, boolean preLinkingPhase) throws ModelBuilderException {
 		Preconditions.checkNotNull(newObject);
 		EObject target = mapping.get(newObject);
 		if (target != null) {
@@ -51,8 +51,14 @@ public class ModelBuilder {
 		Optional<EObject> eObjectOpt = createTarget(newObject);
 		if (eObjectOpt.isPresent()) {
 			EObject eObject = eObjectOpt.get();
-			setName(eObject , newObject);
-			buildFeatures(eObject, newObject.getFeatures());
+			setName(eObject, newObject);
+			// TODO if (preLinkingPhase) return; -- IFF we accept that:
+			//    a) refs only work with NewObject ..name.. {}, NOT via a 'name:' attribute (in which case the AttributeBuilder preLinkingPhase could be removed)
+			//    b) scoping provider will resolve nested instances by look-up of parent instead of index (TBD!)
+			//    c) empty names in parent enclosores are not permitted (needs validation!)
+			// Need to measure to impact of this optimization to see if its worth further pursuing this..
+			// If so, then the boolean preLinkingPhase would not have to be passed through all FeatureBuilder build() anymore either
+			buildFeatures(eObject, newObject.getFeatures(), preLinkingPhase);
 		}
 		return eObjectOpt;
 	}
@@ -100,14 +106,18 @@ public class ModelBuilder {
 	 * @throws ModelBuilderException if the content of the Factory prevented creation of a matching EObject
 	 */
 	public Optional<EObject> build(Factory factory) throws ModelBuilderException {
-		Optional<EObject> unlinkedRoot = buildWithoutLinking(factory);
+		Optional<EObject> unlinkedRoot = buildWithoutLinking(factory, true);
 		link();
 		return unlinkedRoot;
 	}
 
-	public Optional<EObject> buildWithoutLinking(Factory factory) throws ModelBuilderException {
+	/**
+	 * Builds. 
+	 * @param preLinkingPhase if true, only create objects exported to index (i.e. those with a name), if false, create everything. This is very important for performance.
+	 */
+	public Optional<EObject> buildWithoutLinking(Factory factory, boolean preLinkingPhase) throws ModelBuilderException {
 		Preconditions.checkNotNull(factory);
-		return build(factory.getRoot());
+		return build(factory.getRoot(), preLinkingPhase);
 	}
 	
 	private void setName(EObject target, NewObject source) {
@@ -117,11 +127,11 @@ public class ModelBuilder {
 		}
 	}
 
-	private void buildFeatures(EObject eObject, List<Feature> features) throws ModelBuilderException {
+	private void buildFeatures(EObject eObject, List<Feature> features, boolean preLinkingPhase) throws ModelBuilderException {
 		for (Feature feature : features) {
 			FeatureBuilder featureBuilder = featureSwitch.doSwitch(feature);
 			if (featureBuilder != null) {
-				featureBuilder.modelBuilder(this).container(eObject).feature(feature).build();
+				featureBuilder.modelBuilder(this).container(eObject).feature(feature).build(preLinkingPhase);
 			}
 		}
 	}

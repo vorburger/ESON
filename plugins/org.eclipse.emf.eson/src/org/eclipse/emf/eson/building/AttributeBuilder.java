@@ -18,27 +18,37 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.eson.eFactory.Attribute;
 import org.eclipse.emf.eson.eFactory.Feature;
+import org.eclipse.emf.eson.scoping.EFactoryQualifiedNameProvider;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 import org.eclipse.emf.eson.util.ValueResolver;
 
 public class AttributeBuilder extends FeatureBuilder {
 	private static final Logger logger = Logger.getLogger(AttributeBuilder.class);
 
+	private final static ValueSwitch valueSwitch = new ValueSwitch();
+	private final static ValueResolver valueResolver = new ValueResolver();
+
 	private Attribute attribute;
-	private ValueResolver valueResolver = new ValueResolver();
 
 	public AttributeBuilder(Attribute object) {
 		this.attribute = object;
 	}
 
 	@Override
-	public void build() throws ModelBuilderException {
+	public void build(boolean preLinkingPhase) throws ModelBuilderException {
 		EStructuralFeature eFeature = getFeature().getEFeature();
 		if (!(eFeature instanceof EAttribute))
 			return;
 		EAttribute eAttribute = (EAttribute) eFeature;
 		if (eAttribute.eIsProxy())
 			return;
+
+		String name = eFeature.getName();
+		if (preLinkingPhase
+				// see point a) of TODO in ModelBuilder build() about this: 
+				&& name != null && !name.equals(EFactoryQualifiedNameProvider.NAME_ATTRIBUTE_NAME))
+			return;
+
 		Object newValue = valueResolver.apply(attribute);
 		
 		// @see BrokenEnumTest
@@ -59,7 +69,7 @@ public class AttributeBuilder extends FeatureBuilder {
 	}
 
 	protected Object convertToTargetType(Class<?> clazz, Object newValue, Feature feature) throws IllegalArgumentException {
-		Object o = new ValueSwitch().doSwitch(clazz, newValue);
+		Object o = valueSwitch.doSwitch(clazz, newValue);
 		if (!clazz.isPrimitive() && o != null && !clazz.isInstance(o)) {
 			logger.warn("Likely upcoming ClassCastException 'heads up' - failed to convert value '"
 					+ newValue.toString() + "' to an instance of class '"
