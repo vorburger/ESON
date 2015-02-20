@@ -13,7 +13,6 @@
 package org.eclipse.emf.eson.building;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.eson.eFactory.MultiValue;
 import org.eclipse.emf.eson.eFactory.Value;
 
@@ -32,7 +31,7 @@ public class MultiValueBuilder extends FeatureBuilder {
 	}
 
 	@Override
-	public void build() throws ModelBuilderException {
+	public void build(boolean preLinkingPhase) throws ModelBuilderException {
 		final EStructuralFeature eFeature = getFeature().getEFeature();
 		if (eFeature.eIsProxy())
 			return;
@@ -40,7 +39,7 @@ public class MultiValueBuilder extends FeatureBuilder {
 		for (Value listValue : multiValue.getValues()) {
 			FeatureBuilder itemFeatureBuilder = featureSwitch.doSwitch(listValue);
 			if (itemFeatureBuilder != null)
-				itemFeatureBuilder.modelBuilder(getModelBuilder()).container(getContainer()).feature(getFeature()).build();
+				itemFeatureBuilder.modelBuilder(getModelBuilder()).container(getContainer()).feature(getFeature()).build(preLinkingPhase);
 		}
 	}
 

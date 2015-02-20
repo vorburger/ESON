@@ -13,7 +13,6 @@
 package org.eclipse.emf.eson.building;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.eson.eFactory.Feature;
 
 public abstract class FeatureBuilder {
@@ -44,7 +43,7 @@ public abstract class FeatureBuilder {
 		return this;
 	}
 
-	public abstract void build() throws ModelBuilderException;
+	public abstract void build(boolean preLinkingPhase) throws ModelBuilderException;
 
 	public FeatureBuilder modelBuilder(ModelBuilder modelBuilder) {
 		this.modelBuilder = modelBuilder;

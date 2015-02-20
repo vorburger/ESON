@@ -100,7 +100,7 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
     	EFactoryResource efResource = (EFactoryResource) resource;
 		ModelBuilder builder = efResource.getBuilder();
 		try {
-			Optional<EObject> eModel = builder.buildWithoutLinking(model);
+			Optional<EObject> eModel = builder.buildWithoutLinking(model, preLinkingPhase);
 			
 			if (eModel.isPresent()) {
 				if (!preLinkingPhase) {

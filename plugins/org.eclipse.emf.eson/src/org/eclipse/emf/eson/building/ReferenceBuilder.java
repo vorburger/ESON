@@ -32,7 +32,9 @@ public class ReferenceBuilder extends FeatureBuilder {
 	}
 
 	@Override
-	public void build() throws ModelBuilderException {
+	public void build(boolean preLinkingPhase) throws ModelBuilderException {
+		if (preLinkingPhase)
+			return;
 		getModelBuilder().addDeferredLinkingFeatureBuilder(this);
 	}
 
