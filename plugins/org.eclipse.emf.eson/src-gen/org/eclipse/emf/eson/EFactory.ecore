@@ -6,8 +6,6 @@
         eType="#//NamespaceImport" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="epackages" upperBound="-1"
         eType="#//PackageImport" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
-        eType="#//Annotation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//NewObject"
         containment="true"/>
   </eClassifiers>
@@ -16,11 +14,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamespaceImport">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Annotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomNameMapping" eSuperTypes="#//Annotation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eClass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="nameFeature" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature">
     <eStructuralFeatures xsi:type="ecore:EReference" name="eFeature" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>

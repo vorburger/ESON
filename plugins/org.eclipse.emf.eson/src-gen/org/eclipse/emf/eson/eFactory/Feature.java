@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Feature#getEFeature <em>EFeature</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Feature#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getFeature()
  * @model

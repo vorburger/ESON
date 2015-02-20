@@ -90,16 +90,6 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
         return createNamespaceImportAdapter();
       }
       @Override
-      public Adapter caseAnnotation(Annotation object)
-      {
-        return createAnnotationAdapter();
-      }
-      @Override
-      public Adapter caseCustomNameMapping(CustomNameMapping object)
-      {
-        return createCustomNameMappingAdapter();
-      }
-      @Override
       public Adapter caseFeature(Feature object)
       {
         return createFeatureAdapter();
@@ -232,36 +222,6 @@ public class EFactoryAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNamespaceImportAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.Annotation <em>Annotation</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.Annotation
-   * @generated
-   */
-  public Adapter createAnnotationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.eson.eFactory.CustomNameMapping <em>Custom Name Mapping</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.emf.eson.eFactory.CustomNameMapping
-   * @generated
-   */
-  public Adapter createCustomNameMappingAdapter()
   {
     return null;
   }

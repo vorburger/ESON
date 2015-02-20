@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.EPackage;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.PackageImport#getEPackage <em>EPackage</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getPackageImport()
  * @model

@@ -27,12 +27,12 @@ import org.eclipse.emf.eson.eFactory.NewObject;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.NewObjectImpl#getEClass <em>EClass</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.NewObjectImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.NewObjectImpl#getFeatures <em>Features</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

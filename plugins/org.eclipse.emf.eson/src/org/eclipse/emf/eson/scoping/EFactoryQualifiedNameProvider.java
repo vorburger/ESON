@@ -13,6 +13,7 @@
 package org.eclipse.emf.eson.scoping;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eson.building.NameAccessor;
 import org.eclipse.emf.eson.eFactory.EFactoryPackage;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -37,7 +38,7 @@ public class EFactoryQualifiedNameProvider extends IQualifiedNameProvider.Abstra
 	// TODO evaluate (measure) if using an IResourceScopeCache (OnChangeEvictingCache) here, like DefaultDeclarativeQualifiedNameProvider seems to, makes any noticeable perf. diff?
 
 	// TODO make this more pluggable.. the core logic below (skip our own) should be "core", the actual naming resolution itself should be Guice pluggable?
-	public final static String NAME_ATTRIBUTE_NAME = "name"; // as is hard-coded in NAME_RESOLVER
+	public final static String NAME_ATTRIBUTE_NAME = NameAccessor.DEFAULT_NAME_FEATURE;
 	protected Function<EObject, String> resolver = SimpleAttributeResolver.NAME_RESOLVER;
 
 	protected @Inject IQualifiedNameConverter converter;

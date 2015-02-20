@@ -19,21 +19,18 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eson.eFactory.EFactoryPackage;
+import org.eclipse.emf.eson.eFactory.Factory;
+import org.eclipse.emf.eson.eFactory.Feature;
+import org.eclipse.emf.eson.eFactory.NewObject;
+import org.eclipse.emf.eson.eFactory.Reference;
 import org.eclipse.emf.eson.resource.EFactoryResource;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-
-import org.eclipse.emf.eson.eFactory.Annotation;
-import org.eclipse.emf.eson.eFactory.EFactoryPackage;
-import org.eclipse.emf.eson.eFactory.Factory;
-import org.eclipse.emf.eson.eFactory.Feature;
-import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.emf.eson.eFactory.Reference;
 
 /**
  * Highlight Annotation with SemanticHighlightingConfiguration.ANNOTATION_ID,
@@ -53,11 +50,12 @@ public class EFactoryHighlightingCalculator implements ISemanticHighlightingCalc
 		Iterator<EObject> iter = getContentIterator(resource);
 		while (iter.hasNext()) {
 			EObject semanticObject = iter.next();
-			if (semanticObject instanceof Annotation) {
-				// highlight Annotation
-				ICompositeNode node = NodeModelUtils.findActualNodeFor(semanticObject);
-				highlightNode(node, EFactorySemanticHighlightingConfiguration.ANNOTATION_ID, acceptor);
-			} else if (semanticObject instanceof NewObject) {
+//			if (semanticObject instanceof Annotation) {
+//				// highlight Annotation
+//				ICompositeNode node = NodeModelUtils.findActualNodeFor(semanticObject);
+//				highlightNode(node, EFactorySemanticHighlightingConfiguration.ANNOTATION_ID, acceptor);
+//			} else 
+			if (semanticObject instanceof NewObject) {
 				// highlight NewObject's eClass
 				EStructuralFeature expectedFeature = EFactoryPackage.eINSTANCE.getNewObject_EClass();
 				highlightLeafNode(semanticObject, expectedFeature, EFactorySemanticHighlightingConfiguration.ECLASS_ID, acceptor);

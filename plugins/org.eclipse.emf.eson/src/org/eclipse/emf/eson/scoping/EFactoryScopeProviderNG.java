@@ -12,14 +12,12 @@
  */
 package org.eclipse.emf.eson.scoping;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.eson.eFactory.Attribute;
-import org.eclipse.emf.eson.eFactory.CustomNameMapping;
 import org.eclipse.emf.eson.eFactory.EnumAttribute;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.MultiValue;
@@ -85,11 +83,11 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 		return IScope.NULLSCOPE;
 	}
 
-	public IScope scope_CustomNameMapping_nameFeature(CustomNameMapping mapping, EReference reference) {
-		Iterable<EAttribute> attributes = EcoreUtil3.getAllAttributes(mapping.getEClass(), String.class);
-		Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(attributes);
-		return new SimpleScope(elements);
-	}
+//	public IScope scope_CustomNameMapping_nameFeature(CustomNameMapping mapping, EReference reference) {
+//		Iterable<EAttribute> attributes = EcoreUtil3.getAllAttributes(mapping.getEClass(), String.class);
+//		Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(attributes);
+//		return new SimpleScope(elements);
+//	}
 
 	public IScope scope_Containment_value(Feature feature, EReference eReference) {
 		if (EcoreUtil3.isEContainment(feature.getEFeature())) {

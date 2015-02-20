@@ -20,10 +20,10 @@ import org.eclipse.emf.eson.eFactory.NewObject;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.ContainmentImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

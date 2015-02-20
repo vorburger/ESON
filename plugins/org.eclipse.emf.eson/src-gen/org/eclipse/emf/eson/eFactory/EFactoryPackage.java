@@ -85,22 +85,13 @@ public interface EFactoryPackage extends EPackage
   int FACTORY__EPACKAGES = 1;
 
   /**
-   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FACTORY__ANNOTATIONS = 2;
-
-  /**
    * The feature id for the '<em><b>Root</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FACTORY__ROOT = 3;
+  int FACTORY__ROOT = 2;
 
   /**
    * The number of structural features of the '<em>Factory</em>' class.
@@ -109,7 +100,7 @@ public interface EFactoryPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FACTORY_FEATURE_COUNT = 4;
+  int FACTORY_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.PackageImportImpl <em>Package Import</em>}' class.
@@ -168,62 +159,6 @@ public interface EFactoryPackage extends EPackage
   int NAMESPACE_IMPORT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.AnnotationImpl <em>Annotation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.AnnotationImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAnnotation()
-   * @generated
-   */
-  int ANNOTATION = 3;
-
-  /**
-   * The number of structural features of the '<em>Annotation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ANNOTATION_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.CustomNameMappingImpl <em>Custom Name Mapping</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.emf.eson.eFactory.impl.CustomNameMappingImpl
-   * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getCustomNameMapping()
-   * @generated
-   */
-  int CUSTOM_NAME_MAPPING = 4;
-
-  /**
-   * The feature id for the '<em><b>EClass</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_NAME_MAPPING__ECLASS = ANNOTATION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Name Feature</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_NAME_MAPPING__NAME_FEATURE = ANNOTATION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Custom Name Mapping</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_NAME_MAPPING_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link org.eclipse.emf.eson.eFactory.impl.FeatureImpl <em>Feature</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -231,7 +166,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getFeature()
    * @generated
    */
-  int FEATURE = 5;
+  int FEATURE = 3;
 
   /**
    * The feature id for the '<em><b>EFeature</b></em>' reference.
@@ -268,7 +203,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getValue()
    * @generated
    */
-  int VALUE = 7;
+  int VALUE = 5;
 
   /**
    * The number of structural features of the '<em>Value</em>' class.
@@ -287,7 +222,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getNewObject()
    * @generated
    */
-  int NEW_OBJECT = 6;
+  int NEW_OBJECT = 4;
 
   /**
    * The feature id for the '<em><b>EClass</b></em>' reference.
@@ -333,7 +268,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getMultiValue()
    * @generated
    */
-  int MULTI_VALUE = 8;
+  int MULTI_VALUE = 6;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -361,7 +296,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getReference()
    * @generated
    */
-  int REFERENCE = 9;
+  int REFERENCE = 7;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -389,7 +324,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 10;
+  int ATTRIBUTE = 8;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -408,7 +343,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getEnumAttribute()
    * @generated
    */
-  int ENUM_ATTRIBUTE = 11;
+  int ENUM_ATTRIBUTE = 9;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -436,7 +371,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getStringAttribute()
    * @generated
    */
-  int STRING_ATTRIBUTE = 12;
+  int STRING_ATTRIBUTE = 10;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -464,7 +399,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getIntegerAttribute()
    * @generated
    */
-  int INTEGER_ATTRIBUTE = 13;
+  int INTEGER_ATTRIBUTE = 11;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -492,7 +427,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getDoubleAttribute()
    * @generated
    */
-  int DOUBLE_ATTRIBUTE = 14;
+  int DOUBLE_ATTRIBUTE = 12;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -520,7 +455,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getDateAttribute()
    * @generated
    */
-  int DATE_ATTRIBUTE = 15;
+  int DATE_ATTRIBUTE = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -548,7 +483,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getNullAttribute()
    * @generated
    */
-  int NULL_ATTRIBUTE = 16;
+  int NULL_ATTRIBUTE = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -576,7 +511,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getBooleanAttribute()
    * @generated
    */
-  int BOOLEAN_ATTRIBUTE = 17;
+  int BOOLEAN_ATTRIBUTE = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -604,7 +539,7 @@ public interface EFactoryPackage extends EPackage
    * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getContainment()
    * @generated
    */
-  int CONTAINMENT = 18;
+  int CONTAINMENT = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -658,17 +593,6 @@ public interface EFactoryPackage extends EPackage
   EReference getFactory_Epackages();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eson.eFactory.Factory#getAnnotations <em>Annotations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Annotations</em>'.
-   * @see org.eclipse.emf.eson.eFactory.Factory#getAnnotations()
-   * @see #getFactory()
-   * @generated
-   */
-  EReference getFactory_Annotations();
-
-  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.emf.eson.eFactory.Factory#getRoot <em>Root</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -720,48 +644,6 @@ public interface EFactoryPackage extends EPackage
    * @generated
    */
   EAttribute getNamespaceImport_ImportedNamespace();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.Annotation <em>Annotation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Annotation</em>'.
-   * @see org.eclipse.emf.eson.eFactory.Annotation
-   * @generated
-   */
-  EClass getAnnotation();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.CustomNameMapping <em>Custom Name Mapping</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Custom Name Mapping</em>'.
-   * @see org.eclipse.emf.eson.eFactory.CustomNameMapping
-   * @generated
-   */
-  EClass getCustomNameMapping();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.emf.eson.eFactory.CustomNameMapping#getEClass <em>EClass</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>EClass</em>'.
-   * @see org.eclipse.emf.eson.eFactory.CustomNameMapping#getEClass()
-   * @see #getCustomNameMapping()
-   * @generated
-   */
-  EReference getCustomNameMapping_EClass();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.emf.eson.eFactory.CustomNameMapping#getNameFeature <em>Name Feature</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Name Feature</em>'.
-   * @see org.eclipse.emf.eson.eFactory.CustomNameMapping#getNameFeature()
-   * @see #getCustomNameMapping()
-   * @generated
-   */
-  EReference getCustomNameMapping_NameFeature();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.emf.eson.eFactory.Feature <em>Feature</em>}'.
@@ -1118,14 +1000,6 @@ public interface EFactoryPackage extends EPackage
     EReference FACTORY__EPACKAGES = eINSTANCE.getFactory_Epackages();
 
     /**
-     * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FACTORY__ANNOTATIONS = eINSTANCE.getFactory_Annotations();
-
-    /**
      * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1168,42 +1042,6 @@ public interface EFactoryPackage extends EPackage
      * @generated
      */
     EAttribute NAMESPACE_IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getNamespaceImport_ImportedNamespace();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.AnnotationImpl <em>Annotation</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.AnnotationImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getAnnotation()
-     * @generated
-     */
-    EClass ANNOTATION = eINSTANCE.getAnnotation();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.CustomNameMappingImpl <em>Custom Name Mapping</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.emf.eson.eFactory.impl.CustomNameMappingImpl
-     * @see org.eclipse.emf.eson.eFactory.impl.EFactoryPackageImpl#getCustomNameMapping()
-     * @generated
-     */
-    EClass CUSTOM_NAME_MAPPING = eINSTANCE.getCustomNameMapping();
-
-    /**
-     * The meta object literal for the '<em><b>EClass</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CUSTOM_NAME_MAPPING__ECLASS = eINSTANCE.getCustomNameMapping_EClass();
-
-    /**
-     * The meta object literal for the '<em><b>Name Feature</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CUSTOM_NAME_MAPPING__NAME_FEATURE = eINSTANCE.getCustomNameMapping_NameFeature();
 
     /**
      * The meta object literal for the '{@link org.eclipse.emf.eson.eFactory.impl.FeatureImpl <em>Feature</em>}' class.

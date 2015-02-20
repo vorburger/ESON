@@ -9,7 +9,7 @@ generate eFactory "http://www.eclipse.org/emf/eson/EFactory"
 Factory:
 	(imports += NamespaceImport)*
 	(epackages+=PackageImport)*
-	(annotations+=Annotation)*
+//	(annotations+=Annotation)*
 	root=NewObject;
 	
 PackageImport:
@@ -22,14 +22,14 @@ NamespaceImport:
 	// TODO Content Assist for EPackage .. but one COULD also import other named NewObject / EObject, instead of EPackages.. hm. As EPackage will be much more common, just support that.	
 ;
 
-Annotation:
-	CustomNameMapping;
+//Annotation:
+//	CustomNameMapping;
 
+// 2015-02-20 COMMENTED OUT, as this never really fully worked anyway; while ModelBuilder would respect this in setName(), EFactoryQualifiedNameProvider would not and index based on hard-coded 'name' only, anyway, so for working cross references this never wasn't sufficiently completely implemented, thus better commented out, for now
 // TODO further consider if name mapping is best put in-line into objects.. it would have to repeat in every file..
 // logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
-
-CustomNameMapping:
-	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}" ;
+//CustomNameMapping:
+//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}" ;
 
 Feature:
 	eFeature=[ecore::EStructuralFeature] ":" (value=Value)? ;

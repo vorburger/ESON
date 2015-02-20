@@ -433,4 +433,15 @@
        </context>
     </extension>
 
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="efactory"
+            type="text">
+    </fileTypes>
+    <fileTypes
+            extension="eson"
+            type="text">
+    </fileTypes>
+  </extension>
+
 </plugin>

@@ -50,7 +50,7 @@ public class EFactorySwitch<T> extends Switch<T>
    * Checks whether this is a switch for the given package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @parameter ePackage the package in question.
+   * @param ePackage the package in question.
    * @return whether this is a switch for the given package.
    * @generated
    */
@@ -90,21 +90,6 @@ public class EFactorySwitch<T> extends Switch<T>
       {
         NamespaceImport namespaceImport = (NamespaceImport)theEObject;
         T result = caseNamespaceImport(namespaceImport);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EFactoryPackage.ANNOTATION:
-      {
-        Annotation annotation = (Annotation)theEObject;
-        T result = caseAnnotation(annotation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EFactoryPackage.CUSTOM_NAME_MAPPING:
-      {
-        CustomNameMapping customNameMapping = (CustomNameMapping)theEObject;
-        T result = caseCustomNameMapping(customNameMapping);
-        if (result == null) result = caseAnnotation(customNameMapping);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -273,38 +258,6 @@ public class EFactorySwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNamespaceImport(NamespaceImport object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Annotation</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Annotation</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAnnotation(Annotation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Custom Name Mapping</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Custom Name Mapping</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCustomNameMapping(CustomNameMapping object)
   {
     return null;
   }

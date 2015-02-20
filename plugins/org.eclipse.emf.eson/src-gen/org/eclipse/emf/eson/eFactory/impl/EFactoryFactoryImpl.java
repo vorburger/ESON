@@ -67,8 +67,6 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
       case EFactoryPackage.FACTORY: return createFactory();
       case EFactoryPackage.PACKAGE_IMPORT: return createPackageImport();
       case EFactoryPackage.NAMESPACE_IMPORT: return createNamespaceImport();
-      case EFactoryPackage.ANNOTATION: return createAnnotation();
-      case EFactoryPackage.CUSTOM_NAME_MAPPING: return createCustomNameMapping();
       case EFactoryPackage.FEATURE: return createFeature();
       case EFactoryPackage.NEW_OBJECT: return createNewObject();
       case EFactoryPackage.VALUE: return createValue();
@@ -119,28 +117,6 @@ public class EFactoryFactoryImpl extends EFactoryImpl implements EFactoryFactory
   {
     NamespaceImportImpl namespaceImport = new NamespaceImportImpl();
     return namespaceImport;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Annotation createAnnotation()
-  {
-    AnnotationImpl annotation = new AnnotationImpl();
-    return annotation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CustomNameMapping createCustomNameMapping()
-  {
-    CustomNameMappingImpl customNameMapping = new CustomNameMappingImpl();
-    return customNameMapping;
   }
 
   /**

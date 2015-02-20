@@ -50,24 +50,6 @@ public interface EFactoryFactory extends EFactory
   NamespaceImport createNamespaceImport();
 
   /**
-   * Returns a new object of class '<em>Annotation</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Annotation</em>'.
-   * @generated
-   */
-  Annotation createAnnotation();
-
-  /**
-   * Returns a new object of class '<em>Custom Name Mapping</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Custom Name Mapping</em>'.
-   * @generated
-   */
-  CustomNameMapping createCustomNameMapping();
-
-  /**
    * Returns a new object of class '<em>Feature</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

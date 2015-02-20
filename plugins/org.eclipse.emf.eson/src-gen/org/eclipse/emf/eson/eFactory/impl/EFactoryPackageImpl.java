@@ -9,11 +9,9 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.eclipse.emf.eson.eFactory.Annotation;
 import org.eclipse.emf.eson.eFactory.Attribute;
 import org.eclipse.emf.eson.eFactory.BooleanAttribute;
 import org.eclipse.emf.eson.eFactory.Containment;
-import org.eclipse.emf.eson.eFactory.CustomNameMapping;
 import org.eclipse.emf.eson.eFactory.DateAttribute;
 import org.eclipse.emf.eson.eFactory.DoubleAttribute;
 import org.eclipse.emf.eson.eFactory.EFactoryFactory;
@@ -59,20 +57,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * @generated
    */
   private EClass namespaceImportEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass annotationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass customNameMappingEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -270,19 +254,9 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFactory_Annotations()
-  {
-    return (EReference)factoryEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getFactory_Root()
   {
-    return (EReference)factoryEClass.getEStructuralFeatures().get(3);
+    return (EReference)factoryEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -323,46 +297,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
   public EAttribute getNamespaceImport_ImportedNamespace()
   {
     return (EAttribute)namespaceImportEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAnnotation()
-  {
-    return annotationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCustomNameMapping()
-  {
-    return customNameMappingEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCustomNameMapping_EClass()
-  {
-    return (EReference)customNameMappingEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCustomNameMapping_NameFeature()
-  {
-    return (EReference)customNameMappingEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -688,7 +622,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     factoryEClass = createEClass(FACTORY);
     createEReference(factoryEClass, FACTORY__IMPORTS);
     createEReference(factoryEClass, FACTORY__EPACKAGES);
-    createEReference(factoryEClass, FACTORY__ANNOTATIONS);
     createEReference(factoryEClass, FACTORY__ROOT);
 
     packageImportEClass = createEClass(PACKAGE_IMPORT);
@@ -696,12 +629,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
 
     namespaceImportEClass = createEClass(NAMESPACE_IMPORT);
     createEAttribute(namespaceImportEClass, NAMESPACE_IMPORT__IMPORTED_NAMESPACE);
-
-    annotationEClass = createEClass(ANNOTATION);
-
-    customNameMappingEClass = createEClass(CUSTOM_NAME_MAPPING);
-    createEReference(customNameMappingEClass, CUSTOM_NAME_MAPPING__ECLASS);
-    createEReference(customNameMappingEClass, CUSTOM_NAME_MAPPING__NAME_FEATURE);
 
     featureEClass = createEClass(FEATURE);
     createEReference(featureEClass, FEATURE__EFEATURE);
@@ -776,7 +703,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    customNameMappingEClass.getESuperTypes().add(this.getAnnotation());
     newObjectEClass.getESuperTypes().add(this.getValue());
     multiValueEClass.getESuperTypes().add(this.getValue());
     referenceEClass.getESuperTypes().add(this.getValue());
@@ -794,7 +720,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     initEClass(factoryEClass, Factory.class, "Factory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFactory_Imports(), this.getNamespaceImport(), null, "imports", null, 0, -1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFactory_Epackages(), this.getPackageImport(), null, "epackages", null, 0, -1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFactory_Annotations(), this.getAnnotation(), null, "annotations", null, 0, -1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFactory_Root(), this.getNewObject(), null, "root", null, 0, 1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(packageImportEClass, PackageImport.class, "PackageImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -802,12 +727,6 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
 
     initEClass(namespaceImportEClass, NamespaceImport.class, "NamespaceImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNamespaceImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, NamespaceImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(annotationEClass, Annotation.class, "Annotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(customNameMappingEClass, CustomNameMapping.class, "CustomNameMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCustomNameMapping_EClass(), ecorePackage.getEClass(), null, "eClass", null, 0, 1, CustomNameMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCustomNameMapping_NameFeature(), ecorePackage.getEAttribute(), null, "nameFeature", null, 0, 1, CustomNameMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFeature_EFeature(), ecorePackage.getEStructuralFeature(), null, "eFeature", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

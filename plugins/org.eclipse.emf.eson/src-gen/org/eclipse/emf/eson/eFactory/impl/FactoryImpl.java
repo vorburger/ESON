@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.emf.eson.eFactory.Annotation;
 import org.eclipse.emf.eson.eFactory.EFactoryPackage;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.NamespaceImport;
@@ -31,13 +30,12 @@ import org.eclipse.emf.eson.eFactory.PackageImport;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getEpackages <em>Epackages</em>}</li>
- *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getRoot <em>Root</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -62,16 +60,6 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
    * @ordered
    */
   protected EList<PackageImport> epackages;
-
-  /**
-   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAnnotations()
-   * @generated
-   * @ordered
-   */
-  protected EList<Annotation> annotations;
 
   /**
    * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference.
@@ -137,20 +125,6 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Annotation> getAnnotations()
-  {
-    if (annotations == null)
-    {
-      annotations = new EObjectContainmentEList<Annotation>(Annotation.class, this, EFactoryPackage.FACTORY__ANNOTATIONS);
-    }
-    return annotations;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public NewObject getRoot()
   {
     return root;
@@ -208,8 +182,6 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case EFactoryPackage.FACTORY__EPACKAGES:
         return ((InternalEList<?>)getEpackages()).basicRemove(otherEnd, msgs);
-      case EFactoryPackage.FACTORY__ANNOTATIONS:
-        return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
       case EFactoryPackage.FACTORY__ROOT:
         return basicSetRoot(null, msgs);
     }
@@ -230,8 +202,6 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
         return getImports();
       case EFactoryPackage.FACTORY__EPACKAGES:
         return getEpackages();
-      case EFactoryPackage.FACTORY__ANNOTATIONS:
-        return getAnnotations();
       case EFactoryPackage.FACTORY__ROOT:
         return getRoot();
     }
@@ -257,10 +227,6 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
         getEpackages().clear();
         getEpackages().addAll((Collection<? extends PackageImport>)newValue);
         return;
-      case EFactoryPackage.FACTORY__ANNOTATIONS:
-        getAnnotations().clear();
-        getAnnotations().addAll((Collection<? extends Annotation>)newValue);
-        return;
       case EFactoryPackage.FACTORY__ROOT:
         setRoot((NewObject)newValue);
         return;
@@ -284,9 +250,6 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
       case EFactoryPackage.FACTORY__EPACKAGES:
         getEpackages().clear();
         return;
-      case EFactoryPackage.FACTORY__ANNOTATIONS:
-        getAnnotations().clear();
-        return;
       case EFactoryPackage.FACTORY__ROOT:
         setRoot((NewObject)null);
         return;
@@ -308,8 +271,6 @@ public class FactoryImpl extends MinimalEObjectImpl.Container implements Factory
         return imports != null && !imports.isEmpty();
       case EFactoryPackage.FACTORY__EPACKAGES:
         return epackages != null && !epackages.isEmpty();
-      case EFactoryPackage.FACTORY__ANNOTATIONS:
-        return annotations != null && !annotations.isEmpty();
       case EFactoryPackage.FACTORY__ROOT:
         return root != null;
     }
