@@ -17,7 +17,6 @@ import static org.junit.Assert.assertNotNull;
 
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
-import org.eclipse.emf.eson.tests.util.TestConstants;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.junit.Assert;
@@ -28,6 +27,8 @@ import org.junit.runner.RunWith;
 
 import testmodel.TestModel;
 
+import com.google.inject.Inject;
+
 /**
  * Tests import of a XMI from an EFactory.
  */
@@ -35,12 +36,11 @@ import testmodel.TestModel;
 @InjectWith(ESONWithTestmodelInjectorProvider.class)
 public class ImportsTest {
 
-	private ResourceProvider resourceProvider;
+	private @Inject ResourceProvider resourceProvider;
 	private TestModel testModel;
 
 	@Before
 	public void setUp() throws Exception {
-		this.resourceProvider = new ResourceProvider(TestConstants.PLUGIN_ID);
 		resourceProvider.load("res/ImportTests/Imported.xmi", false); // This is an XMI file!
 		this.testModel = (TestModel) resourceProvider.loadModel("res/ImportTests/Importing.efactory");
 	}

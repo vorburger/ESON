@@ -1,6 +1,6 @@
 use testmodel.* 
  
-TestModel abc { // TODO abc // TODO 1
+TestModel abc {
 	
 	singleRequired: SingleRequired { }
 } 

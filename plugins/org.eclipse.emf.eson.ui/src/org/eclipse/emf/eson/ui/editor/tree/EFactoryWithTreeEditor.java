@@ -16,19 +16,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.EventObject;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.celleditor.ExtendedDialogCellEditor;
 import org.eclipse.emf.common.ui.viewer.ColumnViewerInformationControlToolTipSupport;
@@ -41,7 +35,6 @@ import org.eclipse.emf.ecore.presentation.EcoreEditorPlugin;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -61,19 +54,13 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DecoratingColumLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
-import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.eson.building.ModelBuilderException;
 import org.eclipse.emf.eson.eFactory.Attribute;
-import org.eclipse.emf.eson.eFactory.BooleanAttribute;
-import org.eclipse.emf.eson.eFactory.DoubleAttribute;
-import org.eclipse.emf.eson.eFactory.EFactoryPackage;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
-import org.eclipse.emf.eson.eFactory.IntegerAttribute;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.Reference;
-import org.eclipse.emf.eson.eFactory.StringAttribute;
 import org.eclipse.emf.eson.eFactory.impl.FactoryImpl;
 import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.jface.action.IMenuListener;
@@ -105,7 +92,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbench;
@@ -116,7 +102,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertySheet;
-import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -129,9 +114,8 @@ import org.eclipse.xtext.ui.label.GlobalDescriptionLabelProvider;
 import org.eclipse.xtext.ui.search.IXtextEObjectSearch;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
-public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomainProvider,IMenuListener,ISelectionProvider{
+public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomainProvider, IMenuListener, ISelectionProvider{
 	private final static Logger LOGGER = Logger.getLogger(EFactoryWithTreeEditor.class);
-	
 
 	private TreeViewer selectionViewer;
 	private AdapterFactoryEditingDomain editingDomain;
@@ -143,7 +127,6 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	private Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 	private ISelection editorSelection = StructuredSelection.EMPTY;
   	private ISelectionChangedListener propertiesViewUpdater;
-  	private List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 	private SashForm sashForm;
 	private @Inject IXtextEObjectSearch eObjectSearch;
 	private @Inject GlobalDescriptionLabelProvider globalDescriptionLabelProvider;
@@ -151,127 +134,24 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	public AdapterFactory getAdapterFactory() {
 		return adapterFactory;
 	}
+	
+	protected class EFactoryCommandStack extends BasicCommandStack {
+		@Override
+		public void execute(final Command command) {
+			document.modify(new IUnitOfWork.Void<XtextResource>() {
+				@Override
+				public void process(XtextResource state) throws Exception {
+					EFactoryCommandStack.super.execute(command);
+				}
+			});
+		}
+	}
     
 	private void initializeEditingDomain() {
-		BasicCommandStack commandStack = new BasicCommandStack() {
-
-			@Override
-			public void execute(final Command command) {
-				final Resource resource = resourceSet.getResources().get(0);
-				final Factory factory = (Factory) EcoreUtil.getObjectByType(resource.getContents(), EFactoryPackage.Literals.FACTORY);
-				final List<Notification> notifications = new ArrayList<Notification>();
-				final EContentAdapter eContentAdatper = new EContentAdapter() {
-					@Override
-					public void notifyChanged(final Notification notification) {
-						super.notifyChanged(notification);
-						int eventType = notification.getEventType();
-						if (eventType == Notification.REMOVING_ADAPTER) {
-							// If we are removing the adapters from the Factory,
-							// because it's unloaded when a new Factory is
-							// inferred...
-							if (notification.getNotifier() instanceof Factory) {
-								// Defer producing a new selection changed event to update
-								// the properties view for the the new inferred selection.
-								getEditorSite().getShell().getDisplay()
-										.asyncExec(new Runnable() {
-											public void run() {
-												document.readOnly(new IUnitOfWork.Void<XtextResource>() {
-													@Override
-													public void process(final XtextResource xtextResource) throws Exception {
-														ISelection selection = editorSelection;
-														for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext();) {
-															PropertySheetPage propertySheetPage = i.next();
-															if (propertySheetPage.getControl().isDisposed()) {
-																i.remove();
-															} else {
-																propertySheetPage.selectionChanged(EFactoryWithTreeEditor.this,selection);
-															}
-														}
-													}
-												});
-											}
-										});
-							}
-						} else if (!notification.isTouch() && notification.getNotifier() instanceof EObject) {
-							// Record the notifications.
-							notifications.add(0, notification);
-						}
-					}
-				};
-
-				factory.eAdapters().add(eContentAdatper);
-				
-				super.execute(command);
-
-				// Process the deferred notifications.
-				if (!notifications.isEmpty()) {
-					final Notification notification = notifications.get(0);
-
-					// For the feature of the object that's changed, process the
-					// new contents of the feature.
-					document.modify(new IUnitOfWork.Void<XtextResource>() {
-						@Override
-						public void process(XtextResource state) throws Exception {
-							// update the XTextDocument with new Value.
-							EObject eObject = (EObject) notification.getNotifier();
-							ICompositeNode node = NodeModelUtils.getNode(eObject);
-							if (node != null) {
-								if (eObject instanceof StringAttribute) {
-									StringAttribute attribute = (StringAttribute) eObject;
-									attribute.setValue(notification.getNewStringValue());
-								} else if (eObject instanceof BooleanAttribute) {
-									BooleanAttribute attribute = (BooleanAttribute) eObject;
-									attribute.setValue(notification.getNewBooleanValue());
-								} else if (eObject instanceof DoubleAttribute) {
-									DoubleAttribute attribute = (DoubleAttribute) eObject;
-									attribute.setValue(notification.getNewDoubleValue());
-								} else if (eObject instanceof IntegerAttribute) {
-									IntegerAttribute attribute = (IntegerAttribute) eObject;
-									attribute.setValue(notification.getNewLongValue());
-								} else if (eObject instanceof Reference) {
-									Reference reference = (Reference) eObject;
-									reference.setValue((EObject) notification.getNewValue());
-								}
-								getSourceViewer().invalidateTextPresentation();
-							} else {
-								// something is missing in the content of the XtextDocument.
-							}
-						}
-					});
-				}
-			}
-		};
-		
-	    commandStack.addCommandStackListener
-	      (new CommandStackListener() {
-	         public void commandStackChanged(final EventObject event) {
-	           getContainer().getDisplay().asyncExec
-	             (new Runnable() {
-	                public void run() {
-	                  firePropertyChange(IEditorPart.PROP_DIRTY);
-	                  // Try to select the affected objects.
-	                  Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
-	                  if (mostRecentCommand != null) {
-	                    setSelectionToViewer(mostRecentCommand.getAffectedObjects());
-	                  }
-	                  for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext(); ) {
-	                    PropertySheetPage propertySheetPage = i.next();
-	                    if (propertySheetPage.getControl().isDisposed()) {
-	                      i.remove();
-	                    } else {
-	                      propertySheetPage.refresh();
-	                    }
-	                  }
-	                }
-	              });
-	         }
-	       });
-
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet) {
+		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, new EFactoryCommandStack(), resourceSet) {
 			@Override
 			public boolean isReadOnly(Resource resource) {
-				return super.isReadOnly(resource)
-						|| getResourceSet().getResources().indexOf(resource) != 0;
+				return super.isReadOnly(resource) || getResourceSet().getResources().indexOf(resource) != 0;
 			}
 		};
 
@@ -379,8 +259,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	}
 
 
-
-	class EditingDomainProvider extends AdapterImpl implements IEditingDomainProvider {
+	private class EditingDomainProvider extends AdapterImpl implements IEditingDomainProvider {
 	    	public EditingDomain getEditingDomain() {
 				return editingDomain;
 			}
@@ -388,7 +267,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			public boolean isAdapterForType(Object type) {
 				return IEditingDomainProvider.class.equals(type);
 			}
-		}
+	}
 
 
 	public EditingDomain getEditingDomain() {
@@ -582,9 +461,9 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			return new StructuredSelection() {
 				public Object[] toArray() {
 					return new Object[] { 
-							new PropertySource(object, source) {
+							new URIBasedPropertySource(object, source, document) {
 
-								protected IPropertyDescriptor createPropertyDescriptor(IItemPropertyDescriptor itemPropertyDescriptor) {
+								protected IPropertyDescriptor createPropertyDescriptor(EObject object, IItemPropertyDescriptor itemPropertyDescriptor) {
 									return new EFactoryPropertyDescriptor(object, itemPropertyDescriptor) {
 										@Override
 										protected CellEditor createEDataTypeCellEditor(final EDataType eDataType, Composite composite) {

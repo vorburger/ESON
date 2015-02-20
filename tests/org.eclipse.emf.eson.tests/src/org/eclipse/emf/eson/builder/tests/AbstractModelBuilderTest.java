@@ -21,7 +21,6 @@ import org.eclipse.emf.eson.tests.util.DumpParsedStructureUtil;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.Find;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
-import org.eclipse.emf.eson.tests.util.TestConstants;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.junit.Assert;
@@ -34,14 +33,13 @@ import testmodel.TestModel;
 @InjectWith(ESONWithTestmodelInjectorProvider.class)
 public abstract class AbstractModelBuilderTest {
 
-	private ResourceProvider resourceProvider;
+	private @Inject ResourceProvider resourceProvider;
 	protected Factory factory;
 	protected TestModel testModel;
 	protected @Inject DumpParsedStructureUtil dumper;
 
 	@Before
 	public void setUp() throws Exception {
-		this.resourceProvider = new ResourceProvider(TestConstants.PLUGIN_ID);
 		this.testModel = resourceProvider.loadModel("res/BuilderTests/" + getTestModelName(), TestModel.class, /* HACK TODO UNDO */ false);
 		this.factory = ((EFactoryResource) testModel.eResource()).getEFactoryFactory();
 		// dumper.dump(this.factory);

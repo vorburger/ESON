@@ -40,7 +40,10 @@ import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.SaveOptions;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.junit.Test;
@@ -70,14 +73,13 @@ public class BuilderResyncTest {
 	// using a Provider because we want each test to get a fresh ResourceProvider 
 	@Inject Provider<ResourceProvider> rp;
 
-	@Inject ISerializer serializer;
-	
 	@Test
 	public void testChangeNameStringValueFeature() throws Exception {
 		EList<EObject> resourceContents = rp.get().load("res/BuilderResyncTests/1TestModelWithNameProperty.efactory", true);
 		
 		// Check the EFactory model
 		Factory eFactory = (Factory) resourceContents.get(0);
+		checkNodes(eFactory);
 		assertNotNull(eFactory);
 		Value efValue = eFactory.getRoot().getFeatures().get(0).getValue();
 		StringAttribute efStringValue = (StringAttribute) efValue;
@@ -102,6 +104,7 @@ public class BuilderResyncTest {
 		int nFeatures = eFactory.getRoot().getFeatures().size();
 		testModel.setName(null);
 		assertTrue(eFactory.getRoot().getFeatures().size() == nFeatures - 1);
+		checkNodes(eFactory);
 	}
 
 	protected String getRootObjectFirstFeatureAsString(Factory eFactory) {
@@ -126,6 +129,7 @@ public class BuilderResyncTest {
 		// Check setting null (unsetting)
 		testModel.setName(null);
 		assertNull(eFactory.getRoot().getName());
+		checkNodes(eFactory);
 	}
 
 	@Test
@@ -146,6 +150,7 @@ public class BuilderResyncTest {
 		assertEquals(TestmodelPackage.Literals.ATTRIBUTE_SAMPLE, newObject.getEClass());
 		IntegerAttribute singleIntOptional = (IntegerAttribute)newObject.getFeatures().get(0).getValue();
 		assertEquals(123, singleIntOptional.getValue());
+		checkNodes(eFactory);
 	}
 
 	/**
@@ -154,7 +159,8 @@ public class BuilderResyncTest {
 	 */
 	@Test
 	public void testAddNewContainerFeature() throws Exception {
-		EList<EObject> resourceContents = rp.get().load("res/BuilderResyncTests/1TestModelWithNameProperty.efactory", true);
+		ResourceProvider resourceProvider = rp.get();
+		EList<EObject> resourceContents = resourceProvider.load("res/BuilderResyncTests/1TestModelWithNameProperty.efactory", true);
 
 		// Change the TestModel
 		TestModel testModel = (TestModel) resourceContents.get(1);
@@ -173,16 +179,50 @@ public class BuilderResyncTest {
 		final NewObject newObject = efContainmentValue.getValue();
 		assertEquals(TestmodelPackage.Literals.NAME_ATTRIBUTE_CONTAINER, newObject.getEClass());
 
-		// Check if we can serialize the complete thing
-		@SuppressWarnings("unused")
+		// Check if we can serialize the complete thing and it looks as expected
+		XtextResource resource = (XtextResource) eFactory.eResource();
+		ISerializer serializer = resource.getSerializer();
 		String dsl = serializer.serialize(eFactory);
-		// System.out.println(dsl);
+		// NOTE The result is not as perfectly indented as we'd like it to
+		// ideally be, this is because of https://bugs.eclipse.org/bugs/show_bug.cgi?id=396283;
+		// see also EFactoryTextEditComposer.  However we do NOT want to force
+		// format it, not in tests and not in real editor UI etc. because one of
+		// the main points of ESON is that it doesn't have to reformat
+		// everything.
+		String expectedDSL = resourceProvider.loadAsString("res/BuilderResyncTests/1TestModelWithNamePropertyEXPECTED.efactory");
+		assertEquals(expectedDSL, dsl);
+		checkNodes(eFactory);
+	}
+	
+	/**
+	 * Tests that the NodeFixer correctly spaces out (indents) new features
+	 * added programmatically; incl. e.g. via Properties sheet. This test didn't
+	 * actually repro. the problem it was written to provide non-regression for,
+	 * but is still useful; @see UIResyncTest for another similar test which
+	 * does.
+	 */
+	@Test
+	public void testNewFeaturesAreNotGluedToEachOther() throws Exception {
+		ResourceProvider resourceProvider = rp.get();
+		EList<EObject> resourceContents = resourceProvider.load("res/BuilderResyncTests/3TestModelWithNoSpace.eson", true);
+		Factory eFactory = (Factory) resourceContents.get(0);
+		TestModel testModel = (TestModel) resourceContents.get(1);
+		XtextResource resource = (XtextResource) eFactory.eResource();
+		ISerializer serializer = resource.getSerializer();
+
+		Containment singleReqContainment = (Containment) eFactory.getRoot().getFeatures().get(0).getValue();
+		ReplaceRegion replaceRegionOriginal = serializer.serializeReplacement(singleReqContainment, SaveOptions.defaultOptions());
+		assertEquals(" SingleRequired {}", replaceRegionOriginal.getText());
 		
-		// Check now if we can serializeReplacement the change..
-		// This was the original problem during the development of the new split DSL/Tree Editor.. 
-		EObject modification = multiValue;
-		ReplaceRegion replaceRegion = serializer.serializeReplacement(modification, SaveOptions.defaultOptions());
-		assertEquals("[" + System.getProperty("line.separator") + "\tNameAttributeContainer {" + System.getProperty("line.separator") + "\t}" + System.getProperty("line.separator") + "]", replaceRegion.getText());
+		SingleRequired singleReq = testModel.getSingleRequired();
+		singleReq.setParentAttribute(true);
+		singleReq.setParentReference(testModel);
+		
+		// Check if we can serialize the complete thing and it looks as expected
+		String expectedDSL = resourceProvider.loadAsString("res/BuilderResyncTests/3TestModelWithNoSpaceEXPECTED.eson");
+		String dsl = serializer.serialize(eFactory);
+		assertEquals(expectedDSL, dsl);
+		checkNodes(eFactory);
 	}
 	
 	/**
@@ -220,6 +260,7 @@ public class BuilderResyncTest {
 
 		assertTrue(factory.getEpackages().isEmpty());
 		assertTrue(factory.getAnnotations().isEmpty());
+		checkNodes(factory);
 	}
 	
 	@Test
@@ -283,6 +324,7 @@ public class BuilderResyncTest {
 		testModel.getAttributeTest().removeAll(moreAttributeTestContainers);
 		assertEquals(1, getMultiValueValues(eFactory, 2).size());
 		checkListFeature(eFactory, 2, 0, 3487);
+		checkNodes(eFactory);
 	}
 
 	protected void checkListFeature(Factory eFactory, int featureIndex, int multiValueIndex, int expectedInt) {
@@ -346,18 +388,17 @@ public class BuilderResyncTest {
 		assertEquals(SampleEnum.SAMPLE2.getName(), secondOfManyEnums.getValue().getName());
 		firstOfManyEnums = (EnumAttribute)manyEnums.get(0);
 		assertEquals(SampleEnum.SAMPLE.getName(), firstOfManyEnums.getValue().getName());
+		checkNodes(eFactory);
 	}
+	
+	private void checkNodes(Factory eFactory) {
+		INode node = NodeModelUtils.findActualNodeFor(eFactory);
+		@SuppressWarnings("unused")
+		String text = NodeModelUtils.compactDump(node, true);
+		// Even if we don't dump this text to stdout, compactDump is very useful
+		// because it detects inconsistencies in the Node model which the
+		// NodeFixer may have caused by throwing exceptions.
+		// System.out.println(text);
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

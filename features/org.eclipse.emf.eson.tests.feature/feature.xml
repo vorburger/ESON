@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.eson.tests.feature"
-      label="EFactory Tests"
+      label="ESON Tests"
       version="0.10.0.qualifier">
 
    <description url="http://git.eclipse.org/c/emf/org.eclipse.emf.eson.git/">
@@ -135,4 +135,5 @@ This Agreement is governed by the laws of the State of New York and the intellec
          version="0.10.0.qualifier"
          fragment="true"
          unpack="false"/>
+
 </feature>

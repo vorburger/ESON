@@ -27,33 +27,29 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 import com.google.common.io.Closer;
 
 public class ResourceProvider {
-	public ResourceSet rs;
+	
+	public XtextResourceSet rs;
 	private String pluginId;
 
 	@Inject
-	public ResourceProvider(ResourceSet rs) {
+	public ResourceProvider(XtextResourceSet rs) {
 		this(rs, TestConstants.PLUGIN_ID);
 	}
 	
-	public ResourceProvider(ResourceSet rs, String pluginId) {
+	public ResourceProvider(XtextResourceSet rs, String pluginId) {
 		if (rs == null)
 			throw new IllegalArgumentException();
 		this.rs = rs;
 		this.pluginId = pluginId;
-	}
-
-	public ResourceProvider(String pluginId) {
-		this(new ResourceSetImpl(), pluginId);
 	}
 
 	public URI getUri(String plugInRootRelativePath) {
@@ -150,6 +146,11 @@ public class ResourceProvider {
 		}
 	}
 	
+	public String loadAsString(String plugInRootRelativePath) throws IOException {
+		URI uri = getUri(plugInRootRelativePath);
+		return loadAsStringFromURI(uri);
+	}
+
 	private void logResourceDiagnostics(Resource resource) {
 		for (Diagnostic diag : resource.getErrors()) {
 			System.err.println("ERR in test resource: " + resource.getURI() + " :: " + diag.getMessage());
