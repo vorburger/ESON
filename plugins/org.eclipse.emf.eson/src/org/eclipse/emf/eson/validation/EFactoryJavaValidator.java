@@ -19,6 +19,7 @@ import java.util.Set;
 import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -199,6 +200,7 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 		checkNoDuplicateFeature(newObject);
 		checkIsInstantiatable(newObject);
 		checkObjectName(newObject);
+		checkEClassNotInSameProject(newObject);
 	}
 
 	@Check(CheckType.NORMAL)
@@ -456,4 +458,21 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 			throw new NoSuchElementException("EFactory Feature " + feature.getEFeature().getName() + " is not contained in a NewObject?!");
 		return newObject;
 	}
+
+	// @see Documentation in EFactoryDerivedStateComputer
+	private void checkEClassNotInSameProject(NewObject newObject) {
+		URI newObjectURI = newObject.eResource().getURI();
+		EClass eClass = newObject.getEClass();
+		URI eClassURI = eClass.eResource().getURI();
+		if (isInSameProject(eClassURI, newObjectURI)) {
+			error("EClass must be in different project than ESON (so that it gets separately indexed first): " + eClass.getName(), EFactoryPackage.Literals.NEW_OBJECT__ECLASS);
+		}
+	}
+
+	public static boolean isInSameProject(URI uri1, URI uri2) {
+		if (!uri1.isPlatformResource() || !uri2.isPlatformResource())
+			return false;
+		return uri1.segment(1).equals(uri2.segment(1));
+	}
+	
 }

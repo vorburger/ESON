@@ -62,7 +62,8 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 	 * to the metamodel, namely NewObject eClass (i.e. getEClass(), NOT its eClass())
 	 * and Feature's eFeature EStructuralFeature, etc.  In practice this is not a
 	 * problem, because the Ecore model for an ESON in a workspace is either in
-	 * some plug-in behind, or in a different project in the same workspace.
+	 * some plug-in behind, or in a different project in the same workspace;
+	 * this constraint is verified by a Validator check. 
 	 * 
 	 * @param preLinkingPhase see also org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer.infer(EObject, IJvmDeclaredTypeAcceptor, boolean) for documentation.
 	 * 		true -> create EObjects which should be exported, don't resolve any cross references
