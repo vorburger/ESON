@@ -28,8 +28,8 @@ public class ContainmentBuilder extends FeatureBuilder {
 	}
 
 	@Override
-	public void build() throws ModelBuilderException {
-		Optional<EObject> newValue = getModelBuilder().build(containment.getValue());
+	public void build(boolean preLinkingPhase) throws ModelBuilderException {
+		Optional<EObject> newValue = getModelBuilder().build(containment.getValue(), preLinkingPhase);
 		final EStructuralFeature eFeature = getFeature().getEFeature();
 		if (eFeature.eIsProxy())
 			return;
