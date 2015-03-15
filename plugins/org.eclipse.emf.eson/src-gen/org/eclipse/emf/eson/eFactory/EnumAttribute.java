@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EEnumLiteral;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.EnumAttribute#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getEnumAttribute()
  * @model

@@ -31,13 +31,13 @@ import org.eclipse.emf.eson.eFactory.PackageImport;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getEpackages <em>Epackages</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FactoryImpl#getRoot <em>Root</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

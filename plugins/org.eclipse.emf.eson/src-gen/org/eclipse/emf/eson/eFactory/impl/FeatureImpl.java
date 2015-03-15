@@ -22,11 +22,11 @@ import org.eclipse.emf.eson.eFactory.Value;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FeatureImpl#getEFeature <em>EFeature</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.FeatureImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

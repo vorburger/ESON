@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.NewObject#getEClass <em>EClass</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.NewObject#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.NewObject#getFeatures <em>Features</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getNewObject()
  * @model

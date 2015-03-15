@@ -69,6 +69,7 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 	 * 		true -> create EObjects which should be exported, don't resolve any cross references
 	 * 		false -> create all EObjects, also cross references can be resolved
 	 */
+	@Override
 	public void installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
 		// @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=437848 (AKA DS-7543)
 		try {
@@ -134,6 +135,7 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 		return (Factory) resource.getContents().get(0);
 	}
 	
+	@Override
 	public void discardDerivedState(DerivedStateAwareResource resource) {
 		EList<Adapter> eAdapters = resource.eAdapters();
 		Adapter adapter = EcoreUtil2.getAdapter(eAdapters, EFactoryAdapter.class);

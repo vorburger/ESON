@@ -35,4 +35,5 @@ public class SimplestTest {
 		TestModel m = provider.loadModel("res/BuilderTests/Simplest.eson", TestModel.class);
 		assertEquals("abc", m.getName());
 	}
+
 }

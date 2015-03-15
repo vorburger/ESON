@@ -17,10 +17,10 @@ import org.eclipse.emf.eson.eFactory.NullAttribute;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.NullAttributeImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
