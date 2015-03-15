@@ -32,7 +32,7 @@ import org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions;
 public class DumpIndexUtil {
 	private DumpIndexUtil() {}
 	
-	private IResourceServiceProvider.Registry registry = IResourceServiceProvider.Registry.INSTANCE;
+	private static final IResourceServiceProvider.Registry registry = IResourceServiceProvider.Registry.INSTANCE;
 	
 	public static void dumpXtextIndex(Resource r) {
 		new DumpIndexUtil()._dumpXtextIndex(r);
@@ -47,7 +47,9 @@ public class DumpIndexUtil {
 				for (IEObjectDescription desc : descs) {
 					System.out.print("   ");
 					System.out.print(desc.getQualifiedName().toString("::"));
-					System.out.print(" => ");
+					System.out.print(" (");
+					System.out.print(desc.getEClass().getName());
+					System.out.print(") => ");
 					System.out.println(desc.getEObjectURI());
 				}
 			}

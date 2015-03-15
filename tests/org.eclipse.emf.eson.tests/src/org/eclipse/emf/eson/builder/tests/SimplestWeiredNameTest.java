@@ -27,13 +27,14 @@ import testmodel.TestModel;
 
 @RunWith(XtextRunner.class)
 @InjectWith(ESONWithTestmodelInjectorProvider.class)
-public class SimplestTest {
+public class SimplestWeiredNameTest {
 
 	@Inject ResourceProvider provider;
 
-	@Test public void testSimplest() throws Exception {
-		TestModel m = provider.loadModel("res/BuilderTests/Simplest.eson", TestModel.class);
+	@Test public void testWeirdoEClassAndAttributeNames() throws Exception {
+		provider.load("model/TestModel.ecore", false /* do NOT validate, as the weired names with dot violate ECore validation */);
+		TestModel m = provider.loadModel("res/BuilderTests/SimplestWithWeiredNamesWithDots.eson", TestModel.class);
 		assertEquals("abc", m.getName());
 	}
-	
+
 }
