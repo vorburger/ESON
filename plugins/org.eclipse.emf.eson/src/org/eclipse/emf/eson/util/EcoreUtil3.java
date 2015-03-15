@@ -28,10 +28,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eson.eFactory.Feature;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import org.eclipse.emf.eson.eFactory.Feature;
 
 public final class EcoreUtil3 {
 
@@ -154,11 +154,9 @@ public final class EcoreUtil3 {
 		return eType instanceof EEnum;
 	}
 
-	public static Iterable<? extends EObject> getAssignableFeatures(
-			EClass eClass) {
+	public static Iterable<? extends EStructuralFeature> getAssignableFeatures(EClass eClass) {
 		return Iterables.filter(eClass.getEAllStructuralFeatures(),
 				new Predicate<EStructuralFeature>() {
-
 					public boolean apply(EStructuralFeature input) {
 						return input.isChangeable();
 					}

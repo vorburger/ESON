@@ -145,16 +145,16 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cNameFeatureAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cNameFeatureEAttributeCrossReference_4_0 = (CrossReference)cNameFeatureAssignment_4.eContents().get(0);
-		private final RuleCall cNameFeatureEAttributeIDTerminalRuleCall_4_0_1 = (RuleCall)cNameFeatureEAttributeCrossReference_4_0.eContents().get(1);
+		private final RuleCall cNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1 = (RuleCall)cNameFeatureEAttributeCrossReference_4_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//// TODO further consider if name mapping is best put in-line into objects.. it would have to repeat in every file..
 		//// logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
 		//CustomNameMapping:
-		//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}";
+		//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}";
 		public ParserRule getRule() { return rule; }
 
-		//"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}"
+		//"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}"
 		public Group getGroup() { return cGroup; }
 
 		//"@Name"
@@ -175,14 +175,14 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 
-		//nameFeature=[ecore::EAttribute]
+		//nameFeature=[ecore::EAttribute|QualifiedName]
 		public Assignment getNameFeatureAssignment_4() { return cNameFeatureAssignment_4; }
 
-		//[ecore::EAttribute]
+		//[ecore::EAttribute|QualifiedName]
 		public CrossReference getNameFeatureEAttributeCrossReference_4_0() { return cNameFeatureEAttributeCrossReference_4_0; }
 
-		//ID
-		public RuleCall getNameFeatureEAttributeIDTerminalRuleCall_4_0_1() { return cNameFeatureEAttributeIDTerminalRuleCall_4_0_1; }
+		//QualifiedName
+		public RuleCall getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1() { return cNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
@@ -193,26 +193,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cEFeatureAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cEFeatureEStructuralFeatureCrossReference_0_0 = (CrossReference)cEFeatureAssignment_0.eContents().get(0);
-		private final RuleCall cEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1 = (RuleCall)cEFeatureEStructuralFeatureCrossReference_0_0.eContents().get(1);
+		private final RuleCall cEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEFeatureEStructuralFeatureCrossReference_0_0.eContents().get(1);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueValueParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//Feature:
-		//	eFeature=[ecore::EStructuralFeature] ":" value=Value?;
+		//	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?;
 		public ParserRule getRule() { return rule; }
 
-		//eFeature=[ecore::EStructuralFeature] ":" value=Value?
+		//eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?
 		public Group getGroup() { return cGroup; }
 
-		//eFeature=[ecore::EStructuralFeature]
+		//eFeature=[ecore::EStructuralFeature|QualifiedName]
 		public Assignment getEFeatureAssignment_0() { return cEFeatureAssignment_0; }
 
-		//[ecore::EStructuralFeature]
+		//[ecore::EStructuralFeature|QualifiedName]
 		public CrossReference getEFeatureEStructuralFeatureCrossReference_0_0() { return cEFeatureEStructuralFeatureCrossReference_0_0; }
 
-		//ID
-		public RuleCall getEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1() { return cEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1; }
+		//QualifiedName
+		public RuleCall getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1() { return cEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -237,7 +237,8 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFeaturesFeatureParserRuleCall_3_0 = (RuleCall)cFeaturesAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//// value isn't really optional semantically of course
+		//// Re. use of QualifiedName, see SimplestWeiredNameTest (we want to permit EAttribute name to have dots; strange yes, but due to a particular requirement in an in-house closed source product)
+		//// Also value isn't really optional semantically of course
 		//// but because it may be missing while typing, this works out much better in practice like this
 		//// the EFactoryJavaValidator flags it up if it's really missing
 		//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
@@ -470,26 +471,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cValueEEnumLiteralCrossReference_1_0 = (CrossReference)cValueAssignment_1.eContents().get(0);
-		private final RuleCall cValueEEnumLiteralIDTerminalRuleCall_1_0_1 = (RuleCall)cValueEEnumLiteralCrossReference_1_0.eContents().get(1);
+		private final RuleCall cValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cValueEEnumLiteralCrossReference_1_0.eContents().get(1);
 		
 		//EnumAttribute:
-		//	":" value=[ecore::EEnumLiteral];
+		//	":" value=[ecore::EEnumLiteral|QualifiedName];
 		public ParserRule getRule() { return rule; }
 
-		//":" value=[ecore::EEnumLiteral]
+		//":" value=[ecore::EEnumLiteral|QualifiedName]
 		public Group getGroup() { return cGroup; }
 
 		//":"
 		public Keyword getColonKeyword_0() { return cColonKeyword_0; }
 
-		//value=[ecore::EEnumLiteral]
+		//value=[ecore::EEnumLiteral|QualifiedName]
 		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
 
-		//[ecore::EEnumLiteral]
+		//[ecore::EEnumLiteral|QualifiedName]
 		public CrossReference getValueEEnumLiteralCrossReference_1_0() { return cValueEEnumLiteralCrossReference_1_0; }
 
-		//ID
-		public RuleCall getValueEEnumLiteralIDTerminalRuleCall_1_0_1() { return cValueEEnumLiteralIDTerminalRuleCall_1_0_1; }
+		//QualifiedName
+		public RuleCall getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1() { return cValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1; }
 	}
 
 	public class StringAttributeElements extends AbstractParserRuleElementFinder {
@@ -872,7 +873,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//// TODO further consider if name mapping is best put in-line into objects.. it would have to repeat in every file..
 	//// logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
 	//CustomNameMapping:
-	//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}";
+	//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}";
 	public CustomNameMappingElements getCustomNameMappingAccess() {
 		return (pCustomNameMapping != null) ? pCustomNameMapping : (pCustomNameMapping = new CustomNameMappingElements());
 	}
@@ -882,7 +883,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Feature:
-	//	eFeature=[ecore::EStructuralFeature] ":" value=Value?;
+	//	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?;
 	public FeatureElements getFeatureAccess() {
 		return (pFeature != null) ? pFeature : (pFeature = new FeatureElements());
 	}
@@ -891,7 +892,8 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getFeatureAccess().getRule();
 	}
 
-	//// value isn't really optional semantically of course
+	//// Re. use of QualifiedName, see SimplestWeiredNameTest (we want to permit EAttribute name to have dots; strange yes, but due to a particular requirement in an in-house closed source product)
+	//// Also value isn't really optional semantically of course
 	//// but because it may be missing while typing, this works out much better in practice like this
 	//// the EFactoryJavaValidator flags it up if it's really missing
 	//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
@@ -954,7 +956,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumAttribute:
-	//	":" value=[ecore::EEnumLiteral];
+	//	":" value=[ecore::EEnumLiteral|QualifiedName];
 	public EnumAttributeElements getEnumAttributeAccess() {
 		return (pEnumAttribute != null) ? pEnumAttribute : (pEnumAttribute = new EnumAttributeElements());
 	}

@@ -24,9 +24,9 @@ import org.eclipse.emf.eson.eFactory.EnumAttribute;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.MultiValue;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.emf.eson.eFactory.Reference;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.ICaseInsensitivityHelper;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
@@ -34,14 +34,18 @@ import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
 
 import com.google.common.base.Predicate;
+import com.google.inject.Inject;
 
 public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
+
+	@Inject
+	private ICaseInsensitivityHelper caseInsensitivityHelper;
 
 	public IScope scope_EnumAttribute_value(EnumAttribute attribute, EReference reference) {
 		Feature feature = getFeature(attribute);
 		if (feature.getEFeature().getEType() instanceof EEnum) {
 			EEnum enumType = (EEnum) feature.getEFeature().getEType();
-			Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(enumType.getELiterals());
+			Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(enumType.getELiterals(), DottedQualifiedNameFixer.FUNCTION);
 			return new SimpleScope(elements);
 		}
 		return IScope.NULLSCOPE;
@@ -52,8 +56,10 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 	public IScope scope_Feature_eFeature(NewObject newObject, EReference reference) {
 		EClass eClass = newObject.getEClass();
 		Iterable<? extends EObject> assignableFeature = EcoreUtil3.getAssignableFeatures(eClass);
-		return new SimpleScope(Scopes.scopedElementsFor(assignableFeature));
+		Iterable<IEObjectDescription> descs = Scopes.scopedElementsFor(assignableFeature, DottedQualifiedNameFixer.FUNCTION);
+		return new SimpleScope(descs);
 	}
+
 	public IScope scope_Feature_eFeature(Feature feature, EReference reference) {
 		NewObject newObject = (NewObject) feature.eContainer();
 		return scope_Feature_eFeature(newObject, reference);
@@ -63,11 +69,12 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 		if (newObject.getEClass() == null) {
 			return IScope.NULLSCOPE;
 		}
-		return new SimpleScope(Scopes.scopedElementsFor(newObject.getEClass().getEAllStructuralFeatures()));
+		return new SimpleScope(Scopes.scopedElementsFor(newObject.getEClass().getEAllStructuralFeatures(), DottedQualifiedNameFixer.FUNCTION));
 	}
 
-	public IScope scope_NewObject_eClass(Reference reference, EReference eReference) {
-		return IScope.NULLSCOPE;
+	public IScope scope_EClass(EObject context, EReference reference) {
+		IScope scope = delegateGetScope(context, reference);
+		return new DottedQualifiedNameAwareScope(scope, isIgnoreCase(reference));
 	}
 
 	public IScope scope_Reference_value(Feature feature, EReference eReference) {
@@ -87,7 +94,7 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 
 	public IScope scope_CustomNameMapping_nameFeature(CustomNameMapping mapping, EReference reference) {
 		Iterable<EAttribute> attributes = EcoreUtil3.getAllAttributes(mapping.getEClass(), String.class);
-		Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(attributes);
+		Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(attributes, DottedQualifiedNameFixer.FUNCTION);
 		return new SimpleScope(elements);
 	}
 
@@ -105,6 +112,10 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 			 container = container.eContainer();
 		 }
 		 return (Feature) container; 
+	}
+
+	protected boolean isIgnoreCase(EReference reference) {
+		return caseInsensitivityHelper.isIgnoreCase(reference);
 	}
 
 }

@@ -179,7 +179,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (eClass=[EClass|QualifiedName] nameFeature=[EAttribute|ID])
+	 *     (eClass=[EClass|QualifiedName] nameFeature=[EAttribute|QualifiedName])
 	 */
 	protected void sequence_CustomNameMapping(EObject context, CustomNameMapping semanticObject) {
 		if(errorAcceptor != null) {
@@ -191,7 +191,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getCustomNameMappingAccess().getEClassEClassQualifiedNameParserRuleCall_2_0_1(), semanticObject.getEClass());
-		feeder.accept(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeIDTerminalRuleCall_4_0_1(), semanticObject.getNameFeature());
+		feeder.accept(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1(), semanticObject.getNameFeature());
 		feeder.finish();
 	}
 	
@@ -230,7 +230,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=[EEnumLiteral|ID]
+	 *     value=[EEnumLiteral|QualifiedName]
 	 */
 	protected void sequence_EnumAttribute(EObject context, EnumAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -239,7 +239,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -255,7 +255,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (eFeature=[EStructuralFeature|ID] value=Value?)
+	 *     (eFeature=[EStructuralFeature|QualifiedName] value=Value?)
 	 */
 	protected void sequence_Feature(EObject context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

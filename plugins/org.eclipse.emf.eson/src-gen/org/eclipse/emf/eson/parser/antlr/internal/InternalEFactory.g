@@ -321,10 +321,12 @@ ruleCustomNameMapping returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getCustomNameMappingRule());
 	        }
         }
-	otherlv_4=RULE_ID
-	{
-		newLeafNode(otherlv_4, grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0()); 
-	}
+		{
+	        newCompositeNode(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0());
+	    }
+		ruleQualifiedName		{
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )	otherlv_5='}' 
@@ -359,10 +361,12 @@ ruleFeature returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getFeatureRule());
 	        }
         }
-	otherlv_0=RULE_ID
-	{
-		newLeafNode(otherlv_0, grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0()); 
-	}
+		{
+	        newCompositeNode(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0());
+	    }
+		ruleQualifiedName		{
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )	otherlv_1=':' 
@@ -810,10 +814,12 @@ ruleEnumAttribute returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getEnumAttributeRule());
 	        }
         }
-	otherlv_1=RULE_ID
-	{
-		newLeafNode(otherlv_1, grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); 
-	}
+		{
+	        newCompositeNode(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0());
+	    }
+		ruleQualifiedName		{
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 ))

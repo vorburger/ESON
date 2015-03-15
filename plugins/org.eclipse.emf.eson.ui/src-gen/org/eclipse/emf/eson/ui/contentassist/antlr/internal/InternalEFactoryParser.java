@@ -4234,18 +4234,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             }
             // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1456:1: ( rule__Feature__ValueAssignment_2 )?
             int alt8=2;
-            int LA8_0 = input.LA(1);
-
-            if ( ((LA8_0>=RULE_LONG_ID && LA8_0<=RULE_STRING)||(LA8_0>=13 && LA8_0<=14)||(LA8_0>=22 && LA8_0<=23)||(LA8_0>=26 && LA8_0<=27)) ) {
-                alt8=1;
-            }
-            else if ( (LA8_0==RULE_ID) ) {
-                int LA8_2 = input.LA(2);
-
-                if ( (LA8_2==EOF||(LA8_2>=RULE_ID && LA8_2<=RULE_LONG_UNSIGNED)||LA8_2==19||LA8_2==21||LA8_2==25) ) {
-                    alt8=1;
-                }
-            }
+            alt8 = dfa8.predict(input);
             switch (alt8) {
                 case 1 :
                     // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:1456:2: rule__Feature__ValueAssignment_2
@@ -4613,7 +4602,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==RULE_ID) ) {
+                if ( ((LA10_0>=RULE_ID && LA10_0<=RULE_LONG_UNSIGNED)) ) {
                     alt10=1;
                 }
 
@@ -4883,7 +4872,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                 int alt11=2;
                 int LA11_0 = input.LA(1);
 
-                if ( (LA11_0==RULE_ID) ) {
+                if ( ((LA11_0>=RULE_ID && LA11_0<=RULE_LONG_UNSIGNED)) ) {
                     alt11=1;
                 }
 
@@ -7669,30 +7658,34 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__CustomNameMapping__NameFeatureAssignment_4"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2722:1: rule__CustomNameMapping__NameFeatureAssignment_4 : ( ( RULE_ID ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2722:1: rule__CustomNameMapping__NameFeatureAssignment_4 : ( ( ruleQualifiedName ) ) ;
     public final void rule__CustomNameMapping__NameFeatureAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2726:1: ( ( ( RULE_ID ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2727:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2726:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2727:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2727:1: ( ( RULE_ID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2728:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2727:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2728:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2729:1: ( RULE_ID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2730:1: RULE_ID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2729:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2730:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeIDTerminalRuleCall_4_0_1()); 
+               before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1());
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__CustomNameMapping__NameFeatureAssignment_45507); if (state.failed) return ;
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__CustomNameMapping__NameFeatureAssignment_45507);
+            ruleQualifiedName();
+
+            state._fsp--;
+            if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeIDTerminalRuleCall_4_0_1()); 
+               after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1());
             }
 
             }
@@ -7722,30 +7715,34 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__Feature__EFeatureAssignment_0"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2741:1: rule__Feature__EFeatureAssignment_0 : ( ( RULE_ID ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2741:1: rule__Feature__EFeatureAssignment_0 : ( ( ruleQualifiedName ) ) ;
     public final void rule__Feature__EFeatureAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2745:1: ( ( ( RULE_ID ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2746:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2745:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2746:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2746:1: ( ( RULE_ID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2747:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2746:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2747:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2748:1: ( RULE_ID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2749:1: RULE_ID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2748:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2749:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1()); 
+               before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1());
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Feature__EFeatureAssignment_05546); if (state.failed) return ;
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Feature__EFeatureAssignment_05546);
+            ruleQualifiedName();
+
+            state._fsp--;
+            if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1()); 
+               after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1());
             }
 
             }
@@ -8216,30 +8213,34 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__EnumAttribute__ValueAssignment_1"
-    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2907:1: rule__EnumAttribute__ValueAssignment_1 : ( ( RULE_ID ) ) ;
+    // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2907:1: rule__EnumAttribute__ValueAssignment_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__EnumAttribute__ValueAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2911:1: ( ( ( RULE_ID ) ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2912:1: ( ( RULE_ID ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2911:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2912:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2912:1: ( ( RULE_ID ) )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2913:1: ( RULE_ID )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2912:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2913:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); 
             }
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2914:1: ( RULE_ID )
-            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2915:1: RULE_ID
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2914:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson.ui/src-gen/org/eclipse/emf/eson/ui/contentassist/antlr/internal/InternalEFactory.g:2915:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1()); 
+               before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1());
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumAttribute__ValueAssignment_15888); if (state.failed) return ;
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__EnumAttribute__ValueAssignment_15888);
+            ruleQualifiedName();
+
+            state._fsp--;
+            if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1()); 
+               after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1());
             }
 
             }
@@ -8629,6 +8630,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
     protected DFA1 dfa1 = new DFA1(this);
     protected DFA2 dfa2 = new DFA2(this);
+    protected DFA8 dfa8 = new DFA8(this);
     static final String DFA1_eotS =
         "\17\uffff";
     static final String DFA1_eofS =
@@ -8640,15 +8642,15 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     static final String DFA1_acceptS =
         "\1\uffff\1\1\1\2\3\uffff\1\3\1\4\7\uffff";
     static final String DFA1_specialS =
-        "\3\uffff\1\2\5\uffff\1\1\1\0\1\3\3\uffff}>";
+        "\3\uffff\1\0\5\uffff\1\2\1\3\1\1\3\uffff}>";
     static final String[] DFA1_transitionS = {
             "\1\4\1\5\1\3\1\2\5\uffff\2\2\7\uffff\1\2\1\1\2\uffff\2\2",
             "",
             "",
             "\3\6\14\uffff\1\6\5\uffff\1\6",
-            "\1\11\1\13\1\12\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
             "\2\7",
-            "\1\11\1\13\1\12\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
             "\2\7",
             "",
             "",
@@ -8656,11 +8658,11 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
-            "\1\11\1\13\1\12\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
             "\2\7",
-            "\1\11\1\13\1\12\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
             "\2\7",
-            "\1\11\1\13\1\12\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
             "\2\7"
     };
 
@@ -8701,36 +8703,6 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA1_10 = input.LA(1);
-
-                         
-                        int index1_10 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred3_InternalEFactory()) ) {s = 6;}
-
-                        else if ( (true) ) {s = 7;}
-
-                         
-                        input.seek(index1_10);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA1_9 = input.LA(1);
-
-                         
-                        int index1_9 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred3_InternalEFactory()) ) {s = 6;}
-
-                        else if ( (true) ) {s = 7;}
-
-                         
-                        input.seek(index1_9);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA1_3 = input.LA(1);
 
                          
@@ -8747,7 +8719,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
                         input.seek(index1_3);
                         if ( s>=0 ) return s;
                         break;
-                    case 3 : 
+                    case 1 : 
                         int LA1_11 = input.LA(1);
 
                          
@@ -8760,6 +8732,36 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
 
                          
                         input.seek(index1_11);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA1_9 = input.LA(1);
+
+                         
+                        int index1_9 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred3_InternalEFactory()) ) {s = 6;}
+
+                        else if ( (true) ) {s = 7;}
+
+                         
+                        input.seek(index1_9);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA1_10 = input.LA(1);
+
+                         
+                        int index1_10 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred3_InternalEFactory()) ) {s = 6;}
+
+                        else if ( (true) ) {s = 7;}
+
+                         
+                        input.seek(index1_10);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -8829,6 +8831,68 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
         }
         public String getDescription() {
             return "795:1: rule__Attribute__Alternatives : ( ( ruleEnumAttribute ) | ( ruleStringAttribute ) | ( ruleIntegerAttribute ) | ( ruleBooleanAttribute ) | ( ruleDoubleAttribute ) | ( ruleDateAttribute ) | ( ruleNullAttribute ) );";
+        }
+    }
+    static final String DFA8_eotS =
+        "\16\uffff";
+    static final String DFA8_eofS =
+        "\1\5\1\uffff\3\1\3\uffff\4\1\1\uffff\1\1";
+    static final String DFA8_minS =
+        "\1\4\1\uffff\3\4\1\uffff\10\4";
+    static final String DFA8_maxS =
+        "\1\33\1\uffff\3\31\1\uffff\2\6\4\31\1\6\1\31";
+    static final String DFA8_acceptS =
+        "\1\uffff\1\1\3\uffff\1\2\10\uffff";
+    static final String DFA8_specialS =
+        "\16\uffff}>";
+    static final String[] DFA8_transitionS = {
+            "\1\3\1\4\1\2\1\1\5\uffff\2\1\6\uffff\1\5\2\1\2\uffff\2\1",
+            "",
+            "\3\1\14\uffff\1\1\1\uffff\1\1\1\5\2\uffff\1\6",
+            "\3\1\14\uffff\1\1\1\uffff\1\1\1\5\2\uffff\1\7",
+            "\3\1\14\uffff\1\1\1\uffff\1\1\1\5\2\uffff\1\7",
+            "",
+            "\1\10\1\11\1\12",
+            "\1\10\1\11\1\13",
+            "\3\1\14\uffff\1\1\1\uffff\1\1\1\5\2\uffff\1\7",
+            "\3\1\14\uffff\1\1\1\uffff\1\1\1\5\2\uffff\1\7",
+            "\3\1\14\uffff\1\1\1\uffff\1\1\1\5\2\uffff\1\14",
+            "\3\1\14\uffff\1\1\1\uffff\1\1\1\5\2\uffff\1\7",
+            "\1\10\1\11\1\15",
+            "\3\1\14\uffff\1\1\1\uffff\1\1\1\5\2\uffff\1\7"
+    };
+
+    static final short[] DFA8_eot = DFA.unpackEncodedString(DFA8_eotS);
+    static final short[] DFA8_eof = DFA.unpackEncodedString(DFA8_eofS);
+    static final char[] DFA8_min = DFA.unpackEncodedStringToUnsignedChars(DFA8_minS);
+    static final char[] DFA8_max = DFA.unpackEncodedStringToUnsignedChars(DFA8_maxS);
+    static final short[] DFA8_accept = DFA.unpackEncodedString(DFA8_acceptS);
+    static final short[] DFA8_special = DFA.unpackEncodedString(DFA8_specialS);
+    static final short[][] DFA8_transition;
+
+    static {
+        int numStates = DFA8_transitionS.length;
+        DFA8_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA8_transition[i] = DFA.unpackEncodedString(DFA8_transitionS[i]);
+        }
+    }
+
+    class DFA8 extends DFA {
+
+        public DFA8(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 8;
+            this.eot = DFA8_eot;
+            this.eof = DFA8_eof;
+            this.min = DFA8_min;
+            this.max = DFA8_max;
+            this.accept = DFA8_accept;
+            this.special = DFA8_special;
+            this.transition = DFA8_transition;
+        }
+        public String getDescription() {
+            return "1456:1: ( rule__Feature__ValueAssignment_2 )?";
         }
     }
  
@@ -8957,7 +9021,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__CustomNameMapping__Group__2__Impl_in_rule__CustomNameMapping__Group__22596 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_rule__CustomNameMapping__Group__3_in_rule__CustomNameMapping__Group__22599 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__CustomNameMapping__EClassAssignment_2_in_rule__CustomNameMapping__Group__2__Impl2626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__3__Impl_in_rule__CustomNameMapping__Group__32656 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__CustomNameMapping__Group__3__Impl_in_rule__CustomNameMapping__Group__32656 = new BitSet(new long[]{0x0000000000048070L});
     public static final BitSet FOLLOW_rule__CustomNameMapping__Group__4_in_rule__CustomNameMapping__Group__32659 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_20_in_rule__CustomNameMapping__Group__3__Impl2687 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__CustomNameMapping__Group__4__Impl_in_rule__CustomNameMapping__Group__42718 = new BitSet(new long[]{0x0000000000200000L});
@@ -8979,20 +9043,20 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__NewObject__Group__1__Impl_in_rule__NewObject__Group__13095 = new BitSet(new long[]{0x00000000000C8070L});
     public static final BitSet FOLLOW_rule__NewObject__Group__2_in_rule__NewObject__Group__13098 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__NewObject__NameAssignment_1_in_rule__NewObject__Group__1__Impl3125 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__2__Impl_in_rule__NewObject__Group__23156 = new BitSet(new long[]{0x0000000000200010L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__2__Impl_in_rule__NewObject__Group__23156 = new BitSet(new long[]{0x0000000000248070L});
     public static final BitSet FOLLOW_rule__NewObject__Group__3_in_rule__NewObject__Group__23159 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_19_in_rule__NewObject__Group__2__Impl3187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__Group__3__Impl_in_rule__NewObject__Group__33218 = new BitSet(new long[]{0x0000000000200010L});
+    public static final BitSet FOLLOW_rule__NewObject__Group__3__Impl_in_rule__NewObject__Group__33218 = new BitSet(new long[]{0x0000000000248070L});
     public static final BitSet FOLLOW_rule__NewObject__Group__4_in_rule__NewObject__Group__33221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__NewObject__FeaturesAssignment_3_in_rule__NewObject__Group__3__Impl3248 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__NewObject__FeaturesAssignment_3_in_rule__NewObject__Group__3__Impl3248 = new BitSet(new long[]{0x0000000000048072L});
     public static final BitSet FOLLOW_rule__NewObject__Group__4__Impl_in_rule__NewObject__Group__43279 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_21_in_rule__NewObject__Group__4__Impl3307 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Value__Group_2__0__Impl_in_rule__Value__Group_2__03348 = new BitSet(new long[]{0x0000000000200010L});
+    public static final BitSet FOLLOW_rule__Value__Group_2__0__Impl_in_rule__Value__Group_2__03348 = new BitSet(new long[]{0x0000000000248070L});
     public static final BitSet FOLLOW_rule__Value__Group_2__1_in_rule__Value__Group_2__03351 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Value__Group_2_0__0_in_rule__Value__Group_2__0__Impl3378 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Value__Group_2__1__Impl_in_rule__Value__Group_2__13408 = new BitSet(new long[]{0x0000000000200010L});
+    public static final BitSet FOLLOW_rule__Value__Group_2__1__Impl_in_rule__Value__Group_2__13408 = new BitSet(new long[]{0x0000000000248070L});
     public static final BitSet FOLLOW_rule__Value__Group_2__2_in_rule__Value__Group_2__13411 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Value__FeaturesAssignment_2_1_in_rule__Value__Group_2__1__Impl3438 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rule__Value__FeaturesAssignment_2_1_in_rule__Value__Group_2__1__Impl3438 = new BitSet(new long[]{0x0000000000048072L});
     public static final BitSet FOLLOW_rule__Value__Group_2__2__Impl_in_rule__Value__Group_2__23469 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_rule__Value__Group_2__3_in_rule__Value__Group_2__23472 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_21_in_rule__Value__Group_2__2__Impl3500 = new BitSet(new long[]{0x0000000000000002L});
@@ -9019,7 +9083,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_rule__MultiValue__ValuesAssignment_2_in_rule__MultiValue__Group__2__Impl4058 = new BitSet(new long[]{0x000000000CC4E0F2L});
     public static final BitSet FOLLOW_rule__MultiValue__Group__3__Impl_in_rule__MultiValue__Group__34089 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_24_in_rule__MultiValue__Group__3__Impl4117 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumAttribute__Group__0__Impl_in_rule__EnumAttribute__Group__04156 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__EnumAttribute__Group__0__Impl_in_rule__EnumAttribute__Group__04156 = new BitSet(new long[]{0x0000000000048070L});
     public static final BitSet FOLLOW_rule__EnumAttribute__Group__1_in_rule__EnumAttribute__Group__04159 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_22_in_rule__EnumAttribute__Group__0__Impl4187 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__EnumAttribute__Group__1__Impl_in_rule__EnumAttribute__Group__14218 = new BitSet(new long[]{0x0000000000000002L});
@@ -9073,8 +9137,8 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PackageImport__EPackageAssignment_15398 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__NamespaceImport__ImportedNamespaceAssignment_15433 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CustomNameMapping__EClassAssignment_25468 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__CustomNameMapping__NameFeatureAssignment_45507 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Feature__EFeatureAssignment_05546 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CustomNameMapping__NameFeatureAssignment_45507 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Feature__EFeatureAssignment_05546 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValue_in_rule__Feature__ValueAssignment_25581 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__NewObject__EClassAssignment_05616 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValidID_in_rule__NewObject__NameAssignment_15651 = new BitSet(new long[]{0x0000000000000002L});
@@ -9084,7 +9148,7 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_ruleFeature_in_rule__Value__FeaturesAssignment_2_15783 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValue_in_rule__MultiValue__ValuesAssignment_25814 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Reference__ValueAssignment5849 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumAttribute__ValueAssignment_15888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__EnumAttribute__ValueAssignment_15888 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__StringAttribute__ValueAssignment5923 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLong_in_rule__IntegerAttribute__ValueAssignment5954 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDouble_in_rule__DoubleAttribute__ValueAssignment5985 = new BitSet(new long[]{0x0000000000000002L});

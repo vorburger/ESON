@@ -15,8 +15,8 @@ package org.eclipse.emf.eson.scoping;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
+import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.PackageImport;
 import org.eclipse.xtext.scoping.IScope;
 
@@ -32,9 +32,10 @@ public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 		return ePackageScopeProvider.createEPackageScope(packageImport.eResource(), parent);
 	}
 
-	public IScope scope_NewObject_eClass(Factory factory, EReference eReference) {
-		final IScope parent = delegateGetScope(factory, eReference);
-		return ePackageScopeProvider.createEClassScope(factory.eResource(), parent);
+	public IScope scope_NewObject_eClass(NewObject factory, EReference eReference) {
+		final IScope parent = super.scope_EClass(factory, eReference);
+		IScope scope = ePackageScopeProvider.createEClassScope(factory.eResource(), parent);
+		return scope;
 	}
 
 	// Feature == Containment here, always, is it?
@@ -44,7 +45,7 @@ public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 			return ePackageScopeProvider.createEClassScope(feature.eResource(), (EClass) feature.getEFeature().getEType(), parent);
 		} else
 			return IScope.NULLSCOPE;
-			
+
 	}
 
 	public IScope scope_CustomNameMapping_eClass(EObject context, EReference eReference) {

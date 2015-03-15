@@ -2727,8 +2727,8 @@ rule__CustomNameMapping__NameFeatureAssignment_4
 (
 { before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0()); }
 (
-{ before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeIDTerminalRuleCall_4_0_1()); }
-	RULE_ID{ after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeIDTerminalRuleCall_4_0_1()); }
+{ before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1()); }
+	ruleQualifiedName{ after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1()); }
 )
 { after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0()); }
 )
@@ -2746,8 +2746,8 @@ rule__Feature__EFeatureAssignment_0
 (
 { before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0()); }
 (
-{ before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1()); }
-	RULE_ID{ after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1()); }
+{ before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1()); }
+	ruleQualifiedName{ after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1()); }
 )
 { after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0()); }
 )
@@ -2912,8 +2912,8 @@ rule__EnumAttribute__ValueAssignment_1
 (
 { before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); }
 (
-{ before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1()); }
-	RULE_ID{ after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1()); }
+{ before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1()); }
+	ruleQualifiedName{ after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1()); }
 )
 { after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); }
 )

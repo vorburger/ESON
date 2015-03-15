@@ -29,11 +29,12 @@ Annotation:
 // logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
 
 CustomNameMapping:
-	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}" ;
+	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}" ;
 
 Feature:
-	eFeature=[ecore::EStructuralFeature] ":" (value=Value)? ;
-	// value isn't really optional semantically of course
+	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" (value=Value)? ;
+	// Re. use of QualifiedName, see SimplestWeiredNameTest (we want to permit EAttribute name to have dots; strange yes, but due to a particular requirement in an in-house closed source product)
+	// Also value isn't really optional semantically of course
 	// but because it may be missing while typing, this works out much better in practice like this
 	// the EFactoryJavaValidator flags it up if it's really missing
 	// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
@@ -66,7 +67,7 @@ Reference:
 
 Attribute: (EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute | NullAttribute);
 
-EnumAttribute: ":" value = [ecore::EEnumLiteral];
+EnumAttribute: ":" value = [ecore::EEnumLiteral|QualifiedName];
 
 
 // TODO Attribute Types should later not be hard-coded here anymore.. Grammar should be more open & generic.
