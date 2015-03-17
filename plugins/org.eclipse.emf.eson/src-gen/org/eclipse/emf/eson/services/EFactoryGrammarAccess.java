@@ -193,26 +193,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cEFeatureAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cEFeatureEStructuralFeatureCrossReference_0_0 = (CrossReference)cEFeatureAssignment_0.eContents().get(0);
-		private final RuleCall cEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1 = (RuleCall)cEFeatureEStructuralFeatureCrossReference_0_0.eContents().get(1);
+		private final RuleCall cEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEFeatureEStructuralFeatureCrossReference_0_0.eContents().get(1);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueValueParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//Feature:
-		//	eFeature=[ecore::EStructuralFeature] ":" value=Value?;
+		//	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?;
 		public ParserRule getRule() { return rule; }
 
-		//eFeature=[ecore::EStructuralFeature] ":" value=Value?
+		//eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?
 		public Group getGroup() { return cGroup; }
 
-		//eFeature=[ecore::EStructuralFeature]
+		//eFeature=[ecore::EStructuralFeature|QualifiedName]
 		public Assignment getEFeatureAssignment_0() { return cEFeatureAssignment_0; }
 
-		//[ecore::EStructuralFeature]
+		//[ecore::EStructuralFeature|QualifiedName]
 		public CrossReference getEFeatureEStructuralFeatureCrossReference_0_0() { return cEFeatureEStructuralFeatureCrossReference_0_0; }
 
-		//ID
-		public RuleCall getEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1() { return cEFeatureEStructuralFeatureIDTerminalRuleCall_0_0_1; }
+		//QualifiedName
+		public RuleCall getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1() { return cEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -237,7 +237,8 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFeaturesFeatureParserRuleCall_3_0 = (RuleCall)cFeaturesAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//// value isn't really optional semantically of course
+		//// Re. use of QualifiedName, see SimplestWeiredNameTest (we want to permit EAttribute name to have dots; strange yes, but due to a particular requirement in an in-house closed source product)
+		//// Also value isn't really optional semantically of course
 		//// but because it may be missing while typing, this works out much better in practice like this
 		//// the EFactoryJavaValidator flags it up if it's really missing
 		//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
@@ -882,7 +883,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Feature:
-	//	eFeature=[ecore::EStructuralFeature] ":" value=Value?;
+	//	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?;
 	public FeatureElements getFeatureAccess() {
 		return (pFeature != null) ? pFeature : (pFeature = new FeatureElements());
 	}
@@ -891,7 +892,8 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getFeatureAccess().getRule();
 	}
 
-	//// value isn't really optional semantically of course
+	//// Re. use of QualifiedName, see SimplestWeiredNameTest (we want to permit EAttribute name to have dots; strange yes, but due to a particular requirement in an in-house closed source product)
+	//// Also value isn't really optional semantically of course
 	//// but because it may be missing while typing, this works out much better in practice like this
 	//// the EFactoryJavaValidator flags it up if it's really missing
 	//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
