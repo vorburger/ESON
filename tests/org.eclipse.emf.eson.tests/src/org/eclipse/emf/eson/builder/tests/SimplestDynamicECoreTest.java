@@ -38,7 +38,7 @@ public class SimplestDynamicECoreTest {
 		check("res/BuilderTests/SimplestWithoutUseButFQN.eson");
 	}
 
-	@Ignore // OK, this doesn't/cannot/won't work - fine; this just for reference & reminder; will delete athis eventually, when 'use' support gets completely removed 
+	@Ignore // OK, this doesn't/cannot/won't work - fine; this just for reference & reminder; will delete all this eventually, when 'use' support gets completely removed
 	@Test public void testSimplestWithUse() throws Exception {
 		check("res/BuilderTests/Simplest.eson");
 	}
@@ -47,8 +47,13 @@ public class SimplestDynamicECoreTest {
 		check("res/BuilderTests/SimplestWithImport.eson");
 	}
 
+	@Test public void testSimplestWithEnum() throws Exception {
+		EObject em = check("res/BuilderTests/SimplestWithEnum.eson");
+		// TODO assert attributeTest.oneEnum = Sample2 .. (but the fact that above even passed without exception is already a good start)
+	}
+
 	
-	protected void check(String esonPath) throws Exception {
+	protected EObject check(String esonPath) throws Exception {
 		EList<EObject> contents = provider.load("model/TestModel.ecore", true);
 		EPackage ePackage = (EPackage) contents.get(0);
 		assertEquals("testmodel", ePackage.getName());
@@ -65,5 +70,7 @@ public class SimplestDynamicECoreTest {
 // TODO Should this be made to work? Can it? How?? ;-)
 //		TestModel m = provider.loadModel("res/BuilderTests/Simplest.eson", TestModel.class);
 //		assertEquals("abc", m.getName());
+
+		return em;
 	}
 }
