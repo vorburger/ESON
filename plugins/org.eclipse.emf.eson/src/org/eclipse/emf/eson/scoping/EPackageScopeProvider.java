@@ -49,6 +49,13 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 		return new SimpleScope(parent, scopedElements);
 	}
 
+	public IScope createEClassScope(Resource resource, IScope parent) {
+		Iterable<EPackage> ePackages = resolvePackages(resource);
+		Iterable<EClass> eClasses = getAllEClasses(ePackages);
+		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(eClasses);
+		return new SimpleScope(parent, scopedElements);
+	}
+
 	private Iterable<EClass> filterAssignableEClasses(
 			Iterable<EClass> eClasses, final EClass targetType) {
 		return Iterables.filter(eClasses, new Predicate<EClass>() {
@@ -83,13 +90,6 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 			result = Iterables.concat(result, allContents);
 		}
 		return result;
-	}
-
-	public IScope createEClassScope(Resource resource, IScope parent) {
-		Iterable<EPackage> ePackages = resolvePackages(resource);
-		Iterable<EClass> eClasses = getAllEClasses(ePackages);
-		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(eClasses);
-		return new SimpleScope(parent, scopedElements);
 	}
 
 	public IScope createEPackageScope(Resource eResource, IScope parent) {

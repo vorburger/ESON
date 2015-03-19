@@ -34,7 +34,8 @@ public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 
 	public IScope scope_NewObject_eClass(Factory factory, EReference eReference) {
 		final IScope parent = delegateGetScope(factory, eReference);
-		return ePackageScopeProvider.createEClassScope(factory.eResource(), parent);
+		IScope scope = ePackageScopeProvider.createEClassScope(factory.eResource(), parent);
+		return scope;
 	}
 
 	// Feature == Containment here, always, is it?

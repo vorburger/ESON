@@ -26,16 +26,21 @@ import org.eclipse.emf.eson.eFactory.MultiValue;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.Reference;
 import org.eclipse.emf.eson.util.EcoreUtil3;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
+import org.eclipse.xtext.util.SimpleAttributeResolver;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 
 public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
+
+	private DottedQualifiedNameFixer qNameFixer = new DottedQualifiedNameFixer();
 
 	public IScope scope_EnumAttribute_value(EnumAttribute attribute, EReference reference) {
 		Feature feature = getFeature(attribute);
@@ -52,8 +57,20 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 	public IScope scope_Feature_eFeature(NewObject newObject, EReference reference) {
 		EClass eClass = newObject.getEClass();
 		Iterable<? extends EObject> assignableFeature = EcoreUtil3.getAssignableFeatures(eClass);
-		return new SimpleScope(Scopes.scopedElementsFor(assignableFeature));
+		// TODO Extract this .. into DottedQualifiedNameFixer
+		final Function<EObject, QualifiedName> originalFunction = QualifiedName.wrapper(SimpleAttributeResolver.NAME_RESOLVER);
+		Function<EObject, QualifiedName> xFunction = new Function<EObject, QualifiedName>() {
+			@Override
+			public QualifiedName apply(EObject input) {
+				QualifiedName qn = originalFunction.apply(input);
+				QualifiedName splitQN = qNameFixer.split(qn);
+				return splitQN;
+			}
+		};
+		Iterable<IEObjectDescription> descs = Scopes.scopedElementsFor(assignableFeature, xFunction);
+		return new SimpleScope(descs);
 	}
+
 	public IScope scope_Feature_eFeature(Feature feature, EReference reference) {
 		NewObject newObject = (NewObject) feature.eContainer();
 		return scope_Feature_eFeature(newObject, reference);
