@@ -65,7 +65,7 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 		if (newObject.getEClass() == null) {
 			return IScope.NULLSCOPE;
 		}
-		return new SimpleScope(Scopes.scopedElementsFor(newObject.getEClass().getEAllStructuralFeatures()));
+		return new SimpleScope(Scopes.scopedElementsFor(newObject.getEClass().getEAllStructuralFeatures(), DottedQualifiedNameFixer.FUNCTION));
 	}
 
 	public IScope scope_NewObject_eClass(NewObject newObject, EReference eReference) {
