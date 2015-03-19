@@ -22,9 +22,9 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_LONG_ID", "RULE_LONG_UNSIGNED", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'use'", "'.*'", "'import'", "'@Name'", "'{'", "'='", "'}'", "':'", "'['", "']'", "'NULL'", "'.'", "'true'", "'false'", "'-'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_LONG_ID", "RULE_LONG_UNSIGNED", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'use'", "'.*'", "'import'", "'@Name'", "'{'", "'='", "'}'", "':'", "'['", "']'", "'NULL'", "'.'", "'true'", "'false'", "'-'"
     };
-    public static final int RULE_ID=4;
+    public static final int RULE_ID=5;
     public static final int T__27=27;
     public static final int T__26=26;
     public static final int T__25=25;
@@ -39,7 +39,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     public static final int RULE_ML_COMMENT=9;
     public static final int RULE_LONG_UNSIGNED=7;
     public static final int T__19=19;
-    public static final int RULE_STRING=5;
+    public static final int RULE_STRING=4;
     public static final int T__16=16;
     public static final int T__15=15;
     public static final int T__18=18;
@@ -1136,7 +1136,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==RULE_ID||(LA5_0>=RULE_LONG_ID && LA5_0<=RULE_LONG_UNSIGNED)) ) {
+            if ( ((LA5_0>=RULE_ID && LA5_0<=RULE_LONG_UNSIGNED)) ) {
                 alt5=1;
             }
             switch (alt5) {
@@ -1190,7 +1190,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                 int alt6=2;
                 int LA6_0 = input.LA(1);
 
-                if ( (LA6_0==RULE_ID||(LA6_0>=RULE_LONG_ID && LA6_0<=RULE_LONG_UNSIGNED)) ) {
+                if ( ((LA6_0>=RULE_ID && LA6_0<=RULE_LONG_UNSIGNED)) ) {
                     alt6=1;
                 }
 
@@ -1440,7 +1440,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                     int alt7=2;
                     int LA7_0 = input.LA(1);
 
-                    if ( (LA7_0==RULE_ID||(LA7_0>=RULE_LONG_ID && LA7_0<=RULE_LONG_UNSIGNED)) ) {
+                    if ( ((LA7_0>=RULE_ID && LA7_0<=RULE_LONG_UNSIGNED)) ) {
                         alt7=1;
                     }
                     switch (alt7) {
@@ -1500,7 +1500,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                         int alt8=2;
                         int LA8_0 = input.LA(1);
 
-                        if ( (LA8_0==RULE_ID||(LA8_0>=RULE_LONG_ID && LA8_0<=RULE_LONG_UNSIGNED)) ) {
+                        if ( ((LA8_0>=RULE_ID && LA8_0<=RULE_LONG_UNSIGNED)) ) {
                             alt8=1;
                         }
 
@@ -1706,7 +1706,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( ((LA10_0>=RULE_ID && LA10_0<=RULE_LONG_UNSIGNED)||(LA10_0>=20 && LA10_0<=21)||LA10_0==23||(LA10_0>=25 && LA10_0<=27)) ) {
+                if ( ((LA10_0>=RULE_STRING && LA10_0<=RULE_LONG_UNSIGNED)||(LA10_0>=20 && LA10_0<=21)||LA10_0==23||(LA10_0>=25 && LA10_0<=27)) ) {
                     alt10=1;
                 }
 
@@ -2172,21 +2172,20 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:802:1: ruleEnumAttribute returns [EObject current=null] : (otherlv_0= ':' ( (otherlv_1= RULE_ID ) ) ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:802:1: ruleEnumAttribute returns [EObject current=null] : (otherlv_0= ':' ( ( ruleQualifiedName ) ) ) ;
     public final EObject ruleEnumAttribute() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        Token otherlv_1=null;
 
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:805:28: ( (otherlv_0= ':' ( (otherlv_1= RULE_ID ) ) ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:806:1: (otherlv_0= ':' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:805:28: ( (otherlv_0= ':' ( ( ruleQualifiedName ) ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:806:1: (otherlv_0= ':' ( ( ruleQualifiedName ) ) )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:806:1: (otherlv_0= ':' ( (otherlv_1= RULE_ID ) ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:806:3: otherlv_0= ':' ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:806:1: (otherlv_0= ':' ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:806:3: otherlv_0= ':' ( ( ruleQualifiedName ) )
             {
             otherlv_0=(Token)match(input,20,FOLLOW_20_in_ruleEnumAttribute1826); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -2194,11 +2193,11 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_0, grammarAccess.getEnumAttributeAccess().getColonKeyword_0());
                   
             }
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:810:1: ( (otherlv_1= RULE_ID ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:811:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:810:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:811:1: ( ruleQualifiedName )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:811:1: (otherlv_1= RULE_ID )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:812:3: otherlv_1= RULE_ID
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:811:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:812:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -2207,11 +2206,20 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumAttribute1846); if (state.failed) return current;
             if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleEnumAttribute1849);
+            ruleQualifiedName();
 
-              		newLeafNode(otherlv_1, grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); 
-              	
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        afterParserOrEnumRuleCall();
+              	    
             }
 
             }
@@ -2242,7 +2250,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:831:1: entryRuleStringAttribute returns [EObject current=null] : iv_ruleStringAttribute= ruleStringAttribute EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:833:1: entryRuleStringAttribute returns [EObject current=null] : iv_ruleStringAttribute= ruleStringAttribute EOF ;
     public final EObject entryRuleStringAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2250,13 +2258,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:832:2: (iv_ruleStringAttribute= ruleStringAttribute EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:833:2: iv_ruleStringAttribute= ruleStringAttribute EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:834:2: (iv_ruleStringAttribute= ruleStringAttribute EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:835:2: iv_ruleStringAttribute= ruleStringAttribute EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getStringAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleStringAttribute_in_entryRuleStringAttribute1882);
+            pushFollow(FOLLOW_ruleStringAttribute_in_entryRuleStringAttribute1885);
             iv_ruleStringAttribute=ruleStringAttribute();
 
             state._fsp--;
@@ -2264,7 +2272,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleStringAttribute; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringAttribute1892); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringAttribute1895); if (state.failed) return current;
 
             }
 
@@ -2282,7 +2290,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:840:1: ruleStringAttribute returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:842:1: ruleStringAttribute returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
     public final EObject ruleStringAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2291,16 +2299,16 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:843:28: ( ( (lv_value_0_0= RULE_STRING ) ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:844:1: ( (lv_value_0_0= RULE_STRING ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:845:28: ( ( (lv_value_0_0= RULE_STRING ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:846:1: ( (lv_value_0_0= RULE_STRING ) )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:844:1: ( (lv_value_0_0= RULE_STRING ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:845:1: (lv_value_0_0= RULE_STRING )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:846:1: ( (lv_value_0_0= RULE_STRING ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:847:1: (lv_value_0_0= RULE_STRING )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:845:1: (lv_value_0_0= RULE_STRING )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:846:3: lv_value_0_0= RULE_STRING
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:847:1: (lv_value_0_0= RULE_STRING )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:848:3: lv_value_0_0= RULE_STRING
             {
-            lv_value_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringAttribute1933); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringAttribute1936); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_0_0, grammarAccess.getStringAttributeAccess().getValueSTRINGTerminalRuleCall_0()); 
@@ -2344,7 +2352,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntegerAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:870:1: entryRuleIntegerAttribute returns [EObject current=null] : iv_ruleIntegerAttribute= ruleIntegerAttribute EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:872:1: entryRuleIntegerAttribute returns [EObject current=null] : iv_ruleIntegerAttribute= ruleIntegerAttribute EOF ;
     public final EObject entryRuleIntegerAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2352,13 +2360,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:871:2: (iv_ruleIntegerAttribute= ruleIntegerAttribute EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:872:2: iv_ruleIntegerAttribute= ruleIntegerAttribute EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:873:2: (iv_ruleIntegerAttribute= ruleIntegerAttribute EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:874:2: iv_ruleIntegerAttribute= ruleIntegerAttribute EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIntegerAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleIntegerAttribute_in_entryRuleIntegerAttribute1973);
+            pushFollow(FOLLOW_ruleIntegerAttribute_in_entryRuleIntegerAttribute1976);
             iv_ruleIntegerAttribute=ruleIntegerAttribute();
 
             state._fsp--;
@@ -2366,7 +2374,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIntegerAttribute; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerAttribute1983); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntegerAttribute1986); if (state.failed) return current;
 
             }
 
@@ -2384,7 +2392,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntegerAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:879:1: ruleIntegerAttribute returns [EObject current=null] : ( (lv_value_0_0= ruleLong ) ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:881:1: ruleIntegerAttribute returns [EObject current=null] : ( (lv_value_0_0= ruleLong ) ) ;
     public final EObject ruleIntegerAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2394,21 +2402,21 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:882:28: ( ( (lv_value_0_0= ruleLong ) ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:883:1: ( (lv_value_0_0= ruleLong ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:884:28: ( ( (lv_value_0_0= ruleLong ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:885:1: ( (lv_value_0_0= ruleLong ) )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:883:1: ( (lv_value_0_0= ruleLong ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:884:1: (lv_value_0_0= ruleLong )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:885:1: ( (lv_value_0_0= ruleLong ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:886:1: (lv_value_0_0= ruleLong )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:884:1: (lv_value_0_0= ruleLong )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:885:3: lv_value_0_0= ruleLong
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:886:1: (lv_value_0_0= ruleLong )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:887:3: lv_value_0_0= ruleLong
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getIntegerAttributeAccess().getValueLongParserRuleCall_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleLong_in_ruleIntegerAttribute2028);
+            pushFollow(FOLLOW_ruleLong_in_ruleIntegerAttribute2031);
             lv_value_0_0=ruleLong();
 
             state._fsp--;
@@ -2452,7 +2460,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDoubleAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:909:1: entryRuleDoubleAttribute returns [EObject current=null] : iv_ruleDoubleAttribute= ruleDoubleAttribute EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:911:1: entryRuleDoubleAttribute returns [EObject current=null] : iv_ruleDoubleAttribute= ruleDoubleAttribute EOF ;
     public final EObject entryRuleDoubleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2460,13 +2468,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:910:2: (iv_ruleDoubleAttribute= ruleDoubleAttribute EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:911:2: iv_ruleDoubleAttribute= ruleDoubleAttribute EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:912:2: (iv_ruleDoubleAttribute= ruleDoubleAttribute EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:913:2: iv_ruleDoubleAttribute= ruleDoubleAttribute EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDoubleAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleDoubleAttribute_in_entryRuleDoubleAttribute2063);
+            pushFollow(FOLLOW_ruleDoubleAttribute_in_entryRuleDoubleAttribute2066);
             iv_ruleDoubleAttribute=ruleDoubleAttribute();
 
             state._fsp--;
@@ -2474,7 +2482,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleDoubleAttribute; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleAttribute2073); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDoubleAttribute2076); if (state.failed) return current;
 
             }
 
@@ -2492,7 +2500,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDoubleAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:918:1: ruleDoubleAttribute returns [EObject current=null] : ( (lv_value_0_0= ruleDouble ) ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:920:1: ruleDoubleAttribute returns [EObject current=null] : ( (lv_value_0_0= ruleDouble ) ) ;
     public final EObject ruleDoubleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2502,21 +2510,21 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:921:28: ( ( (lv_value_0_0= ruleDouble ) ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:922:1: ( (lv_value_0_0= ruleDouble ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:923:28: ( ( (lv_value_0_0= ruleDouble ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:924:1: ( (lv_value_0_0= ruleDouble ) )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:922:1: ( (lv_value_0_0= ruleDouble ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:923:1: (lv_value_0_0= ruleDouble )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:924:1: ( (lv_value_0_0= ruleDouble ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:925:1: (lv_value_0_0= ruleDouble )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:923:1: (lv_value_0_0= ruleDouble )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:924:3: lv_value_0_0= ruleDouble
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:925:1: (lv_value_0_0= ruleDouble )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:926:3: lv_value_0_0= ruleDouble
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getDoubleAttributeAccess().getValueDoubleParserRuleCall_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleDouble_in_ruleDoubleAttribute2118);
+            pushFollow(FOLLOW_ruleDouble_in_ruleDoubleAttribute2121);
             lv_value_0_0=ruleDouble();
 
             state._fsp--;
@@ -2560,7 +2568,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDateAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:948:1: entryRuleDateAttribute returns [EObject current=null] : iv_ruleDateAttribute= ruleDateAttribute EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:950:1: entryRuleDateAttribute returns [EObject current=null] : iv_ruleDateAttribute= ruleDateAttribute EOF ;
     public final EObject entryRuleDateAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2568,13 +2576,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:949:2: (iv_ruleDateAttribute= ruleDateAttribute EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:950:2: iv_ruleDateAttribute= ruleDateAttribute EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:951:2: (iv_ruleDateAttribute= ruleDateAttribute EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:952:2: iv_ruleDateAttribute= ruleDateAttribute EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDateAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleDateAttribute_in_entryRuleDateAttribute2153);
+            pushFollow(FOLLOW_ruleDateAttribute_in_entryRuleDateAttribute2156);
             iv_ruleDateAttribute=ruleDateAttribute();
 
             state._fsp--;
@@ -2582,7 +2590,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleDateAttribute; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDateAttribute2163); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDateAttribute2166); if (state.failed) return current;
 
             }
 
@@ -2600,7 +2608,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDateAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:957:1: ruleDateAttribute returns [EObject current=null] : ( (lv_value_0_0= ruleDate ) ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:959:1: ruleDateAttribute returns [EObject current=null] : ( (lv_value_0_0= ruleDate ) ) ;
     public final EObject ruleDateAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2610,21 +2618,21 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:960:28: ( ( (lv_value_0_0= ruleDate ) ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:961:1: ( (lv_value_0_0= ruleDate ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:962:28: ( ( (lv_value_0_0= ruleDate ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:963:1: ( (lv_value_0_0= ruleDate ) )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:961:1: ( (lv_value_0_0= ruleDate ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:962:1: (lv_value_0_0= ruleDate )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:963:1: ( (lv_value_0_0= ruleDate ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:964:1: (lv_value_0_0= ruleDate )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:962:1: (lv_value_0_0= ruleDate )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:963:3: lv_value_0_0= ruleDate
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:964:1: (lv_value_0_0= ruleDate )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:965:3: lv_value_0_0= ruleDate
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getDateAttributeAccess().getValueDateParserRuleCall_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleDate_in_ruleDateAttribute2208);
+            pushFollow(FOLLOW_ruleDate_in_ruleDateAttribute2211);
             lv_value_0_0=ruleDate();
 
             state._fsp--;
@@ -2668,7 +2676,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNullAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:987:1: entryRuleNullAttribute returns [EObject current=null] : iv_ruleNullAttribute= ruleNullAttribute EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:989:1: entryRuleNullAttribute returns [EObject current=null] : iv_ruleNullAttribute= ruleNullAttribute EOF ;
     public final EObject entryRuleNullAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2676,13 +2684,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:988:2: (iv_ruleNullAttribute= ruleNullAttribute EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:989:2: iv_ruleNullAttribute= ruleNullAttribute EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:990:2: (iv_ruleNullAttribute= ruleNullAttribute EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:991:2: iv_ruleNullAttribute= ruleNullAttribute EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNullAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleNullAttribute_in_entryRuleNullAttribute2243);
+            pushFollow(FOLLOW_ruleNullAttribute_in_entryRuleNullAttribute2246);
             iv_ruleNullAttribute=ruleNullAttribute();
 
             state._fsp--;
@@ -2690,7 +2698,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNullAttribute; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNullAttribute2253); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNullAttribute2256); if (state.failed) return current;
 
             }
 
@@ -2708,7 +2716,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNullAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:996:1: ruleNullAttribute returns [EObject current=null] : ( (lv_value_0_0= 'NULL' ) ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:998:1: ruleNullAttribute returns [EObject current=null] : ( (lv_value_0_0= 'NULL' ) ) ;
     public final EObject ruleNullAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2717,16 +2725,16 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:999:28: ( ( (lv_value_0_0= 'NULL' ) ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1000:1: ( (lv_value_0_0= 'NULL' ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1001:28: ( ( (lv_value_0_0= 'NULL' ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1002:1: ( (lv_value_0_0= 'NULL' ) )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1000:1: ( (lv_value_0_0= 'NULL' ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1001:1: (lv_value_0_0= 'NULL' )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1002:1: ( (lv_value_0_0= 'NULL' ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1003:1: (lv_value_0_0= 'NULL' )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1001:1: (lv_value_0_0= 'NULL' )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1002:3: lv_value_0_0= 'NULL'
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1003:1: (lv_value_0_0= 'NULL' )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1004:3: lv_value_0_0= 'NULL'
             {
-            lv_value_0_0=(Token)match(input,23,FOLLOW_23_in_ruleNullAttribute2295); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,23,FOLLOW_23_in_ruleNullAttribute2298); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_value_0_0, grammarAccess.getNullAttributeAccess().getValueNULLKeyword_0());
@@ -2766,7 +2774,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1023:1: entryRuleBooleanAttribute returns [EObject current=null] : iv_ruleBooleanAttribute= ruleBooleanAttribute EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1025:1: entryRuleBooleanAttribute returns [EObject current=null] : iv_ruleBooleanAttribute= ruleBooleanAttribute EOF ;
     public final EObject entryRuleBooleanAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2774,13 +2782,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1024:2: (iv_ruleBooleanAttribute= ruleBooleanAttribute EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1025:2: iv_ruleBooleanAttribute= ruleBooleanAttribute EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1026:2: (iv_ruleBooleanAttribute= ruleBooleanAttribute EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1027:2: iv_ruleBooleanAttribute= ruleBooleanAttribute EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBooleanAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleBooleanAttribute_in_entryRuleBooleanAttribute2343);
+            pushFollow(FOLLOW_ruleBooleanAttribute_in_entryRuleBooleanAttribute2346);
             iv_ruleBooleanAttribute=ruleBooleanAttribute();
 
             state._fsp--;
@@ -2788,7 +2796,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBooleanAttribute; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanAttribute2353); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanAttribute2356); if (state.failed) return current;
 
             }
 
@@ -2806,7 +2814,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanAttribute"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1032:1: ruleBooleanAttribute returns [EObject current=null] : ( (lv_value_0_0= ruleBoolean ) ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1034:1: ruleBooleanAttribute returns [EObject current=null] : ( (lv_value_0_0= ruleBoolean ) ) ;
     public final EObject ruleBooleanAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2816,21 +2824,21 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1035:28: ( ( (lv_value_0_0= ruleBoolean ) ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1036:1: ( (lv_value_0_0= ruleBoolean ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1037:28: ( ( (lv_value_0_0= ruleBoolean ) ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1038:1: ( (lv_value_0_0= ruleBoolean ) )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1036:1: ( (lv_value_0_0= ruleBoolean ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1037:1: (lv_value_0_0= ruleBoolean )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1038:1: ( (lv_value_0_0= ruleBoolean ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1039:1: (lv_value_0_0= ruleBoolean )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1037:1: (lv_value_0_0= ruleBoolean )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1038:3: lv_value_0_0= ruleBoolean
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1039:1: (lv_value_0_0= ruleBoolean )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1040:3: lv_value_0_0= ruleBoolean
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getBooleanAttributeAccess().getValueBooleanParserRuleCall_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleBoolean_in_ruleBooleanAttribute2398);
+            pushFollow(FOLLOW_ruleBoolean_in_ruleBooleanAttribute2401);
             lv_value_0_0=ruleBoolean();
 
             state._fsp--;
@@ -2874,7 +2882,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedNameWithWildcard"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1062:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1064:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
     public final String entryRuleQualifiedNameWithWildcard() throws RecognitionException {
         String current = null;
 
@@ -2882,13 +2890,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1063:2: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1064:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1065:2: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1066:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameWithWildcardRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard2434);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard2437);
             iv_ruleQualifiedNameWithWildcard=ruleQualifiedNameWithWildcard();
 
             state._fsp--;
@@ -2896,7 +2904,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedNameWithWildcard.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard2445); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard2448); if (state.failed) return current;
 
             }
 
@@ -2914,7 +2922,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedNameWithWildcard"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1071:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1073:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedNameWithWildcard() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2925,18 +2933,18 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1074:28: ( (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1075:1: (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1076:28: ( (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1077:1: (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1075:1: (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1076:5: this_QualifiedName_0= ruleQualifiedName (kw= '.*' )?
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1077:1: (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1078:5: this_QualifiedName_0= ruleQualifiedName (kw= '.*' )?
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard2492);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard2495);
             this_QualifiedName_0=ruleQualifiedName();
 
             state._fsp--;
@@ -2951,7 +2959,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1086:1: (kw= '.*' )?
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1088:1: (kw= '.*' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -2960,9 +2968,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             }
             switch (alt12) {
                 case 1 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1087:2: kw= '.*'
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1089:2: kw= '.*'
                     {
-                    kw=(Token)match(input,14,FOLLOW_14_in_ruleQualifiedNameWithWildcard2511); if (state.failed) return current;
+                    kw=(Token)match(input,14,FOLLOW_14_in_ruleQualifiedNameWithWildcard2514); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -2998,7 +3006,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1100:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1102:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -3006,13 +3014,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1101:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1102:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1103:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1104:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName2554);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName2557);
             iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
@@ -3020,7 +3028,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName2565); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName2568); if (state.failed) return current;
 
             }
 
@@ -3038,7 +3046,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1109:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1111:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3051,18 +3059,18 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1112:28: ( (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1113:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1114:28: ( (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1115:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1113:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1114:5: this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1115:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1116:5: this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName2612);
+            pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName2615);
             this_ValidID_0=ruleValidID();
 
             state._fsp--;
@@ -3077,7 +3085,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1124:1: ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1126:1: ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
             loop13:
             do {
                 int alt13=2;
@@ -3090,12 +3098,12 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
                 switch (alt13) {
             	case 1 :
-            	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1124:2: ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID
+            	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1126:2: ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID
             	    {
-            	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1124:2: ( ( '.' )=>kw= '.' )
-            	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1124:3: ( '.' )=>kw= '.'
+            	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1126:2: ( ( '.' )=>kw= '.' )
+            	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1126:3: ( '.' )=>kw= '.'
             	    {
-            	    kw=(Token)match(input,24,FOLLOW_24_in_ruleQualifiedName2640); if (state.failed) return current;
+            	    kw=(Token)match(input,24,FOLLOW_24_in_ruleQualifiedName2643); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              current.merge(kw);
@@ -3110,7 +3118,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             	              newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_1_1()); 
             	          
             	    }
-            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName2663);
+            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName2666);
             	    this_ValidID_2=ruleValidID();
 
             	    state._fsp--;
@@ -3157,7 +3165,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValidID"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1151:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1153:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
     public final String entryRuleValidID() throws RecognitionException {
         String current = null;
 
@@ -3165,13 +3173,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1152:2: (iv_ruleValidID= ruleValidID EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1153:2: iv_ruleValidID= ruleValidID EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1154:2: (iv_ruleValidID= ruleValidID EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1155:2: iv_ruleValidID= ruleValidID EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValidIDRule()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID2711);
+            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID2714);
             iv_ruleValidID=ruleValidID();
 
             state._fsp--;
@@ -3179,7 +3187,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleValidID.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID2722); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID2725); if (state.failed) return current;
 
             }
 
@@ -3197,7 +3205,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValidID"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1160:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID | this_LONG_ID_1= RULE_LONG_ID | this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1162:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID | this_LONG_ID_1= RULE_LONG_ID | this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED ) ;
     public final AntlrDatatypeRuleToken ruleValidID() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3208,10 +3216,10 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1163:28: ( (this_ID_0= RULE_ID | this_LONG_ID_1= RULE_LONG_ID | this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1164:1: (this_ID_0= RULE_ID | this_LONG_ID_1= RULE_LONG_ID | this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1165:28: ( (this_ID_0= RULE_ID | this_LONG_ID_1= RULE_LONG_ID | this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1166:1: (this_ID_0= RULE_ID | this_LONG_ID_1= RULE_LONG_ID | this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1164:1: (this_ID_0= RULE_ID | this_LONG_ID_1= RULE_LONG_ID | this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1166:1: (this_ID_0= RULE_ID | this_LONG_ID_1= RULE_LONG_ID | this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED )
             int alt14=3;
             switch ( input.LA(1) ) {
             case RULE_ID:
@@ -3239,9 +3247,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
             switch (alt14) {
                 case 1 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1164:6: this_ID_0= RULE_ID
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1166:6: this_ID_0= RULE_ID
                     {
-                    this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidID2762); if (state.failed) return current;
+                    this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidID2765); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ID_0);
@@ -3256,9 +3264,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1172:10: this_LONG_ID_1= RULE_LONG_ID
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1174:10: this_LONG_ID_1= RULE_LONG_ID
                     {
-                    this_LONG_ID_1=(Token)match(input,RULE_LONG_ID,FOLLOW_RULE_LONG_ID_in_ruleValidID2788); if (state.failed) return current;
+                    this_LONG_ID_1=(Token)match(input,RULE_LONG_ID,FOLLOW_RULE_LONG_ID_in_ruleValidID2791); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_LONG_ID_1);
@@ -3273,9 +3281,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1180:10: this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1182:10: this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED
                     {
-                    this_LONG_UNSIGNED_2=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleValidID2814); if (state.failed) return current;
+                    this_LONG_UNSIGNED_2=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleValidID2817); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_LONG_UNSIGNED_2);
@@ -3312,7 +3320,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBoolean"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1195:1: entryRuleBoolean returns [String current=null] : iv_ruleBoolean= ruleBoolean EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1197:1: entryRuleBoolean returns [String current=null] : iv_ruleBoolean= ruleBoolean EOF ;
     public final String entryRuleBoolean() throws RecognitionException {
         String current = null;
 
@@ -3320,13 +3328,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1196:2: (iv_ruleBoolean= ruleBoolean EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1197:2: iv_ruleBoolean= ruleBoolean EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1198:2: (iv_ruleBoolean= ruleBoolean EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1199:2: iv_ruleBoolean= ruleBoolean EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBooleanRule()); 
             }
-            pushFollow(FOLLOW_ruleBoolean_in_entryRuleBoolean2860);
+            pushFollow(FOLLOW_ruleBoolean_in_entryRuleBoolean2863);
             iv_ruleBoolean=ruleBoolean();
 
             state._fsp--;
@@ -3334,7 +3342,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBoolean.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBoolean2871); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBoolean2874); if (state.failed) return current;
 
             }
 
@@ -3352,7 +3360,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBoolean"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1204:1: ruleBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'true' | kw= 'false' ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1206:1: ruleBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'true' | kw= 'false' ) ;
     public final AntlrDatatypeRuleToken ruleBoolean() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3361,10 +3369,10 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1207:28: ( (kw= 'true' | kw= 'false' ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1208:1: (kw= 'true' | kw= 'false' )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1209:28: ( (kw= 'true' | kw= 'false' ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1210:1: (kw= 'true' | kw= 'false' )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1208:1: (kw= 'true' | kw= 'false' )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1210:1: (kw= 'true' | kw= 'false' )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -3383,9 +3391,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             }
             switch (alt15) {
                 case 1 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1209:2: kw= 'true'
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1211:2: kw= 'true'
                     {
-                    kw=(Token)match(input,25,FOLLOW_25_in_ruleBoolean2909); if (state.failed) return current;
+                    kw=(Token)match(input,25,FOLLOW_25_in_ruleBoolean2912); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -3396,9 +3404,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1216:2: kw= 'false'
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1218:2: kw= 'false'
                     {
-                    kw=(Token)match(input,26,FOLLOW_26_in_ruleBoolean2928); if (state.failed) return current;
+                    kw=(Token)match(input,26,FOLLOW_26_in_ruleBoolean2931); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -3431,7 +3439,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLong"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1229:1: entryRuleLong returns [String current=null] : iv_ruleLong= ruleLong EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1231:1: entryRuleLong returns [String current=null] : iv_ruleLong= ruleLong EOF ;
     public final String entryRuleLong() throws RecognitionException {
         String current = null;
 
@@ -3439,13 +3447,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1230:2: (iv_ruleLong= ruleLong EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1231:2: iv_ruleLong= ruleLong EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1232:2: (iv_ruleLong= ruleLong EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1233:2: iv_ruleLong= ruleLong EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLongRule()); 
             }
-            pushFollow(FOLLOW_ruleLong_in_entryRuleLong2969);
+            pushFollow(FOLLOW_ruleLong_in_entryRuleLong2972);
             iv_ruleLong=ruleLong();
 
             state._fsp--;
@@ -3453,7 +3461,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLong.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLong2980); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLong2983); if (state.failed) return current;
 
             }
 
@@ -3471,7 +3479,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLong"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1238:1: ruleLong returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1240:1: ruleLong returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED ) ;
     public final AntlrDatatypeRuleToken ruleLong() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3481,13 +3489,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1241:28: ( ( (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1242:1: ( (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1243:28: ( ( (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1244:1: ( (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1242:1: ( (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1242:2: (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1244:1: ( (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1244:2: (kw= '-' )? this_LONG_UNSIGNED_1= RULE_LONG_UNSIGNED
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1242:2: (kw= '-' )?
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1244:2: (kw= '-' )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -3496,9 +3504,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             }
             switch (alt16) {
                 case 1 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1243:2: kw= '-'
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1245:2: kw= '-'
                     {
-                    kw=(Token)match(input,27,FOLLOW_27_in_ruleLong3019); if (state.failed) return current;
+                    kw=(Token)match(input,27,FOLLOW_27_in_ruleLong3022); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -3511,7 +3519,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
             }
 
-            this_LONG_UNSIGNED_1=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleLong3036); if (state.failed) return current;
+            this_LONG_UNSIGNED_1=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleLong3039); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_LONG_UNSIGNED_1);
@@ -3545,7 +3553,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDouble"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1263:1: entryRuleDouble returns [String current=null] : iv_ruleDouble= ruleDouble EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1265:1: entryRuleDouble returns [String current=null] : iv_ruleDouble= ruleDouble EOF ;
     public final String entryRuleDouble() throws RecognitionException {
         String current = null;
 
@@ -3553,13 +3561,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1264:2: (iv_ruleDouble= ruleDouble EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1265:2: iv_ruleDouble= ruleDouble EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1266:2: (iv_ruleDouble= ruleDouble EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1267:2: iv_ruleDouble= ruleDouble EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDoubleRule()); 
             }
-            pushFollow(FOLLOW_ruleDouble_in_entryRuleDouble3082);
+            pushFollow(FOLLOW_ruleDouble_in_entryRuleDouble3085);
             iv_ruleDouble=ruleDouble();
 
             state._fsp--;
@@ -3567,7 +3575,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleDouble.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDouble3093); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDouble3096); if (state.failed) return current;
 
             }
 
@@ -3585,7 +3593,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDouble"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1272:1: ruleDouble returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1274:1: ruleDouble returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED ) ;
     public final AntlrDatatypeRuleToken ruleDouble() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3597,18 +3605,18 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1275:28: ( (this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1276:1: (this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1277:28: ( (this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1278:1: (this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1276:1: (this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1277:5: this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1278:1: (this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1279:5: this_Long_0= ruleLong kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getDoubleAccess().getLongParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleLong_in_ruleDouble3140);
+            pushFollow(FOLLOW_ruleLong_in_ruleDouble3143);
             this_Long_0=ruleLong();
 
             state._fsp--;
@@ -3623,14 +3631,14 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            kw=(Token)match(input,24,FOLLOW_24_in_ruleDouble3158); if (state.failed) return current;
+            kw=(Token)match(input,24,FOLLOW_24_in_ruleDouble3161); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
                       newLeafNode(kw, grammarAccess.getDoubleAccess().getFullStopKeyword_1()); 
                   
             }
-            this_LONG_UNSIGNED_2=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleDouble3173); if (state.failed) return current;
+            this_LONG_UNSIGNED_2=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleDouble3176); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_LONG_UNSIGNED_2);
@@ -3664,7 +3672,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDate"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1308:1: entryRuleDate returns [String current=null] : iv_ruleDate= ruleDate EOF ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1310:1: entryRuleDate returns [String current=null] : iv_ruleDate= ruleDate EOF ;
     public final String entryRuleDate() throws RecognitionException {
         String current = null;
 
@@ -3672,13 +3680,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1309:2: (iv_ruleDate= ruleDate EOF )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1310:2: iv_ruleDate= ruleDate EOF
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1311:2: (iv_ruleDate= ruleDate EOF )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1312:2: iv_ruleDate= ruleDate EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDateRule()); 
             }
-            pushFollow(FOLLOW_ruleDate_in_entryRuleDate3219);
+            pushFollow(FOLLOW_ruleDate_in_entryRuleDate3222);
             iv_ruleDate=ruleDate();
 
             state._fsp--;
@@ -3686,7 +3694,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleDate.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDate3230); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDate3233); if (state.failed) return current;
 
             }
 
@@ -3704,7 +3712,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDate"
-    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1317:1: ruleDate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED ) ;
+    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1319:1: ruleDate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED ) ;
     public final AntlrDatatypeRuleToken ruleDate() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3716,13 +3724,13 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1320:28: ( (this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1321:1: (this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1322:28: ( (this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1323:1: (this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1321:1: (this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1321:6: this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1323:1: (this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1323:6: this_LONG_UNSIGNED_0= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_2= RULE_LONG_UNSIGNED kw= '.' this_LONG_UNSIGNED_4= RULE_LONG_UNSIGNED
             {
-            this_LONG_UNSIGNED_0=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3270); if (state.failed) return current;
+            this_LONG_UNSIGNED_0=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3273); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_LONG_UNSIGNED_0);
@@ -3733,14 +3741,14 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                   newLeafNode(this_LONG_UNSIGNED_0, grammarAccess.getDateAccess().getLONG_UNSIGNEDTerminalRuleCall_0()); 
                   
             }
-            kw=(Token)match(input,24,FOLLOW_24_in_ruleDate3288); if (state.failed) return current;
+            kw=(Token)match(input,24,FOLLOW_24_in_ruleDate3291); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
                       newLeafNode(kw, grammarAccess.getDateAccess().getFullStopKeyword_1()); 
                   
             }
-            this_LONG_UNSIGNED_2=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3303); if (state.failed) return current;
+            this_LONG_UNSIGNED_2=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3306); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_LONG_UNSIGNED_2);
@@ -3751,14 +3759,14 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                   newLeafNode(this_LONG_UNSIGNED_2, grammarAccess.getDateAccess().getLONG_UNSIGNEDTerminalRuleCall_2()); 
                   
             }
-            kw=(Token)match(input,24,FOLLOW_24_in_ruleDate3321); if (state.failed) return current;
+            kw=(Token)match(input,24,FOLLOW_24_in_ruleDate3324); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
                       newLeafNode(kw, grammarAccess.getDateAccess().getFullStopKeyword_3()); 
                   
             }
-            this_LONG_UNSIGNED_4=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3336); if (state.failed) return current;
+            this_LONG_UNSIGNED_4=(Token)match(input,RULE_LONG_UNSIGNED,FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3339); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_LONG_UNSIGNED_4);
@@ -3824,7 +3832,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
         int alt17=2;
         int LA17_0 = input.LA(1);
 
-        if ( (LA17_0==RULE_ID||(LA17_0>=RULE_LONG_ID && LA17_0<=RULE_LONG_UNSIGNED)) ) {
+        if ( ((LA17_0>=RULE_ID && LA17_0<=RULE_LONG_UNSIGNED)) ) {
             alt17=1;
         }
         switch (alt17) {
@@ -3874,10 +3882,10 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred3_InternalEFactory
     public final void synpred3_InternalEFactory_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1124:3: ( '.' )
-        // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1125:2: '.'
+        // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1126:3: ( '.' )
+        // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1127:2: '.'
         {
-        match(input,24,FOLLOW_24_in_synpred3_InternalEFactory2631); if (state.failed) return ;
+        match(input,24,FOLLOW_24_in_synpred3_InternalEFactory2634); if (state.failed) return ;
 
         }
     }
@@ -3937,7 +3945,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     static final String DFA4_eofS =
         "\1\5\1\uffff\3\1\3\uffff\4\1\1\uffff\1\1";
     static final String DFA4_minS =
-        "\1\4\1\uffff\3\4\1\uffff\10\4";
+        "\1\4\1\uffff\3\5\1\uffff\10\5";
     static final String DFA4_maxS =
         "\1\33\1\uffff\3\30\1\uffff\2\7\4\30\1\7\1\30";
     static final String DFA4_acceptS =
@@ -3945,20 +3953,20 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     static final String DFA4_specialS =
         "\16\uffff}>";
     static final String[] DFA4_transitionS = {
-            "\1\3\1\1\1\4\1\2\13\uffff\1\5\2\1\1\uffff\1\1\1\uffff\3\1",
+            "\1\1\1\3\1\4\1\2\13\uffff\1\5\2\1\1\uffff\1\1\1\uffff\3\1",
             "",
-            "\1\1\1\uffff\2\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\6",
-            "\1\1\1\uffff\2\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
-            "\1\1\1\uffff\2\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
+            "\3\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\6",
+            "\3\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
+            "\3\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
             "",
-            "\1\10\1\uffff\1\11\1\12",
-            "\1\10\1\uffff\1\11\1\13",
-            "\1\1\1\uffff\2\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
-            "\1\1\1\uffff\2\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
-            "\1\1\1\uffff\2\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\14",
-            "\1\1\1\uffff\2\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
-            "\1\10\1\uffff\1\11\1\15",
-            "\1\1\1\uffff\2\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7"
+            "\1\10\1\11\1\12",
+            "\1\10\1\11\1\13",
+            "\3\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
+            "\3\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
+            "\3\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\14",
+            "\3\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7",
+            "\1\10\1\11\1\15",
+            "\3\1\11\uffff\1\1\1\uffff\1\1\1\5\3\uffff\1\7"
     };
 
     static final short[] DFA4_eot = DFA.unpackEncodedString(DFA4_eotS);
@@ -3999,21 +4007,21 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     static final String DFA9_eofS =
         "\4\uffff\2\15\24\uffff\3\15";
     static final String DFA9_minS =
-        "\1\4\2\uffff\3\4\6\uffff\1\4\2\uffff\3\0\10\uffff\3\4";
+        "\1\4\2\uffff\1\5\2\4\6\uffff\1\5\2\uffff\3\0\10\uffff\3\4";
     static final String DFA9_maxS =
         "\1\33\2\uffff\1\30\2\33\6\uffff\1\7\2\uffff\3\0\10\uffff\3\33";
     static final String DFA9_acceptS =
         "\1\uffff\1\1\1\2\3\uffff\5\3\1\4\1\uffff\2\4\3\uffff\10\4\3\uffff";
     static final String DFA9_specialS =
-        "\3\uffff\1\5\1\2\1\3\11\uffff\1\10\1\6\1\0\10\uffff\1\1\1\7\1\4}>";
+        "\3\uffff\1\2\1\10\1\3\11\uffff\1\5\1\0\1\7\10\uffff\1\4\1\6\1\1}>";
     static final String[] DFA9_transitionS = {
-            "\1\4\1\2\1\5\1\3\14\uffff\1\2\1\1\1\uffff\1\2\1\uffff\3\2",
+            "\1\2\1\4\1\5\1\3\14\uffff\1\2\1\1\1\uffff\1\2\1\uffff\3\2",
             "",
             "",
-            "\1\7\1\uffff\1\10\1\11\11\uffff\1\12\6\uffff\1\6",
-            "\1\17\1\25\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
+            "\1\7\1\10\1\11\11\uffff\1\12\6\uffff\1\6",
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
             "\22\1\31\1\14\1\27\1\30\1\26",
-            "\1\17\1\25\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
             "\22\1\31\1\14\1\27\1\30\1\26",
             "",
             "",
@@ -4021,7 +4029,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\1\32\1\uffff\1\33\1\34",
+            "\1\32\1\33\1\34",
             "",
             "",
             "\1\uffff",
@@ -4035,11 +4043,11 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\1\17\1\25\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
             "\22\1\31\1\14\1\27\1\30\1\26",
-            "\1\17\1\25\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
             "\22\1\31\1\14\1\27\1\30\1\26",
-            "\1\17\1\25\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
             "\22\1\31\1\14\1\27\1\30\1\26"
     };
 
@@ -4080,10 +4088,10 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA9_17 = input.LA(1);
+                        int LA9_16 = input.LA(1);
 
                          
-                        int index9_17 = input.index();
+                        int index9_16 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred1_InternalEFactory()) ) {s = 10;}
@@ -4091,89 +4099,73 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                         else if ( (synpred2_InternalEFactory()) ) {s = 25;}
 
                          
-                        input.seek(index9_17);
+                        input.seek(index9_16);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA9_26 = input.LA(1);
+                        int LA9_28 = input.LA(1);
 
                          
-                        int index9_26 = input.index();
+                        int index9_28 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA9_26==EOF) && (synpred2_InternalEFactory())) {s = 13;}
+                        if ( (LA9_28==EOF) && (synpred2_InternalEFactory())) {s = 13;}
 
-                        else if ( (LA9_26==19) && (synpred2_InternalEFactory())) {s = 14;}
+                        else if ( (LA9_28==19) && (synpred2_InternalEFactory())) {s = 14;}
 
-                        else if ( (LA9_26==RULE_ID) ) {s = 15;}
+                        else if ( (LA9_28==RULE_ID) ) {s = 15;}
 
-                        else if ( (LA9_26==RULE_LONG_ID) ) {s = 16;}
+                        else if ( (LA9_28==RULE_LONG_ID) ) {s = 16;}
 
-                        else if ( (LA9_26==RULE_LONG_UNSIGNED) ) {s = 17;}
+                        else if ( (LA9_28==RULE_LONG_UNSIGNED) ) {s = 17;}
 
-                        else if ( (LA9_26==22) && (synpred2_InternalEFactory())) {s = 18;}
+                        else if ( (LA9_28==22) && (synpred2_InternalEFactory())) {s = 18;}
 
-                        else if ( (LA9_26==21) && (synpred2_InternalEFactory())) {s = 19;}
+                        else if ( (LA9_28==21) && (synpred2_InternalEFactory())) {s = 19;}
 
-                        else if ( (LA9_26==20) && (synpred2_InternalEFactory())) {s = 20;}
+                        else if ( (LA9_28==20) && (synpred2_InternalEFactory())) {s = 20;}
 
-                        else if ( (LA9_26==RULE_STRING) && (synpred2_InternalEFactory())) {s = 21;}
+                        else if ( (LA9_28==RULE_STRING) && (synpred2_InternalEFactory())) {s = 21;}
 
-                        else if ( (LA9_26==27) && (synpred2_InternalEFactory())) {s = 22;}
+                        else if ( (LA9_28==27) && (synpred2_InternalEFactory())) {s = 22;}
 
-                        else if ( (LA9_26==25) && (synpred2_InternalEFactory())) {s = 23;}
+                        else if ( (LA9_28==25) && (synpred2_InternalEFactory())) {s = 23;}
 
-                        else if ( (LA9_26==26) && (synpred2_InternalEFactory())) {s = 24;}
+                        else if ( (LA9_28==26) && (synpred2_InternalEFactory())) {s = 24;}
 
-                        else if ( (LA9_26==23) && (synpred2_InternalEFactory())) {s = 25;}
+                        else if ( (LA9_28==23) && (synpred2_InternalEFactory())) {s = 25;}
 
-                        else if ( (LA9_26==24) ) {s = 12;}
+                        else if ( (LA9_28==24) ) {s = 12;}
 
-                        else if ( (LA9_26==17) && (synpred1_InternalEFactory())) {s = 10;}
+                        else if ( (LA9_28==17) && (synpred1_InternalEFactory())) {s = 10;}
 
                          
-                        input.seek(index9_26);
+                        input.seek(index9_28);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA9_4 = input.LA(1);
+                        int LA9_3 = input.LA(1);
 
                          
-                        int index9_4 = input.index();
+                        int index9_3 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA9_4==24) ) {s = 12;}
+                        if ( (LA9_3==24) && (synpred1_InternalEFactory())) {s = 6;}
 
-                        else if ( (LA9_4==EOF) && (synpred2_InternalEFactory())) {s = 13;}
+                        else if ( (LA9_3==RULE_ID) && (synpred1_InternalEFactory())) {s = 7;}
 
-                        else if ( (LA9_4==19) && (synpred2_InternalEFactory())) {s = 14;}
+                        else if ( (LA9_3==RULE_LONG_ID) && (synpred1_InternalEFactory())) {s = 8;}
 
-                        else if ( (LA9_4==RULE_ID) ) {s = 15;}
+                        else if ( (LA9_3==RULE_LONG_UNSIGNED) && (synpred1_InternalEFactory())) {s = 9;}
 
-                        else if ( (LA9_4==RULE_LONG_ID) ) {s = 16;}
+                        else if ( (LA9_3==17) && (synpred1_InternalEFactory())) {s = 10;}
 
-                        else if ( (LA9_4==RULE_LONG_UNSIGNED) ) {s = 17;}
+                        else if ( (true) ) {s = 2;}
 
-                        else if ( (LA9_4==22) && (synpred2_InternalEFactory())) {s = 18;}
-
-                        else if ( (LA9_4==21) && (synpred2_InternalEFactory())) {s = 19;}
-
-                        else if ( (LA9_4==20) && (synpred2_InternalEFactory())) {s = 20;}
-
-                        else if ( (LA9_4==RULE_STRING) && (synpred2_InternalEFactory())) {s = 21;}
-
-                        else if ( (LA9_4==27) && (synpred2_InternalEFactory())) {s = 22;}
-
-                        else if ( (LA9_4==25) && (synpred2_InternalEFactory())) {s = 23;}
-
-                        else if ( (LA9_4==26) && (synpred2_InternalEFactory())) {s = 24;}
-
-                        else if ( (LA9_4==23) && (synpred2_InternalEFactory())) {s = 25;}
-
-                        else if ( (LA9_4==17) && (synpred1_InternalEFactory())) {s = 10;}
+                        else if ( (synpred2_InternalEFactory()) ) {s = 11;}
 
                          
-                        input.seek(index9_4);
+                        input.seek(index9_3);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
@@ -4218,76 +4210,51 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA9_28 = input.LA(1);
+                        int LA9_26 = input.LA(1);
 
                          
-                        int index9_28 = input.index();
+                        int index9_26 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA9_28==RULE_ID) ) {s = 15;}
+                        if ( (LA9_26==EOF) && (synpred2_InternalEFactory())) {s = 13;}
 
-                        else if ( (LA9_28==RULE_LONG_ID) ) {s = 16;}
+                        else if ( (LA9_26==19) && (synpred2_InternalEFactory())) {s = 14;}
 
-                        else if ( (LA9_28==RULE_LONG_UNSIGNED) ) {s = 17;}
+                        else if ( (LA9_26==RULE_ID) ) {s = 15;}
 
-                        else if ( (LA9_28==17) && (synpred1_InternalEFactory())) {s = 10;}
+                        else if ( (LA9_26==RULE_LONG_ID) ) {s = 16;}
 
-                        else if ( (LA9_28==24) ) {s = 12;}
+                        else if ( (LA9_26==RULE_LONG_UNSIGNED) ) {s = 17;}
 
-                        else if ( (LA9_28==EOF) && (synpred2_InternalEFactory())) {s = 13;}
+                        else if ( (LA9_26==22) && (synpred2_InternalEFactory())) {s = 18;}
 
-                        else if ( (LA9_28==19) && (synpred2_InternalEFactory())) {s = 14;}
+                        else if ( (LA9_26==21) && (synpred2_InternalEFactory())) {s = 19;}
 
-                        else if ( (LA9_28==22) && (synpred2_InternalEFactory())) {s = 18;}
+                        else if ( (LA9_26==20) && (synpred2_InternalEFactory())) {s = 20;}
 
-                        else if ( (LA9_28==21) && (synpred2_InternalEFactory())) {s = 19;}
+                        else if ( (LA9_26==RULE_STRING) && (synpred2_InternalEFactory())) {s = 21;}
 
-                        else if ( (LA9_28==20) && (synpred2_InternalEFactory())) {s = 20;}
+                        else if ( (LA9_26==27) && (synpred2_InternalEFactory())) {s = 22;}
 
-                        else if ( (LA9_28==RULE_STRING) && (synpred2_InternalEFactory())) {s = 21;}
+                        else if ( (LA9_26==25) && (synpred2_InternalEFactory())) {s = 23;}
 
-                        else if ( (LA9_28==27) && (synpred2_InternalEFactory())) {s = 22;}
+                        else if ( (LA9_26==26) && (synpred2_InternalEFactory())) {s = 24;}
 
-                        else if ( (LA9_28==25) && (synpred2_InternalEFactory())) {s = 23;}
+                        else if ( (LA9_26==23) && (synpred2_InternalEFactory())) {s = 25;}
 
-                        else if ( (LA9_28==26) && (synpred2_InternalEFactory())) {s = 24;}
+                        else if ( (LA9_26==24) ) {s = 12;}
 
-                        else if ( (LA9_28==23) && (synpred2_InternalEFactory())) {s = 25;}
+                        else if ( (LA9_26==17) && (synpred1_InternalEFactory())) {s = 10;}
 
                          
-                        input.seek(index9_28);
+                        input.seek(index9_26);
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA9_3 = input.LA(1);
+                        int LA9_15 = input.LA(1);
 
                          
-                        int index9_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA9_3==24) && (synpred1_InternalEFactory())) {s = 6;}
-
-                        else if ( (LA9_3==RULE_ID) && (synpred1_InternalEFactory())) {s = 7;}
-
-                        else if ( (LA9_3==RULE_LONG_ID) && (synpred1_InternalEFactory())) {s = 8;}
-
-                        else if ( (LA9_3==RULE_LONG_UNSIGNED) && (synpred1_InternalEFactory())) {s = 9;}
-
-                        else if ( (LA9_3==17) && (synpred1_InternalEFactory())) {s = 10;}
-
-                        else if ( (true) ) {s = 2;}
-
-                        else if ( (synpred2_InternalEFactory()) ) {s = 11;}
-
-                         
-                        input.seek(index9_3);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA9_16 = input.LA(1);
-
-                         
-                        int index9_16 = input.index();
+                        int index9_15 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred1_InternalEFactory()) ) {s = 10;}
@@ -4295,25 +4262,29 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                         else if ( (synpred2_InternalEFactory()) ) {s = 25;}
 
                          
-                        input.seek(index9_16);
+                        input.seek(index9_15);
                         if ( s>=0 ) return s;
                         break;
-                    case 7 : 
+                    case 6 : 
                         int LA9_27 = input.LA(1);
 
                          
                         int index9_27 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA9_27==EOF) && (synpred2_InternalEFactory())) {s = 13;}
-
-                        else if ( (LA9_27==19) && (synpred2_InternalEFactory())) {s = 14;}
-
-                        else if ( (LA9_27==RULE_ID) ) {s = 15;}
+                        if ( (LA9_27==RULE_ID) ) {s = 15;}
 
                         else if ( (LA9_27==RULE_LONG_ID) ) {s = 16;}
 
                         else if ( (LA9_27==RULE_LONG_UNSIGNED) ) {s = 17;}
+
+                        else if ( (LA9_27==17) && (synpred1_InternalEFactory())) {s = 10;}
+
+                        else if ( (LA9_27==24) ) {s = 12;}
+
+                        else if ( (LA9_27==EOF) && (synpred2_InternalEFactory())) {s = 13;}
+
+                        else if ( (LA9_27==19) && (synpred2_InternalEFactory())) {s = 14;}
 
                         else if ( (LA9_27==22) && (synpred2_InternalEFactory())) {s = 18;}
 
@@ -4331,19 +4302,15 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA9_27==23) && (synpred2_InternalEFactory())) {s = 25;}
 
-                        else if ( (LA9_27==24) ) {s = 12;}
-
-                        else if ( (LA9_27==17) && (synpred1_InternalEFactory())) {s = 10;}
-
                          
                         input.seek(index9_27);
                         if ( s>=0 ) return s;
                         break;
-                    case 8 : 
-                        int LA9_15 = input.LA(1);
+                    case 7 : 
+                        int LA9_17 = input.LA(1);
 
                          
-                        int index9_15 = input.index();
+                        int index9_17 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred1_InternalEFactory()) ) {s = 10;}
@@ -4351,7 +4318,48 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
                         else if ( (synpred2_InternalEFactory()) ) {s = 25;}
 
                          
-                        input.seek(index9_15);
+                        input.seek(index9_17);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 8 : 
+                        int LA9_4 = input.LA(1);
+
+                         
+                        int index9_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA9_4==24) ) {s = 12;}
+
+                        else if ( (LA9_4==EOF) && (synpred2_InternalEFactory())) {s = 13;}
+
+                        else if ( (LA9_4==19) && (synpred2_InternalEFactory())) {s = 14;}
+
+                        else if ( (LA9_4==RULE_ID) ) {s = 15;}
+
+                        else if ( (LA9_4==RULE_LONG_ID) ) {s = 16;}
+
+                        else if ( (LA9_4==RULE_LONG_UNSIGNED) ) {s = 17;}
+
+                        else if ( (LA9_4==22) && (synpred2_InternalEFactory())) {s = 18;}
+
+                        else if ( (LA9_4==21) && (synpred2_InternalEFactory())) {s = 19;}
+
+                        else if ( (LA9_4==20) && (synpred2_InternalEFactory())) {s = 20;}
+
+                        else if ( (LA9_4==RULE_STRING) && (synpred2_InternalEFactory())) {s = 21;}
+
+                        else if ( (LA9_4==27) && (synpred2_InternalEFactory())) {s = 22;}
+
+                        else if ( (LA9_4==25) && (synpred2_InternalEFactory())) {s = 23;}
+
+                        else if ( (LA9_4==26) && (synpred2_InternalEFactory())) {s = 24;}
+
+                        else if ( (LA9_4==23) && (synpred2_InternalEFactory())) {s = 25;}
+
+                        else if ( (LA9_4==17) && (synpred1_InternalEFactory())) {s = 10;}
+
+                         
+                        input.seek(index9_4);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -4365,26 +4373,27 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     static final String DFA11_eotS =
         "\15\uffff";
     static final String DFA11_eofS =
-        "\4\uffff\1\11\2\uffff\1\11\3\uffff\1\12\1\uffff";
+        "\4\uffff\1\10\2\uffff\1\10\3\uffff\1\12\1\uffff";
     static final String DFA11_minS =
-        "\1\5\2\uffff\1\7\1\4\2\uffff\1\4\1\7\2\uffff\1\4\1\uffff";
+        "\1\4\2\uffff\1\7\1\4\2\uffff\1\4\1\uffff\1\7\1\uffff\1\4\1\uffff";
     static final String DFA11_maxS =
-        "\1\33\2\uffff\1\7\1\33\2\uffff\1\33\1\7\2\uffff\1\33\1\uffff";
+        "\1\33\2\uffff\1\7\1\33\2\uffff\1\33\1\uffff\1\7\1\uffff\1\33\1\uffff";
     static final String DFA11_acceptS =
-        "\1\uffff\1\1\1\2\2\uffff\1\4\1\7\2\uffff\1\3\1\5\1\uffff\1\6";
+        "\1\uffff\1\1\1\2\2\uffff\1\4\1\7\1\uffff\1\3\1\uffff\1\5\1\uffff"+
+        "\1\6";
     static final String DFA11_specialS =
         "\15\uffff}>";
     static final String[] DFA11_transitionS = {
-            "\1\2\1\uffff\1\4\14\uffff\1\1\2\uffff\1\6\1\uffff\2\5\1\3",
+            "\1\2\2\uffff\1\4\14\uffff\1\1\2\uffff\1\6\1\uffff\2\5\1\3",
             "",
             "",
             "\1\7",
-            "\4\11\13\uffff\5\11\1\10\3\11",
+            "\4\10\13\uffff\5\10\1\11\3\10",
             "",
             "",
-            "\4\11\13\uffff\5\11\1\12\3\11",
+            "\4\10\13\uffff\5\10\1\12\3\10",
+            "",
             "\1\13",
-            "",
             "",
             "\4\12\13\uffff\5\12\1\14\3\12",
             ""
@@ -4427,18 +4436,18 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_ruleFactory_in_entryRuleFactory75 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFactory85 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNamespaceImport_in_ruleFactory131 = new BitSet(new long[]{0x000000000001A0D0L});
-    public static final BitSet FOLLOW_rulePackageImport_in_ruleFactory153 = new BitSet(new long[]{0x00000000000120D0L});
-    public static final BitSet FOLLOW_ruleAnnotation_in_ruleFactory175 = new BitSet(new long[]{0x00000000000120D0L});
+    public static final BitSet FOLLOW_ruleNamespaceImport_in_ruleFactory131 = new BitSet(new long[]{0x000000000001A0E0L});
+    public static final BitSet FOLLOW_rulePackageImport_in_ruleFactory153 = new BitSet(new long[]{0x00000000000120E0L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleFactory175 = new BitSet(new long[]{0x00000000000120E0L});
     public static final BitSet FOLLOW_ruleNewObject_in_ruleFactory197 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePackageImport_in_entryRulePackageImport233 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePackageImport243 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_rulePackageImport280 = new BitSet(new long[]{0x00000000000120D0L});
+    public static final BitSet FOLLOW_13_in_rulePackageImport280 = new BitSet(new long[]{0x00000000000120E0L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rulePackageImport303 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_14_in_rulePackageImport315 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNamespaceImport_in_entryRuleNamespaceImport351 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleNamespaceImport361 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_ruleNamespaceImport398 = new BitSet(new long[]{0x00000000000120D0L});
+    public static final BitSet FOLLOW_15_in_ruleNamespaceImport398 = new BitSet(new long[]{0x00000000000120E0L});
     public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_ruleNamespaceImport419 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAnnotation_in_entryRuleAnnotation455 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAnnotation465 = new BitSet(new long[]{0x0000000000000002L});
@@ -4446,9 +4455,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleCustomNameMapping_in_entryRuleCustomNameMapping545 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleCustomNameMapping555 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_16_in_ruleCustomNameMapping592 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleCustomNameMapping604 = new BitSet(new long[]{0x00000000000120D0L});
+    public static final BitSet FOLLOW_17_in_ruleCustomNameMapping604 = new BitSet(new long[]{0x00000000000120E0L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_ruleCustomNameMapping627 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_ruleCustomNameMapping639 = new BitSet(new long[]{0x00000000000120D0L});
+    public static final BitSet FOLLOW_18_in_ruleCustomNameMapping639 = new BitSet(new long[]{0x00000000000120E0L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_ruleCustomNameMapping662 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_19_in_ruleCustomNameMapping674 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFeature_in_entryRuleFeature710 = new BitSet(new long[]{0x0000000000000000L});
@@ -4458,19 +4467,19 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleValue_in_ruleFeature801 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNewObject_in_entryRuleNewObject838 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleNewObject848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleNewObject896 = new BitSet(new long[]{0x00000000000320D0L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleNewObject896 = new BitSet(new long[]{0x00000000000320E0L});
     public static final BitSet FOLLOW_ruleValidID_in_ruleNewObject917 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleNewObject930 = new BitSet(new long[]{0x00000000000920D0L});
-    public static final BitSet FOLLOW_ruleFeature_in_ruleNewObject951 = new BitSet(new long[]{0x00000000000920D0L});
+    public static final BitSet FOLLOW_17_in_ruleNewObject930 = new BitSet(new long[]{0x00000000000920E0L});
+    public static final BitSet FOLLOW_ruleFeature_in_ruleNewObject951 = new BitSet(new long[]{0x00000000000920E0L});
     public static final BitSet FOLLOW_19_in_ruleNewObject964 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValue_in_entryRuleValue1000 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleValue1010 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMultiValue_in_ruleValue1057 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAttribute_in_ruleValue1084 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleValue1157 = new BitSet(new long[]{0x00000000000320D0L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleValue1157 = new BitSet(new long[]{0x00000000000320E0L});
     public static final BitSet FOLLOW_ruleValidID_in_ruleValue1178 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleValue1191 = new BitSet(new long[]{0x00000000000920D0L});
-    public static final BitSet FOLLOW_ruleFeature_in_ruleValue1214 = new BitSet(new long[]{0x00000000000920D0L});
+    public static final BitSet FOLLOW_17_in_ruleValue1191 = new BitSet(new long[]{0x00000000000920E0L});
+    public static final BitSet FOLLOW_ruleFeature_in_ruleValue1214 = new BitSet(new long[]{0x00000000000920E0L});
     public static final BitSet FOLLOW_19_in_ruleValue1227 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleReference_in_ruleValue1271 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMultiValue_in_entryRuleMultiValue1307 = new BitSet(new long[]{0x0000000000000000L});
@@ -4492,64 +4501,64 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleNullAttribute_in_ruleAttribute1744 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEnumAttribute_in_entryRuleEnumAttribute1779 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleEnumAttribute1789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_ruleEnumAttribute1826 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumAttribute1846 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringAttribute_in_entryRuleStringAttribute1882 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringAttribute1892 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringAttribute1933 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntegerAttribute_in_entryRuleIntegerAttribute1973 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerAttribute1983 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLong_in_ruleIntegerAttribute2028 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleAttribute_in_entryRuleDoubleAttribute2063 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleAttribute2073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDouble_in_ruleDoubleAttribute2118 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDateAttribute_in_entryRuleDateAttribute2153 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDateAttribute2163 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDate_in_ruleDateAttribute2208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNullAttribute_in_entryRuleNullAttribute2243 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNullAttribute2253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ruleNullAttribute2295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanAttribute_in_entryRuleBooleanAttribute2343 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanAttribute2353 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_ruleBooleanAttribute2398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard2434 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard2445 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard2492 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_14_in_ruleQualifiedNameWithWildcard2511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName2554 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName2565 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName2612 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_24_in_ruleQualifiedName2640 = new BitSet(new long[]{0x00000000000120D0L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName2663 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID2711 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValidID2722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleValidID2762 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_LONG_ID_in_ruleValidID2788 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleValidID2814 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBoolean_in_entryRuleBoolean2860 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBoolean2871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ruleBoolean2909 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleBoolean2928 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLong_in_entryRuleLong2969 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLong2980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleLong3019 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleLong3036 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDouble_in_entryRuleDouble3082 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDouble3093 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLong_in_ruleDouble3140 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleDouble3158 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleDouble3173 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDate_in_entryRuleDate3219 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDate3230 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3270 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleDate3288 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3303 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleDate3321 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3336 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_synpred1_InternalEFactory1111 = new BitSet(new long[]{0x00000000000320D0L});
+    public static final BitSet FOLLOW_20_in_ruleEnumAttribute1826 = new BitSet(new long[]{0x00000000000120E0L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleEnumAttribute1849 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringAttribute_in_entryRuleStringAttribute1885 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringAttribute1895 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringAttribute1936 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntegerAttribute_in_entryRuleIntegerAttribute1976 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntegerAttribute1986 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLong_in_ruleIntegerAttribute2031 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleAttribute_in_entryRuleDoubleAttribute2066 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDoubleAttribute2076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDouble_in_ruleDoubleAttribute2121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDateAttribute_in_entryRuleDateAttribute2156 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDateAttribute2166 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDate_in_ruleDateAttribute2211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNullAttribute_in_entryRuleNullAttribute2246 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNullAttribute2256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_ruleNullAttribute2298 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBooleanAttribute_in_entryRuleBooleanAttribute2346 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanAttribute2356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleBooleanAttribute2401 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard2437 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard2448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard2495 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_14_in_ruleQualifiedNameWithWildcard2514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName2557 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName2568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName2615 = new BitSet(new long[]{0x0000000001000002L});
+    public static final BitSet FOLLOW_24_in_ruleQualifiedName2643 = new BitSet(new long[]{0x00000000000120E0L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName2666 = new BitSet(new long[]{0x0000000001000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID2714 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValidID2725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleValidID2765 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LONG_ID_in_ruleValidID2791 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleValidID2817 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBoolean_in_entryRuleBoolean2863 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBoolean2874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_ruleBoolean2912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_ruleBoolean2931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLong_in_entryRuleLong2972 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLong2983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleLong3022 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleLong3039 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDouble_in_entryRuleDouble3085 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDouble3096 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLong_in_ruleDouble3143 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleDouble3161 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleDouble3176 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDate_in_entryRuleDate3222 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDate3233 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3273 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleDate3291 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3306 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleDate3324 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RULE_LONG_UNSIGNED_in_ruleDate3339 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_synpred1_InternalEFactory1111 = new BitSet(new long[]{0x00000000000320E0L});
     public static final BitSet FOLLOW_ruleValidID_in_synpred1_InternalEFactory1120 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_17_in_synpred1_InternalEFactory1127 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleReference_in_synpred2_InternalEFactory1255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_synpred3_InternalEFactory2631 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_synpred3_InternalEFactory2634 = new BitSet(new long[]{0x0000000000000002L});
 
 }

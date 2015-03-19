@@ -67,7 +67,7 @@ Reference:
 
 Attribute: (EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute | NullAttribute);
 
-EnumAttribute: ":" value = [ecore::EEnumLiteral];
+EnumAttribute: ":" value = [ecore::EEnumLiteral|QualifiedName];
 
 
 // TODO Attribute Types should later not be hard-coded here anymore.. Grammar should be more open & generic.

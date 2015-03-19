@@ -2912,8 +2912,8 @@ rule__EnumAttribute__ValueAssignment_1
 (
 { before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); }
 (
-{ before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1()); }
-	RULE_ID{ after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1()); }
+{ before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1()); }
+	ruleQualifiedName{ after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1()); }
 )
 { after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); }
 )

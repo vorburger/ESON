@@ -17,6 +17,7 @@ import static org.junit.Assert.assertEquals;
 import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eson.tests.util.DumpIndexUtil;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelAndDynamicECoreInjectorProvider;
@@ -29,24 +30,43 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(ESONWithTestmodelAndDynamicECoreInjectorProvider.class) // NOT just ESONWithTestmodelInjectorProvider
 public class SimplestWeiredNameTest {
+	// see also SimplestDynamicECoreTest - these tests here are written in the same style
 
 	@Inject ResourceProvider provider;
 
-	// see also SimplestDynamicECoreTest - this is written in the same style
-	
-	@Test public void testNormallyNamedEClassWithWeirdoAndAttributeName() throws Exception {
-		check("model/TestModelWithDotInNames.ecore",
+	@Test public void testNormallyNamedEClassWithWeirdoAttributeName() throws Exception {
+		EObject em = check("model/TestModelWithDotInNames.ecore",
 				"res/BuilderTests/SimplestWithWeiredNamesWithDots1.eson", 
 				"NormallyNamed");
+		String strangelyNamedAttributeValue = (String) em.eGet(em.eClass().getEAllAttributes().get(0));
+		assertEquals("hello", strangelyNamedAttributeValue);
 	}
 
 	@Test public void testWeirdoNamedEClassAndAttributeName() throws Exception {
-		check("model/TestModelWithDotInNames.ecore",
+		EObject em = check("model/TestModelWithDotInNames.ecore",
 				"res/BuilderTests/SimplestWithWeiredNamesWithDots2.eson", 
 				"WEIRDO.NAMED");
+		String strangelyNamedAttributeValue = (String) em.eGet(em.eClass().getEAllAttributes().get(0));
+		assertEquals("hello", strangelyNamedAttributeValue);
 	}
-	
-	protected void check(String ecorePath, String esonPath, String expectedEClassName) throws Exception {
+
+	@Test public void testNormallyNamedEClassWithWeirdoEnumNameAndNormalLiteral() throws Exception {
+		EObject em = check("model/TestModelWithDotInNames.ecore",
+				"res/BuilderTests/SimplestWithWeiredNamesWithDots3enumA.eson", 
+				"NormallyNamed");
+		EEnumLiteral strangelyNamedEnum = (EEnumLiteral) em.eGet(em.eClass().getEAllAttributes().get(1));
+		assertEquals("normal", strangelyNamedEnum.getName());
+	}
+
+	@Test public void testNormallyNamedEClassWithWeirdoEnumNameAndWeirdoLiteral() throws Exception {
+		EObject em = check("model/TestModelWithDotInNames.ecore",
+				"res/BuilderTests/SimplestWithWeiredNamesWithDots3enumB.eson", 
+				"NormallyNamed");
+		EEnumLiteral strangelyNamedEnum = (EEnumLiteral) em.eGet(em.eClass().getEAllAttributes().get(1));
+		assertEquals("weird.literal", strangelyNamedEnum.getName());
+	}
+
+	protected EObject check(String ecorePath, String esonPath, String expectedEClassName) throws Exception {
 		provider.load(ecorePath, false /* do NOT validate, as the weird names with dot violate ECore validation */);
 		// Do NOT DumpIndexUtil.dumpXtextIndex(ePackage.eResource()); as that does not work yet for *.ecore as this stage (later below on an *.eson it works - and dumps the *.ecore as well)
 
@@ -56,7 +76,6 @@ public class SimplestWeiredNameTest {
 
 		EObject em = provider.loadModel(esonPath, EObject.class);
 		assertEquals(expectedEClassName, em.eClass().getName());
-		String strangelyNameAttributeValue = (String) em.eGet(em.eClass().getEAllAttributes().get(0));
-		assertEquals("hello", strangelyNameAttributeValue);
+		return em;
 	}
 }

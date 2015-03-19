@@ -4,8 +4,14 @@
     nsPrefix="testmodelWithDotInNames">
   <eClassifiers xsi:type="ecore:EClass" name="NormallyNamed">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="STRANGE.NAME" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="STRANGE.ENUM" eType="#//WEIRD.ENUM"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WEIRDO.NAMED">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="STRANGE.NAME" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WEIRD.ENUM">
+    <eLiterals name="DEFAULT" value="-1"/>
+    <eLiterals name="normal"/>
+    <eLiterals name="weird.literal" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

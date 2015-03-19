@@ -471,26 +471,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cValueEEnumLiteralCrossReference_1_0 = (CrossReference)cValueAssignment_1.eContents().get(0);
-		private final RuleCall cValueEEnumLiteralIDTerminalRuleCall_1_0_1 = (RuleCall)cValueEEnumLiteralCrossReference_1_0.eContents().get(1);
+		private final RuleCall cValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cValueEEnumLiteralCrossReference_1_0.eContents().get(1);
 		
 		//EnumAttribute:
-		//	":" value=[ecore::EEnumLiteral];
+		//	":" value=[ecore::EEnumLiteral|QualifiedName];
 		public ParserRule getRule() { return rule; }
 
-		//":" value=[ecore::EEnumLiteral]
+		//":" value=[ecore::EEnumLiteral|QualifiedName]
 		public Group getGroup() { return cGroup; }
 
 		//":"
 		public Keyword getColonKeyword_0() { return cColonKeyword_0; }
 
-		//value=[ecore::EEnumLiteral]
+		//value=[ecore::EEnumLiteral|QualifiedName]
 		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
 
-		//[ecore::EEnumLiteral]
+		//[ecore::EEnumLiteral|QualifiedName]
 		public CrossReference getValueEEnumLiteralCrossReference_1_0() { return cValueEEnumLiteralCrossReference_1_0; }
 
-		//ID
-		public RuleCall getValueEEnumLiteralIDTerminalRuleCall_1_0_1() { return cValueEEnumLiteralIDTerminalRuleCall_1_0_1; }
+		//QualifiedName
+		public RuleCall getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1() { return cValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1; }
 	}
 
 	public class StringAttributeElements extends AbstractParserRuleElementFinder {
@@ -956,7 +956,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumAttribute:
-	//	":" value=[ecore::EEnumLiteral];
+	//	":" value=[ecore::EEnumLiteral|QualifiedName];
 	public EnumAttributeElements getEnumAttributeAccess() {
 		return (pEnumAttribute != null) ? pEnumAttribute : (pEnumAttribute = new EnumAttributeElements());
 	}

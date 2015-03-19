@@ -230,7 +230,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=[EEnumLiteral|ID]
+	 *     value=[EEnumLiteral|QualifiedName]
 	 */
 	protected void sequence_EnumAttribute(EObject context, EnumAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -239,7 +239,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralIDTerminalRuleCall_1_0_1(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

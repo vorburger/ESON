@@ -41,7 +41,7 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 		Feature feature = getFeature(attribute);
 		if (feature.getEFeature().getEType() instanceof EEnum) {
 			EEnum enumType = (EEnum) feature.getEFeature().getEType();
-			Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(enumType.getELiterals());
+			Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(enumType.getELiterals(), DottedQualifiedNameFixer.FUNCTION);
 			return new SimpleScope(elements);
 		}
 		return IScope.NULLSCOPE;
