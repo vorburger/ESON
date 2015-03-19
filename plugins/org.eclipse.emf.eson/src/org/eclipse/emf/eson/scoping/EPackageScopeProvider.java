@@ -44,20 +44,17 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 	public IScope createEClassScope(Resource resource, EClass type, IScope parent) {
 		Iterable<EPackage> ePackages = resolvePackages(resource);
 		Iterable<EClass> eClasses = getAllEClasses(ePackages);
-		Iterable<EClass> filteredEClasses = filterAssignableEClasses(eClasses, type);
-		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(filteredEClasses);
+		if (type != null)
+			eClasses = filterAssignableEClasses(eClasses, type);
+		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(eClasses, DottedQualifiedNameFixer.FUNCTION);
 		return new SimpleScope(parent, scopedElements);
 	}
 
 	public IScope createEClassScope(Resource resource, IScope parent) {
-		Iterable<EPackage> ePackages = resolvePackages(resource);
-		Iterable<EClass> eClasses = getAllEClasses(ePackages);
-		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(eClasses);
-		return new SimpleScope(parent, scopedElements);
+		return createEClassScope(resource, null, parent);
 	}
 
-	private Iterable<EClass> filterAssignableEClasses(
-			Iterable<EClass> eClasses, final EClass targetType) {
+	private Iterable<EClass> filterAssignableEClasses(Iterable<EClass> eClasses, final EClass targetType) {
 		return Iterables.filter(eClasses, new Predicate<EClass>() {
 
 			public boolean apply(EClass input) {
@@ -76,7 +73,6 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 			return Collections.emptyList();
 		}
 		return eFactoryUtil.getEPackages(root);
-
 	}
 
 	public Iterable<EClass> getAllEClasses(Iterable<? extends EPackage> ePackages) {
@@ -94,7 +90,7 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 
 	public IScope createEPackageScope(Resource eResource, IScope parent) {
 		Iterable<EPackage> ePackages = packageResolver.getAllRegisteredEPackages();
-		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(ePackages);
+		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(ePackages /* no need for DottedQualifiedNameFixer.FUNCTION, as no EPackages with dots */ );
 		return new SimpleScope(parent, scopedElements);
 	}
 
