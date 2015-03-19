@@ -13,12 +13,15 @@
 package org.eclipse.emf.eson.builder.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eson.tests.util.DumpIndexUtil;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelAndDynamicECoreInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
@@ -66,6 +69,27 @@ public class SimplestWeiredNameTest {
 		assertEquals("weird.literal", strangelyNamedEnum.getName());
 	}
 
+	@Test public void testNormallyNamedEClassWithWeirdoContained() throws Exception {
+		EObject em = check("model/TestModelWithDotInNames.ecore",
+				"res/BuilderTests/SimplestWithWeiredNamesWithDots4contained.eson", 
+				"NormallyNamed");
+		EReference weirdoContainerERef = em.eClass().getEAllContainments().get(0);
+		assertNotNull(weirdoContainerERef);
+		EObject strangelyNamedContained = (EObject) em.eGet(weirdoContainerERef);
+		assertNotNull(strangelyNamedContained);
+		EAttribute strangeNameEAttribute = strangelyNamedContained.eClass().getEAllAttributes().get(0);
+		String strangelyNamedAttributeValue = (String) strangelyNamedContained.eGet(strangeNameEAttribute);
+		assertEquals("saluton", strangelyNamedAttributeValue);
+	}
+
+	@Test public void testWeirdoNamedEClassAndAttributeWithoutPackageImportOMG() throws Exception {
+		EObject em = check("model/TestModelWithDotInNames.ecore",
+				"res/BuilderTests/SimplestWithWeiredNamesWithDots5omg.eson", 
+				"WEIRDO.NAMED");
+		String strangelyNamedAttributeValue = (String) em.eGet(em.eClass().getEAllAttributes().get(0));
+		assertEquals("hello", strangelyNamedAttributeValue);
+	}
+	
 	protected EObject check(String ecorePath, String esonPath, String expectedEClassName) throws Exception {
 		provider.load(ecorePath, false /* do NOT validate, as the weird names with dot violate ECore validation */);
 		// Do NOT DumpIndexUtil.dumpXtextIndex(ePackage.eResource()); as that does not work yet for *.ecore as this stage (later below on an *.eson it works - and dumps the *.ecore as well)

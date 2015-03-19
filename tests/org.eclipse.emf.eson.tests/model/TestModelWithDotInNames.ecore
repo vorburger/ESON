@@ -5,6 +5,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="NormallyNamed">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="STRANGE.NAME" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="STRANGE.ENUM" eType="#//WEIRD.ENUM"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="WEIRDO.CONTAINER" eType="#//WEIRDO.NAMED"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WEIRDO.NAMED">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="STRANGE.NAME" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
