@@ -60,11 +60,18 @@ public class AttributeBuilder extends FeatureBuilder {
 		}
 		
 		Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
-		try {
-			newValue = convertToTargetType(clazz, newValue, getFeature());
-		} catch (RuntimeException e) {
-			throw new ModelBuilderException("convertToTargetType() failed for feature: " + eAttribute.toString(), e);
+		if (clazz == null) {
+			if (!(newValue instanceof EEnumLiteral)) {
+				throw new ModelBuilderException("Uh uh, EAttributeType().getInstanceClass() == null, but its not an EEnumLiteral, for feature: " + eAttribute.toString());
+			} // else, if newValue is an EEnumLiteral, then ahl-iz-wehl - it's a dynamic ecore model, without generated code for the Enum literal - which is still fine.
+		} else {
+			try {
+				newValue = convertToTargetType(clazz, newValue, getFeature());
+			} catch (RuntimeException e) {
+				throw new ModelBuilderException("convertToTargetType() failed for feature: " + eAttribute.toString(), e);
+			}
 		}
+
 		EcoreUtil3.setOrAddValue(getContainer(), eAttribute, newValue);
 	}
 
