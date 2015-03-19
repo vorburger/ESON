@@ -94,7 +94,7 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 
 	public IScope scope_CustomNameMapping_nameFeature(CustomNameMapping mapping, EReference reference) {
 		Iterable<EAttribute> attributes = EcoreUtil3.getAllAttributes(mapping.getEClass(), String.class);
-		Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(attributes);
+		Iterable<IEObjectDescription> elements = Scopes.scopedElementsFor(attributes, DottedQualifiedNameFixer.FUNCTION);
 		return new SimpleScope(elements);
 	}
 

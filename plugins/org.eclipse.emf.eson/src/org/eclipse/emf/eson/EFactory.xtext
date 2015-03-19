@@ -29,7 +29,7 @@ Annotation:
 // logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
 
 CustomNameMapping:
-	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}" ;
+	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}" ;
 
 Feature:
 	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" (value=Value)? ;

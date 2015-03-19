@@ -179,7 +179,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (eClass=[EClass|QualifiedName] nameFeature=[EAttribute|ID])
+	 *     (eClass=[EClass|QualifiedName] nameFeature=[EAttribute|QualifiedName])
 	 */
 	protected void sequence_CustomNameMapping(EObject context, CustomNameMapping semanticObject) {
 		if(errorAcceptor != null) {
@@ -191,7 +191,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getCustomNameMappingAccess().getEClassEClassQualifiedNameParserRuleCall_2_0_1(), semanticObject.getEClass());
-		feeder.accept(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeIDTerminalRuleCall_4_0_1(), semanticObject.getNameFeature());
+		feeder.accept(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1(), semanticObject.getNameFeature());
 		feeder.finish();
 	}
 	

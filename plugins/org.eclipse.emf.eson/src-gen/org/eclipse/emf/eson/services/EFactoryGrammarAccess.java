@@ -145,16 +145,16 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cNameFeatureAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cNameFeatureEAttributeCrossReference_4_0 = (CrossReference)cNameFeatureAssignment_4.eContents().get(0);
-		private final RuleCall cNameFeatureEAttributeIDTerminalRuleCall_4_0_1 = (RuleCall)cNameFeatureEAttributeCrossReference_4_0.eContents().get(1);
+		private final RuleCall cNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1 = (RuleCall)cNameFeatureEAttributeCrossReference_4_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//// TODO further consider if name mapping is best put in-line into objects.. it would have to repeat in every file..
 		//// logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
 		//CustomNameMapping:
-		//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}";
+		//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}";
 		public ParserRule getRule() { return rule; }
 
-		//"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}"
+		//"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}"
 		public Group getGroup() { return cGroup; }
 
 		//"@Name"
@@ -175,14 +175,14 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 
-		//nameFeature=[ecore::EAttribute]
+		//nameFeature=[ecore::EAttribute|QualifiedName]
 		public Assignment getNameFeatureAssignment_4() { return cNameFeatureAssignment_4; }
 
-		//[ecore::EAttribute]
+		//[ecore::EAttribute|QualifiedName]
 		public CrossReference getNameFeatureEAttributeCrossReference_4_0() { return cNameFeatureEAttributeCrossReference_4_0; }
 
-		//ID
-		public RuleCall getNameFeatureEAttributeIDTerminalRuleCall_4_0_1() { return cNameFeatureEAttributeIDTerminalRuleCall_4_0_1; }
+		//QualifiedName
+		public RuleCall getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1() { return cNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
@@ -873,7 +873,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	//// TODO further consider if name mapping is best put in-line into objects.. it would have to repeat in every file..
 	//// logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
 	//CustomNameMapping:
-	//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute] "}";
+	//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}";
 	public CustomNameMappingElements getCustomNameMappingAccess() {
 		return (pCustomNameMapping != null) ? pCustomNameMapping : (pCustomNameMapping = new CustomNameMappingElements());
 	}
