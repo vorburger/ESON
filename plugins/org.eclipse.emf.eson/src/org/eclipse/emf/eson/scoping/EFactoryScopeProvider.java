@@ -15,8 +15,8 @@ package org.eclipse.emf.eson.scoping;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
+import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.PackageImport;
 import org.eclipse.xtext.scoping.IScope;
 
@@ -32,8 +32,9 @@ public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 		return ePackageScopeProvider.createEPackageScope(packageImport.eResource(), parent);
 	}
 
-	public IScope scope_NewObject_eClass(Factory factory, EReference eReference) {
-		final IScope parent = delegateGetScope(factory, eReference);
+	@Override
+	public IScope scope_NewObject_eClass(NewObject factory, EReference eReference) {
+		final IScope parent = super.scope_NewObject_eClass(factory, eReference);
 		IScope scope = ePackageScopeProvider.createEClassScope(factory.eResource(), parent);
 		return scope;
 	}

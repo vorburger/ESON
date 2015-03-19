@@ -70,6 +70,7 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 
 	public IScope scope_NewObject_eClass(NewObject newObject, EReference eReference) {
 		IScope scope = delegateGetScope(newObject, eReference);
+		// TODO Apply DottedQualifiedNameFixer on the QNs in this Scope.. how to, best? 
 		return scope;
 	}
 	
