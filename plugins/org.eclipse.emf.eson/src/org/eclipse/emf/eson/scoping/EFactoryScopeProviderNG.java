@@ -24,9 +24,9 @@ import org.eclipse.emf.eson.eFactory.EnumAttribute;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.MultiValue;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.emf.eson.eFactory.Reference;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.ICaseInsensitivityHelper;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
@@ -34,8 +34,12 @@ import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
 
 import com.google.common.base.Predicate;
+import com.google.inject.Inject;
 
 public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
+	
+	@Inject
+	private ICaseInsensitivityHelper caseInsensitivityHelper;
 
 	public IScope scope_EnumAttribute_value(EnumAttribute attribute, EReference reference) {
 		Feature feature = getFeature(attribute);
@@ -67,15 +71,10 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 		}
 		return new SimpleScope(Scopes.scopedElementsFor(newObject.getEClass().getEAllStructuralFeatures(), DottedQualifiedNameFixer.FUNCTION));
 	}
-
-	public IScope scope_NewObject_eClass(NewObject newObject, EReference eReference) {
-		IScope scope = delegateGetScope(newObject, eReference);
-		// TODO Apply DottedQualifiedNameFixer on the QNs in this Scope.. how to, best? 
-		return scope;
-	}
 	
-	public IScope scope_NewObject_eClass(Reference reference, EReference eReference) {
-		return IScope.NULLSCOPE;
+	public IScope scope_EClass(EObject context, EReference reference) {
+		IScope scope = delegateGetScope(context, reference);
+		return new DottedQualifiedNameAwareScope(scope, isIgnoreCase(reference));
 	}
 
 	public IScope scope_Reference_value(Feature feature, EReference eReference) {
@@ -113,6 +112,10 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 			 container = container.eContainer();
 		 }
 		 return (Feature) container; 
+	}
+	
+	protected boolean isIgnoreCase(EReference reference) {
+		return caseInsensitivityHelper.isIgnoreCase(reference);
 	}
 
 }

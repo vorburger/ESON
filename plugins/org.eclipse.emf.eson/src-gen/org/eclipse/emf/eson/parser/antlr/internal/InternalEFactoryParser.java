@@ -4019,10 +4019,8 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             "",
             "",
             "\1\7\1\10\1\11\11\uffff\1\12\6\uffff\1\6",
-            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
-            "\22\1\31\1\14\1\27\1\30\1\26",
-            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
-            "\22\1\31\1\14\1\27\1\30\1\26",
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1\22\1\31\1\14\1\27\1\30\1\26",
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1\22\1\31\1\14\1\27\1\30\1\26",
             "",
             "",
             "",
@@ -4043,12 +4041,9 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
-            "\22\1\31\1\14\1\27\1\30\1\26",
-            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
-            "\22\1\31\1\14\1\27\1\30\1\26",
-            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1"+
-            "\22\1\31\1\14\1\27\1\30\1\26"
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1\22\1\31\1\14\1\27\1\30\1\26",
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1\22\1\31\1\14\1\27\1\30\1\26",
+            "\1\25\1\17\1\20\1\21\11\uffff\1\12\1\uffff\1\16\1\24\1\23\1\22\1\31\1\14\1\27\1\30\1\26"
     };
 
     static final short[] DFA9_eot = DFA.unpackEncodedString(DFA9_eotS);
@@ -4379,8 +4374,7 @@ public class InternalEFactoryParser extends AbstractInternalAntlrParser {
     static final String DFA11_maxS =
         "\1\33\2\uffff\1\7\1\33\2\uffff\1\33\1\uffff\1\7\1\uffff\1\33\1\uffff";
     static final String DFA11_acceptS =
-        "\1\uffff\1\1\1\2\2\uffff\1\4\1\7\1\uffff\1\3\1\uffff\1\5\1\uffff"+
-        "\1\6";
+        "\1\uffff\1\1\1\2\2\uffff\1\4\1\7\1\uffff\1\3\1\uffff\1\5\1\uffff\1\6";
     static final String DFA11_specialS =
         "\15\uffff}>";
     static final String[] DFA11_transitionS = {
