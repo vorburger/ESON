@@ -18,6 +18,7 @@ import org.eclipse.emf.eson.EFactoryUiInjectorProvider;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.resource.EFactoryResource;
+import org.eclipse.emf.eson.tests.util.LineEndingUtil;
 import org.eclipse.xtext.junit4.AbstractXtextTests;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -66,7 +67,8 @@ public class UIResyncTest extends AbstractXtextTests {
 	@Test
 	public void testDocumentChangesWhenModifyingDerrivedEObject() throws Exception {
 		load("BuilderResyncTests/1TestModelWithNameProperty.efactory");
-		assertEquals("use testmodel.* \n\nTestModel {\n	name: \"test\"\n	singleRequired: SingleRequired { }\n}\n", document.get());
+		String formattedText = LineEndingUtil.fixLineEndings(document.get());
+		assertEquals("use testmodel.* \n\nTestModel {\n	name: \"test\"\n	singleRequired: SingleRequired { }\n}\n", formattedText);
 
 		document.modify(new IUnitOfWork.Void<XtextResource>() {
 			@Override
@@ -76,8 +78,9 @@ public class UIResyncTest extends AbstractXtextTests {
 				testModel.setName("tested");
 			}
 		});
-
-		assertEquals("use testmodel.* \n\nTestModel {\n	name: \"tested\"\n	singleRequired: SingleRequired { }\n}", document.get());
+		
+		formattedText = LineEndingUtil.fixLineEndings(document.get());
+		assertEquals("use testmodel.* \n\nTestModel {\n	name: \"tested\"\n	singleRequired: SingleRequired { }\n}", formattedText);
 	}
 
 	/**
