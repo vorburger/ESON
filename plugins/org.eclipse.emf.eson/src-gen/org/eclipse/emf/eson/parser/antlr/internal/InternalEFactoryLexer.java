@@ -561,10 +561,10 @@ public class InternalEFactoryLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -582,10 +582,10 @@ public class InternalEFactoryLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -601,15 +601,23 @@ public class InternalEFactoryLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:21: '\\\\' .
+                    	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
-                    	    matchAny(); 
+                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
+                    	        input.consume();
+
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;}
+
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -634,10 +642,10 @@ public class InternalEFactoryLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -653,15 +661,23 @@ public class InternalEFactoryLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:54: '\\\\' .
+                    	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
-                    	    matchAny(); 
+                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
+                    	        input.consume();
+
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;}
+
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.eclipse.emf.eson/src-gen/org/eclipse/emf/eson/parser/antlr/internal/InternalEFactory.g:1371:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1107,19 +1123,33 @@ public class InternalEFactoryLexer extends Lexer {
 
     protected DFA13 dfa13 = new DFA13(this);
     static final String DFA13_eotS =
-        "\1\uffff\1\30\1\32\1\30\1\26\6\uffff\3\30\1\46\1\47\1\26\1\uffff\3\26\2\uffff\1\30\3\uffff\1\30\7\uffff\3\30\2\uffff\1\47\5\uffff\1\63\4\30\1\uffff\1\30\1\71\1\72\2\30\2\uffff\1\75\1\76\2\uffff";
+        "\1\uffff\1\30\1\32\1\30\1\26\6\uffff\3\30\1\46\1\47\1\26\1\uffff"+
+        "\3\26\2\uffff\1\30\3\uffff\1\30\7\uffff\3\30\2\uffff\1\47\5\uffff"+
+        "\1\63\4\30\1\uffff\1\30\1\71\1\72\2\30\2\uffff\1\75\1\76\2\uffff";
     static final String DFA13_eofS =
         "\77\uffff";
     static final String DFA13_minS =
-        "\1\0\1\163\1\52\1\155\1\116\6\uffff\1\125\1\162\1\141\3\54\1\uffff\2\0\1\52\2\uffff\1\145\3\uffff\1\160\7\uffff\1\114\1\165\1\154\2\uffff\1\54\5\uffff\1\54\1\157\1\114\1\145\1\163\1\uffff\1\162\2\54\1\145\1\164\2\uffff\2\54\2\uffff";
+        "\1\0\1\163\1\52\1\155\1\116\6\uffff\1\125\1\162\1\141\3\54\1\uffff"+
+        "\2\0\1\52\2\uffff\1\145\3\uffff\1\160\7\uffff\1\114\1\165\1\154"+
+        "\2\uffff\1\54\5\uffff\1\54\1\157\1\114\1\145\1\163\1\uffff\1\162"+
+        "\2\54\1\145\1\164\2\uffff\2\54\2\uffff";
     static final String DFA13_maxS =
-        "\1\uffff\1\163\1\52\1\155\1\116\6\uffff\1\125\1\162\1\141\3\172\1\uffff\2\uffff\1\57\2\uffff\1\145\3\uffff\1\160\7\uffff\1\114\1\165\1\154\2\uffff\1\172\5\uffff\1\172\1\157\1\114\1\145\1\163\1\uffff\1\162\2\172\1\145\1\164\2\uffff\2\172\2\uffff";
+        "\1\uffff\1\163\1\52\1\155\1\116\6\uffff\1\125\1\162\1\141\3\172"+
+        "\1\uffff\2\uffff\1\57\2\uffff\1\145\3\uffff\1\160\7\uffff\1\114"+
+        "\1\165\1\154\2\uffff\1\172\5\uffff\1\172\1\157\1\114\1\145\1\163"+
+        "\1\uffff\1\162\2\172\1\145\1\164\2\uffff\2\172\2\uffff";
     static final String DFA13_acceptS =
-        "\5\uffff\1\5\1\6\1\7\1\10\1\11\1\12\6\uffff\1\22\3\uffff\1\27\1\30\1\uffff\1\22\1\2\1\14\1\uffff\1\4\1\5\1\6\1\7\1\10\1\11\1\12\3\uffff\1\17\1\21\1\uffff\1\20\1\24\1\25\1\26\1\27\5\uffff\1\1\5\uffff\1\13\1\15\2\uffff\1\16\1\3";
+        "\5\uffff\1\5\1\6\1\7\1\10\1\11\1\12\6\uffff\1\22\3\uffff\1\27\1"+
+        "\30\1\uffff\1\22\1\2\1\14\1\uffff\1\4\1\5\1\6\1\7\1\10\1\11\1\12"+
+        "\3\uffff\1\17\1\21\1\uffff\1\20\1\24\1\25\1\26\1\27\5\uffff\1\1"+
+        "\5\uffff\1\13\1\15\2\uffff\1\16\1\3";
     static final String DFA13_specialS =
         "\1\2\21\uffff\1\1\1\0\53\uffff}>";
     static final String[] DFA13_transitionS = {
-            "\11\26\2\25\2\26\1\25\22\26\1\25\1\26\1\22\4\26\1\23\4\26\1\21\1\16\1\2\1\24\12\17\1\10\2\26\1\6\2\26\1\4\15\21\1\13\14\21\1\11\1\26\1\12\1\20\1\21\1\26\5\21\1\15\2\21\1\3\12\21\1\14\1\1\5\21\1\5\1\26\1\7\uff82\26",
+            "\11\26\2\25\2\26\1\25\22\26\1\25\1\26\1\22\4\26\1\23\4\26\1"+
+            "\21\1\16\1\2\1\24\12\17\1\10\2\26\1\6\2\26\1\4\15\21\1\13\14"+
+            "\21\1\11\1\26\1\12\1\20\1\21\1\26\5\21\1\15\2\21\1\3\12\21\1"+
+            "\14\1\1\5\21\1\5\1\26\1\7\uff82\26",
             "\1\27",
             "\1\31",
             "\1\33",

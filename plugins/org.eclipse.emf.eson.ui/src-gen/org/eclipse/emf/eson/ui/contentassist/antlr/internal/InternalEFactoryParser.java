@@ -8648,17 +8648,22 @@ public class InternalEFactoryParser extends AbstractInternalContentAssistParser 
             "",
             "",
             "\3\6\14\uffff\1\6\5\uffff\1\6",
-            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10\2\7",
-            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10\2\7",
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\2\7",
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\2\7",
             "",
             "",
             "\1\14\1\15\1\16",
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
-            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10\2\7",
-            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10\2\7",
-            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10\2\7"
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\2\7",
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\2\7",
+            "\1\11\1\12\1\13\1\7\5\uffff\2\7\4\uffff\1\6\1\uffff\4\7\1\10"+
+            "\2\7"
     };
 
     static final short[] DFA1_eot = DFA.unpackEncodedString(DFA1_eotS);

@@ -1,18 +1,14 @@
-/**
- * <copyright>
- *
- * Copyright (c) 2014 Michael Vorburger and others.
- * All rights reserved.   This program and the accompanying materials
+/*
+ * #%L
+ * org.eclipse.emf.eson.tests
+ * %%
+ * Copyright (C) 2015 Michael Vorburger
+ * %%
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *   Sebastian Benz - Initial API and implementation
- *
- * </copyright>
- *
- * 
+ * #L%
  */
 package org.eclipse.emf.eson.scoping;
 
@@ -23,6 +19,13 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 
+/**
+ * IScope wrapper which "uses different combinations of QNs' segments to find a single element or elements".
+ * 
+ * @see SimplestWeiredNameTest
+ * 
+ * @author Anton Kosyakov
+ */
 public class DottedQualifiedNameAwareScope extends AbstractScope {
 
 	public DottedQualifiedNameAwareScope(IScope parent, boolean ignoreCase) {
