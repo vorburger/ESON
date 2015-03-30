@@ -12,39 +12,62 @@
  */
 package org.eclipse.emf.eson.ui.labeling;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eson.eFactory.EFactoryPackage;
+import org.eclipse.emf.eson.eFactory.NewObject;
+import org.eclipse.emf.eson.ui.internal.EFactoryActivator;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
-
-import com.google.inject.Inject;
 
 public class EFactoryLabelProvider extends DefaultEObjectLabelProvider {
 
-//	@Inject	private NameAccessor nameAccessor;
+//	@Inject
+//	protected EFactoryLabelProvider(AdapterFactory adapterFactory) {
+//		super(new AdapterFactoryLabelProvider(adapterFactory));
+//	}
+	
+	@Override
+	protected Object doGetText(Object element) {
+		StringBuilder text = new StringBuilder();
 
-	@Inject
-	protected EFactoryLabelProvider(AdapterFactory adapterFactory) {
-		super(new AdapterFactoryLabelProvider(adapterFactory));
+		if (element instanceof NewObject) {
+			NewObject newObject = (NewObject) element;
+			String className = newObject.getEClass().getName();
+			text.append(className);
+
+			String name = newObject.getName();
+			if (name != null) {
+				text.append(" ").append(name);
+			}
+		} else {
+			return super.doGetText(element);
+		}
+
+		return text.toString();
 	}
 
 	@Override
-	protected Object doGetText(Object element) {
-/*		
-		if (element instanceof DynamicEObjectImpl) {
-			DynamicEObjectImpl eObject = (DynamicEObjectImpl) element;
-			if (eObject.eResource() instanceof EFactoryResource) {
-				EFactoryResource eFactoryResource = (EFactoryResource) eObject.eResource();
-				Factory factory = eFactoryResource.getFactory();
-				try {
-					return nameAccessor.getName(factory, eObject);
-				} catch (NoNameFeatureMappingException e) {
-					return eObject.eClass().getName();
-				}
+	public Image getImage(Object element) {
+		String imageURL = null;
+		if (element instanceof EObject) {
+			EObject eObject = (EObject) element;
+			switch (eObject.eContainer().eClass().getClassifierID()) {
+			case EFactoryPackage.FACTORY:
+				imageURL = "icons/RootObject.gif";
+				break;
+			case EFactoryPackage.CONTAINMENT:
+				imageURL = "icons/Component.gif";
+				break;
 			}
 		}
-*/		
-		final Object text = super.doGetText(element);
-		return text;
+		if (imageURL != null) {
+			ImageDescriptor imageDescriptorFromPlugin = AbstractUIPlugin.imageDescriptorFromPlugin(EFactoryActivator
+					.getInstance().getBundle().getSymbolicName(), imageURL);
+			return imageDescriptorFromPlugin.createImage();
+		}
+		return super.getImage(element);
 	}
-
 }
+
