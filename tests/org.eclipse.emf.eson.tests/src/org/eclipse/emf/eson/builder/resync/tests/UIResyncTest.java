@@ -112,7 +112,8 @@ public class UIResyncTest extends AbstractXtextTests {
 				dumpExampleFeature(expectedResource);
 				dumpExampleFeature(state);
 				
-				assertEquals(expectedDSL, document.get());
+				String formattedText = LineEndingUtil.fixLineEndings(document.get());
+				assertEquals(expectedDSL, formattedText);
 			}
 			
 		});		

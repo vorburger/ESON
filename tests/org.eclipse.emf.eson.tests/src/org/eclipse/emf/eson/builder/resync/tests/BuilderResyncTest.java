@@ -37,6 +37,7 @@ import org.eclipse.emf.eson.eFactory.StringAttribute;
 import org.eclipse.emf.eson.eFactory.Value;
 import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
+import org.eclipse.emf.eson.tests.util.LineEndingUtil;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -182,8 +183,8 @@ public class BuilderResyncTest {
 		// Check if we can serialize the complete thing and it looks as expected
 		XtextResource resource = (XtextResource) eFactory.eResource();
 		ISerializer serializer = resource.getSerializer();
-		String dsl = serializer.serialize(eFactory);
-		String expectedDSL = resourceProvider.loadAsString("res/BuilderResyncTests/1TestModelWithNamePropertyEXPECTED.efactory");
+		String dsl = LineEndingUtil.fixLineEndings(serializer.serialize(eFactory));
+		String expectedDSL = LineEndingUtil.fixLineEndings(resourceProvider.loadAsString("res/BuilderResyncTests/1TestModelWithNamePropertyEXPECTED.efactory"));
 		assertEquals(expectedDSL, dsl);
 		checkNodes(eFactory);
 	}
@@ -213,8 +214,8 @@ public class BuilderResyncTest {
 		singleReq.setParentReference(testModel);
 		
 		// Check if we can serialize the complete thing and it looks as expected
-		String expectedDSL = resourceProvider.loadAsString("res/BuilderResyncTests/3TestModelWithNoSpaceEXPECTED.eson");
-		String dsl = serializer.serialize(eFactory);
+		String expectedDSL = LineEndingUtil.fixLineEndings(resourceProvider.loadAsString("res/BuilderResyncTests/3TestModelWithNoSpaceEXPECTED.eson"));
+		String dsl = LineEndingUtil.fixLineEndings(serializer.serialize(eFactory));
 		assertEquals(expectedDSL, dsl);
 		checkNodes(eFactory);
 	}
