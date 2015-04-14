@@ -37,6 +37,7 @@ import org.eclipse.emf.eson.eFactory.StringAttribute;
 import org.eclipse.emf.eson.eFactory.Value;
 import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
+import org.eclipse.emf.eson.tests.util.LineEndingUtil;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -182,14 +183,14 @@ public class BuilderResyncTest {
 		// Check if we can serialize the complete thing and it looks as expected
 		XtextResource resource = (XtextResource) eFactory.eResource();
 		ISerializer serializer = resource.getSerializer();
-		String dsl = serializer.serialize(eFactory);
+		String dsl = LineEndingUtil.fixLineEndings(serializer.serialize(eFactory));
 		// NOTE The result is not as perfectly indented as we'd like it to
 		// ideally be, this is because of https://bugs.eclipse.org/bugs/show_bug.cgi?id=396283;
 		// see also EFactoryTextEditComposer.  However we do NOT want to force
 		// format it, not in tests and not in real editor UI etc. because one of
 		// the main points of ESON is that it doesn't have to reformat
 		// everything.
-		String expectedDSL = resourceProvider.loadAsString("res/BuilderResyncTests/1TestModelWithNamePropertyEXPECTED.efactory");
+		String expectedDSL = LineEndingUtil.fixLineEndings(resourceProvider.loadAsString("res/BuilderResyncTests/1TestModelWithNamePropertyEXPECTED.efactory"));
 		assertEquals(expectedDSL, dsl);
 		checkNodes(eFactory);
 	}
@@ -219,8 +220,8 @@ public class BuilderResyncTest {
 		singleReq.setParentReference(testModel);
 		
 		// Check if we can serialize the complete thing and it looks as expected
-		String expectedDSL = resourceProvider.loadAsString("res/BuilderResyncTests/3TestModelWithNoSpaceEXPECTED.eson");
-		String dsl = serializer.serialize(eFactory);
+		String expectedDSL = LineEndingUtil.fixLineEndings(resourceProvider.loadAsString("res/BuilderResyncTests/3TestModelWithNoSpaceEXPECTED.eson"));
+		String dsl = LineEndingUtil.fixLineEndings(serializer.serialize(eFactory));
 		assertEquals(expectedDSL, dsl);
 		checkNodes(eFactory);
 	}
