@@ -96,7 +96,7 @@
         <page
             class="org.eclipse.emf.eson.ui.EFactoryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="org.eclipse.emf.eson.EFactory"
-            name="EFactory">
+            name="ESON">
             <keywordReference id="org.eclipse.emf.eson.ui.keyword_EFactory"/>
         </page>
         <page
@@ -119,7 +119,7 @@
         <page
             class="org.eclipse.emf.eson.ui.EFactoryExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="org.eclipse.emf.eson.EFactory"
-            name="EFactory">
+            name="ESON">
             <keywordReference id="org.eclipse.emf.eson.ui.keyword_EFactory"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
@@ -131,7 +131,7 @@
         point="org.eclipse.ui.keywords">
         <keyword
             id="org.eclipse.emf.eson.ui.keyword_EFactory"
-            label="EFactory"/>
+            label="ESON"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
@@ -255,21 +255,21 @@
     <!-- marker definitions for org.eclipse.emf.eson.EFactory -->
     <extension
             id="efactory.check.fast"
-            name="EFactory Problem"
+            name="ESON Problem"
             point="org.eclipse.core.resources.markers">
         <super type="org.eclipse.xtext.ui.check.fast"/>
         <persistent value="true"/>
     </extension>
     <extension
             id="efactory.check.normal"
-            name="EFactory Problem"
+            name="ESON Problem"
             point="org.eclipse.core.resources.markers">
         <super type="org.eclipse.xtext.ui.check.normal"/>
         <persistent value="true"/>
     </extension>
     <extension
             id="efactory.check.expensive"
-            name="EFactory Problem"
+            name="ESON Problem"
             point="org.eclipse.core.resources.markers">
         <super type="org.eclipse.xtext.ui.check.expensive"/>
         <persistent value="true"/>
@@ -383,7 +383,7 @@
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="org.eclipse.emf.eson.EFactory.compare.contentMergeViewers"
             class="org.eclipse.emf.eson.ui.EFactoryExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="efactory" label="EFactory Compare">
+            extensions="efactory,eson" label="ESON Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
