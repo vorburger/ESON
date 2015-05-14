@@ -1,4 +1,4 @@
-package testmodel2
+package test.model2
 
 class Thing {
     String name

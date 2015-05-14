@@ -21,6 +21,7 @@ import org.eclipse.emf.eson.resource.EFactoryResourceFactory;
 import org.eclipse.emf.eson.resource.EFactoryResourceServiceProvider;
 import org.eclipse.emf.eson.scoping.EFactoryQualifiedNameProvider;
 import org.eclipse.emf.eson.scoping.EPackageScopeProvider;
+import org.eclipse.emf.eson.scoping.ExtendedImportedNamespaceAwareLocalScopeProvider;
 import org.eclipse.emf.eson.scoping.IEPackageScopeProvider;
 import org.eclipse.emf.eson.scoping.WarningErrorHandlerWithoutNoSuchMethodException;
 import org.eclipse.emf.eson.validation.ESONLinkingDiagnosticMessageProvider;
@@ -35,6 +36,7 @@ import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.util.PolymorphicDispatcher;
 import org.eclipse.xtext.validation.IResourceValidator;
@@ -116,4 +118,10 @@ public class EFactoryRuntimeModule extends AbstractEFactoryRuntimeModule {
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
 		return ESONLinkingDiagnosticMessageProvider.class;
 	}
+
+	@Override
+	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
+		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(ExtendedImportedNamespaceAwareLocalScopeProvider.class);
+	}
+
 }

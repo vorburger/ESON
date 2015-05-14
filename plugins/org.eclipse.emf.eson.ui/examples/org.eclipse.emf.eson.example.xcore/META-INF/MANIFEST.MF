@@ -12,6 +12,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xcore.lib
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: example,
- example.impl,
- example.util
+Export-Package:  org.eclipse.emf.eson.example.library,
+ org.eclipse.emf.eson.example.library.impl,
+ org.eclipse.emf.eson.example.library.util

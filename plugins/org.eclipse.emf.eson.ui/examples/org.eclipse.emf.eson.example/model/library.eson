@@ -1,7 +1,6 @@
 // https://wiki.eclipse.org/ESON
 
-// import org.eclipse.emf.eson.example.xcore.*
-import example.*
+import org.eclipse.emf.eson.example.library.*
 
 Library {
     books: [

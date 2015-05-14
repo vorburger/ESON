@@ -10,7 +10,7 @@
       <!-- @generated library -->
       <package
             uri="example"
-            class="example.ExamplePackage"
+            class="org.eclipse.emf.eson.example.library.LibraryPackage"
             genModel="model/library.xcore"/>
    </extension>
 

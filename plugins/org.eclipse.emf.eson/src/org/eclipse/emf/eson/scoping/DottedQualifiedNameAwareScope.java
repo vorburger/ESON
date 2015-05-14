@@ -38,6 +38,15 @@ public class DottedQualifiedNameAwareScope extends AbstractScope {
 		if (singleElement != null) {
 			return singleElement;
 		}
+		if (name.getSegmentCount() > 2) {
+			// Required for XcoreTest, because when Xcore indexes packages it does not care about segments
+			String mergedSegments = name.skipLast(1).toString(".");
+			QualifiedName mergedName = QualifiedName.create(mergedSegments, name.getLastSegment());
+			singleElement = super.getSingleElement(mergedName);
+			if (singleElement != null) {
+				return singleElement;
+			}
+		}
 		QualifiedName mergedName = mergeTwoLastSegments(name);
 		if (mergedName == null) {
 			return null;
@@ -62,7 +71,7 @@ public class DottedQualifiedNameAwareScope extends AbstractScope {
 		if (name.getSegmentCount() <= 1) {
 			return null;
 		}
-		String mergedSegments = name.getSegment(name.getSegmentCount() - 2) + '.' + name.getLastSegment();
+		String mergedSegments = name.skipFirst(name.getSegmentCount() - 2).toString(".");
 		return name.skipLast(2).append(mergedSegments);
 	}
 
