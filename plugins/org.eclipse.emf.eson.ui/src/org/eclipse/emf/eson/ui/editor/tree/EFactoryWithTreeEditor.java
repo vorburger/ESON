@@ -177,6 +177,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	            	EObject treeRootEObject = (EObject) selectionViewer.getTree().getItem(0).getData();
             		EObject objectToFocus = (EObject) theSelection.iterator().next(); 
             		if (objectToFocus.eIsProxy()) {
+            			// This is probably not great for performance, but must be here for a good reason...
             			objectToFocus = EcoreUtil.resolve(objectToFocus, treeRootEObject.eResource());
             		}
             		selectionViewer.setSelection(new StructuredSelection(objectToFocus), true);
@@ -502,9 +503,12 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 														dlg.setInitialTypePattern(eReference.getEReferenceType().getName(), false);
 														dlg.open();
 														Object[] dlgResult =  dlg.getResult();
-														if (dlgResult.length == 1) {
+														if (dlgResult != null && dlgResult.length == 1) {
 															result = ((IEObjectDescription)dlgResult[0]).getEObjectOrProxy();
 														}
+														// This is probably more of a work-around than a fix of the actual root cause :( but it works
+														if (result != null && result.eIsProxy())
+															result = EcoreUtil.resolve(result, eReference.eResource());
 														return result;
 													}
 												};
