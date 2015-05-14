@@ -51,6 +51,8 @@ public class URIBasedPropertySource implements IPropertySource, IPropertySource2
 		return document.readOnly(new IUnitOfWork<Object, XtextResource>() {
 
 			public Object exec(XtextResource state) throws Exception {
+				if (state == null)
+					return null;
 				EObject eObject = state.getEObject(objectURI.fragment());
 				if (eObject == null) {
 					return null;
