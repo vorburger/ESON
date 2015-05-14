@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Example
+Bundle-SymbolicName: org.eclipse.emf.eson.example
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.emf.eson.example.xcore
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

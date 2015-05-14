@@ -1,0 +1,22 @@
+// https://wiki.eclipse.org/ESON
+
+// import org.eclipse.emf.eson.example.xcore.*
+import example.*
+
+Library {
+    books: [
+        Book {
+            name: "Perry Rhodan"
+            pages: 123
+            author: Scheer
+            category: :SciFi
+            
+        }
+    ]
+    writers: [
+        Writer Scheer {
+        }
+        Writer ClarkDarlton {
+        }
+    ]
+}

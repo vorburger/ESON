@@ -1,0 +1,25 @@
+// https://wiki.eclipse.org/Xcore
+
+package /*org.eclipse.emf.eson.example.*/example
+
+class Library {
+    String name	
+    contains Book[] books
+    contains Writer[] writers
+}
+
+class Book {
+    String name 
+	int pages
+	BookCategory category
+	refers Writer author
+}
+
+class Writer {
+    String name 
+	
+}
+
+enum BookCategory {
+	None, Mystery, SciFi, Biography
+}

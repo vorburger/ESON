@@ -432,5 +432,26 @@
              parentId="org.eclipse.xtext.ui.XtextEditorScope">
        </context>
     </extension>
-
+    <extension
+          point="org.eclipse.ui.newWizards">
+       <category 
+            id="org.eclipse.emf.eson.ui.Examples"
+            name="ESON"
+            parentCategory="org.eclipse.ui.Examples" />
+       <wizard
+             category="org.eclipse.ui.Examples/org.eclipse.emf.eson.ui.Examples"
+             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+             icon="icons/EObject.gif"
+             id="org.eclipse.emf.eson.ui.wizard.NewLibraryExampleWizard"
+             name="ESON Library Example">
+       </wizard>
+    </extension>
+   <extension point="org.eclipse.emf.common.ui.examples">
+        <example wizardID="org.eclipse.emf.eson.ui.wizard.NewLibraryExampleWizard" pageImage="icons/genproject.gif">
+            <projectDescriptor name="org.eclipse.emf.eson.example.xcore" contentURI="examples/org.eclipse.emf.eson.example.xcore/" description="Xcore Library"/>
+            <projectDescriptor name="org.eclipse.emf.eson.example" contentURI="examples/org.eclipse.emf.eson.example/" description="ESON Model"/>
+            <fileToOpen location="org.eclipse.emf.eson.example.xcore/model/library.xcore"/>
+            <fileToOpen location="org.eclipse.emf.eson.example/model/library.eson"/>
+        </example>
+    </extension>
 </plugin>
