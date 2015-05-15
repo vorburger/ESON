@@ -139,14 +139,16 @@ public class ModelBuilder {
 		}
 	}
 
-	public @NonNull EObject getBuilt(@NonNull NewObject newObject) throws ModelBuilderException {
+	@SuppressWarnings("null")
+	public @NonNull Optional<EObject> getBuilt(@NonNull NewObject newObject) throws ModelBuilderException {
 		Preconditions.checkNotNull(newObject);
 		checkNotEmpty();
 		EObject target = mapping.get(newObject);
 		if (target == null) {
-			throw new IllegalArgumentException("NewObject passed as argument is not in this ModelBuilder, may be it's from a different Resource? " + newObject.toString());
+			// throw new IllegalArgumentException("NewObject passed as argument is not in this ModelBuilder, may be it's from a different Resource? " + newObject.toString());
+			return Optional.absent();
 		}
-		return target;
+		return Optional.of(target);
 	}
 	
 	/**

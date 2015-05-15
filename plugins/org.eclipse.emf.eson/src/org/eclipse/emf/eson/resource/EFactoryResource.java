@@ -60,7 +60,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 	public @NonNull Optional<EObject> getEFactoryEObject(NewObject nObject) throws ModelBuilderException {
 		ModelBuilder _builder = getBuilder();
 		if (_builder.isBuilt())
-			return Optional.of(_builder.getBuilt(nObject));
+			return _builder.getBuilt(nObject);
 		else
 			return Optional.absent();
 	}
