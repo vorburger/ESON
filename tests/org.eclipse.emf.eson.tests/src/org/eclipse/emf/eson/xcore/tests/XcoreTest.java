@@ -47,5 +47,7 @@ public class XcoreTest {
 		// TODO feature = how to get the 'age' out of this?
 		EObject eObject = resourceProvider.loadModel("res/xcore/XcoreTest.efactory");
 		// TODO ideally should eObject.eGet(feature) - to check age is 99
+		
+		EObject eObject2 = resourceProvider.loadModel("res/xcore/XcoreTest2.eson");
 	}
 }

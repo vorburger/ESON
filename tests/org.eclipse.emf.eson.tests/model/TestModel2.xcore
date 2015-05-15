@@ -1,5 +1,7 @@
 package testmodel2
 
 class Thing {
+    String name
 	int age
+	refers Thing thing
 }
