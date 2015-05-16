@@ -101,7 +101,7 @@ public class ResourceProvider {
 		for (EObject content : contents ) {
 			Diagnostician.INSTANCE.validate(content, chain);
 		}
-		if (!BasicDiagnostic.toIStatus(chain).isOK()) {
+		if (chain.getSeverity() != BasicDiagnostic.OK) {
 			throw new DiagnosticExceptionWithURIAndToString(chain, uri);
 		}
 		
