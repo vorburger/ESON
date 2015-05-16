@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.eson.standalone.DiagnosticException2;
 
 /**
  * Resource loading tes utility.
@@ -109,7 +110,7 @@ public class ResourceProvider {
 		return contents;
 	}
 
-	public void validate(EObject eObject) throws IOException, DiagnosticExceptionWithURIAndToString {
+	public void validate(EObject eObject) throws IOException, DiagnosticException2 {
 		Resource resource = eObject.eResource();
 		URI uri = resource.getURI();
 		
@@ -117,7 +118,7 @@ public class ResourceProvider {
 		Diagnostician.INSTANCE.validate(eObject, chain);
 		
 		if (!BasicDiagnostic.toIStatus(chain).isOK()) {
-			throw new DiagnosticExceptionWithURIAndToString(chain, uri);
+			throw new DiagnosticException2(chain, uri);
 		}
 
 		logResourceDiagnostics(resource);
@@ -130,7 +131,7 @@ public class ResourceProvider {
 		}
 	}
 
-	public void validate(final EList<EObject> contents) throws DiagnosticExceptionWithURIAndToString, IOException {
+	public void validate(final EList<EObject> contents) throws DiagnosticException2, IOException {
 		for (EObject content : contents) {
 			validate(content);
 		}

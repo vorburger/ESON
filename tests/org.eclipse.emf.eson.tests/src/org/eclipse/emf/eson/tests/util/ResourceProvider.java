@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.eson.standalone.DiagnosticException2;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.common.base.Charsets;
@@ -94,7 +95,7 @@ public class ResourceProvider {
 		return contents;
 	}
 
-	public void validate(Resource resource) throws DiagnosticExceptionWithURIAndToString, IOException {
+	public void validate(Resource resource) throws DiagnosticException2, IOException {
 		URI uri = resource.getURI();
 		EList<EObject> contents = resource.getContents();
 		BasicDiagnostic chain = new BasicDiagnostic();
@@ -102,7 +103,7 @@ public class ResourceProvider {
 			Diagnostician.INSTANCE.validate(content, chain);
 		}
 		if (chain.getSeverity() != BasicDiagnostic.OK) {
-			throw new DiagnosticExceptionWithURIAndToString(chain, uri);
+			throw new DiagnosticException2(chain, uri);
 		}
 		
 		logResourceDiagnostics(resource);
