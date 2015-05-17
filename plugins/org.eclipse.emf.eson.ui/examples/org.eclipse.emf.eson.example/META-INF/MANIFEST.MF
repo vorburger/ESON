@@ -3,5 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Example
 Bundle-SymbolicName: org.eclipse.emf.eson.example
 Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.eclipse.emf.eson.example.xcore
+Require-Bundle: org.eclipse.emf.eson.example.xcore,
+ org.eclipse.xtext,
+ com.google.guava,
+ org.eclipse.emf.eson;bundle-version="0.10.0",
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

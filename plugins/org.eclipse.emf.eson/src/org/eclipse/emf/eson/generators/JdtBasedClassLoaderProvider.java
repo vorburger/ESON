@@ -1,0 +1,53 @@
+/*
+ * #%L
+ * org.eclipse.emf.eson
+ * %%
+ * Copyright (C) 2015 Michael Vorburger
+ * %%
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * #L%
+ */
+package org.eclipse.emf.eson.generators;
+
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.LinkedHashSet;
+
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.xtend.ide.macro.JdtBasedProcessorProvider;
+
+import com.google.common.collect.Sets;
+
+/**
+ * Extension of Xtext JdtBasedProcessorProvider.
+ * 
+ * @author Michael Vorburger (based on tips from Stephane Oehme)
+ */
+@SuppressWarnings("restriction")
+public class JdtBasedClassLoaderProvider extends JdtBasedProcessorProvider {
+	// private static Logger logger = LoggerFactory.getLogger(JdtBasedClassLoaderProvider.class);
+
+	// TODO Propose to Xtext to refactor JdtBasedProcessorProvider, and its parent ProcessorInstanceForJvmTypeProvider, into a more generic ClassLoaderProvider
+	
+	private ClassLoader parentClassLoader;
+	
+	public void setParentClassLoader(ClassLoader parentClassLoader) {
+		this.parentClassLoader = parentClassLoader;
+	}
+
+	protected ClassLoader getParentClassLoader() {
+		// NOTE super() is hard-coded to TransformationContext - but we use IGenerator
+		return parentClassLoader;
+	}
+
+	public URLClassLoader createClassLoaderForJavaProject(final IJavaProject projectToUse) {
+		// do NOT use return super.createClassLoaderForJavaProject(projectToUse);
+		// because that uses boolean includeOutputFolder = false instead of true:
+		LinkedHashSet<URL> urls = Sets.newLinkedHashSet();
+		collectClasspathURLs(projectToUse, urls, true, new LinkedHashSet<IJavaProject>());
+		return new URLClassLoader(urls.toArray(new URL[0]), getParentClassLoader());
+	}
+}
