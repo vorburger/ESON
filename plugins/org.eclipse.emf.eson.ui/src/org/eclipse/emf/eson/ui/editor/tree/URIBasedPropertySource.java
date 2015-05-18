@@ -68,7 +68,8 @@ public class URIBasedPropertySource implements IPropertySource, IPropertySource2
 
 			public IPropertyDescriptor[] exec(XtextResource state) throws Exception {
 				Collection<IPropertyDescriptor> result = new ArrayList<IPropertyDescriptor>();
-				EObject eObject = state.getEObject(objectURI.fragment());
+				// state "should" never be null, but it sometimes is.. Xtext bug? Better guard:
+				EObject eObject = state != null ? state.getEObject(objectURI.fragment()) : null;
 				if (eObject != null) {
 				    List<IItemPropertyDescriptor> itemPropertyDescriptors = itemPropertySource.getPropertyDescriptors(eObject);
 				    if (itemPropertyDescriptors != null)
