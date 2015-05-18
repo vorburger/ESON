@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eson.eFactory.Feature;
-import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.PackageImport;
 import org.eclipse.xtext.scoping.IScope;
 
@@ -32,16 +31,17 @@ public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 		return ePackageScopeProvider.createEPackageScope(packageImport.eResource(), parent);
 	}
 
-	public IScope scope_NewObject_eClass(NewObject factory, EReference eReference) {
-		final IScope parent = super.scope_EClass(factory, eReference);
-		IScope scope = ePackageScopeProvider.createEClassScope(factory.eResource(), parent);
+	@Override
+	public IScope scope_EClass(EObject context, EReference reference) {
+		final IScope parent = super.scope_EClass(context, reference); // delegateGetScope + DottedQualifiedNameAwareScope
+		IScope scope = ePackageScopeProvider.createEClassScope(context.eResource(), parent);
 		return scope;
 	}
 
 	// Feature == Containment here, always, is it?
 	public IScope scope_NewObject_eClass(Feature feature, EReference eReference) {
 		if (feature.getEFeature() instanceof EReference) {
-			final IScope parent = delegateGetScope(feature, eReference);
+			final IScope parent = super.scope_EClass(feature, eReference); // delegateGetScope + DottedQualifiedNameAwareScope
 			return ePackageScopeProvider.createEClassScope(feature.eResource(), (EClass) feature.getEFeature().getEType(), parent);
 		} else
 			return IScope.NULLSCOPE;
