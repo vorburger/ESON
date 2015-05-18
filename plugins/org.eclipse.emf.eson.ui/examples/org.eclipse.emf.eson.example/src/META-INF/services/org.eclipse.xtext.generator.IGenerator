@@ -1,1 +1,3 @@
+org.eclipse.emf.eson.generators.ExampleXMLGenerator
+org.eclipse.emf.eson.generators.ExampleJSONGenerator
 org.eclipse.emf.eson.example.generator.Generator

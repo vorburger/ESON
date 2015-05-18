@@ -452,6 +452,12 @@
             <projectDescriptor name="org.eclipse.emf.eson.example" contentURI="examples/org.eclipse.emf.eson.example/" description="ESON Model"/>
             <fileToOpen location="org.eclipse.emf.eson.example.xcore/model/library.xcore"/>
             <fileToOpen location="org.eclipse.emf.eson.example/model/library.eson"/>
+ <!-- Adding these additional 4x fileToOpen leads to a weird problem, probably a bug in org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard, it keeps wanting to delete the example projects - huh?  
+            <fileToOpen location="org.eclipse.emf.eson.example/src/META-INF/services/org.eclipse.xtext.generator.IGenerator"/>
+            <fileToOpen location="org.eclipse.emf.eson.example/src/org/eclipse/emf/eson/example/generator/Generator.java"/>
+            <fileToOpen location="org.eclipse.emf.eson.example/gen/model/library.xml"/>
+            <fileToOpen location="org.eclipse.emf.eson.example/gen/model/library.json"/>
+ -->
         </example>
     </extension>
 </plugin>
