@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated library -->
       <package
-            uri="example"
+            uri="org.eclipse.emf.eson.example.library"
             class="org.eclipse.emf.eson.example.library.LibraryPackage"
             genModel="model/library.xcore"/>
    </extension>
