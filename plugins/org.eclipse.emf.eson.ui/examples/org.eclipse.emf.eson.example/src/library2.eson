@@ -1,0 +1,16 @@
+// https://wiki.eclipse.org/ESON
+
+use library.* // TODO (later when unified) import org.eclipse.emf.eson.example.library.*
+
+Library lunar {
+    books: [
+        Book Gucky {
+            author: WalterErnsting
+        }
+    ]
+    
+    writers: [
+        Writer loony {
+        }
+    ]
+}

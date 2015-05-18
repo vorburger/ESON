@@ -17,7 +17,7 @@ class Book {
 
 class Writer {
     String name 
-	
+	// TODO add int age
 }
 
 enum BookCategory {

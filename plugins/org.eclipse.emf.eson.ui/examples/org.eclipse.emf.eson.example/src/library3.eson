@@ -1,0 +1,12 @@
+// https://wiki.eclipse.org/ESON
+
+use library.* // TODO (later when unified) import org.eclipse.emf.eson.example.library.*
+
+Library {
+    books: [
+        Book FQNRef {
+            author: lunar.loony
+        }
+    ]
+    
+}
