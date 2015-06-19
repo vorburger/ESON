@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eson.building.ModelBuilder;
 import org.eclipse.emf.eson.building.ModelBuilderException;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
 
 import com.google.common.base.Optional;
@@ -35,7 +33,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		return getBuilder().isBuilt();
 	}
 	
-	public @Nullable NewObject getEFactoryNewObject(EObject eObject) {
+	public NewObject getEFactoryNewObject(EObject eObject) {
 		if (builder == null) {
 			return null;
 		}
@@ -48,7 +46,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		}
 	}
 
-	public @NonNull NewObject getExistingEFactoryNewObject(EObject eObject) {
+	public NewObject getExistingEFactoryNewObject(EObject eObject) {
 		NewObject newObject = getEFactoryNewObject(eObject);
 		if (newObject == null) {
 			throw new IllegalArgumentException(eObject.toString());
@@ -56,8 +54,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		return newObject ;
 	}
 	
-	@SuppressWarnings("null")
-	public @NonNull Optional<EObject> getEFactoryEObject(NewObject nObject) throws ModelBuilderException {
+	public Optional<EObject> getEFactoryEObject(NewObject nObject) throws ModelBuilderException {
 		ModelBuilder _builder = getBuilder();
 		if (_builder.isBuilt())
 			return _builder.getBuilt(nObject);
@@ -66,7 +63,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 	}
 
 	// package-private, as only used by EFactoryDerivedStateComputer
-	@NonNull ModelBuilder getBuilder() throws IllegalStateException {
+	ModelBuilder getBuilder() throws IllegalStateException {
 		// written in this weird style just to satisfy Eclipse' slightly dumb null check
 		final ModelBuilder _builder = builder;
 		if (_builder != null) {
@@ -76,7 +73,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		}
 	}
 	
-	public @Nullable org.eclipse.emf.eson.eFactory.Factory getEFactoryFactory() {
+	public org.eclipse.emf.eson.eFactory.Factory getEFactoryFactory() {
 		if (getContents().isEmpty()) {
 			return null;
 		}
@@ -87,7 +84,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		builder.putEObjectNewObjectPair(eObject, newObject);
 	}
 
-	public static @Nullable EObject getEFactoryEObject(Resource r) {
+	public static EObject getEFactoryEObject(Resource r) {
 		if (!(r instanceof EFactoryResource)) {
 			logger.warn("EMF Resource is not an EFactoryResource (caller should not even have invoked this method): " + r.getURI().toString());
 			return null;
@@ -105,7 +102,7 @@ public class EFactoryResource extends DerivedStateAwareResource {
 		}
 	}
 
-	public static @Nullable <T> T getEFactoryEObject(Resource r, Class<T> clazz) {
+	public static <T> T getEFactoryEObject(Resource r, Class<T> clazz) {
 		EObject object = getEFactoryEObject(r);
 		if (object == null)
 			return null;

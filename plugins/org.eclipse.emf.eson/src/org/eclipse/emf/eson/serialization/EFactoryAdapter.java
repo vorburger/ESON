@@ -32,8 +32,6 @@ import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.Value;
 import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.emf.eson.util.ESONUtil;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 import com.google.common.primitives.Ints;
 
@@ -137,7 +135,6 @@ public class EFactoryAdapter extends EContentAdapter {
 	protected boolean handledAsNameChange(final Notification msg, final EObject eNotifier, NewObject newObject, Resource resource) {
 		if (msg.getEventType() != Notification.SET  &&  msg.getEventType() != Notification.UNSET)
 			return false;
-		@SuppressWarnings("null")
 		EAttribute nameAttribute = nameAccessor.getNameAttribute(newObject);
 		if (nameAttribute != null && nameAttribute.equals(msg.getFeature())) {
 			String newName = msg.getNewStringValue();
@@ -244,7 +241,7 @@ public class EFactoryAdapter extends EContentAdapter {
 		newObjectFeatures.remove(factoryFeature);
 	}
 
-	protected @Nullable Feature getChangedFactoryFeature(Notification msg, NewObject newObject) {
+	protected Feature getChangedFactoryFeature(Notification msg, NewObject newObject) {
 		EStructuralFeature changedEFeature = (EStructuralFeature) msg.getFeature();
 		EList<Feature> newObjectAllFeatures = newObject.getFeatures();
 		for (Feature feature : newObjectAllFeatures) {
@@ -255,7 +252,7 @@ public class EFactoryAdapter extends EContentAdapter {
 		return null;
 	}
 
-	protected @NonNull Feature newFactoryFeature(final Notification msg, final NewObject newObject) {
+	protected Feature newFactoryFeature(final Notification msg, final NewObject newObject) {
 		Feature newFeature = EFactoryFactory.eINSTANCE.createFeature();
 		EStructuralFeature changedEFeature = (EStructuralFeature) msg.getFeature();
 		newFeature.setEFeature(changedEFeature);
@@ -263,17 +260,16 @@ public class EFactoryAdapter extends EContentAdapter {
 		return newFeature;
 	}
 
-	protected @NonNull NewObject getChangedNewObject(EObject eNotifier) {
+	protected NewObject getChangedNewObject(EObject eNotifier) {
 		return getEFactoryResource(eNotifier).getExistingEFactoryNewObject(eNotifier);
 	}
 
-	protected @NonNull EFactoryResource getEFactoryResource(Notification msg) {
+	protected EFactoryResource getEFactoryResource(Notification msg) {
 		final EObject eNotifier = (EObject) msg.getNotifier();
 		return getEFactoryResource(eNotifier);
 	}
 
-	@SuppressWarnings("null") // assuming EObject eNotifier is ALWAYS in an EResource
-	protected @NonNull EFactoryResource getEFactoryResource(EObject eNotifier) {
+	protected EFactoryResource getEFactoryResource(EObject eNotifier) {
 		final Resource eNotifierResource = eNotifier.eResource();
 		return (EFactoryResource) eNotifierResource;
 	}

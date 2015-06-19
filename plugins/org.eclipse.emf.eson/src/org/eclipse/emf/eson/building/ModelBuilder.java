@@ -25,8 +25,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
@@ -107,7 +105,7 @@ public class ModelBuilder {
 	 * @return the EObject built from the Factory
 	 * @throws ModelBuilderException if the content of the Factory prevented creation of a matching EObject
 	 */
-	public Optional<EObject> build(@NonNull Factory factory) throws ModelBuilderException {
+	public Optional<EObject> build(Factory factory) throws ModelBuilderException {
 		Optional<EObject> unlinkedRoot = buildWithoutLinking(factory, true);
 		link();
 		return unlinkedRoot;
@@ -117,12 +115,11 @@ public class ModelBuilder {
 	 * Builds. 
 	 * @param preLinkingPhase if true, only create objects exported to index (i.e. those with a name), if false, create everything. This is very important for performance.
 	 */
-	public Optional<EObject> buildWithoutLinking(@NonNull Factory factory, boolean preLinkingPhase) throws ModelBuilderException {
+	public Optional<EObject> buildWithoutLinking(Factory factory, boolean preLinkingPhase) throws ModelBuilderException {
 		Preconditions.checkNotNull(factory);
 		return build(factory.getRoot(), preLinkingPhase);
 	}
 	
-	@SuppressWarnings("null")
 	private void setName(EObject target, NewObject source) {
 		String name = source.getName();
 		if (name != null) {
@@ -139,8 +136,7 @@ public class ModelBuilder {
 		}
 	}
 
-	@SuppressWarnings("null")
-	public @NonNull Optional<EObject> getBuilt(@NonNull NewObject newObject) throws ModelBuilderException {
+	public Optional<EObject> getBuilt(NewObject newObject) throws ModelBuilderException {
 		Preconditions.checkNotNull(newObject);
 		checkNotEmpty();
 		EObject target = mapping.get(newObject);
@@ -158,7 +154,7 @@ public class ModelBuilder {
 	 * @return new object, or null if the value EObject wasn't built by this ModelBuilder 
 	 * @throws ModelBuilderException if build ModelBuilder is uninitialized, build() needs to called with non-empty Factory/NewObject before this. 
 	 */
-	public @Nullable NewObject getSource(@NonNull EObject value) throws ModelBuilderException {
+	public NewObject getSource(EObject value) throws ModelBuilderException {
 		Preconditions.checkNotNull(value);
 		checkNotEmpty();
 		return mapping.inverse().get(value);
