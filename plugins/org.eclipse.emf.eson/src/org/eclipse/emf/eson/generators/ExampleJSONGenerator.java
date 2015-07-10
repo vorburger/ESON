@@ -15,6 +15,7 @@ package org.eclipse.emf.eson.generators;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.eson.building.NewObjectExtensions;
 import org.eclipse.emf.eson.eFactory.Attribute;
 import org.eclipse.emf.eson.eFactory.BooleanAttribute;
 import org.eclipse.emf.eson.eFactory.Containment;
@@ -52,7 +53,14 @@ public class ExampleJSONGenerator implements IGenerator {
 	// TODO This class, if anything more than an example, would ideally need a test.. problem is inclusion of a JSON parser passing IP Review; @see https://github.com/vorburger/efactory/blob/master/com.googlecode.efactory.tests/src/com/googlecode/efactory/generator/tests/EFactoryJSONGeneratorTest.java
 
 	protected GeneratorHelper helper = new GeneratorHelper(); // NOTE: @Inject is NOT supported here
-	
+	private NewObjectExtensions newObjectExtensions;
+
+	protected NewObjectExtensions getNewObjectExtensions() {
+		if (newObjectExtensions == null)
+			newObjectExtensions = new NewObjectExtensions();
+		return newObjectExtensions;
+	}
+
 	public void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		if (isJSONGenerationActive(resource)) {
 			Optional<Factory> factory = helper.getFirstRootContentOfType(resource, Factory.class);
@@ -84,7 +92,10 @@ public class ExampleJSONGenerator implements IGenerator {
 		sb.append('{');
 		boolean first = true;
 		
-		first = !generateTypeInfoJSON(sb, newObject.getEClass());
+		Optional<EClass> eClass = getNewObjectExtensions().getDeclaredOrInferredEClass(newObject);
+		if (eClass.isPresent()) {
+			first = !generateTypeInfoJSON(sb, eClass.get());
+		}
 
 		if (newObject.getName() != null) {
 			if (!first)

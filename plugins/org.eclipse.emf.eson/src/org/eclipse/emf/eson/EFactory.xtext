@@ -46,8 +46,8 @@ NewObject: // Note that this is also in-lined below; if making changes, adapt be
 
 Value:
 	MultiValue
-	| Attribute | ( // Following is an inlinedNewObject, if making changes, adapt above too
-		=>({NewObject} eClass=[ecore::EClass|QualifiedName] (name=ValidID)? "{")
+	| Attribute | ( // Following is an in-lined NewObject, if making changes, adapt above too
+		=>({NewObject} (eClass=[ecore::EClass|QualifiedName])? (name=ValidID)? "{")
 			(features += Feature)*
 		"}"
 		{Containment.value=current}

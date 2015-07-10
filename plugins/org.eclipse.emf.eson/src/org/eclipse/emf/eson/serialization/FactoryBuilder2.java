@@ -14,13 +14,12 @@ package org.eclipse.emf.eson.serialization;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eson.building.ModelBuilder;
-import org.eclipse.emf.eson.resource.EFactoryResource;
-
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.NewObject;
+import org.eclipse.emf.eson.resource.EFactoryResource;
 
 /**
- * FactoryBuilder based on an EFactoryResource (which in trun will delegate to
+ * FactoryBuilder based on an EFactoryResource (which in turn will delegate to
  * its ModelBuilder).
  * 
  * @see FactoryBuilder
