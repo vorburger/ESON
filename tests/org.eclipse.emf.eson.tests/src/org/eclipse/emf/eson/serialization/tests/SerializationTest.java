@@ -44,4 +44,12 @@ public class SerializationTest extends AbstractSerializationTest {
 	@Test public void testReferenceTestSimple() throws Exception {
 		performSerializationTest("ReferenceTestSimple.efactory");
 	}
+	
+	@Test public void testTypelessContainment() throws Exception {
+		performSerializationTest("TypelessContainment.eson");
+	}
+
+	@Test public void testNotTypelessBecauseNamedContainment() throws Exception {
+		performSerializationTest("NotTypelessBecauseNamedContainment.eson");
+	}
 }

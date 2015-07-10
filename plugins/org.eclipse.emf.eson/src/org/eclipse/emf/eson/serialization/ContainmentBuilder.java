@@ -15,7 +15,7 @@ package org.eclipse.emf.eson.serialization;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.eson.building.NewObjectExtensions;
 import org.eclipse.emf.eson.eFactory.Containment;
 import org.eclipse.emf.eson.eFactory.EFactoryFactory;
 import org.eclipse.emf.eson.eFactory.Factory;
@@ -45,14 +45,36 @@ class ContainmentBuilder extends FeatureBuilder {
 	private NewObject createNewObject() {
 		if (value instanceof EObject) {
 			EObject eObjectValue = (EObject) value;
-			return factoryBuilder.getOrBuildNewObject(eObjectValue);
+			NewObject newObject = factoryBuilder.getOrBuildNewObject(eObjectValue);
+			nullifyEClassIfDefault(newObject);
+			return newObject;
 		} else {
 			throw new IllegalStateException("Value of containment feature '"
 					+ containment.getName() + "' was no an EObject, but was '"
 					+ value.getClass() + "'");
 		}
 	}
-	
+
+	/**
+	 * This method resets (null-ify's) the NewObject EClass
+	 * IFF it is the same as this Containment Reference's
+	 * EReference Type.  This leads to MUCH more readable
+	 * ESON.
+	 * 
+	 * If the contained New Object has a name however the
+	 * type is kept, because the ESON does not support
+	 * named contained objects with inferred types 
+	 * (yet?).
+	 * 
+	 * @see NewObjectExtensions
+	 * @see SerializationTest
+	 * @see also @Ignore SimplestTest.testSimplestNamedTypelessContainment()
+	 */
+	protected void nullifyEClassIfDefault(NewObject newObject) {
+		if (newObject.getEClass().equals(containment.getEReferenceType()) && newObject.getName() == null)
+			newObject.setEClass(null);
+	}
+
 	public ContainmentBuilder factory(Factory context) {
 		this.context = context;
 		return this;

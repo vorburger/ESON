@@ -23,7 +23,8 @@ public class NewObjectValueProposalProviderTest extends	AbstractEFactoryContentA
 	@Test
 	public void testMultiplicityContainment_One() throws Exception {
 		newBuilder().append(body).cursorBack(6).insert("containments: [  ]")
-			.cursorBack(2).assertText("ReferenceTarget", "ReferenceTargetSubclass");
+			.cursorBack(2).assertText("ReferenceTarget", "ReferenceTargetSubclass", "{");
+			// NOTE The "{" makes perfect sense since Containment's EClass became optional
 	}
 
 }

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eson.building.NewObjectExtensions;
 import org.eclipse.emf.eson.eFactory.Attribute;
 import org.eclipse.emf.eson.eFactory.CustomNameMapping;
 import org.eclipse.emf.eson.eFactory.EnumAttribute;
@@ -33,13 +34,14 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 
-	@Inject
-	private ICaseInsensitivityHelper caseInsensitivityHelper;
+	protected @Inject ICaseInsensitivityHelper caseInsensitivityHelper;
+	protected @Inject NewObjectExtensions newObjectExtensions;
 
 	public IScope scope_EnumAttribute_value(EnumAttribute attribute, EReference reference) {
 		Feature feature = getFeature(attribute);
@@ -54,10 +56,15 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 	// This may look a bit strange, but is required for 
 	// org.eclipse.emf.eson.ui.contentassist.EFactoryProposalProvider.completeFeature_EFeature()
 	public IScope scope_Feature_eFeature(NewObject newObject, EReference reference) {
-		EClass eClass = newObject.getEClass();
-		Iterable<? extends EObject> assignableFeature = EcoreUtil3.getAssignableFeatures(eClass);
-		Iterable<IEObjectDescription> descs = Scopes.scopedElementsFor(assignableFeature, DottedQualifiedNameFixer.FUNCTION);
-		return new SimpleScope(descs);
+		Optional<EClass> optionalEClass = newObjectExtensions.getDeclaredOrInferredEClass(newObject);
+		if (optionalEClass.isPresent()) {
+			EClass eClass = optionalEClass.get();
+			Iterable<? extends EObject> assignableFeature = EcoreUtil3.getAssignableFeatures(eClass );
+			Iterable<IEObjectDescription> descs = Scopes.scopedElementsFor(assignableFeature, DottedQualifiedNameFixer.FUNCTION);
+			return new SimpleScope(descs);
+		} else {
+			return IScope.NULLSCOPE;
+		}
 	}
 
 	public IScope scope_Feature_eFeature(Feature feature, EReference reference) {
@@ -66,10 +73,12 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 	}
 
 	public IScope scope_Feature_reference(NewObject newObject, EReference reference) {
-		if (newObject.getEClass() == null) {
+		Optional<EClass> optionalEClass = newObjectExtensions.getDeclaredOrInferredEClass(newObject);
+		if (optionalEClass.isPresent()) {
+			return new SimpleScope(Scopes.scopedElementsFor(optionalEClass.get().getEAllStructuralFeatures(), DottedQualifiedNameFixer.FUNCTION));
+		} else {
 			return IScope.NULLSCOPE;
 		}
-		return new SimpleScope(Scopes.scopedElementsFor(newObject.getEClass().getEAllStructuralFeatures(), DottedQualifiedNameFixer.FUNCTION));
 	}
 
 	public IScope scope_EClass(EObject context, EReference reference) {

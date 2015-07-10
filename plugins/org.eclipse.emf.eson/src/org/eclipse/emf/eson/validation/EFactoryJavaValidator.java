@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.eson.building.NameAccessor;
+import org.eclipse.emf.eson.building.NewObjectExtensions;
 import org.eclipse.emf.eson.eFactory.Attribute;
 import org.eclipse.emf.eson.eFactory.BooleanAttribute;
 import org.eclipse.emf.eson.eFactory.Containment;
@@ -54,6 +55,8 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 
+import com.google.common.base.Optional;
+
 /**
  * Validator.
  *  
@@ -73,7 +76,8 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 	
 	protected @Inject NameAccessor nameAccessor;
 	protected @Inject XtextProxyUtil xtextProxyUtil;
-	
+	protected @Inject NewObjectExtensions newObjectExtensions;
+
 	protected class AttributeValidator extends EFactorySwitch<Boolean> {
 
 		@Override
@@ -243,19 +247,21 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 			return;
 		assertFalse("Name cannot be blank", EFactoryPackage.Literals.NEW_OBJECT__NAME, name.trim().isEmpty()); // https://github.com/vorburger/efactory/pull/18
 		EAttribute nameAttribute = nameAccessor.getNameAttribute(newObject);
-		if (newObject.getEClass() != null)
-			if (nameAttribute == null && !newObject.getEClass().eIsProxy())
-				error("Cannot name " + newObject.getEClass().getName(), EFactoryPackage.Literals.NEW_OBJECT__NAME, ERR_CANNOT_NAME);
+		
+		Optional<EClass> eClassOptional = newObjectExtensions.getDeclaredOrInferredEClass(newObject);
+		if (eClassOptional.isPresent() && nameAttribute == null)
+			error("Cannot name " + eClassOptional.get().getName(), EFactoryPackage.Literals.NEW_OBJECT__NAME, ERR_CANNOT_NAME);
 	}
 
 	private void checkIsInstantiatable(NewObject newObject) {
-		EClass eClass = newObject.getEClass();
-		if (eClass != null) {
-			boolean isInstantiatable = EcoreUtil3.isInstantiatable(eClass);
-			assertTrue("Abstract classes or interfaces cannot be instantiated",
-					EFactoryPackage.Literals.NEW_OBJECT__ECLASS,
-					isInstantiatable);
-		}
+		Optional<EClass> eClassOptional = newObjectExtensions.getDeclaredOrInferredEClass(newObject);
+		if (!eClassOptional.isPresent())
+			return;
+		EClass eClass = eClassOptional.get();
+		boolean isInstantiatable = EcoreUtil3.isInstantiatable(eClass);
+		assertTrue("Abstract classes or interfaces cannot be instantiated",
+				EFactoryPackage.Literals.NEW_OBJECT__ECLASS,
+				isInstantiatable);
 	}
 
 	private void checkNoDuplicateFeature(NewObject newObject) {
@@ -286,10 +292,15 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 
 	private void checkIsFeature(Feature feature) {
 		NewObject newObject = getNewObject(feature);
-		assertTrue(newObject.getEClass().getName() + " has no feature "
+		Optional<EClass> eClassOptional = newObjectExtensions.getDeclaredOrInferredEClass(newObject);
+		if (!eClassOptional.isPresent())
+			return;
+		EClass eClass = eClassOptional.get();
+
+		assertTrue(eClass.getName() + " has no feature "
 				+ feature.getEFeature().getName(),
 				EFactoryPackage.Literals.FEATURE__EFEATURE,
-				hasEFeature(newObject.getEClass(), feature.getEFeature()));
+				hasEFeature(eClass, feature.getEFeature()));
 	}
 
 	private boolean hasEFeature(EClass eClass, EStructuralFeature feature) {
@@ -415,8 +426,9 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 			return;
 		}
 		checkIsContainment(eFeature);
-		checkIsAssignable(eFeature, EFactoryPackage.Literals.CONTAINMENT__VALUE,
-				containment.getValue().getEClass());
+		EClass declaredEClass = containment.getValue().getEClass();
+		if (declaredEClass != null)
+			checkIsAssignable(eFeature, EFactoryPackage.Literals.CONTAINMENT__VALUE, declaredEClass);
 	}
 
 	private void checkIsContainment(EStructuralFeature eFeature) {
@@ -462,7 +474,10 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 	// @see Documentation in EFactoryDerivedStateComputer
 	private void checkEClassNotInSameProject(NewObject newObject) {
 		URI newObjectURI = newObject.eResource().getURI();
-		EClass eClass = newObject.getEClass();
+		Optional<EClass> eClassOptional = newObjectExtensions.getDeclaredOrInferredEClass(newObject);
+		if (!eClassOptional.isPresent())
+			return;
+		EClass eClass = eClassOptional.get();
 		URI eClassURI = eClass.eResource().getURI();
 		if (isInSameProject(eClassURI, newObjectURI)) {
 			error("EClass must be in different project than ESON (so that it gets separately indexed first): " + eClass.getName(), EFactoryPackage.Literals.NEW_OBJECT__ECLASS);

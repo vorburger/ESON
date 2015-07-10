@@ -46,7 +46,7 @@ class NewObjectBuilder {
 
 	public NewObject build(EObject input) {
 		NewObject newObject = EFactoryFactory.eINSTANCE.createNewObject();
-		newObject.setEClass(input.eClass());
+		newObject.setEClass(input.eClass()); // NOTE ContainmentBuilder.createNewObject() may null-ify this again
 		setName(newObject, input);
 		addAttributes(newObject, input);
 		addContainments(newObject, input);
