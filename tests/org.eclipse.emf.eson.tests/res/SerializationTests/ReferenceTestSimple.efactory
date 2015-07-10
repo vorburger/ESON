@@ -2,7 +2,7 @@ use testmodel.*
  
 TestModel {
 	
-	singleRequired: SingleRequired { parentAttribute: false }
+	singleRequired: { parentAttribute: false }
 
 	referenceTestContainer: [ ReferenceTestContainer {
 			oneAttribute: false

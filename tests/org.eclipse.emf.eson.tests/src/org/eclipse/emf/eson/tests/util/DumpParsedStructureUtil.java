@@ -73,7 +73,9 @@ public class DumpParsedStructureUtil {
 	}
 
 	protected void dumpPossiblyNamedOrProxy(EObject ctx, EObject eObject) {
-		if (!eObject.eIsProxy()) {
+		if (eObject == null) {
+			System.out.print("NULL");
+		} else if (!eObject.eIsProxy()) {
 			if (eObject instanceof ENamedElement) {
 				ENamedElement namedElement = (ENamedElement) eObject;
 				System.out.print(namedElement.getName());

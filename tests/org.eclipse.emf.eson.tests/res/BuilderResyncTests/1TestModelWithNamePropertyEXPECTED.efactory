@@ -4,7 +4,7 @@ TestModel {
 	name: "test"
 	singleRequired: SingleRequired { }
 nameAttributeTest: [
-		NameAttributeContainer {
+		{
 		}
 	]
 }

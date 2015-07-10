@@ -16,7 +16,14 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eson.eFactory.Containment;
+import org.eclipse.emf.eson.eFactory.Feature;
+import org.eclipse.emf.eson.eFactory.MultiValue;
+import org.eclipse.emf.eson.eFactory.NewObject;
+import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
+import org.eclipse.emf.eson.ui.contentassist.future.FilteringCompletionProposalAcceptor;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
@@ -32,12 +39,6 @@ import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 
 import com.google.common.base.Predicate;
-import org.eclipse.emf.eson.eFactory.Containment;
-import org.eclipse.emf.eson.eFactory.Feature;
-import org.eclipse.emf.eson.eFactory.MultiValue;
-import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
-import org.eclipse.emf.eson.ui.contentassist.future.FilteringCompletionProposalAcceptor;
 
 /**
  * Restricted ProposalProvider,
@@ -61,12 +62,28 @@ public class EFactoryProposalProvider extends AbstractEFactoryProposalProvider {
 		 && !grammar.getEnumAttributeAccess().getColonKeyword_0().equals(keyword)
 		 && !grammar.getMultiValueAccess().getLeftSquareBracketKeyword_1().equals(keyword)) 
 		{
-			if (!isNextSiblingAlreadyTheSame(keyword.getValue(), context)) {
+			if (!isNextSiblingAlreadyTheSame(keyword.getValue(), context)
+			 && !isInEAttributeOrNonContainmentEReferenceAndMustSuppressUselessLeftCurlyBrace(keyword, context)) {
 				super.completeKeyword(keyword, context, acceptor);
 			}
 		}
 	}
 	
+	private boolean isInEAttributeOrNonContainmentEReferenceAndMustSuppressUselessLeftCurlyBrace(Keyword keyword, ContentAssistContext context) {
+		if (!"{".equals(keyword.getValue()))
+			return false;
+		if (!(context.getCurrentModel() instanceof Feature))
+			return false;
+
+		Feature feature = (Feature) context.getCurrentModel();
+		EStructuralFeature eFeature = feature.getEFeature();
+		if (eFeature instanceof EAttribute)
+			return true;
+		
+		EReference eReference = (EReference) eFeature;
+		return !eReference.isContainment();
+	}
+
 	/**
 	 * Why doesn't Xtext do this OOB?
 	 */
