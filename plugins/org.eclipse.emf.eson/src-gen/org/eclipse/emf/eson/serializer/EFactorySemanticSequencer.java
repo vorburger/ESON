@@ -336,7 +336,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (eClass=[EClass|QualifiedName] name=ValidID? features+=Feature*)
+	 *     (eClass=[EClass|QualifiedName]? name=ValidID? features+=Feature*)
 	 */
 	protected void sequence_Value_Containment_2_3(EObject context, NewObject semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
