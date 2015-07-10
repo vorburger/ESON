@@ -111,11 +111,11 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 		public Boolean caseEnumAttribute(EnumAttribute object) {
 			EReference featureId = EFactoryPackage.Literals.ENUM_ATTRIBUTE__VALUE;
 			Feature feature = getFeature(object);
-			boolean success = EcoreUtil3.isEnum(feature.getEFeature()
-					.getEType());
-			assertTrue("Attribute must be of type "
+			boolean success = EcoreUtil3.isEnum(feature.getEFeature().getEType());
+			if (!success)
+				error("Attribute must be of type "
 					+ feature.getEFeature().getEType().getName()
-					+ " but was an Enumeration", featureId, success);
+					+ " but was an Enumeration", featureId);
 			return success;
 		}
 
@@ -245,7 +245,10 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 		String name = newObject.getName();
 		if (name == null)
 			return;
-		assertFalse("Name cannot be blank", EFactoryPackage.Literals.NEW_OBJECT__NAME, name.trim().isEmpty()); // https://github.com/vorburger/efactory/pull/18
+		if (name.trim().isEmpty()) {
+			// https://github.com/vorburger/efactory/pull/18
+			error("Name cannot be blank", EFactoryPackage.Literals.NEW_OBJECT__NAME);			
+		}
 		EAttribute nameAttribute = nameAccessor.getNameAttribute(newObject);
 		
 		Optional<EClass> eClassOptional = newObjectExtensions.getDeclaredOrInferredEClass(newObject);
@@ -259,9 +262,9 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 			return;
 		EClass eClass = eClassOptional.get();
 		boolean isInstantiatable = EcoreUtil3.isInstantiatable(eClass);
-		assertTrue("Abstract classes or interfaces cannot be instantiated",
-				EFactoryPackage.Literals.NEW_OBJECT__ECLASS,
-				isInstantiatable);
+		if (!isInstantiatable)
+		    error("Abstract classes or interfaces cannot be instantiated",
+				EFactoryPackage.Literals.NEW_OBJECT__ECLASS);
 	}
 
 	private void checkNoDuplicateFeature(NewObject newObject) {
@@ -269,7 +272,8 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 		for (Feature feature : newObject.getFeatures()) {
 			EStructuralFeature eFeature = feature.getEFeature();
 			boolean hasDuplicate = existingFeatures.contains(eFeature);
-			assertFalse("Duplicate feature '" + eFeature.getName() + "'", null, hasDuplicate);
+			if (hasDuplicate)
+			    error("Duplicate feature '" + eFeature.getName() + "'", null);
 			existingFeatures.add(eFeature);
 		}
 	}
@@ -287,7 +291,8 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 
 	private void checkMissingFeatureValue(Feature feature) {
 		EStructuralFeature eFeature = feature.getEFeature();
-		assertTrue("Feature missing value: " + eFeature.getName(), EFactoryPackage.Literals.FEATURE__VALUE, feature.getValue() != null);
+		if (feature.getValue() == null)
+			error("Feature missing value: " + eFeature.getName(), EFactoryPackage.Literals.FEATURE__VALUE);
 	}
 
 	private void checkIsFeature(Feature feature) {
@@ -297,10 +302,11 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 			return;
 		EClass eClass = eClassOptional.get();
 
-		assertTrue(eClass.getName() + " has no feature "
-				+ feature.getEFeature().getName(),
-				EFactoryPackage.Literals.FEATURE__EFEATURE,
-				hasEFeature(eClass, feature.getEFeature()));
+		if (!hasEFeature(eClass, feature.getEFeature())) {
+			error(eClass.getName() + " has no feature "
+					+ feature.getEFeature().getName(),
+					EFactoryPackage.Literals.FEATURE__EFEATURE);
+		}
 	}
 
 	private boolean hasEFeature(EClass eClass, EStructuralFeature feature) {
@@ -313,13 +319,13 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 		if (value == null)
 			return;
 		if (value instanceof MultiValue) {
-			assertTrue(
-					"Cannot assign multiple elements to a feature with cardinality 1 (remove [...])",
-					EFactoryPackage.Literals.FEATURE__VALUE, hasMany);
+			if (!hasMany)
+				error("Cannot assign multiple elements to a feature with cardinality 1 (remove [...])",
+					EFactoryPackage.Literals.FEATURE__VALUE);
 		} else {
-			assertFalse(
-					"Cannot assign a single element to a feature with cardinality >1 (use [...])",
-					EFactoryPackage.Literals.FEATURE__VALUE, hasMany);
+			if (hasMany)
+				error("Cannot assign a single element to a feature with cardinality >1 (use [...])",
+					EFactoryPackage.Literals.FEATURE__VALUE);
 		}
 	}
 
@@ -400,8 +406,9 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 
 	private void checkIsNotContainment(EStructuralFeature eStructuralFeature) {
 		boolean isContainment = isContainment(eStructuralFeature);
-		assertFalse("Value must be a reference but is a containment",
-				EFactoryPackage.Literals.REFERENCE__VALUE, isContainment);
+		if (isContainment)
+			error("Value must be a reference but is a containment",
+				EFactoryPackage.Literals.REFERENCE__VALUE);
 	}
 
 	private boolean isContainment(EStructuralFeature eStructuralFeature) {
@@ -409,9 +416,9 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 	}
 
 	private void checkIsEReference(EStructuralFeature eFeature) {
-		assertTrue("Value must be a reference but is an attribute",
-				EFactoryPackage.Literals.REFERENCE__VALUE,
-				isEReference(eFeature));
+		if (!isEReference(eFeature))
+			error("Value must be a reference but is an attribute",
+				EFactoryPackage.Literals.REFERENCE__VALUE);
 	}
 
 	private boolean isEReference(EStructuralFeature eStructuralFeature) {
@@ -432,29 +439,18 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 	}
 
 	private void checkIsContainment(EStructuralFeature eFeature) {
-		assertTrue("Value must be a new object but is a reference",
-				EFactoryPackage.Literals.FEATURE__VALUE,
-				isContainment(eFeature));
-	}
-
-	private void assertTrue(String message, EStructuralFeature feature, boolean value) {
-		if (!value) {
-			error(message, feature);
-		}
+		if (!isContainment(eFeature))
+		    error("Value must be a new object but is a reference",
+				EFactoryPackage.Literals.FEATURE__VALUE);
 	}
 
 	@Check
 	public void checkAttribute(Attribute attribute) {
 		Feature feature = getFeature(attribute);
-		assertFalse("Value must be an attribute but is a reference", null, isEReference(feature.getEFeature()));
+		if (isEReference(feature.getEFeature()))
+		    error("Value must be an attribute but is a reference", null);
 
 		attributeValidator.doSwitch(attribute);
-	}
-
-	private void assertFalse(String message, EStructuralFeature feature, boolean value) {
-		if (value) {
-			error(message, feature);
-		}
 	}
 
 	private Feature getFeature(Value value) {
