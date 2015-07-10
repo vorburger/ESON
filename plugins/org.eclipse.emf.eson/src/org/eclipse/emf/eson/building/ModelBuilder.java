@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.NewObject;
@@ -32,13 +31,15 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import com.google.inject.Inject;
 
 public class ModelBuilder {
-	
 	private static Logger logger = Logger.getLogger(ModelBuilder.class);
 	
-	private NameAccessor nameSetter = new NameAccessor();
-	private final FeatureSwitch featureSwitch = new FeatureSwitch();
+	protected @Inject NameAccessor nameSetter;
+	protected @Inject NewObjectExtensions newObjectExtensions; 
+	protected @Inject FeatureSwitch featureSwitch = new FeatureSwitch();
+
 	private BiMap<NewObject, EObject> mapping = HashBiMap.create();
 	private List<ReferenceBuilder> deferredLinkingFeatureBuilder = new LinkedList<ReferenceBuilder>();
 
@@ -66,37 +67,21 @@ public class ModelBuilder {
 	}
 
 	private Optional<EObject> createTarget(NewObject from) throws ModelBuilderException {
-		EClass eClass = from.getEClass();
-		if (eClass == null) {
-			logger.info("No EClass for New Object " + getNewObjectDescriptionForErrorMessage(from));
-			return Optional.absent();
+		Optional<EClass> optionalEClass = newObjectExtensions.getDeclaredOrInferredEClass(from);
+		if (optionalEClass.isPresent()) {
+			EClass eClass = optionalEClass.get();
+			EPackage ePackage = eClass.getEPackage();
+			EFactory eFactoryInstance = ePackage.getEFactoryInstance();
+			if (eFactoryInstance == null) {
+				logger.error("No EFactory registered for " + ePackage.getNsURI());
+				return Optional.absent();
+			}
+			EObject target = eFactoryInstance.create(eClass );
+			mapping.put(from, target);
+			return Optional.of(target);
+		} else {
+			return Optional.absent();						
 		}
-		if (eClass.getEPackage() == null) {
-			EcoreUtil.resolve(from.eClass(), from);
-		}
-		if (eClass.eIsProxy()) {
-			logger.info("The EClass for NewObject " + getNewObjectDescriptionForErrorMessage(from) + " is still an unresolved EMF Proxy, something isn't working in your cross-Resource reference resolution");
-			return Optional.absent();
-		}
-		EPackage ePackage = eClass.getEPackage();
-		if (ePackage == null) {
-			logger.info("No EPackage registered for EClass '" + eClass.getName() + "' defined in NewObject " + getNewObjectDescriptionForErrorMessage(from));
-			return Optional.absent();
-		}
-		EFactory eFactoryInstance = ePackage.getEFactoryInstance();
-		if (eFactoryInstance == null) {
-			logger.info("No EFactory registered for " + ePackage.getNsURI());
-			return Optional.absent();
-		}
-		EObject target = eFactoryInstance.create(eClass);
-		mapping.put(from, target);
-		return Optional.of(target);
-	}
-
-	private String getNewObjectDescriptionForErrorMessage(NewObject from) {
-		return "name '" + from.getName()
-		+ "' at URI " + from.eResource().getURI()
-		+ "#" + from.eResource().getURIFragment(from);
 	}
 
 	/**

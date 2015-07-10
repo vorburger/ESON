@@ -50,6 +50,8 @@ import org.eclipse.xtext.util.ReplaceRegion;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.google.inject.Provider;
+
 import testmodel.AttributeSample;
 import testmodel.AttributeTestContainer;
 import testmodel.NameAttributeContainer;
@@ -58,8 +60,6 @@ import testmodel.SingleRequired;
 import testmodel.TestModel;
 import testmodel.TestmodelFactory;
 import testmodel.TestmodelPackage;
-
-import com.google.inject.Provider;
 
 /**
  * Tests EFactoryAdapter's "re-sychronization" of changes to the derived "real"
@@ -148,7 +148,8 @@ public class BuilderResyncTest {
 		Value efValue = eFactory.getRoot().getFeatures().get(2).getValue();
 		Containment efContainmentValue = (Containment) efValue;
 		final NewObject newObject = efContainmentValue.getValue();
-		assertEquals(TestmodelPackage.Literals.ATTRIBUTE_SAMPLE, newObject.getEClass());
+		// Since Containment's EClass became optional, expect null instead of TestmodelPackage.Literals.ATTRIBUTE_SAMPLE
+		assertEquals(null, newObject.getEClass());
 		IntegerAttribute singleIntOptional = (IntegerAttribute)newObject.getFeatures().get(0).getValue();
 		assertEquals(123, singleIntOptional.getValue());
 		checkNodes(eFactory);
@@ -178,7 +179,8 @@ public class BuilderResyncTest {
 		
 		Containment efContainmentValue = (Containment) firstValue;
 		final NewObject newObject = efContainmentValue.getValue();
-		assertEquals(TestmodelPackage.Literals.NAME_ATTRIBUTE_CONTAINER, newObject.getEClass());
+		// Since Containment's EClass became optional, expect null instead of TestmodelPackage.Literals.NAME_ATTRIBUTE_CONTAINER
+		assertEquals(null, newObject.getEClass());
 
 		// Check if we can serialize the complete thing and it looks as expected
 		XtextResource resource = (XtextResource) eFactory.eResource();
@@ -340,7 +342,8 @@ public class BuilderResyncTest {
 		assertTrue(listItemValue.eClass().toString(), listItemValue instanceof Containment);
 		Containment efContainmentValue = (Containment) listItemValue;
 		NewObject newObject = efContainmentValue.getValue();
-		assertEquals(TestmodelPackage.Literals.ATTRIBUTE_TEST_CONTAINER, newObject.getEClass());
+		// Since Containment's EClass became optional, expect null instead of TestmodelPackage.Literals.ATTRIBUTE_TEST_CONTAINER
+		assertEquals(null, newObject.getEClass());
 		return newObject;
 	}
 

@@ -27,6 +27,7 @@ import com.google.common.collect.Iterables;
 
 @NonNullByDefault
 public class NameAccessor {
+	@SuppressWarnings("null")
 	private static Logger logger = Logger.getLogger(ModelBuilder.class);
 
 	protected static final String DEFAULT_NAME_FEATURE = "name";

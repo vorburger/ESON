@@ -21,7 +21,7 @@ public class EFactoryContentAssistantFactory extends DefaultContentAssistantFact
 	protected void setAutoInsert(ContentAssistant assistant) {
 		super.setAutoInsert(assistant);
 //		assistant.setAutoActivationDelay(0);
-//		assistant.enableAutoInsert(true);
+		assistant.enableAutoInsert(true);
 //		assistant.enablePrefixCompletion(true);
 		assistant.enableAutoActivation(true);
 	}
