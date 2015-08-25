@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getImports <em>Imports</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getEpackages <em>Epackages</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getRoot <em>Root</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getFactory()
  * @model

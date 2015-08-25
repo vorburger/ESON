@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Reference#getValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getReference()
  * @model

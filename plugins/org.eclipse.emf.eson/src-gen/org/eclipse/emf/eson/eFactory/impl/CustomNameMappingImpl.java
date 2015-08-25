@@ -19,11 +19,11 @@ import org.eclipse.emf.eson.eFactory.EFactoryPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.CustomNameMappingImpl#getEClass <em>EClass</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.CustomNameMappingImpl#getNameFeature <em>Name Feature</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

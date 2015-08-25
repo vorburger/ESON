@@ -4,13 +4,14 @@
  */
 package org.eclipse.emf.eson.ui;
 
+import org.eclipse.xtext.ui.DefaultUiModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * Manual modifications go to {org.eclipse.emf.eson.ui.EFactoryUiModule}
  */
 @SuppressWarnings("all")
-public abstract class AbstractEFactoryUiModule extends org.eclipse.xtext.ui.DefaultUiModule {
+public abstract class AbstractEFactoryUiModule extends DefaultUiModule {
 	
 	public AbstractEFactoryUiModule(AbstractUIPlugin plugin) {
 		super(plugin);

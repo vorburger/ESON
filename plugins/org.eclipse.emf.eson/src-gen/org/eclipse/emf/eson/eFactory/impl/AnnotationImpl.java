@@ -13,6 +13,8 @@ import org.eclipse.emf.eson.eFactory.EFactoryPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Annotation</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

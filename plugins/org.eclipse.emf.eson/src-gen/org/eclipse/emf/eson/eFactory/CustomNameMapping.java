@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.CustomNameMapping#getEClass <em>EClass</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.CustomNameMapping#getNameFeature <em>Name Feature</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getCustomNameMapping()
  * @model

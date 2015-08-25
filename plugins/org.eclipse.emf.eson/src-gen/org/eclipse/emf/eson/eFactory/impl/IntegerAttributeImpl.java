@@ -17,10 +17,10 @@ import org.eclipse.emf.eson.eFactory.IntegerAttribute;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.IntegerAttributeImpl#getValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

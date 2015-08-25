@@ -19,10 +19,10 @@ import org.eclipse.emf.eson.eFactory.Reference;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.impl.ReferenceImpl#getValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
