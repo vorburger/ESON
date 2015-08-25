@@ -16,7 +16,9 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.LinkedHashSet;
 
+import org.apache.log4j.Logger;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.xtend.ide.macro.JdtBasedProcessorProvider;
 
 import com.google.common.collect.Sets;
@@ -28,7 +30,7 @@ import com.google.common.collect.Sets;
  */
 @SuppressWarnings("restriction")
 public class JdtBasedClassLoaderProvider extends JdtBasedProcessorProvider {
-	// private static Logger logger = LoggerFactory.getLogger(JdtBasedClassLoaderProvider.class);
+	private static Logger logger = Logger.getLogger(JdtBasedClassLoaderProvider.class);
 
 	// TODO Propose to Xtext to refactor JdtBasedProcessorProvider, and its parent ProcessorInstanceForJvmTypeProvider, into a more generic ClassLoaderProvider
 	
@@ -47,7 +49,12 @@ public class JdtBasedClassLoaderProvider extends JdtBasedProcessorProvider {
 		// do NOT use return super.createClassLoaderForJavaProject(projectToUse);
 		// because that uses boolean includeOutputFolder = false instead of true:
 		LinkedHashSet<URL> urls = Sets.newLinkedHashSet();
-		collectClasspathURLs(projectToUse, urls, true, new LinkedHashSet<IJavaProject>());
+		try {
+			collectClasspathURLs(projectToUse, urls, true, new LinkedHashSet<IJavaProject>());
+		} catch(JavaModelException e) {
+			if (!e.isDoesNotExist())
+				logger.error(e.getMessage(), e);
+		}
 		return new URLClassLoader(urls.toArray(new URL[0]), getParentClassLoader());
 	}
 }
