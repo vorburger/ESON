@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="Generated from ESON Target Platform" sequenceNumber="1">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="com.google.guava" version="0.0.0"/>
+<unit id="com.google.inject" version="0.0.0"/>
+<unit id="org.antlr.runtime" version="0.0.0"/>
+<unit id="org.apache.log4j" version="0.0.0"/>
+<unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.draw2d" version="0.0.0"/>
+<repository location="http://download.eclipse.org/releases/luna/201502271000/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.common.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/core/S201501230452/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/maintenance/R201411190455/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.compare.source.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.0/R201408191310/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/xcore/"/>
+</location>
+</locations>
+</target>
