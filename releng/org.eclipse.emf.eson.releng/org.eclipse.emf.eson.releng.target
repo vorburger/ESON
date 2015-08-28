@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="Generated from ESON Target Platform - Xtext 2.8.4" sequenceNumber="18">
+  <locations>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.8.4.v201508050135"/>
+      <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.8.4/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.common.feature.group" version="2.11.0.v20150805-0538"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="2.11.1.v20150805-0538"/>
+      <unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.3.1.v20150806-0546"/>
+      <repository location="http://download.eclipse.org/modeling/emf/emf/updates/2.11.x/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.mwe2.language.ui" version="2.8.1.v201508030411"/>
+      <unit id="org.eclipse.emf.mwe2.launch.ui" version="2.8.1.v201508030411"/>
+      <repository location="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="org.eclipse.xpand" version="2.1.0.v201505260349"/>
+      <unit id="org.eclipse.xtend.typesystem.emf" version="2.1.0.v201505260349"/>
+      <repository location="http://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201505260349"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.compare.feature.group" version="3.1.0.201506080833"/>
+      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.1/R201506080833/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="org.eclipse.draw2d" version="3.9.0.201308190730"/>
+      <repository location="http://download.eclipse.org/tools/gef/updates/releases/3.9.1_gef-maintenance_433/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.102.v20150204-1316"/>
+      <unit id="org.eclipse.sdk.feature.group" version="4.4.2.v20150204-1700"/>
+      <repository location="http://download.eclipse.org/eclipse/updates/4.4"/>
+    </location>
+  </locations>
+</target>

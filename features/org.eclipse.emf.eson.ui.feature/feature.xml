@@ -109,22 +109,26 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <requires>
       <import plugin="org.eclipse.emf.eson"/>
-      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.xtext.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.ui.workbench.texteditor" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jdt.core"/>
-      <import plugin="org.eclipse.emf.converter" version="2.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xpand"/>
-      <import plugin="org.eclipse.xtext.ui" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.ui.shared" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.builder"/>
-      <import plugin="org.eclipse.xtend"/>
-      <import plugin="org.eclipse.xtend.shared.ui" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtend.typesystem.emf" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtend.typesystem.emf.ui" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui.shared" version="2.5.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.5.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.common.types.shared" version="2.5.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.common.types.ui" version="2.5.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates" version="2.5.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.5.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.compare" version="3.5.201" match="greaterOrEqual"/>
+      <import plugin="org.antlr.runtime"/>
+      <import plugin="org.eclipse.emf.ecore.editor" version="2.9.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.hamcrest.core"/>
+      <import plugin="org.junit"/>
    </requires>
 
    <plugin
