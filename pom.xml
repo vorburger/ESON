@@ -19,7 +19,7 @@
     </organization>
 
 	<properties>
-		<tycho-version>0.22.0</tycho-version>
+		<tycho-version>0.23.1</tycho-version>
 		<!-- <xtext-version>2.5.3</xtext-version> -->
 		<!-- <fornax-version>3.4.0</fornax-version> -->
 		<!-- There is test which doesn't work on Windows, and this serves to exclude it -->
@@ -107,29 +107,45 @@
 	</profiles>
  
 	<repositories>
+		<!-- https://www.eclipse.org/Xtext/documentation/350_continuous_integration.html#maven-tycho-hints -->
 		<repository>
 			<id>p2.eclipse.luna</id>
-			<url>http://download.eclipse.org/eclipse/updates/4.4/</url>
+			<url>http://download.eclipse.org/eclipse/updates/4.4/R-4.4.2-201502041700/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>p2.eclipse.emf</id>
-			<url>http://download.eclipse.org/modeling/emf/emf/updates/releases/</url>
+			<url>http://download.eclipse.org/modeling/emf/emf/updates/2.11.x/core/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>p2.eclipse.xcore</id>
+			<url>http://download.eclipse.org/modeling/emf/emf/updates/2.11.x/xcore/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>p2.eclipse.xtext</id>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.8.4/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>p2.eclipse.emf.compare</id>
-			<url>http://download.eclipse.org/modeling/emf/compare/updates/releases/</url>
+			<url>http://download.eclipse.org/modeling/emf/compare/updates/releases/3.0/R201408191310/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>p2.eclipse.orbit-R20140525021250</id>
 			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>p2.eclipse.mwe</id>
+			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>p2.eclipse.xpand</id>
+			<url>http://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201505260349/</url>
 			<layout>p2</layout>
 		</repository>
 	</repositories>
