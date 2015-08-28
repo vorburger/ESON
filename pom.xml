@@ -106,50 +106,6 @@
 		</profile>
 	</profiles>
  
-	<repositories>
-		<!-- https://www.eclipse.org/Xtext/documentation/350_continuous_integration.html#maven-tycho-hints -->
-		<repository>
-			<id>p2.eclipse.luna</id>
-			<url>http://download.eclipse.org/eclipse/updates/4.4/R-4.4.2-201502041700/</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>p2.eclipse.emf</id>
-			<url>http://download.eclipse.org/modeling/emf/emf/updates/2.11.x/core/</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>p2.eclipse.xcore</id>
-			<url>http://download.eclipse.org/modeling/emf/emf/updates/2.11.x/xcore/</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>p2.eclipse.xtext</id>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.8.4/</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>p2.eclipse.emf.compare</id>
-			<url>http://download.eclipse.org/modeling/emf/compare/updates/releases/3.0/R201408191310/</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>p2.eclipse.orbit-R20140525021250</id>
-			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>p2.eclipse.mwe</id>
-			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>p2.eclipse.xpand</id>
-			<url>http://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201505260349/</url>
-			<layout>p2</layout>
-		</repository>
-	</repositories>
-
 	<!-- Repository to resolve fornax-oaw-m2-plugin
 	<pluginRepositories>
 		<pluginRepository>
@@ -162,6 +118,8 @@
 	</pluginRepositories>  -->
 	
 	<modules>
+		<module>releng/org.eclipse.emf.eson.releng</module>
+
 		<module>plugins/org.eclipse.emf.eson</module>
 		<module>features/org.eclipse.emf.eson.feature</module>
 		<module>plugins/org.eclipse.emf.eson.ui</module>
@@ -235,6 +193,13 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<target>
+						<artifact>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>org.eclipse.emf.eson.releng</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
 					<environments>
 						<environment>
 							<os>linux</os>
