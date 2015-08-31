@@ -155,8 +155,11 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 					msg.append(eDataType.getName());
 					msg.append(", ");
 				}
-				msg.append(" but was ");
-				msg.append(feature.getEFeature().getEType().getName());
+				msg.append("but was ");
+				if (feature.getEFeature() != null && feature.getEFeature().getEType() != null)
+					msg.append(feature.getEFeature().getEType().getName());
+				else
+					msg.append("???");
 				error(msg.toString(), featureId, ERR_BAD_TYPE);
 			}
 			return success;
