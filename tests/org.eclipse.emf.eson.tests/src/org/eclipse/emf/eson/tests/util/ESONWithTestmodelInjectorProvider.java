@@ -37,20 +37,19 @@ import testmodel.TestmodelPackage;
  */
 public class ESONWithTestmodelInjectorProvider extends EFactoryInjectorProvider {
 
-    // Needed because.. XtextRunner & *InjectorProvider & *StandaloneSetup
-    // stuff due to GlobalStateMemento in restoreGlobalState() will cause a
-    // confusing mess with hard-to-reproduce test failures if we don't do this.  
-    // To reproduce the original problem, create a JUnit Suite of 1. XcoreTest,
-    // 2. EcoreUtil3Test, 3. SimplestTest (in this exact order!), and you'll see.
-    static {
-        if (!EPackage.Registry.INSTANCE.containsKey(TestmodelPackage.eNS_URI))
-            EPackage.Registry.INSTANCE.put(TestmodelPackage.eNS_URI, TestmodelPackage.eINSTANCE);
-    }
-
 	@Override
 	protected Injector internalCreateInjector() {
-	    // NORMALLY TestmodelPackage.eINSTANCE.getTestModel(); // NOT TestmodelPackageImpl.init();
+	    // Needed because.. XtextRunner & *InjectorProvider & *StandaloneSetup
+	    // stuff due to GlobalStateMemento in restoreGlobalState() will cause a
+	    // confusing mess with hard-to-reproduce test failures if we don't do this.  
+	    // To reproduce the original problem, create a JUnit Suite of 1. XcoreTest,
+	    // 2. EcoreUtil3Test, 3. SimplestTest (in this exact order!), and you'll see.
+        if (!EPackage.Registry.INSTANCE.containsKey(TestmodelPackage.eNS_URI))
+            EPackage.Registry.INSTANCE.put(TestmodelPackage.eNS_URI, TestmodelPackage.eINSTANCE);
+
+		// NORMALLY TestmodelPackage.eINSTANCE.getTestModel(); // NOT TestmodelPackageImpl.init();
 	    //  ^^^^^ but this doesn't really work reliably, so needs above
+
 		return super.internalCreateInjector();
 	}
 
