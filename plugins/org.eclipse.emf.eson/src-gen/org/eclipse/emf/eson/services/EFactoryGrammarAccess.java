@@ -300,15 +300,15 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cReferenceParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Value:
-		//	MultiValue // Following is an inlinedNewObject, if making changes, adapt above too
+		//	MultiValue // Following is an in-lined NewObject, if making changes, adapt above too
 		//	// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-		//	| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{") features+=Feature* "}"
+		//	| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{") features+=Feature* "}"
 		//	{Containment.value=current} | => Reference;
 		@Override public ParserRule getRule() { return rule; }
 
-		//MultiValue // Following is an inlinedNewObject, if making changes, adapt above too
+		//MultiValue // Following is an in-lined NewObject, if making changes, adapt above too
 		//// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-		//| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{") features+=Feature* "}"
+		//| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{") features+=Feature* "}"
 		//{Containment.value=current} | => Reference
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -318,20 +318,20 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//Attribute
 		public RuleCall getAttributeParserRuleCall_1() { return cAttributeParserRuleCall_1; }
 
-		//=> ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{") features+=Feature* "}"
+		//=> ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{") features+=Feature* "}"
 		//{Containment.value=current}
 		public Group getGroup_2() { return cGroup_2; }
 
-		//=> ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{")
+		//=> ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{")
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
-		//{NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{"
+		//{NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{"
 		public Group getGroup_2_0_0() { return cGroup_2_0_0; }
 
 		//{NewObject}
 		public Action getNewObjectAction_2_0_0_0() { return cNewObjectAction_2_0_0_0; }
 
-		//eClass=[ecore::EClass|QualifiedName]
+		//eClass=[ecore::EClass|QualifiedName]?
 		public Assignment getEClassAssignment_2_0_0_1() { return cEClassAssignment_2_0_0_1; }
 
 		//[ecore::EClass|QualifiedName]
@@ -937,9 +937,9 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Value:
-	//	MultiValue // Following is an inlinedNewObject, if making changes, adapt above too
+	//	MultiValue // Following is an in-lined NewObject, if making changes, adapt above too
 	//	// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-	//	| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName] name=ValidID? "{") features+=Feature* "}"
+	//	| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{") features+=Feature* "}"
 	//	{Containment.value=current} | => Reference;
 	public ValueElements getValueAccess() {
 		return pValue;

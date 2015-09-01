@@ -517,7 +517,7 @@ ruleValue returns [EObject current=null]
 (
 		ruleQualifiedName
 )
-)(
+)?(
 (
 ruleValidID
 )
@@ -543,7 +543,7 @@ ruleValidID
 	    }
 
 )
-)(
+)?(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getValueAccess().getNameValidIDParserRuleCall_2_0_0_2_0()); 
