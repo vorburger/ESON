@@ -20,7 +20,6 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.5.3";visibility:=reexport,
  org.eclipse.jdt.annotation;bundle-version="[1.0.1,2.0.0)";resolution:=optional,
  org.eclipse.xtext.xbase;bundle-version="2.5.3",
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
- org.slf4j.api;bundle-version="1.7.2";resolution:=optional,
  org.eclipse.xtend.core,
  org.eclipse.xtend.ide;visibility:=reexport,
  org.eclipse.jdt.core
