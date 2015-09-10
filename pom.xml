@@ -164,8 +164,10 @@
 	<modules>
 		<module>plugins/org.eclipse.emf.eson</module>
 		<module>features/org.eclipse.emf.eson.feature</module>
+		<module>plugins/org.eclipse.emf.eson.edit</module>
 		<module>plugins/org.eclipse.emf.eson.ui</module>
 		<module>features/org.eclipse.emf.eson.ui.feature</module>
+		
 		<module>tests/org.eclipse.emf.eson.tests</module>
 
 		<module>tests/org.eclipse.emf.eson.tests.xtextintegration</module>

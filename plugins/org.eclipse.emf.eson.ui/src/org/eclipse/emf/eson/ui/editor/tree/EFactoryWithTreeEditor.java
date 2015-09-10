@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.presentation.EcoreEditorPlugin;
-import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -62,6 +61,7 @@ import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.Reference;
 import org.eclipse.emf.eson.eFactory.impl.FactoryImpl;
+import org.eclipse.emf.eson.eFactory.provider.EFactoryItemProviderAdapterFactory;
 import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -218,7 +218,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 				});
             adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
             adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-            adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
+            adapterFactory.addAdapterFactory(new EFactoryItemProviderAdapterFactory());
             adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
             
             initializeEditingDomain();
