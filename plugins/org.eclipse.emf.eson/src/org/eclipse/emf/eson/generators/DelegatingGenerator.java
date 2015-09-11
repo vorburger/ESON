@@ -16,11 +16,8 @@ import java.util.ServiceLoader;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Inject;
 
@@ -41,11 +38,11 @@ public class DelegatingGenerator implements IGenerator {
 
 	// TODO Integration Test!! @see com.temenos.ds.op.xtext.generator.tests.MultiGeneratorXtextBuilderParticipantTest
 
-	protected @Inject JdtBasedClassLoaderProvider classLoaderProvider;
+	protected @Inject ClassLoaderProvider classLoaderProvider;
 	
 	@Override
 	public void doGenerate(Resource input, IFileSystemAccess fsa) {
-		ClassLoader classLoader = getClassLoader(input);
+		ClassLoader classLoader = classLoaderProvider.getClassLoader(input);
 		Iterable<IGenerator> generators = getGenerators(classLoader);
 		for (IGenerator generator : generators) {
 			try {
@@ -58,33 +55,6 @@ public class DelegatingGenerator implements IGenerator {
 
 	protected ServiceLoader<IGenerator> getGenerators(ClassLoader classLoader) {
 		return ServiceLoader.load(IGenerator.class, classLoader); // TODO Perhaps this should be cached?
-	}
-
-	// originally inspired by / stolen from org.eclipse.xtext.common.types.access.ClasspathTypeProviderFactory.getClassLoader(ResourceSet)
-	public ClassLoader getClassLoader(Resource resource) {
-		ResourceSet resourceSet = resource.getResourceSet(); 
-		if (resourceSet instanceof XtextResourceSet) {
-			XtextResourceSet xtextResourceSet = (XtextResourceSet) resourceSet;
-			Object ctx = xtextResourceSet.getClasspathURIContext();
-			if (ctx != null) {
-				// NEW, added by Michael Vorburger (TODO Isn't there an existing helper in Xtext that does this?)
-				if (ctx instanceof IJavaProject) {
-					IJavaProject javaProject = (IJavaProject) ctx;
-					Class<?> modelClass = resource.getContents().get(1).getClass(); // TODO harden this.. check if it's an ESON Resource, obtain first non-Factory instance 
-					ClassLoader delegatingClassLoader = new DelegatingClassLoader(IGenerator.class.getClassLoader(), modelClass.getClassLoader());
-					classLoaderProvider.setParentClassLoader(delegatingClassLoader);
-					return classLoaderProvider.createClassLoaderForJavaProject(javaProject); // TODO Perhaps this should be cached?
-				}
-		        if (ctx instanceof Class<?>) {
-		            return ((Class<?>)ctx).getClassLoader();
-		        }
-		        if (!(ctx instanceof ClassLoader)) {
-		        	return ctx.getClass().getClassLoader();
-		        }
-		        return (ClassLoader) ctx;
-			}
-		}
-		throw new IllegalArgumentException("Cannot obtain a ClassLoader for this ResourceSet: " + resourceSet.toString());
 	}
 
 }

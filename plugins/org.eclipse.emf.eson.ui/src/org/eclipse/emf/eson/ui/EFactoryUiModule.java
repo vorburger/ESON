@@ -12,12 +12,14 @@
  */
 package org.eclipse.emf.eson.ui;
 
+import org.eclipse.emf.eson.generators.ClassLoaderProvider;
 import org.eclipse.emf.eson.resource.EFactoryResourceFactory;
 import org.eclipse.emf.eson.ui.contentassist.EFactoryContentAssistantFactory;
 import org.eclipse.emf.eson.ui.contentassist.IEAttributeStringProposalProvider;
 import org.eclipse.emf.eson.ui.contentassist.TerminalsEAttributeStringProposalProvider;
 import org.eclipse.emf.eson.ui.editor.EFactoryFoldingRegionProvider;
 import org.eclipse.emf.eson.ui.editor.model.edit.EFactoryTextEditComposer;
+import org.eclipse.emf.eson.ui.generators.JavaProjectClassLoaderProvider;
 import org.eclipse.emf.eson.ui.highlighting.EFactoryHighlightingCalculator;
 import org.eclipse.emf.eson.ui.highlighting.EFactorySemanticHighlightingConfiguration;
 import org.eclipse.emf.eson.ui.highlighting.EFactoryTokenTypeToStringMapper;
@@ -83,5 +85,9 @@ public class EFactoryUiModule extends AbstractEFactoryUiModule {
 	public Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
 		return EFactoryTokenTypeToStringMapper.class;
 	}
+
+    public Class<? extends ClassLoaderProvider> bindJavaProjectClassLoaderProvider() {
+        return JavaProjectClassLoaderProvider.class;
+    }
 
 }

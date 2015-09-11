@@ -10,7 +10,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * #L%
  */
-package org.eclipse.emf.eson.generators;
+package org.eclipse.emf.eson.ui.generators;
 
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -24,13 +24,16 @@ import org.eclipse.xtend.ide.macro.JdtBasedProcessorProvider;
 import com.google.common.collect.Sets;
 
 /**
- * Extension of Xtext JdtBasedProcessorProvider.
+ * Extension of Xtend JdtBasedProcessorProvider, which allows to customize
+ * ClassLoader, instead of being hard-coded to
+ * org.eclipse.xtend.lib.macro.TransformationContext, as the parent class
+ * (currently in Xtext 2.8.4) is.
  * 
  * @author Michael Vorburger (based on tips from Stephane Oehme)
  */
 @SuppressWarnings("restriction")
-public class JdtBasedClassLoaderProvider extends JdtBasedProcessorProvider {
-	private static Logger logger = Logger.getLogger(JdtBasedClassLoaderProvider.class);
+public class ExtendedJdtBasedProcessorProvider extends JdtBasedProcessorProvider {
+	private static Logger logger = Logger.getLogger(ExtendedJdtBasedProcessorProvider.class);
 
 	// TODO Propose to Xtext to refactor JdtBasedProcessorProvider, and its parent ProcessorInstanceForJvmTypeProvider, into a more generic ClassLoaderProvider
 	
@@ -40,6 +43,7 @@ public class JdtBasedClassLoaderProvider extends JdtBasedProcessorProvider {
 		this.parentClassLoader = parentClassLoader;
 	}
 
+	@Override
 	protected ClassLoader getParentClassLoader() {
 		// NOTE super() is hard-coded to TransformationContext - but we use IGenerator
 		return parentClassLoader;
