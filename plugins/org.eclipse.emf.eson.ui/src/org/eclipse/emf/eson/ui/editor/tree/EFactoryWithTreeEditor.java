@@ -16,12 +16,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.EventObject;
 
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.celleditor.ExtendedDialogCellEditor;
@@ -151,7 +154,24 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	}
     
 	private void initializeEditingDomain() {
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, new EFactoryCommandStack(), resourceSet) {
+	    EFactoryCommandStack eFactoryCommandStack = new EFactoryCommandStack();
+	    eFactoryCommandStack.addCommandStackListener
+        (new CommandStackListener() {
+            @Override
+             public void commandStackChanged(final EventObject event) {
+                 getContainer().getDisplay().asyncExec
+                     (new Runnable() {
+                          public void run() {
+                              // Try to select the affected objects.
+                              Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
+                              if (mostRecentCommand != null) {
+                                  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+                              }
+                          }
+                      });
+             }
+         });
+		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, eFactoryCommandStack, resourceSet) {
 			@Override
 			public boolean isReadOnly(Resource resource) {
 				return super.isReadOnly(resource) || getResourceSet().getResources().indexOf(resource) != 0;
@@ -372,7 +392,6 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	
 	private ISelectionChangedListener createPropertiesViewUpdater() {
 			return new ISelectionChangedListener() {
-
 				public void selectionChanged(SelectionChangedEvent event) {
 					try {
 						ISelection selection = event.getSelection();
@@ -438,7 +457,6 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 										return null;
 									}
 								});
-
 							// update the properties view
 							updatePropertiesView(mapToStructuredSelection(treeSelection));
 						}
