@@ -230,7 +230,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
     		}
     		
              final Tree tree = new Tree(sashForm, SWT.MULTI);
-             selectionViewer = new TreeViewer(tree);
+             selectionViewer = new NonCollapsingTreeViewer(tree);
              setCurrentViewer(selectionViewer);
 
              selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
