@@ -51,7 +51,7 @@ public class SimplestTest {
 		assertEquals("abc", m.getName());
 		assertNotNull(m.getSingleRequired());
 	}
-	
+
 	@Ignore // Named Typeless Containment currently is not needed (yet?), thus NOT supported - not sure if it ever will be.
 	// The conceptual problem is that given e.g. "singleRequired: d { }" it's not clear if d is the EClass or the name... hm. 
 	// @see also SerializationTest's testNotTypelessBecauseNamedContainment

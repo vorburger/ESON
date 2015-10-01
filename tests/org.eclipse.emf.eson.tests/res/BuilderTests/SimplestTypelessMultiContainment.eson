@@ -1,0 +1,16 @@
+// This reproduces and ensure future non-regression for a particular bug where
+// the EStructuralFeature-s of contained MultiValue NewObject were not found
+// with (only) dynamic 'import' instead of 'use' metamodels. 
+
+import testmodel.* // NOT use
+ 
+TestModel abc {
+	singleRequired: { }
+	attributeTest: [ AttributeTestContainer
+	    // NOT "AttributeTestContainer" here
+        {
+            oneInt: 123
+        }
+    ]
+
+} 

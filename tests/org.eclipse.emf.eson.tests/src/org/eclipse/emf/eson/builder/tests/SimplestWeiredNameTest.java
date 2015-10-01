@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eson.tests.util.DumpIndexUtil;
-import org.eclipse.emf.eson.tests.util.ESONWithTestmodelAndDynamicECoreInjectorProvider;
+import org.eclipse.emf.eson.tests.util.ESONDynamicECoreInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -31,7 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(XtextRunner.class)
-@InjectWith(ESONWithTestmodelAndDynamicECoreInjectorProvider.class) // NOT just ESONWithTestmodelInjectorProvider
+@InjectWith(ESONDynamicECoreInjectorProvider.class) // NOT just ESONWithTestmodelInjectorProvider
 public class SimplestWeiredNameTest {
 	// see also SimplestDynamicECoreTest - these tests here are written in the same style
 

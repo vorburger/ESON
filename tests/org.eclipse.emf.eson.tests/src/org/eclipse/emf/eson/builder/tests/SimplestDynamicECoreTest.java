@@ -19,7 +19,8 @@ import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.eson.tests.util.ESONWithTestmodelAndDynamicECoreInjectorProvider;
+import org.eclipse.emf.eson.tests.util.DumpIndexUtil;
+import org.eclipse.emf.eson.tests.util.ESONDynamicNoEStructuralFeatureECoreInjectorProvider;
 import org.eclipse.emf.eson.tests.util.ResourceProvider;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -28,7 +29,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(XtextRunner.class)
-@InjectWith(ESONWithTestmodelAndDynamicECoreInjectorProvider.class)
+@InjectWith(ESONDynamicNoEStructuralFeatureECoreInjectorProvider.class)
 public class SimplestDynamicECoreTest {
 
 	@Inject ResourceProvider provider;
@@ -48,22 +49,32 @@ public class SimplestDynamicECoreTest {
 	}
 
 	@Test public void testSimplestWithEnum() throws Exception {
-		EObject em = check("res/BuilderTests/SimplestWithEnum.eson");
+		/*EObject em = */ check("res/BuilderTests/SimplestWithEnum.eson");
 		// TODO assert attributeTest.oneEnum = Sample2 .. (but the fact that above even passed without exception is already a good start)
 	}
 
-	
+    @Test public void testSimplestTypelessMultiContainment() throws Exception {
+        /*TestModel m = (TestModel) */
+        EObject eo = check("res/BuilderTests/SimplestTypelessMultiContainment.eson");
+        //assertEquals("abc", m.getName());
+        //assertNotNull(m.getSingleRequired());
+        //assertEquals(123, m.getAttributeTest().get(0).getOneInt());
+    }
+
 	protected EObject check(String esonPath) throws Exception {
 		EList<EObject> contents = provider.load("model/TestModel.ecore", true);
 		EPackage ePackage = (EPackage) contents.get(0);
 		assertEquals("testmodel", ePackage.getName());
 		// Do NOT DumpIndexUtil.dumpXtextIndex(ePackage.eResource()); as that does not work yet for *.ecore as this stage (later below on an *.eson it works - and dumps the *.ecore as well)
 
-		@SuppressWarnings("unused") EList<EObject> content = provider.load(esonPath, false);
-		// DEBUG: DumpIndexUtil.dumpXtextIndex(content.get(0).eResource());
+		// @SuppressWarnings("unused") 
+		EList<EObject> content = provider.load(esonPath, false);
+		// DEBUG: 
+		DumpIndexUtil.dumpXtextIndex(content.get(0).eResource());
 
 		EObject em = provider.loadModel(esonPath, EObject.class);
 		assertEquals("TestModel", em.eClass().getName());
+
 // NOTE Even this cannot work, as it mixes the dynamic and static style.. see main problem, below.
 //		assertEquals("abc", em.eGet(TestmodelPackage.Literals.TEST_MODEL__NAME));
 

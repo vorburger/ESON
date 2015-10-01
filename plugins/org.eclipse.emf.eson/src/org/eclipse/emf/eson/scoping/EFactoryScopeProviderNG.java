@@ -59,7 +59,7 @@ public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 		Optional<EClass> optionalEClass = newObjectExtensions.getDeclaredOrInferredEClass(newObject);
 		if (optionalEClass.isPresent()) {
 			EClass eClass = optionalEClass.get();
-			Iterable<? extends EObject> assignableFeature = EcoreUtil3.getAssignableFeatures(eClass );
+			Iterable<? extends EStructuralFeature> assignableFeature = EcoreUtil3.getAssignableFeatures(eClass);
 			Iterable<IEObjectDescription> descs = Scopes.scopedElementsFor(assignableFeature, DottedQualifiedNameFixer.FUNCTION);
 			return new SimpleScope(descs);
 		} else {

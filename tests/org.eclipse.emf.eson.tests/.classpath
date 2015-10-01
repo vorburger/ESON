@@ -10,5 +10,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="lib" path="/home/mvorburger/Downloads/slf4j-1.7.12/slf4j-simple-1.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/mvorburger/Downloads/slf4j-1.7.12/slf4j-api-1.7.12.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
