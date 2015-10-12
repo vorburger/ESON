@@ -12,39 +12,20 @@
  */
 package org.eclipse.emf.eson.ui.labeling;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.eson.eFactory.EFactoryPackage;
+import org.eclipse.emf.eson.eFactory.impl.NewObjectImpl;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
-
-import com.google.inject.Inject;
 
 public class EFactoryLabelProvider extends DefaultEObjectLabelProvider {
 
-//	@Inject	private NameAccessor nameAccessor;
-
-	@Inject
-	protected EFactoryLabelProvider(AdapterFactory adapterFactory) {
-		super(new AdapterFactoryLabelProvider(adapterFactory));
+    public String text(NewObjectImpl element) {
+        return new StringBuilder(element.getEClass().getName()).append(" ")
+                .append((element.getName() == null) ? "" : element.getName()).toString();
 	}
 
-	@Override
-	protected Object doGetText(Object element) {
-/*		
-		if (element instanceof DynamicEObjectImpl) {
-			DynamicEObjectImpl eObject = (DynamicEObjectImpl) element;
-			if (eObject.eResource() instanceof EFactoryResource) {
-				EFactoryResource eFactoryResource = (EFactoryResource) eObject.eResource();
-				Factory factory = eFactoryResource.getFactory();
-				try {
-					return nameAccessor.getName(factory, eObject);
-				} catch (NoNameFeatureMappingException e) {
-					return eObject.eClass().getName();
-				}
-			}
-		}
-*/		
-		final Object text = super.doGetText(element);
-		return text;
+    public String image(NewObjectImpl element) {
+        return (element.eContainer().eClass().getClassifierID() == EFactoryPackage.FACTORY) ? "RootObject.gif"
+                : "Component.gif";
 	}
 
 }

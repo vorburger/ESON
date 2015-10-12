@@ -23,12 +23,15 @@ import org.eclipse.emf.eson.ui.generators.JavaProjectClassLoaderProvider;
 import org.eclipse.emf.eson.ui.highlighting.EFactoryHighlightingCalculator;
 import org.eclipse.emf.eson.ui.highlighting.EFactorySemanticHighlightingConfiguration;
 import org.eclipse.emf.eson.ui.highlighting.EFactoryTokenTypeToStringMapper;
+import org.eclipse.emf.eson.ui.outline.DisabledComparator;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.ui.editor.contentassist.IContentAssistantFactory;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.model.edit.ITextEditComposer;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter.IComparator;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
@@ -88,6 +91,16 @@ public class EFactoryUiModule extends AbstractEFactoryUiModule {
 
     public Class<? extends ClassLoaderProvider> bindJavaProjectClassLoaderProvider() {
         return JavaProjectClassLoaderProvider.class;
+    }
+
+    @Override
+    public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
+        return null;
+    }
+
+    @Override
+    public Class<? extends IComparator> bindOutlineFilterAndSorter$IComparator() {
+        return DisabledComparator.class;
     }
 
 }
