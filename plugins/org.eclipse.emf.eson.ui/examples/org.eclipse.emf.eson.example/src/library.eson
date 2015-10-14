@@ -30,8 +30,12 @@ Library {
             name: "Perry Rhodan"
             pages: 12345
             author: Scheer
-            category: :SciFi
-        }
+			category: :SciFi
+	        sequels: [
+				lunar.Gucky
+				FQNRef
+			]
+		}
     ]
     writers: [
         Writer Scheer {

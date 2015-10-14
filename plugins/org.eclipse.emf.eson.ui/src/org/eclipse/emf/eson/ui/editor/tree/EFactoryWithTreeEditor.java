@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -84,6 +85,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
@@ -118,6 +120,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.label.GlobalDescriptionLabelProvider;
 import org.eclipse.xtext.ui.search.IXtextEObjectSearch;
+import org.eclipse.xtext.ui.search.XtextEObjectSearchDialog;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomainProvider, IMenuListener, ISelectionProvider{
@@ -499,8 +502,8 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 					return new Object[] { 
 							new URIBasedPropertySource(object, source, document) {
 
-								protected IPropertyDescriptor createPropertyDescriptor(EObject object, IItemPropertyDescriptor itemPropertyDescriptor) {
-									return new EFactoryPropertyDescriptor(object, itemPropertyDescriptor) {
+							protected IPropertyDescriptor createPropertyDescriptor(final EObject eObject, IItemPropertyDescriptor itemPropertyDescriptor) {
+								return new EFactoryPropertyDescriptor(eObject, itemPropertyDescriptor) {
 										@Override
 										protected CellEditor createEDataTypeCellEditor(final EDataType eDataType, Composite composite) {
 											return new EFactoryEDataTypeCellEditor(eDataType, composite);
@@ -512,22 +515,39 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 											if (feature instanceof EReference) {
 												final EReference eReference = (EReference) feature;
 												editor = new ExtendedDialogCellEditor(composite, getEditLabelProvider()) {
-													@Override
+                                                    @Override @SuppressWarnings("unchecked")
 													protected Object openDialogBox(Control cellEditorWindow) {
-														EObject result = null;
-														XtextEObjectSearchDialog2 dlg = 
-																new XtextEObjectSearchDialog2(composite.getShell(), eObjectSearch, globalDescriptionLabelProvider);		
-														eReference.getClass();
-														dlg.setInitialTypePattern(eReference.getEReferenceType().getName(), false);
-														dlg.open();
-														Object[] dlgResult =  dlg.getResult();
-														if (dlgResult != null && dlgResult.length == 1) {
-															result = ((IEObjectDescription)dlgResult[0]).getEObjectOrProxy();
+													Object currentEObjects = eObject.eGet(eReference);
+													XtextEObjectSearchDialog dlg;
+													if (eReference.isMany()) {
+														dlg = new XtextMultiEObjectSearchDialog(composite.getShell(), eObjectSearch, globalDescriptionLabelProvider);
+														((XtextMultiEObjectSearchDialog)dlg).setInitialSelection((List<EObject>) currentEObjects);
+													} else {
+														dlg = new XtextEObjectSearchDialog(composite.getShell(), eObjectSearch, globalDescriptionLabelProvider);
+													}
+													dlg.setInitialTypePattern(eReference.getEReferenceType().getName(), false);
+													int status = dlg.open();
+													if(status == Window.OK) {
+														Object[] dlgResult = dlg.getResult();
+														ArrayList<EObject> result = new ArrayList<EObject>();
+														if (dlgResult != null) {
+															for (Object eObjectDesc : dlgResult) {
+																EObject eObject = ((IEObjectDescription)eObjectDesc).getEObjectOrProxy();
+																// This is probably more of a work-around than a fix of the actual root cause :( but it works
+																if (eObject != null && eObject.eIsProxy()) {
+																	eObject = EcoreUtil.resolve(eObject, eReference.eResource());
+																}
+																result.add(eObject);
+															}
 														}
-														// This is probably more of a work-around than a fix of the actual root cause :( but it works
-														if (result != null && result.eIsProxy())
-															result = EcoreUtil.resolve(result, eReference.eResource());
-														return result;
+														if(eReference.isMany()) {
+															return result;
+														} else {
+															return (result.size() > 0) ? result.get(0) : null;
+														}
+													} else {
+														return currentEObjects;
+													}
 													}
 												};
 											} else {
@@ -538,7 +558,8 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 										}
 									};
 								}
-							}};
+						}
+					};
 				}
 			};
 		}
