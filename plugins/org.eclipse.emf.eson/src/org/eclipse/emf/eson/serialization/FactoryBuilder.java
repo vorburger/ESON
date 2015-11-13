@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eson.EFactoryServiceProvider;
 import org.eclipse.emf.eson.eFactory.EFactoryFactory;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.NewObject;
@@ -27,9 +28,15 @@ public class FactoryBuilder implements IFactoryBuilder {
 	// merge this class with the new FactoryBuilder2; the mapping below will become 
 	// the same as the mapping in the ModelBuilder
 	
+	private final EFactoryServiceProvider serviceProvider;
 	private Map<EObject, NewObject> mapping = new HashMap<EObject, NewObject>();
 	private Factory factory;
 	
+	public FactoryBuilder(EFactoryServiceProvider serviceProvider) {
+		super();
+		this.serviceProvider = serviceProvider;
+	}
+
 	public Factory buildFactory(EObject eObject) {
 		factory = EFactoryFactory.eINSTANCE.createFactory();
 		PackageImport packageImport = createPackageImport(eObject);
@@ -63,5 +70,10 @@ public class FactoryBuilder implements IFactoryBuilder {
 		PackageImport packageImport = EFactoryFactory.eINSTANCE.createPackageImport();
 		packageImport.setEPackage(eObject.eClass().getEPackage());
 		return packageImport;
+	}
+
+	@Override
+	public EFactoryServiceProvider getEFactoryServiceServiceProvider() {
+		return serviceProvider;
 	}
 }

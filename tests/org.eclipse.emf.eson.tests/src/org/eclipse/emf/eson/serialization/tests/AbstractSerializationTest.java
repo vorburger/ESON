@@ -28,6 +28,7 @@ import org.eclipse.emf.compare.scope.DefaultComparisonScope;
 import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.eson.EFactoryServiceProvider;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.emf.eson.serialization.FactoryBuilder;
@@ -48,6 +49,7 @@ public abstract class AbstractSerializationTest {
 //	private ISerializer serializer;
 
 	@Inject IResourceDescription.Manager resourceDescriptionManager;
+	@Inject EFactoryServiceProvider serviceProvider;
 	
 	protected void printExportedObjects(Resource r) {
 		System.out.println(r.getURI());
@@ -94,7 +96,7 @@ public abstract class AbstractSerializationTest {
 		EObject testModel = loadTestModel(name);
 		Factory expected = ((EFactoryResource) testModel.eResource()).getEFactoryFactory();
 		
-		FactoryBuilder builder = new FactoryBuilder();
+		FactoryBuilder builder = new FactoryBuilder(serviceProvider);
 		Factory actual = builder.buildFactory(testModel);
 
 		assertModelsEquals(expected, actual);

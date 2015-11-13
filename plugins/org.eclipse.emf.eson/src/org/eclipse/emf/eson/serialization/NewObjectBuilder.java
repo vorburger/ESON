@@ -26,6 +26,7 @@ import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.MultiValue;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.Value;
+import org.eclipse.jdt.annotation.NonNull;
 
 // intentionally a package local class, the entry point to this package is FactoryBuilder, only
 class NewObjectBuilder {
@@ -55,12 +56,25 @@ class NewObjectBuilder {
 		return newObject;
 	}
 
-	private void setName(NewObject newObject, EObject input) {
+	private void setName(@NonNull NewObject newObject, EObject input) {
 		nameEAttribute = nameAccessor.getNameAttribute(newObject, context);
 		if (nameEAttribute != null) {
-			String name = (String) input.eGet(nameEAttribute);
-			newObject.setName(name);
+			if (input.eIsSet(nameEAttribute)) {
+				String name = (String) input.eGet(nameEAttribute);
+				if (name != null) {
+					if (isNameAfterClass(name)) {
+						newObject.setName(name);
+					} else {
+						final EList<Feature> features = newObject.getFeatures();
+						features.add(createAttribute(nameEAttribute, name));
+					}
+				}
+			}
 		}
+	}
+
+	private boolean isNameAfterClass(String name) {
+		return factoryBuilder.getEFactoryServiceServiceProvider().getValidIDChecker().isValidID(name);
 	}
 
 	private void addContainments(NewObject newObject, EObject input) {

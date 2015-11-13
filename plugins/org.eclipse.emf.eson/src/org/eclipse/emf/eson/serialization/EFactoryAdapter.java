@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.emf.eson.building.NameAccessor;
+import org.eclipse.emf.eson.EFactoryServiceProvider;
 import org.eclipse.emf.eson.eFactory.EFactoryFactory;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.Feature;
@@ -36,6 +36,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
 import com.google.common.primitives.Ints;
+import com.google.inject.Inject;
 
 /**
  * EMF Adapter (Observer) which gets notified by the observed derived "real"
@@ -53,7 +54,7 @@ import com.google.common.primitives.Ints;
 public class EFactoryAdapter extends EContentAdapter {
 	private static Logger logger = Logger.getLogger(EFactoryAdapter.class);
 
-	protected NameAccessor nameAccessor = new NameAccessor();
+	protected @Inject EFactoryServiceProvider serviceProvider;
 	private boolean isReEntrant = false;
 	
 	@Override
@@ -107,15 +108,13 @@ public class EFactoryAdapter extends EContentAdapter {
 	protected void handleObjectModification(EObject object, Notification msg) {
 		NewObject newObject = getChangedNewObject(object);
 		Resource resource = newObject.eResource();
-		
+
+		if (handledAsNameChange(msg, object, newObject, resource))
+			return;
+
 		Feature factoryFeature = getChangedFactoryFeature(msg, newObject);
 		if (factoryFeature == null) {
-			// The NewObject doesn't have a dedicated name Feature, so try to set name property of NewObject
-			if (handledAsNameChange(msg, object, newObject, resource)) {
-				return;
-			} else {
-				factoryFeature = newFactoryFeature(msg, newObject);
-			}
+			factoryFeature = newFactoryFeature(msg, newObject);
 		}
 		
 		switch (msg.getEventType()) {
@@ -150,13 +149,25 @@ public class EFactoryAdapter extends EContentAdapter {
 		if (msg.getEventType() != Notification.SET  &&  msg.getEventType() != Notification.UNSET)
 			return false;
 		@SuppressWarnings("null")
-		EAttribute nameAttribute = nameAccessor.getNameAttribute(newObject);
-		if (nameAttribute != null && nameAttribute.equals(msg.getFeature())) {
-			String newName = msg.getNewStringValue();
+		EAttribute nameAttribute = serviceProvider.getNameAccessor().getNameAttribute(newObject);
+		String newName = msg.getNewStringValue();
+		if (nameAttribute != null && nameAttribute.equals(msg.getFeature()) 
+				&& serviceProvider.getValidIDChecker().isValidID(newName)) {
+			removeNewObjectFeature(newObject, nameAttribute);
 			newObject.setName(newName);
 			return true;
-		} else
+		} else {
+			// Clear the name attribute (normal setOrRemoveSingleValue etc. will handle update to the derived model)
+			newObject.setName(null);
 			return false;
+		}
+	}
+
+	protected void removeNewObjectFeature(NewObject newObject, EStructuralFeature nameAttribute) {
+		Feature feature = getChangedFactoryFeature(nameAttribute, newObject);
+		if (feature != null) {
+			newObject.getFeatures().remove(feature);
+		}
 	}
 
 	protected void setOrRemoveSingleValue(Feature factoryFeature, final Notification msg, Resource resource) {
@@ -173,7 +184,7 @@ public class EFactoryAdapter extends EContentAdapter {
 		Factory factory = resource.getEFactoryFactory();
 		if (factory == null)
 			throw new IllegalStateException();
-		FactoryBuilder2 factoryBuilder = new FactoryBuilder2(resource);
+		FactoryBuilder2 factoryBuilder = new FactoryBuilder2(resource, serviceProvider);
 		NewObjectBuilder builder = NewObjectBuilder.context(factory, factoryBuilder);
 		NewObject newObject = builder.build(eObject);
 		factory.setRoot(newObject);
@@ -186,7 +197,7 @@ public class EFactoryAdapter extends EContentAdapter {
 
 	protected Value getNewValue(Feature factoryFeature, Notification msg, Object newValue) {
 		EFactoryResource resource = getEFactoryResource(msg);
-		IFactoryBuilder factoryBuilder = new FactoryBuilder2(resource);
+		IFactoryBuilder factoryBuilder = new FactoryBuilder2(resource, serviceProvider);
 		EStructuralFeature eFeature = factoryFeature.getEFeature();
 		return FeatureBuilderFactory.createValue(eFeature, factoryBuilder, newValue);
 	}
@@ -257,7 +268,10 @@ public class EFactoryAdapter extends EContentAdapter {
 	}
 
 	protected @Nullable Feature getChangedFactoryFeature(Notification msg, NewObject newObject) {
-		EStructuralFeature changedEFeature = (EStructuralFeature) msg.getFeature();
+		return getChangedFactoryFeature((EStructuralFeature) msg.getFeature(), newObject);
+	}
+	
+	protected @Nullable Feature getChangedFactoryFeature(EStructuralFeature changedEFeature, NewObject newObject) {
 		EList<Feature> newObjectAllFeatures = newObject.getFeatures();
 		for (Feature feature : newObjectAllFeatures) {
 			if (changedEFeature.equals(feature.getEFeature())) {

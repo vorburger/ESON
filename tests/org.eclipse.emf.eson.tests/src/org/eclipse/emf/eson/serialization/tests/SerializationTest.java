@@ -27,6 +27,10 @@ public class SerializationTest extends AbstractSerializationTest {
 		performSerializationTest("FactoryCreation.efactory");
 	}
 
+	@Test public void testFunkyNameWithSpace() throws Exception {
+	    performSerializationTest("FunkyNameWithSpace.eson");
+	}
+	
 	@Test public void testSimplestMultiValue() throws Exception {
 		performSerializationTest("SimplestMultiValue.efactory");
 	}

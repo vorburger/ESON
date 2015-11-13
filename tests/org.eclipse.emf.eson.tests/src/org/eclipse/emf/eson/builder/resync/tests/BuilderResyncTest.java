@@ -73,6 +73,7 @@ public class BuilderResyncTest {
 
 	// using a Provider because we want each test to get a fresh ResourceProvider 
 	@Inject Provider<ResourceProvider> rp;
+	// @Inject DumpParsedStructureUtil dumper;
 
 	@Test
 	public void testChangeNameStringValueFeature() throws Exception {
@@ -96,20 +97,26 @@ public class BuilderResyncTest {
 		((EFactoryResource)eFactory.eResource()).installDerivedState(true); // intentionally true instead of false, because it simulates indexing, and makes sure attributes named "name" attributes are indexed (not just NewObject name) - unless we decide otherwise, see discussion point a) in ModelBuilder
 		testModel = (TestModel) resourceContents.get(1);
 		assertEquals("testit", testModel.getName());
+		assertEquals(2, eFactory.getRoot().getFeatures().size());
 		
-		// Change the TestModel and re-check the EFactory model (EFactoryAdapter did it's thing)
+		// Change the TestModel to a ValidID and re-check the EFactory model (EFactoryAdapter did it's thing)
 		testModel.setName("tested");
-		assertEquals("tested", getRootObjectFirstFeatureAsString(eFactory));
-		assertNull(eFactory.getRoot().getName()); // as there already was name = "test", it should NOT become TestModel tested
-		
-		int nFeatures = eFactory.getRoot().getFeatures().size();
+		assertEquals(1, eFactory.getRoot().getFeatures().size());
+		assertEquals("tested", eFactory.getRoot().getName()); // as the name is a ValidID, it SHOULD become "TestModel tested { ..."
+
+		// Change the TestModel to a NON-ValidID and re-check the EFactory model (EFactoryAdapter did it's thing)
+		testModel.setName("test#Model Name");
+		assertEquals(2, eFactory.getRoot().getFeatures().size());
+		assertEquals("test#Model Name", getRootObjectSecondFeatureAsString(eFactory));
+		assertNull(eFactory.getRoot().getName());
+
 		testModel.setName(null);
-		assertTrue(eFactory.getRoot().getFeatures().size() == nFeatures - 1);
+		assertEquals(1, eFactory.getRoot().getFeatures().size());
 		checkNodes(eFactory);
 	}
 
-	protected String getRootObjectFirstFeatureAsString(Factory eFactory) {
-		final Value efValue = eFactory.getRoot().getFeatures().get(0).getValue();
+	protected String getRootObjectSecondFeatureAsString(Factory eFactory) {
+		final Value efValue = eFactory.getRoot().getFeatures().get(1).getValue();
 		final StringAttribute efStringValue = (StringAttribute) efValue;
 		return efStringValue.getValue();
 	}

@@ -13,7 +13,7 @@
 package org.eclipse.emf.eson.serialization;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.eson.EFactoryServiceProvider;
 import org.eclipse.emf.eson.eFactory.NewObject;
 
 /**
@@ -27,5 +27,7 @@ import org.eclipse.emf.eson.eFactory.NewObject;
 public interface IFactoryBuilder {
 
 	NewObject getOrBuildNewObject(EObject eObject);
+
+	EFactoryServiceProvider getEFactoryServiceServiceProvider();
 
 }

@@ -13,6 +13,7 @@
 package org.eclipse.emf.eson.serialization;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eson.EFactoryServiceProvider;
 import org.eclipse.emf.eson.building.ModelBuilder;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.eFactory.NewObject;
@@ -33,11 +34,13 @@ public class FactoryBuilder2 implements IFactoryBuilder {
 	// Serialization with my new re-syncing..
 	
 	private final EFactoryResource resource;
+	private final EFactoryServiceProvider serviceProvider;
 
-	public FactoryBuilder2(EFactoryResource resource) {
+	public FactoryBuilder2(EFactoryResource resource, EFactoryServiceProvider serviceProvider) {
 		if (resource == null)
 			throw new IllegalArgumentException("FactoryBuilder2(null)");
 		this.resource = resource;
+		this.serviceProvider = serviceProvider;
 	}
 
 	public NewObject getOrBuildNewObject(EObject eObject) {
@@ -64,6 +67,11 @@ public class FactoryBuilder2 implements IFactoryBuilder {
 		NewObjectBuilder builder = NewObjectBuilder.context(factory, this);
 		NewObject newObject = builder.build(eObject);
 		return newObject;
+	}
+
+	@Override
+	public EFactoryServiceProvider getEFactoryServiceServiceProvider() {
+		return serviceProvider;
 	}
 
 }

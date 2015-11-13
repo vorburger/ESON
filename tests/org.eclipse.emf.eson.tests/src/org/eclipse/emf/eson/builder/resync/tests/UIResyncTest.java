@@ -31,11 +31,11 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import testmodel.SingleRequired;
-import testmodel.TestModel;
-
 import com.google.common.base.Preconditions;
 import com.google.inject.Injector;
+
+import testmodel.SingleRequired;
+import testmodel.TestModel;
 
 /**
  * Tests the "re-sychronization" of changes to the derived "real" EObjects to
@@ -80,7 +80,7 @@ public class UIResyncTest extends AbstractXtextTests {
 		});
 		
 		formattedText = LineEndingUtil.fixLineEndings(document.get());
-		assertEquals("use testmodel.* \n\nTestModel {\n	name: \"tested\"\n	singleRequired: SingleRequired { }\n}", formattedText);
+		assertEquals("use testmodel.* \n\nTestModel tested {\n	singleRequired: SingleRequired { }\n}", formattedText);
 	}
 
 	/**
