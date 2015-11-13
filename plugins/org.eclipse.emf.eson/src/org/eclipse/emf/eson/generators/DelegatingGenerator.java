@@ -42,13 +42,25 @@ public class DelegatingGenerator implements IGenerator {
 	
 	@Override
 	public void doGenerate(Resource input, IFileSystemAccess fsa) {
+		delegateToProjectRuntimeClasspathGenerators(input, fsa);
+		delegateToPluginGenerators(input, fsa);
+	}
+
+	protected void delegateToPluginGenerators(Resource input, IFileSystemAccess fsa) {
+		// TODO Auto-generated method stub
+	}
+
+	protected void delegateToProjectRuntimeClasspathGenerators(Resource input, IFileSystemAccess fsa) {
 		ClassLoader classLoader = classLoaderProvider.getClassLoader(input);
-		Iterable<IGenerator> generators = getGenerators(classLoader);
+		invokeGeneratorsAndHandleErrors(input, fsa, getGenerators(classLoader), "project runtime classpath generator ");
+	}
+
+	protected void invokeGeneratorsAndHandleErrors(Resource input, IFileSystemAccess fsa, Iterable<IGenerator> generators, String errorMessagePrefix) {
 		for (IGenerator generator : generators) {
 			try {
  				generator.doGenerate(input, fsa);
 			} catch (Exception e) {
-				logger.error("Caught exception from doGenerate() of " + generator.toString() + " for URI: " + input.getURI(), e);
+				logger.error("Caught exception from doGenerate() of " + errorMessagePrefix + generator.toString() + " for URI: " + input.getURI(), e);
 			}
 		}
 	}
