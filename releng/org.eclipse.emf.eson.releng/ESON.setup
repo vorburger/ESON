@@ -123,7 +123,11 @@
     <sourceLocator
         rootFolder="${eson.git.clone.location}"/>
     <sourceLocator
+        rootFolder="${eson.git.clone.location/plugins/org.eclipse.emf.eson.ui/examples/org.eclipse.emf.eson.example.xcore}"/>
+    <sourceLocator
         rootFolder="${eson.git.clone.location/releng/org.eclipse.emf.eson.repository}"/>
+    <sourceLocator
+        rootFolder="${eson.git.clone.location/releng/org.eclipse.emf.eson.releng}"/>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
