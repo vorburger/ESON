@@ -56,6 +56,8 @@ import com.google.common.io.Resources;
 @SuppressWarnings("restriction")
 public class GeneratorsTest extends AbstractBuilderTest {
 
+    // TODO plugin.xml something like https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/tests/com.temenos.ds.op.xtext.tests/plugin.xml
+    
     // This is a minimalistic IGenerator implementation
     private static final String MINIMAL_VALID_GENERATOR = "package test;\nimport org.eclipse.emf.ecore.resource.Resource;\nimport org.eclipse.xtext.generator.IFileSystemAccess;\nimport org.eclipse.xtext.generator.IGenerator;\npublic class Generator implements IGenerator {\n  @Override\n public void doGenerate(Resource input, IFileSystemAccess fsa) {\n       fsa.generateFile(input.getURI().lastSegment() + \".inproject.txt\", \"hello\");\n   }\n}";
 /*

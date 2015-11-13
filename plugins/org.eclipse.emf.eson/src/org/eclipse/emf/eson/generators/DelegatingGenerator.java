@@ -24,20 +24,19 @@ import com.google.inject.Inject;
 /**
  * An IGenerator which delegates to other IGenerator listed in a
  * META-INF/services/org.eclipse.xtext.generator.IGenerator on the classpath of
- * the project of the input Resource being generated.
- * 
- * TODO Also support looking up generators from other plug-ins using an
- * extension point instead of only the run-time classpath? See à la
- * com.temenos.ds.op.xtext.generator.ui.IGeneratorsProvider, and
- * com.temenos.ds.op.xtext.generator.ui.PluginsGeneratorsProvider.
+ * the project of the input Resource being generated, or via Eclipse plugin
+ * system.
  * 
  * @author Michael Vorburger, based on ClassLoader magic tips from Stefan Oehme
  */
 public class DelegatingGenerator implements IGenerator {
 	private static final Logger logger = Logger.getLogger(DelegatingGenerator.class);
 
-	// TODO Integration Test!! @see com.temenos.ds.op.xtext.generator.tests.MultiGeneratorXtextBuilderParticipantTest
+	// TODO Finish working Integration Test org.eclipse.emf.eson.generators.tests.GeneratorsTest
 
+	// TODO look-up plug-in registered generators, using code like https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/plugins-ui/com.temenos.ds.op.xtext.ui/src/com/temenos/ds/op/xtext/generator/ui/PluginsGeneratorsProvider.java
+	// TODO but should that code be here in core? That belongs into UI to avoid the dependency... I think we'll need an IGeneratorsProvider-like concept, see https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/plugins-ui/com.temenos.ds.op.xtext.ui/src/com/temenos/ds/op/xtext/generator/ui/IGeneratorsProvider.java 
+	
 	protected @Inject ClassLoaderProvider classLoaderProvider;
 	
 	@Override
