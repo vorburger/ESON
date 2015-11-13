@@ -23,13 +23,13 @@ use library.* // TODO (later when unified) import org.eclipse.emf.eson.example.l
  * and is therefore typically not (yet) really useful in practice; 
  * except for demo-like quick turn-around change-Xcore/use-ESON cycles ;). 
  */
-
-Library {
+ 
+Library lib1 {
     books: [
         Book {
             name: "Perry Rhodan"
             pages: 12345
-            author: Scheer
+            author: lib1.Scheer
 			category: :SciFi
 	        sequels: [
 				lunar.Gucky

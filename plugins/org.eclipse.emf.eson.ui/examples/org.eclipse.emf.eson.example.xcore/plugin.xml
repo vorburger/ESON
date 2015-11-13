@@ -13,5 +13,11 @@
             class="org.eclipse.emf.eson.example.library.LibraryPackage"
             genModel="model/library.xcore"/>
    </extension>
+   <extension
+         point="org.eclipse.emf.eson.generator">
+      <generator
+            class="org.eclipse.emf.eson.example.library.generator.Generator">
+      </generator>
+   </extension>
 
 </plugin>
