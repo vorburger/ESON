@@ -65,7 +65,8 @@ public class DelegatingGenerator implements IGenerator {
 	}
 
 	protected ServiceLoader<IGenerator> getGenerators(ClassLoader classLoader) {
-		return ServiceLoader.load(IGenerator.class, classLoader); // TODO Perhaps this should be cached?
+		// TODO Perhaps this should be cached?
+		return ServiceLoader.load(IGenerator.class, classLoader);
 	}
 
 }
