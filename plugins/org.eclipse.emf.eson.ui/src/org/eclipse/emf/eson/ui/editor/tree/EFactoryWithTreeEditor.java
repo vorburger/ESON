@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -34,12 +35,15 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.presentation.EcoreEditorPlugin;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -178,6 +182,23 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			@Override
 			public boolean isReadOnly(Resource resource) {
 				return super.isReadOnly(resource) || getResourceSet().getResources().indexOf(resource) != 0;
+			}
+			
+			@Override
+			public Command createCommand(Class<? extends Command> commandClass, CommandParameter commandParameter) {
+			    if (commandClass == DeleteCommand.class) {
+			        //  we override Deletion because the default DeleteCommand.execute(), because that attempts to
+			        // find the references to the object being deleted in the entire ResourceSet, potentially loading
+			        // a huge amount of models, and thus "hanging" the UI in real-world  application. Since we are
+			        // using Xtext here, we do not actually need to do that, so findReferences() just returns an
+			        // emptyMap instead, meaning no references.
+			        return new DeleteCommand(this, commandParameter.getCollection()) {
+			            protected Map<EObject, Collection<EStructuralFeature.Setting>> findReferences(Collection<EObject> eObjects) {
+			                return Collections.emptyMap();
+			            };
+			        };
+			    }
+			    return super.createCommand(commandClass, commandParameter);
 			}
 		};
 
