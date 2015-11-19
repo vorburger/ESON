@@ -54,6 +54,7 @@ public class EFactoryAdapter extends EContentAdapter {
 	private static Logger logger = Logger.getLogger(EFactoryAdapter.class);
 
 	protected NameAccessor nameAccessor = new NameAccessor();
+	private boolean isReEntrant = false;
 	
 	@Override
 	public boolean isAdapterForType(Object type) {
@@ -62,6 +63,17 @@ public class EFactoryAdapter extends EContentAdapter {
 	
 	@Override
 	public void notifyChanged(final Notification msg) {
+		if (isReEntrant)
+			return;
+		try {
+			isReEntrant = true;
+			notifyChangedNonReEntrant(msg);
+		} finally {
+			isReEntrant = false;
+		}
+	}
+
+	protected void notifyChangedNonReEntrant(final Notification msg) {
 		super.notifyChanged(msg); // MUST do first
 
 		if (msg.isTouch())
