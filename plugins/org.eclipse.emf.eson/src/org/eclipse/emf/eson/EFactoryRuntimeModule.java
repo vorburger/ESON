@@ -17,6 +17,7 @@ import org.eclipse.emf.eson.conversion.DATEValueConverter;
 import org.eclipse.emf.eson.conversion.TerminalConverters;
 import org.eclipse.emf.eson.generators.DelegatingGenerator;
 import org.eclipse.emf.eson.resource.EFactoryDerivedStateComputer;
+import org.eclipse.emf.eson.resource.EFactoryEncodingProvider;
 import org.eclipse.emf.eson.resource.EFactoryLocationInFileProvider;
 import org.eclipse.emf.eson.resource.EFactoryResourceFactory;
 import org.eclipse.emf.eson.resource.EFactoryResourceServiceProvider;
@@ -29,6 +30,7 @@ import org.eclipse.emf.eson.validation.ESONLinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.parser.IEncodingProvider;
 import org.eclipse.xtext.parser.antlr.IReferableElementsUnloader;
 import org.eclipse.xtext.parser.antlr.IReferableElementsUnloader.GenericUnloader;
 import org.eclipse.xtext.resource.IDerivedStateComputer;
@@ -38,6 +40,7 @@ import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.service.DispatchingProvider;
 import org.eclipse.xtext.util.PolymorphicDispatcher;
 import org.eclipse.xtext.validation.IResourceValidator;
 
@@ -122,6 +125,11 @@ public class EFactoryRuntimeModule extends AbstractEFactoryRuntimeModule {
 	@Override
 	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
 		binder.bind(IScopeProvider.class).annotatedWith(Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(ExtendedImportedNamespaceAwareLocalScopeProvider.class);
+	}
+	
+	@Override
+	public void configureRuntimeEncodingProvider(Binder binder) {
+		binder.bind(IEncodingProvider.class).annotatedWith(DispatchingProvider.Runtime.class).to(EFactoryEncodingProvider.class);
 	}
 
 }

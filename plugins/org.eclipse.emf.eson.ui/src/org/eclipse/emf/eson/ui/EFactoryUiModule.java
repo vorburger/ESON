@@ -13,6 +13,7 @@
 package org.eclipse.emf.eson.ui;
 
 import org.eclipse.emf.eson.generators.ClassLoaderProvider;
+import org.eclipse.emf.eson.resource.EFactoryEncodingProvider;
 import org.eclipse.emf.eson.resource.EFactoryResourceFactory;
 import org.eclipse.emf.eson.ui.contentassist.EFactoryContentAssistantFactory;
 import org.eclipse.emf.eson.ui.contentassist.IEAttributeStringProposalProvider;
@@ -26,7 +27,9 @@ import org.eclipse.emf.eson.ui.highlighting.EFactoryTokenTypeToStringMapper;
 import org.eclipse.emf.eson.ui.outline.DisabledComparator;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.xtext.parser.IEncodingProvider;
 import org.eclipse.xtext.resource.IResourceFactory;
+import org.eclipse.xtext.service.DispatchingProvider;
 import org.eclipse.xtext.ui.editor.contentassist.IContentAssistantFactory;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
@@ -101,6 +104,11 @@ public class EFactoryUiModule extends AbstractEFactoryUiModule {
     @Override
     public Class<? extends IComparator> bindOutlineFilterAndSorter$IComparator() {
         return DisabledComparator.class;
+    }
+    
+    @Override
+    public void configureUiEncodingProvider(Binder binder) {
+        binder.bind(IEncodingProvider.class).annotatedWith(DispatchingProvider.Ui.class).to(EFactoryEncodingProvider.class);
     }
 
 }
