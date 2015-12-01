@@ -268,7 +268,6 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
             initializeEditingDomain();
             
      		propertiesViewUpdater = createPropertiesViewUpdater();
-    		getSelectionProvider().addSelectionChangedListener(propertiesViewUpdater);
     		if (getSelectionProvider() instanceof IPostSelectionProvider) {
     			((IPostSelectionProvider) getSelectionProvider()).addPostSelectionChangedListener(propertiesViewUpdater);
     		}
