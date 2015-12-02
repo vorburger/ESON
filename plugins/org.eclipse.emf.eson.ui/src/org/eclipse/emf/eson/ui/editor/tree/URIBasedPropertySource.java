@@ -29,6 +29,8 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
+import com.google.common.collect.Lists;
+
 /**
  * IPropertySource which uses IXtextDocument IReadAccess readOnly() and
  * IWriteAccess modify() instead of directly reading/changing the EObject.
@@ -133,9 +135,30 @@ public class URIBasedPropertySource implements IPropertySource, IPropertySource2
 		});
 	}
 
+	/** is most likely only accessed within the UI thread, so I skipped 'synchronized' blocks. */
+	private List<Object> ongoingChanges = Lists.newLinkedList();
+	
+	private boolean aboutToChange(final Object propertyId) {
+		if (ongoingChanges.contains(propertyId)) {
+			return true;
+		} else {
+			ongoingChanges.add(propertyId);
+			return false;
+		}
+	}
+	
+	private void completedChange(final Object propertyId) {
+		Lists.reverse(ongoingChanges).remove(propertyId);
+	}
+	
 	public void setPropertyValue(final Object propertyId, final Object value) {
+		if (aboutToChange(propertyId)) {
+			// we're running into a potentially infinite loop! stop here!	
+			return;
+		}
+		
 		document.modify(new IUnitOfWork.Void<XtextResource>() {
-
+			
 			@Override
 			public void process(XtextResource state) throws Exception {
 				EObject eObject = state.getEObject(objectURI.fragment());
@@ -143,11 +166,17 @@ public class URIBasedPropertySource implements IPropertySource, IPropertySource2
 					itemPropertySource.getPropertyDescriptor(eObject, propertyId).setPropertyValue(eObject, value);
 				}
 			}
-			
 		});
+		
+		completedChange(propertyId);
 	};
 	
 	public void resetPropertyValue(final Object propertyId) {
+		if (aboutToChange(propertyId)) {
+			// we're running into a potentially infinite loop! stop here!			
+			return;
+		}
+
 		document.modify(new IUnitOfWork.Void<XtextResource>() {
 
 			@Override
@@ -156,9 +185,10 @@ public class URIBasedPropertySource implements IPropertySource, IPropertySource2
 				if (eObject != null) {
 					itemPropertySource.getPropertyDescriptor(eObject, propertyId).resetPropertyValue(eObject);
 				}
-			}
-			
+			}			
 		});
+		
+		completedChange(propertyId);
 	}
 
 }
