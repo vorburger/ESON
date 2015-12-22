@@ -53,6 +53,16 @@ public class SimplestWeiredNameTest {
 		assertEquals("hello", strangelyNamedAttributeValue);
 	}
 
+    @Test public void testWeirdoNamedEClassAndAttributeNameWithNameAnnotation() throws Exception {
+        EObject em = check("model/TestModelWithDotInNames.ecore",
+                "res/BuilderTests/SimplestWithWeiredNamesWithDots3_namedID.eson",
+                "WEIRDO.NAMED");
+        EAttribute eAttribute = em.eClass().getEAllAttributes().get(0);
+        assertEquals("STRANGE.NAME", eAttribute.getName());
+        String strangelyNamedAttributeValue = (String) em.eGet(eAttribute);
+        assertEquals("1234", strangelyNamedAttributeValue);
+    }
+
 	@Test public void testNormallyNamedEClassWithWeirdoEnumNameAndNormalLiteral() throws Exception {
 		EObject em = check("model/TestModelWithDotInNames.ecore",
 				"res/BuilderTests/SimplestWithWeiredNamesWithDots3enumA.eson",

@@ -32,6 +32,7 @@ public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 	}
 
 	@Override
+	// This is implicitly also used for scope_CustomNameMapping_eClass
 	public IScope scope_EClass(EObject context, EReference reference) {
 		final IScope parent = super.scope_EClass(context, reference); // delegateGetScope + DottedQualifiedNameAwareScope
 		IScope scope = ePackageScopeProvider.createEClassScope(context.eResource(), parent);
@@ -46,11 +47,6 @@ public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 		} else
 			return IScope.NULLSCOPE;
 
-	}
-
-	public IScope scope_CustomNameMapping_eClass(EObject context, EReference eReference) {
-		final IScope parent = delegateGetScope(context, eReference);
-		return ePackageScopeProvider.createEClassScope(context.eResource(), parent);
 	}
 
 }
