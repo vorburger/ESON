@@ -12,6 +12,7 @@
  */
 package org.eclipse.emf.eson.generators;
 
+import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 
 import org.apache.log4j.Logger;
@@ -31,8 +32,6 @@ import com.google.inject.Inject;
  */
 public class DelegatingGenerator implements IGenerator {
 	private static final Logger logger = Logger.getLogger(DelegatingGenerator.class);
-
-	// TODO Finish working Integration Test org.eclipse.emf.eson.generators.tests.GeneratorsTest
 
 	// TODO look-up plug-in registered generators, using code like https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/plugins-ui/com.temenos.ds.op.xtext.ui/src/com/temenos/ds/op/xtext/generator/ui/PluginsGeneratorsProvider.java
 	// TODO but should that code be here in core? That belongs into UI to avoid the dependency... I think we'll need an IGeneratorsProvider-like concept, see https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/plugins-ui/com.temenos.ds.op.xtext.ui/src/com/temenos/ds/op/xtext/generator/ui/IGeneratorsProvider.java 
@@ -55,18 +54,28 @@ public class DelegatingGenerator implements IGenerator {
 	}
 
 	protected void invokeGeneratorsAndHandleErrors(Resource input, IFileSystemAccess fsa, Iterable<IGenerator> generators, String errorMessagePrefix) {
-		for (IGenerator generator : generators) {
-			try {
- 				generator.doGenerate(input, fsa);
-			} catch (Exception e) {
-				logger.error("Caught exception from doGenerate() of " + errorMessagePrefix + generator.toString() + " for URI: " + input.getURI(), e);
+		try {
+			for (IGenerator generator : generators) {
+				try {
+	 				generator.doGenerate(input, fsa);
+				} catch (RuntimeException e) {
+					logger.error("Caught exception from doGenerate() of " + errorMessagePrefix + generator.toString() + " for URI: " + input.getURI(), e);
+					throw e;
+				}
 			}
+		} catch (ServiceConfigurationError e) {
+			logger.error("Caught exception when iterating over ServiceLoader", e);
+			throw e;
 		}
 	}
 
 	protected ServiceLoader<IGenerator> getGenerators(ClassLoader classLoader) {
-		// TODO Perhaps this should be cached?
-		return ServiceLoader.load(IGenerator.class, classLoader);
+		try {
+			return ServiceLoader.load(IGenerator.class, classLoader);
+		} catch (ServiceConfigurationError e) {
+			logger.error("Caught exception when obtaining project runtime classpath generators", e);
+			throw e;
+		}
 	}
 
 }

@@ -64,8 +64,6 @@ public class GeneratorsTest extends AbstractBuilderTest {
 
     // TODO plugin.xml something like https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/tests/com.temenos.ds.op.xtext.tests/plugin.xml
 
-    // TODO testXtextBuilderWithGeneratorThrowingError
-
     private static final String DYNAMIC_GENERATOR = "package test;\n" + 
             "import org.eclipse.emf.ecore.resource.Resource;\n" +
             "import org.eclipse.emf.ecore.EObject;\n" +
@@ -109,7 +107,9 @@ public class GeneratorsTest extends AbstractBuilderTest {
         IProject project = createXtextJavaProject("testGeneratorFromPlugin").getProject();
         fail("TODO");
     }
-    
+
+    // TODO testXtextBuilderWithGeneratorThrowingError
+
     protected IFile createFile(IProject project, String fileName, String fileContent) throws CoreException {
         IFile file = project.getFile(fileName);
         IFolder parentFolder = (IFolder) file.getParent();
@@ -121,7 +121,6 @@ public class GeneratorsTest extends AbstractBuilderTest {
     }
     
     protected void createFileAndAssertGenFile(IProject project, String expectedGenFileName, String expectedGenFileContent) throws Exception {
-//        setDefaultOutputFolderDirectory(project, generatorID, outputFolderName);
         String minimalValidTestESON = Resources.toString(Resources.getResource(getClass(), "/res/BuilderTests/Simplest.eson"), Charsets.UTF_8);
         IFile model1 = createFile(project, "src/Simplest.eson", minimalValidTestESON);
         reallyWaitForAutoBuild();
@@ -129,13 +128,7 @@ public class GeneratorsTest extends AbstractBuilderTest {
         assertExists(generatedFile, expectedGenFileContent);
         deleteModelFileAndAssertGenFileAlsoGotDeleted(model1, generatedFile);
     }
-/*
-    protected void setDefaultOutputFolderDirectory(IProject project, String generatorID, String directoryName) {
-        preferenceStoreAccess.setLanguageNameAsQualifier(generatorID);
-        IPreferenceStore preferences = preferenceStoreAccess.getWritablePreferenceStore(project);
-        preferences.setValue(getDefaultOutputDirectoryKey(), directoryName);
-    }
-*/    
+
     protected void assertExists(IFile file, String expectedGenFileContent) throws CoreException, UnsupportedEncodingException, IOException {
         String otherFiles = "";
         if (!file.exists()) {
