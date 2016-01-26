@@ -21,6 +21,11 @@ import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.reallyWaitFor
 import static org.eclipse.xtext.junit4.ui.util.JavaProjectSetupUtil.addToClasspath;
 import static org.eclipse.xtext.junit4.ui.util.JavaProjectSetupUtil.createJavaProject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -44,6 +49,7 @@ import org.eclipse.xtext.util.StringInputStream;
 import org.junit.Test;
 
 import com.google.common.base.Charsets;
+import com.google.common.io.CharStreams;
 import com.google.common.io.Resources;
 
 /**
@@ -59,25 +65,20 @@ public class GeneratorsTest extends AbstractBuilderTest {
 
     // TODO plugin.xml something like https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/tests/com.temenos.ds.op.xtext.tests/plugin.xml
     
-    // This is a minimalistic IGenerator implementation
-    private static final String MINIMAL_VALID_GENERATOR = "package test;\nimport org.eclipse.emf.ecore.resource.Resource;\nimport org.eclipse.xtext.generator.IFileSystemAccess;\nimport org.eclipse.xtext.generator.IGenerator;\npublic class Generator implements IGenerator {\n  @Override\n public void doGenerate(Resource input, IFileSystemAccess fsa) {\n       fsa.generateFile(input.getURI().lastSegment() + \".inproject.txt\", \"hello\");\n   }\n}";
-/*
-    private PreferenceStoreAccessImpl preferenceStoreAccess;
+    // This is a minimalistic IGenerator implementation using the dynamic EMF API
+    private static final String MINIMAL_VALID_DYNAMIC_GENERATOR = "package test;\n" + 
+            "import org.eclipse.emf.ecore.resource.Resource;\n" +
+            "import org.eclipse.emf.ecore.EObject;\n" +
+            "import org.eclipse.xtext.generator.IFileSystemAccess;\n" + 
+            "import org.eclipse.xtext.generator.IGenerator;\n\n" + 
+            "public class Generator implements IGenerator {\n" + 
+            "  @Override\n" + 
+            "  public void doGenerate(Resource input, IFileSystemAccess fsa) {\n" +
+            "    EObject eo = input.getContents().get(1); // 1 instead of 0 for ESON\n" +
+            "    Object name = eo.eGet(eo.eClass().getEStructuralFeature(\"name\"));\n" +
+            "    fsa.generateFile(input.getURI().lastSegment() + \".inproject.txt\", \"hello \" + name);\n" + 
+            "  }\n}";
     
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-//        final Injector injector = NODslActivator.getInstance().getInjector();
-//        participant = injector.getInstance(MultiGeneratorsXtextBuilderParticipant.class);
-//        preferenceStoreAccess = participant.getPreferenceStoreAccess();
-    }
-
-    @Override
-    public void tearDown() throws Exception {
-        super.tearDown();
-//        participant = null;
-    }
- */   
     @Test
     public void testXtextBuilderWithGeneratorInRuntimeWorkspace() throws Exception {
         IJavaProject javaProject = createXtextJavaProject("testGeneratorInProject");
@@ -86,10 +87,10 @@ public class GeneratorsTest extends AbstractBuilderTest {
         addPlatformJarToClasspath(javaProject, "org.eclipse.xtext");
         
         IProject project = javaProject.getProject();
-        IFile generatorJavaFile = createFile(project, "src/test/Generator.java", MINIMAL_VALID_GENERATOR);
+        IFile generatorJavaFile = createFile(project, "src/test/Generator.java", MINIMAL_VALID_DYNAMIC_GENERATOR);
         IFile servicesFile = createFile(project, "src/META-INF/services/org.eclipse.xtext.generator.IGenerator", "test.Generator");
         createFile(project, "src-gen/.empty", ""); // just to create the src-gen/ folder
-        createFileAndAssertGenFile(project, "src-gen/Simplest.eson.inproject.txt");       
+        createFileAndAssertGenFile(project, "src-gen/Simplest.eson.inproject.txt", "hello abc");       
 
         // TODO CHANGE generator, in running IDE, and make sure new file gets gen and no longer old one
 
@@ -113,13 +114,13 @@ public class GeneratorsTest extends AbstractBuilderTest {
         return file;
     }
     
-    protected void createFileAndAssertGenFile(IProject project, String expectedGenFileName) throws Exception {
+    protected void createFileAndAssertGenFile(IProject project, String expectedGenFileName, String expectedGenFileContent) throws Exception {
 //        setDefaultOutputFolderDirectory(project, generatorID, outputFolderName);
         String minimalValidTestESON = Resources.toString(Resources.getResource(getClass(), "/res/BuilderTests/Simplest.eson"), Charsets.UTF_8);
         IFile model1 = createFile(project, "src/Simplest.eson", minimalValidTestESON);
         reallyWaitForAutoBuild();
         IFile generatedFile = project.getFile(expectedGenFileName);
-        assertExists(generatedFile);
+        assertExists(generatedFile, expectedGenFileContent);
         deleteModelFileAndAssertGenFileAlsoGotDeleted(model1, generatedFile);
     }
 /*
@@ -129,7 +130,7 @@ public class GeneratorsTest extends AbstractBuilderTest {
         preferences.setValue(getDefaultOutputDirectoryKey(), directoryName);
     }
 */    
-    protected void assertExists(IFile file) throws CoreException {
+    protected void assertExists(IFile file, String expectedGenFileContent) throws CoreException, UnsupportedEncodingException, IOException {
         String otherFiles = "";
         if (!file.exists()) {
             StringBuilder otherFilesBuilder = new StringBuilder();
@@ -137,6 +138,10 @@ public class GeneratorsTest extends AbstractBuilderTest {
             otherFiles = otherFilesBuilder.toString();
         }
         assertTrue("Does not exist: " + file.toString() + otherFiles, file.exists());
+        
+        InputStream is = file.getContents(true);
+        String genFileContent = CharStreams.toString(new InputStreamReader(is, file.getCharset()));
+        assertEquals("Gen. File exists, but content is not as expected: " + file.toString(), expectedGenFileContent, genFileContent);
     }
     
     protected void addMembersRecursively(StringBuilder sb, IContainer container) throws CoreException {
