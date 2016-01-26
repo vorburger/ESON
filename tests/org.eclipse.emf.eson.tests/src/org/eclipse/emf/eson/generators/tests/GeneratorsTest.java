@@ -58,15 +58,15 @@ import com.google.common.io.Resources;
  * Based on https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/tests/com.temenos.ds.op.xtext.tests/src/com/temenos/ds/op/xtext/generator/tests/MultiGeneratorXtextBuilderParticipantTest.java
  * 
  * @author Michael Vorburger
- * @author Umesh Mudduraj
  */
 @SuppressWarnings("restriction")
 public class GeneratorsTest extends AbstractBuilderTest {
 
     // TODO plugin.xml something like https://github.com/TemenosDS/com.temenos.ds.op/blob/master/base/tests/com.temenos.ds.op.xtext.tests/plugin.xml
-    
-    // This is a minimalistic IGenerator implementation using the dynamic EMF API
-    private static final String MINIMAL_VALID_DYNAMIC_GENERATOR = "package test;\n" + 
+
+    // TODO testXtextBuilderWithGeneratorThrowingError
+
+    private static final String DYNAMIC_GENERATOR = "package test;\n" + 
             "import org.eclipse.emf.ecore.resource.Resource;\n" +
             "import org.eclipse.emf.ecore.EObject;\n" +
             "import org.eclipse.xtext.generator.IFileSystemAccess;\n" + 
@@ -78,16 +78,22 @@ public class GeneratorsTest extends AbstractBuilderTest {
             "    Object name = eo.eGet(eo.eClass().getEStructuralFeature(\"name\"));\n" +
             "    fsa.generateFile(input.getURI().lastSegment() + \".inproject.txt\", \"hello \" + name);\n" + 
             "  }\n}";
-    
+
     @Test
-    public void testXtextBuilderWithGeneratorInRuntimeWorkspace() throws Exception {
+    public void testXtextBuilderWithGeneratorUsingDynamicEMFInRuntimeWorkspace() throws Exception {
+        checkXtextBuilderWithGeneratorInRuntimeWorkspace(DYNAMIC_GENERATOR);
+    }
+
+    // TODO @Test public void testXtextBuilderWithGeneratorUsingStaticEMFInRuntimeWorkspace() throws Exception {
+    
+    protected void checkXtextBuilderWithGeneratorInRuntimeWorkspace(String generatorCode) throws Exception {
         IJavaProject javaProject = createXtextJavaProject("testGeneratorInProject");
         addPlatformJarToClasspath(javaProject, "org.eclipse.emf.common");
         addPlatformJarToClasspath(javaProject, "org.eclipse.emf.ecore");
         addPlatformJarToClasspath(javaProject, "org.eclipse.xtext");
         
         IProject project = javaProject.getProject();
-        IFile generatorJavaFile = createFile(project, "src/test/Generator.java", MINIMAL_VALID_DYNAMIC_GENERATOR);
+        IFile generatorJavaFile = createFile(project, "src/test/Generator.java", generatorCode);
         IFile servicesFile = createFile(project, "src/META-INF/services/org.eclipse.xtext.generator.IGenerator", "test.Generator");
         createFile(project, "src-gen/.empty", ""); // just to create the src-gen/ folder
         createFileAndAssertGenFile(project, "src-gen/Simplest.eson.inproject.txt", "hello abc");       

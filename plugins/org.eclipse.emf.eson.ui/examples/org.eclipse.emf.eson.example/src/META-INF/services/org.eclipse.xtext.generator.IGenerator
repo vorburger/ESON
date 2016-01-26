@@ -1,3 +1,9 @@
 org.eclipse.emf.eson.generators.ExampleXMLGenerator
-org.eclipse.emf.eson.generators.ExampleJSONGenerator
+# This simple XML generator always works, because it only uses EMF API; no ESON and no Xcore gen. code  
+
+# The JSON generator from ESON like this on the classpath of a project doesn't currently work, due to ClassLoader (CL) issues; you would have to copy it's source INTO this project instead  
+# org.eclipse.emf.eson.generators.ExampleJSONGenerator
+
+# This example generator works IFF the org.eclipse.emf.eson.example.xcore is open in the underlying development workspace
+# (but it does not yet work to have the Xcore model in the same workspace as the ESON models and the Generator itself)
 org.eclipse.emf.eson.example.generator.Generator
