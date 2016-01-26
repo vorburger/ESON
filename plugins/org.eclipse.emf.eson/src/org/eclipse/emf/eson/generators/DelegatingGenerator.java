@@ -12,7 +12,7 @@
  */
 package org.eclipse.emf.eson.generators;
 
-import java.util.ServiceLoader;
+import java.util.ServiceConfigurationError;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -54,19 +54,45 @@ public class DelegatingGenerator implements IGenerator {
 		invokeGeneratorsAndHandleErrors(input, fsa, getGenerators(classLoader), "project runtime classpath generator ");
 	}
 
-	protected void invokeGeneratorsAndHandleErrors(Resource input, IFileSystemAccess fsa, Iterable<IGenerator> generators, String errorMessagePrefix) {
-		for (IGenerator generator : generators) {
-			try {
- 				generator.doGenerate(input, fsa);
-			} catch (Exception e) {
-				logger.error("Caught exception from doGenerate() of " + errorMessagePrefix + generator.toString() + " for URI: " + input.getURI(), e);
+	protected void invokeGeneratorsAndHandleErrors(Resource input, IFileSystemAccess fsa, Iterable<Object> generators, String errorMessagePrefix) {
+		try {
+			// NOTE: We MUST use Object instead of IGenerator here due to ClassLoader issues
+			for (Object generator : generators) {
+				try {
+					doGenerateUsingReflection(generator, input, fsa);
+				} catch (RuntimeException e) {
+					logger.error("Caught exception from doGenerate() of " + errorMessagePrefix + generator.toString() + " for URI: " + input.getURI(), e);
+					throw e;
+				}
 			}
+		} catch (ServiceConfigurationError e) {
+			logger.error("Caught exception when iterating over ServiceLoader", e);
+			throw e;			
 		}
 	}
 
-	protected ServiceLoader<IGenerator> getGenerators(ClassLoader classLoader) {
-		// TODO Perhaps this should be cached?
-		return ServiceLoader.load(IGenerator.class, classLoader);
+	/**
+	 * Assuming generator is an IGenerator, do generator.doGenerate(input, fsa)
+	 * using reflection instead of strong typing, in order to work around CL
+	 * PITA.
+	 */
+	protected void doGenerateUsingReflection(Object generator, Resource input, IFileSystemAccess fsa) {
+		try {
+			generator.getClass().getMethods()[0].invoke(generator, input, fsa);
+		} catch (ReflectiveOperationException e) {
+			logger.error("Caught exception during doGenerateUsingReflection", e);
+			throw new RuntimeException(e);
+		}
+	}
+
+	protected Iterable<Object> getGenerators(ClassLoader classLoader) {
+		try {
+			// TODO Perhaps this should be cached?
+			return ReflectiveServiceLoader.load("org.eclipse.xtext.generator.IGenerator", classLoader);
+		} catch (ReflectiveServiceLoaderException e) {
+			logger.error("Caught exception when obtaining project runtime classpath generators", e);
+			throw new RuntimeException(e);
+		}
 	}
 
 }

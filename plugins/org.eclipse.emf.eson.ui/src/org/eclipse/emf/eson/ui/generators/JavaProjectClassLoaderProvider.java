@@ -15,9 +15,7 @@ package org.eclipse.emf.eson.ui.generators;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eson.generators.ClassLoaderProvider;
-import org.eclipse.emf.eson.generators.DelegatingClassLoader;
 import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Inject;
@@ -43,7 +41,9 @@ public class JavaProjectClassLoaderProvider implements ClassLoaderProvider {
                 if (ctx instanceof IJavaProject) {
                     IJavaProject javaProject = (IJavaProject) ctx;
                     Class<?> modelClass = resource.getContents().get(1).getClass(); // TODO harden this.. check if it's an ESON Resource, obtain first non-Factory instance 
-                    ClassLoader delegatingClassLoader = new DelegatingClassLoader(IGenerator.class.getClassLoader(), modelClass.getClassLoader());
+                    ClassLoader delegatingClassLoader = modelClass.getClassLoader(); 
+                    // NOT new DelegatingClassLoader(IGenerator.class.getClassLoader(), modelClass.getClassLoader()); because the mix-in of the plugin IGenerator CL 
+                    // causes other problems later; e.g. ExampleJSONGenerator will not work because the Factory.class is available on both the plugin CL as well as the project's.
                     extendedJdtBasedProcessorProvider.setParentClassLoader(delegatingClassLoader);
                     return extendedJdtBasedProcessorProvider.createClassLoaderForJavaProject(javaProject); // TODO Perhaps this should be cached?
                 }
