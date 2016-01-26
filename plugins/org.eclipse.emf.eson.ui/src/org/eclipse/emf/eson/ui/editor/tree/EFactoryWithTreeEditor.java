@@ -2,7 +2,7 @@
  * #%L
  * org.eclipse.emf.eson.ui
  * %%
- * Copyright (C) 2013 - 2014 Michael Vorburger and others
+ * Copyright (C) 2013 - 2016 Michael Vorburger and others
  * %%
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -13,10 +13,8 @@
 package org.eclipse.emf.eson.ui.editor.tree;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.EventObject;
 import java.util.List;
 import java.util.Map;
 
@@ -25,17 +23,16 @@ import javax.inject.Inject;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.celleditor.ExtendedDialogCellEditor;
 import org.eclipse.emf.common.ui.viewer.ColumnViewerInformationControlToolTipSupport;
-import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.presentation.EcoreEditorPlugin;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
@@ -64,11 +61,7 @@ import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.eson.building.ModelBuilderException;
-import org.eclipse.emf.eson.eFactory.Attribute;
-import org.eclipse.emf.eson.eFactory.Factory;
-import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.NewObject;
-import org.eclipse.emf.eson.eFactory.Reference;
 import org.eclipse.emf.eson.eFactory.impl.FactoryImpl;
 import org.eclipse.emf.eson.resource.EFactoryResource;
 import org.eclipse.jface.action.IMenuListener;
@@ -77,6 +70,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.util.LocalSelectionTransfer;
+import org.eclipse.jface.util.OpenStrategy;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.IPostSelectionProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -92,6 +86,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
@@ -114,23 +109,25 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertySheet;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.label.GlobalDescriptionLabelProvider;
 import org.eclipse.xtext.ui.search.IXtextEObjectSearch;
 import org.eclipse.xtext.ui.search.XtextEObjectSearchDialog;
+import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+
+import com.google.common.base.Throwables;
+import com.google.common.collect.Iterables;
 
 public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomainProvider, IMenuListener, ISelectionProvider{
 	private final static Logger LOGGER = Logger.getLogger(EFactoryWithTreeEditor.class);
 
-	private TreeViewer selectionViewer;
+	private TreeViewer treeViewer;
 	private AdapterFactoryEditingDomain editingDomain;
 	private ComposedAdapterFactory adapterFactory;
 	private Viewer currentViewer;
@@ -139,10 +136,16 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	private ISelectionChangedListener selectionChangedListener;
 	private Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 	private ISelection editorSelection = StructuredSelection.EMPTY;
-  	private ISelectionChangedListener propertiesViewUpdater;
+  	private ISelectionChangedListener editorSelectionChangedListener;
 	private SashForm sashForm;
+
 	private @Inject IXtextEObjectSearch eObjectSearch;
 	private @Inject GlobalDescriptionLabelProvider globalDescriptionLabelProvider;
+	private @Inject EObjectAtOffsetHelper eObjectAtOffsetHelper;
+	private @Inject ILocationInFileProvider locationInFileProvider;
+	
+	private boolean ignoreTreeViewSelectionChange = false;
+	private boolean ignoreSourceViewSelectionChange = false;
 
 	public AdapterFactory getAdapterFactory() {
 		return adapterFactory;
@@ -151,39 +154,50 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	protected class EFactoryCommandStack extends BasicCommandStack {
 		@Override
 		public void execute(final Command command) {
-			document.modify(new IUnitOfWork.Void<XtextResource>() {
-				@Override
-				public void process(XtextResource state) throws Exception {
-					EFactoryCommandStack.super.execute(command);
+			final boolean oldIgnoreSourceViewSelectionChange = ignoreSourceViewSelectionChange;
+			ignoreSourceViewSelectionChange = true;
+			try {
+				document.modify(new IUnitOfWork.Void<XtextResource>() {
+					
+					@Override
+					public void process(XtextResource state) throws Exception {
+						EFactoryCommandStack.super.execute(command);
+					}
+
+				});
+				
+				final Iterable<EObject> affectedObjects = Iterables.filter(command.getAffectedObjects(), EObject.class);
+				if (Iterables.isEmpty(affectedObjects)) {
+					ignoreSourceViewSelectionChange = oldIgnoreSourceViewSelectionChange;
+				} else {
+					getContainer().getDisplay().timerExec(OpenStrategy.getPostSelectionDelay(), new Runnable() {
+
+						public void run() {
+							try {
+								updateTreeView(affectedObjects.iterator().next(), false);
+							} finally {
+								ignoreSourceViewSelectionChange = oldIgnoreSourceViewSelectionChange;
+							}
+						}
+						
+					});
 				}
-			});
+			} catch (Throwable throwable) {
+				ignoreSourceViewSelectionChange = oldIgnoreSourceViewSelectionChange;
+				Throwables.propagate(throwable);
+			}
 		}
 	}
     
 	private void initializeEditingDomain() {
-	    EFactoryCommandStack eFactoryCommandStack = new EFactoryCommandStack();
-	    eFactoryCommandStack.addCommandStackListener
-        (new CommandStackListener() {
-            @Override
-             public void commandStackChanged(final EventObject event) {
-                 getContainer().getDisplay().asyncExec
-                     (new Runnable() {
-                          public void run() {
-                              // Try to select the affected objects.
-                              Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
-                              if (mostRecentCommand != null) {
-                                  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
-                              }
-                          }
-                      });
-             }
-         });
+		EFactoryCommandStack eFactoryCommandStack = new EFactoryCommandStack();
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, eFactoryCommandStack, resourceSet) {
+
 			@Override
 			public boolean isReadOnly(Resource resource) {
 				return super.isReadOnly(resource) || getResourceSet().getResources().indexOf(resource) != 0;
 			}
-			
+
 			@Override
 			public Command createCommand(Class<? extends Command> commandClass, CommandParameter commandParameter) {
 			    if (commandClass == DeleteCommand.class) {
@@ -201,45 +215,33 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			    return super.createCommand(commandClass, commandParameter);
 			}
 		};
-
 		resourceSet.eAdapters().add(new EditingDomainProvider());
 		resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap(true));
 	}
-	
-	private void setSelectionToViewer(Collection<?> collection) {
-	    final Collection<?> theSelection = collection;
-	    // Make sure it's okay.
-	    if (theSelection != null && !theSelection.isEmpty()) {
-	      Runnable runnable =
-	        new Runnable() {
-	          public void run() {
-	            // Try to select the items in the tree viewer of the editor
-	            if (selectionViewer != null) {
-	            	if(selectionViewer.getTree().getItems().length <= 0){
-	            		selectionViewer.setInput(getInputForSelectionViewer(editingDomain));
-	            	}
-	            	EObject treeRootEObject = (EObject) selectionViewer.getTree().getItem(0).getData();
-            		EObject objectToFocus = (EObject) theSelection.iterator().next(); 
-            		if (objectToFocus.eIsProxy()) {
-            			// This is probably not great for performance, but must be here for a good reason...
-            			objectToFocus = EcoreUtil.resolve(objectToFocus, treeRootEObject.eResource());
-            		}
-            		selectionViewer.setSelection(new StructuredSelection(objectToFocus), true);
-	            }
-	          }
-	        };
-	      getSite().getShell().getDisplay().asyncExec(runnable);
-	    }
-	  }
+
+	protected void updateTreeView(EObject objOrProxy, boolean ignoreSelection) {
+		if (treeViewer == null)
+			return;
+		
+		EObject obj = resolve(objOrProxy);
+		treeViewer.update(treeViewer.getInput(), null);
+		
+		boolean oldIgnoreTreeViewSelectionChange = ignoreTreeViewSelectionChange;
+		try {
+			ignoreTreeViewSelectionChange = ignoreSelection;
+			treeViewer.setSelection(new StructuredSelection(obj), true);
+		} finally {
+			ignoreTreeViewSelectionChange = oldIgnoreTreeViewSelectionChange;
+		}
+	}
 
 	protected Composite getContainer() {
 		return sashForm;
 	}
 	
   	protected Object getInputForSelectionViewer(EditingDomain editingDomain) {
-		Resource resource = editingDomain.getResourceSet().getResources().get(0);
-		return resource;
-	}     
+  		return editingDomain.getResourceSet().getResources().get(0);
+	}  
       
 	@Override
     public void createPartControl(Composite parent) {
@@ -267,21 +269,21 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
             
             initializeEditingDomain();
             
-     		propertiesViewUpdater = createPropertiesViewUpdater();
-    		if (getSelectionProvider() instanceof IPostSelectionProvider) {
-    			((IPostSelectionProvider) getSelectionProvider()).addPostSelectionChangedListener(propertiesViewUpdater);
+            editorSelectionChangedListener = createEditorSelectionChangedListener();
+     		if (getSelectionProvider() instanceof IPostSelectionProvider) {
+    			((IPostSelectionProvider) getSelectionProvider()).addPostSelectionChangedListener(editorSelectionChangedListener);
     		}
     		
              final Tree tree = new Tree(sashForm, SWT.MULTI);
-             selectionViewer = new NonCollapsingTreeViewer(tree);
-             setCurrentViewer(selectionViewer);
+             treeViewer = new NonCollapsingTreeViewer(tree);
+             setCurrentViewer(treeViewer);
 
-             selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-             selectionViewer.setLabelProvider(new DecoratingColumLabelProvider(new AdapterFactoryLabelProvider(adapterFactory), new DiagnosticDecorator(editingDomain, selectionViewer, EcoreEditorPlugin.getPlugin().getDialogSettings())));
-             selectionViewer.setInput(getInputForSelectionViewer(editingDomain));
-             selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
-             selectionViewer.addSelectionChangedListener(propertiesViewUpdater);
-             selectionViewer.expandAll();
+             treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+             treeViewer.setLabelProvider(new DecoratingColumLabelProvider(new AdapterFactoryLabelProvider(adapterFactory), new DiagnosticDecorator(editingDomain, treeViewer, EcoreEditorPlugin.getPlugin().getDialogSettings())));
+             treeViewer.setInput(getInputForSelectionViewer(editingDomain));
+             treeViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
+             treeViewer.addSelectionChangedListener(editorSelectionChangedListener);
+             treeViewer.expandAll();
              tree.addMouseListener(new MouseAdapter() {
      			@Override
      			public void mouseDoubleClick(MouseEvent e) {
@@ -289,10 +291,10 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
      			}
      		 });
              
-             new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
-             new ColumnViewerInformationControlToolTipSupport(selectionViewer, new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, selectionViewer));
+             new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
+             new ColumnViewerInformationControlToolTipSupport(treeViewer, new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, treeViewer));
              getSite().setSelectionProvider(this);
-             createContextMenuFor(selectionViewer);
+             createContextMenuFor(treeViewer);
 
              ViewerFilter filter = new ViewerFilter() {
  				@Override
@@ -300,7 +302,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
  					return (!(element instanceof FactoryImpl));
  				}
  		      };
- 		      selectionViewer.addFilter(filter);
+ 		      treeViewer.addFilter(filter);
       }
 
 	  private void createContextMenuFor(TreeViewer viewer) {
@@ -387,6 +389,9 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 				selectionChangedListener = new ISelectionChangedListener() {
 					// This just notifies those things that are affected by the section.
 					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
+						if (isIgnored(selectionChangedEvent))
+							return;
+
 						setSelection(selectionChangedEvent.getSelection());
 					}
 				};
@@ -395,13 +400,13 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			// Stop listening to the old one.
 			if (currentViewer != null) {
 				currentViewer.removeSelectionChangedListener(selectionChangedListener);
-				currentViewer.removeSelectionChangedListener(propertiesViewUpdater);
+				currentViewer.removeSelectionChangedListener(editorSelectionChangedListener);
 			}
 
 			// Start listening to the new one.
 			if (viewer != null) {
 				viewer.addSelectionChangedListener(selectionChangedListener);
-				viewer.addSelectionChangedListener(propertiesViewUpdater);
+				viewer.addSelectionChangedListener(editorSelectionChangedListener);
 			}
 
 			// Remember it.
@@ -411,84 +416,109 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			setSelection(currentViewer == null ? StructuredSelection.EMPTY : currentViewer.getSelection());
 		}
 	}
-		
 	
-	private ISelectionChangedListener createPropertiesViewUpdater() {
-			return new ISelectionChangedListener() {
-				public void selectionChanged(SelectionChangedEvent event) {
-					try {
-						ISelection selection = event.getSelection();
-						if (selection.isEmpty()) return;
-						if (selection instanceof ITextSelection) {
-							final ITextSelection textSelection = (ITextSelection) selection;
-							getDocument().readOnly(new IUnitOfWork.Void<XtextResource>() {
-								public void process(XtextResource xtextResource) throws Exception {
-									IParseResult parseResult = xtextResource.getParseResult();
-									if (parseResult != null) {
-										final EFactoryResource eFactoryResource = (EFactoryResource) xtextResource;
-										ICompositeNode rootNode = parseResult.getRootNode();
-										int offset = textSelection.getOffset();
-										INode node = NodeModelUtils.findLeafNodeAtOffset(rootNode, offset);
-										EObject semanticObject = NodeModelUtils.findActualSemanticObjectFor(node);
-										if (semanticObject instanceof Reference) {
-											semanticObject = ((Reference)semanticObject).eContainer();
-										} else if (semanticObject instanceof Attribute) {
-											semanticObject = ((Attribute)semanticObject).eContainer();
-										}
-										
-										EObject selectedObject = getSelectedRealObject(eFactoryResource, semanticObject);
-										// For those text selection offset which does not give proper object (currently giving empty object), find a suitable less-useless fallback
-										if(selectedObject == null) {
-											// This, as implemented today, actually causes more harm than use...
-											//    ... e.g. if you click into a /* commented out */ section at the end of the document,
-											//    not visible in the first scroll page, then it causes a jumping effect that is clearly wrong.
-											// selectedObject = getFallbackSelectedRealObject(eFactoryResource, semanticObject);
-										}
-										if (selectedObject != null) {
-											// synchronized the treeViewer/properties view
-											updatePropertiesView(buildStructuredSelection(selectedObject));
-											// this code will change the position of the caret in the XTextDocument
-											setSelectionToViewer(selectedObject != null ? Arrays.asList(selectedObject) : Collections.emptyList()); 
-										}
-									}
-								}
-							});
-						
-						} else if (selection instanceof ITreeSelection) {
-							final ITreeSelection treeSelection = (ITreeSelection) selection;
-
-							// update selection in the XText Document
-							getDocument().readOnly(
-								new IUnitOfWork<Object, XtextResource>() {
-									public Object exec(XtextResource xtextResource) throws Exception {
-										Object object = treeSelection.getFirstElement();
-										if (object instanceof EObject) {
-											final EFactoryResource eFactoryResource = (EFactoryResource) xtextResource;
-											NewObject newObject = eFactoryResource.getEFactoryNewObject((EObject) object);
-											if (newObject != null) {
-												ICompositeNode node = NodeModelUtils.getNode(newObject);
-												if (node != null) {
-													int offset = node.getOffset();
-													getSourceViewer().revealRange(offset, 1);
-// temporarily disabled:
-//													StyledText text = getSourceViewer().getTextWidget();
-//													text.setCaretOffset(offset);
-//													text.setFocus();
-												}
-											}
-										}
-										return null;
-									}
-								});
-							// update the properties view
-							updatePropertiesView(mapToStructuredSelection(treeSelection));
-						}
-					} catch (Exception e) {
-						LOGGER.error("selectionChanged() failed", e);
-					}
+	protected ISelectionChangedListener createEditorSelectionChangedListener() {
+		return new ISelectionChangedListener() {
+			public void selectionChanged(SelectionChangedEvent event) {
+				try {
+					dispatchSelectionChangedEvent(event);
+				} catch (Exception e) {
+					LOGGER.error("selectionChanged() failed", e);
 				}
-			};
+			}
+			
+		};
+	}
+	
+	protected void dispatchSelectionChangedEvent(SelectionChangedEvent event) {
+		if (isIgnored(event))
+			return;
+		
+		ISelection selection = event.getSelection();
+		if (selection.isEmpty())
+			return;
+		
+		if (event.getSource() == treeViewer) {
+			if (selection instanceof ITreeSelection) {
+				onTreeViewSelectionChange((ITreeSelection) selection);
+			}
 		}
+		
+		if (event.getSource() == getSourceViewer()) {
+			if (selection instanceof ITextSelection) {
+				onSourceViewSelectionChange((ITextSelection) selection);
+			}
+		}
+	}
+	
+	protected boolean isIgnored(SelectionChangedEvent event) {
+		if (event.getSource() == treeViewer) {
+			return ignoreTreeViewSelectionChange;
+		}
+		if (event.getSource() == getSourceViewer()) {
+			return ignoreSourceViewSelectionChange;
+		}
+		return false;
+	}
+
+	protected void onSourceViewSelectionChange(final ITextSelection textSelection) {
+		readOnly(new IUnitOfWork.Void<EFactoryResource>() {
+			public void process(EFactoryResource resource) throws Exception {
+				final EObject selectedObject = getSelectedObject(resource, textSelection.getOffset());
+				if (selectedObject == null) 
+					return;
+
+				updatePropertiesView(buildStructuredSelection(selectedObject));
+				getContainer().getDisplay().asyncExec(new Runnable() {
+				
+					public void run() {
+						updateTreeView(selectedObject, true);
+					}
+				
+				});
+			}
+		});
+	}
+	
+	protected void onTreeViewSelectionChange(ITreeSelection selection) {
+		updatePropertiesView(mapToStructuredSelection(selection));
+		
+		Object firstElement = selection.getFirstElement();
+		if (firstElement instanceof EObject)
+			updateSourceView((EObject) firstElement);
+	}
+
+	protected void updateSourceView(final EObject obj) {
+		readOnly(new IUnitOfWork.Void<EFactoryResource>() {
+			public void process(EFactoryResource resource) throws Exception {
+				NewObject newObject = resource.getEFactoryNewObject(obj);
+				if (newObject == null)
+					return;
+
+				ITextRegion textRegion = locationInFileProvider.getSignificantTextRegion(newObject);
+				if (textRegion == null)
+					return;
+
+				getSourceViewer().revealRange(textRegion.getOffset(), textRegion.getLength());
+	
+				StyledText textWidget = getSourceViewer().getTextWidget();
+				textWidget.setCaretOffset(textRegion.getOffset());
+				textWidget.setFocus();
+			}
+		});
+	}
+
+	protected EObject getSelectedObject(EFactoryResource resource, int offset) throws ModelBuilderException {
+		EObject semanticObject = eObjectAtOffsetHelper.resolveContainedElementAt(resource, offset);
+		while (semanticObject != null) {
+			if (semanticObject instanceof NewObject) {
+				NewObject newObject = (NewObject) semanticObject;
+				return resource.getEFactoryEObject(newObject).orNull();
+			}
+			semanticObject = semanticObject.eContainer();
+		}
+		return null;
+	}
 		
 		private void updatePropertiesView(IStructuredSelection selection) {
 			IWorkbench workbench = PlatformUI.getWorkbench();
@@ -584,46 +614,6 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			};
 		}
 		
-		/**
-		 * Finds the "real" (derived) current EObject, given the currently selected semantic object (e.g. EFactory/NewObject/Feature etc.)
-		 */
-		protected EObject getSelectedRealObject(EFactoryResource eFactoryResource, EObject semanticObject) throws ModelBuilderException {
-			EObject selectedObject = null;
-			if (semanticObject instanceof Feature) {
-				Feature feature = (Feature)semanticObject;
-				// Feature are contained in NewObject (see grammar), so this type cast is safe:
-				NewObject container = (NewObject) feature.eContainer();
-				if (feature.getEFeature() instanceof EAttribute) {
-					// get the container of the feature so we can update properly the properties view
-					selectedObject = eFactoryResource.getEFactoryEObject(container).orNull();
-				}
-				else if (feature.getEFeature() instanceof EReference) {
-					EReference reference = (EReference)feature.getEFeature();
-					// for now, consider only single references 
-					if (!reference.isMany()) {
-						selectedObject = eFactoryResource.getEFactoryEObject(container).orNull();
-					}
-				}
-			} else if (semanticObject instanceof NewObject) {
-				if (eFactoryResource.isBuilt())
-					selectedObject = eFactoryResource.getEFactoryEObject((NewObject)semanticObject).orNull();
-			}
-			return selectedObject;
-		}
-
-		/**
-		 * Called if getSelectedRealObject() couldn't find an appropriate "real" current EObject, and returns some functionally least-worst alternative.
-		 * The current implementation of this fall back just returns the root NewObject of our model as selectedObject.
-		 */
-		protected EObject getFallbackSelectedRealObject(EFactoryResource eFactoryResource, EObject semanticObject) throws ModelBuilderException {
-			Factory eFactoryFactory = eFactoryResource.getEFactoryFactory();
-			if (eFactoryFactory == null)
-				return null;
-			NewObject rootNewObject = eFactoryFactory.getRoot();
-			return eFactoryResource.getEFactoryEObject(rootNewObject).orNull();
-		}
-
-		
 		public class EFactoryPropertyDescriptor extends PropertyDescriptor {
 			
 			public class EFactoryEDataTypeCellEditor extends PropertyDescriptor.EDataTypeCellEditor {
@@ -661,13 +651,13 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 		
 		@Override
 		public void dispose() {
-			currentViewer.removeSelectionChangedListener(propertiesViewUpdater);
+			currentViewer.removeSelectionChangedListener(editorSelectionChangedListener);
 			if (adapterFactory != null) {
 				adapterFactory.dispose();
 			}
 			editingDomain = null;
-			propertiesViewUpdater = null;
-			selectionViewer = null;
+			editorSelectionChangedListener = null;
+			treeViewer = null;
 			currentViewer = null;
 			super.dispose();
 		}
@@ -694,6 +684,30 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 		} else {
 			sashForm.setMaximizedControl(control);
 		}
+	}
+	
+	protected void readOnly(final IUnitOfWork.Void<EFactoryResource> unitOfWork) {
+		getDocument().readOnly(new IUnitOfWork.Void<XtextResource>() {
+
+			public void process(XtextResource state) throws Exception {
+				unitOfWork.process((EFactoryResource) state);
+			}
+			
+		});
+	}
+	
+	protected EObject resolve(EObject obj) {
+		if (!obj.eIsProxy())
+			return obj;
+		
+		final URI proxyURI = ((InternalEObject) obj).eProxyURI();
+		return document.readOnly(new IUnitOfWork<EObject, XtextResource>() {
+
+			public EObject exec(XtextResource state) throws Exception {
+				return state.getResourceSet().getEObject(proxyURI, true);
+			}
+
+		});
 	}
 
 }
