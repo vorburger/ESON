@@ -2,7 +2,7 @@
  * #%L
  * org.eclipse.emf.eson
  * %%
- * Copyright (C) 2015 Michael Vorburger
+ * Copyright (C) 2015 - 2016 Michael Vorburger
  * %%
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -24,7 +24,7 @@ import com.google.inject.Inject;
 /**
  * An IGenerator which delegates to other IGenerator listed in a
  * META-INF/services/org.eclipse.xtext.generator.IGenerator on the classpath of
- * the project of the input Resource being generated, or via Eclipse plugin
+ * the project of the input Resource being generated, or via the Eclipse plugin
  * system.
  * 
  * @author Michael Vorburger, based on ClassLoader magic tips from Stefan Oehme

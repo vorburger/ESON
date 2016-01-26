@@ -14,9 +14,10 @@ package org.eclipse.emf.eson.generators.tests;
 
 import static org.eclipse.xtext.builder.EclipseOutputConfigurationProvider.OUTPUT_DIRECTORY;
 import static org.eclipse.xtext.builder.EclipseOutputConfigurationProvider.OUTPUT_PREFERENCE_TAG;
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.addBuilder;
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.addNature;
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.monitor;
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.waitForAutoBuild;
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.reallyWaitForAutoBuild;
 import static org.eclipse.xtext.junit4.ui.util.JavaProjectSetupUtil.addToClasspath;
 import static org.eclipse.xtext.junit4.ui.util.JavaProjectSetupUtil.createJavaProject;
 
@@ -87,8 +88,8 @@ public class GeneratorsTest extends AbstractBuilderTest {
         IProject project = javaProject.getProject();
         IFile generatorJavaFile = createFile(project, "src/test/Generator.java", MINIMAL_VALID_GENERATOR);
         IFile servicesFile = createFile(project, "src/META-INF/services/org.eclipse.xtext.generator.IGenerator", "test.Generator");
-        createFileAndAssertGenFile(project, "src/Minimal3.xtext", /*"test.Generator", "./src-gen", */"src-gen/Minimal3.xtext.inproject.txt");       
-//        createFileAndAssertGenFile(project, "src/Minimal3.xtext", /*"test.Generator", "./gen", */ "gen/Minimal3.xtext.inproject.txt");       
+        createFile(project, "src-gen/.empty", ""); // just to create the src-gen/ folder
+        createFileAndAssertGenFile(project, "src-gen/Simplest.eson.inproject.txt");       
 
         // TODO CHANGE generator, in running IDE, and make sure new file gets gen and no longer old one
 
@@ -108,15 +109,15 @@ public class GeneratorsTest extends AbstractBuilderTest {
         mkdirs(parentFolder);
         file.create(new StringInputStream(fileContent), true, monitor());
         project.build(IncrementalProjectBuilder.FULL_BUILD, monitor());
-        waitForAutoBuild();
+        reallyWaitForAutoBuild();
         return file;
     }
     
-    protected void createFileAndAssertGenFile(IProject project, String sourceFileName, /*String generatorID, String outputFolderName, */String expectedGenFileName) throws Exception {
+    protected void createFileAndAssertGenFile(IProject project, String expectedGenFileName) throws Exception {
 //        setDefaultOutputFolderDirectory(project, generatorID, outputFolderName);
         String minimalValidTestESON = Resources.toString(Resources.getResource(getClass(), "/res/BuilderTests/Simplest.eson"), Charsets.UTF_8);
-        IFile model1 = createFile(project, sourceFileName, minimalValidTestESON );
-        waitForAutoBuild();
+        IFile model1 = createFile(project, "src/Simplest.eson", minimalValidTestESON);
+        reallyWaitForAutoBuild();
         IFile generatedFile = project.getFile(expectedGenFileName);
         assertExists(generatedFile);
         deleteModelFileAndAssertGenFileAlsoGotDeleted(model1, generatedFile);
@@ -158,7 +159,7 @@ public class GeneratorsTest extends AbstractBuilderTest {
     
     protected void deleteModelFileAndAssertGenFileAlsoGotDeleted(IFile file, IResource generatedFile) throws Exception {
         file.delete(true, monitor());
-        waitForAutoBuild();
+        reallyWaitForAutoBuild();
         assertTrue("Does still exist, was not deleted: " + generatedFile.toString(), !generatedFile.exists());
     }
     
@@ -186,9 +187,11 @@ public class GeneratorsTest extends AbstractBuilderTest {
     }
     
     protected IJavaProject createXtextJavaProject(String name) throws CoreException {
-        IJavaProject project = createJavaProject(name);
-        addNature(project.getProject(), XtextProjectHelper.NATURE_ID);
-        return project;
+        IJavaProject javaProject = createJavaProject(name);
+        IProject project = javaProject.getProject();
+        addNature(project, XtextProjectHelper.NATURE_ID);
+        addBuilder(project, XtextProjectHelper.BUILDER_ID);
+        return javaProject;
     }
     
     protected String getDefaultOutputDirectoryKey() {
