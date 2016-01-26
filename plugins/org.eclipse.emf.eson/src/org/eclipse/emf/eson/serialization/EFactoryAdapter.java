@@ -211,7 +211,8 @@ public class EFactoryAdapter extends EContentAdapter {
 			multiValue.getValues().add(value);
 		}
 		else {
-			multiValue.getValues().add(value);
+			int position = msg.getPosition();
+			multiValue.getValues().add(position, value);
 		}
 	}
 

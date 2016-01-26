@@ -14,10 +14,9 @@ package org.eclipse.emf.eson.resource;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.xtext.resource.DefaultLocationInFileProvider;
 import org.eclipse.xtext.util.ITextRegion;
-
-import org.eclipse.emf.eson.eFactory.NewObject;
 
 public class EFactoryLocationInFileProvider extends DefaultLocationInFileProvider {
 
@@ -45,6 +44,8 @@ public class EFactoryLocationInFileProvider extends DefaultLocationInFileProvide
 	}
 	
 	protected EObject getRealObject(EObject semanticObject) {
+		if (semanticObject == null)
+			return null;
 		Resource resource = semanticObject.eResource();
 		EFactoryResource efResource = (EFactoryResource) resource;
 		NewObject newObject = efResource.getEFactoryNewObject(semanticObject);
