@@ -165,7 +165,11 @@ public class EFactoryDerivedStateComputer implements IDerivedStateComputer {
 	    		unloader.unloadRoot(eObject);
 	    		derived.add(eObject);
 			}
-	    	contents.removeAll(derived);
+	    	try {
+		    	contents.removeAll(derived);	    		
+	    	} catch (ArrayIndexOutOfBoundsException e) {
+	    		// Bof.
+	    	}
 	    }
 	}
 
