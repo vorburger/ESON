@@ -151,16 +151,20 @@ public class EFactoryAdapter extends EContentAdapter {
 		@SuppressWarnings("null")
 		EAttribute nameAttribute = serviceProvider.getNameAccessor().getNameAttribute(newObject);
 		String newName = msg.getNewStringValue();
-		if (nameAttribute != null && nameAttribute.equals(msg.getFeature()) 
-				&& serviceProvider.getValidIDChecker().isValidID(newName)) {
-			removeNewObjectFeature(newObject, nameAttribute);
-			newObject.setName(newName);
-			return true;
-		} else {
-			// Clear the name attribute (normal setOrRemoveSingleValue etc. will handle update to the derived model)
+		if (nameAttribute != null && nameAttribute.equals(msg.getFeature())) {
+			// name attribute special handling
+			if (serviceProvider.getValidIDChecker().isValidID(newName)) {
+				removeNewObjectFeature(newObject, nameAttribute);
+				newObject.setName(newName);
+				return true;
+			}
+
+			// Invalid attribute:
+			// -> Clear the name attribute (normal setOrRemoveSingleValue etc.
+			// will handle update to the derived model)
 			newObject.setName(null);
-			return false;
 		}
+		return false;
 	}
 
 	protected void removeNewObjectFeature(NewObject newObject, EStructuralFeature nameAttribute) {
