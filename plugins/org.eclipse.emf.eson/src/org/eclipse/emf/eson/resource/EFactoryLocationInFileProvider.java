@@ -29,7 +29,11 @@ public class EFactoryLocationInFileProvider extends DefaultLocationInFileProvide
 
 	@Override
 	protected ITextRegion getTextRegion(EObject obj, boolean isSignificant) {
-		return super.getTextRegion(getRealObject(obj), isSignificant);
+		EObject realEObject = getRealObject(obj);
+		if (realEObject == null)
+			return ITextRegion.EMPTY_REGION;
+		else
+			return super.getTextRegion(realEObject, isSignificant);
 /*		
 		if (obj.eResource() instanceof EFactoryResource) {
 			EFactoryResource efactoryResource = (EFactoryResource) obj.eResource();
