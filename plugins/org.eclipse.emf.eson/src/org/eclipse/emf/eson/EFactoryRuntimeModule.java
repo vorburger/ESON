@@ -26,6 +26,7 @@ import org.eclipse.emf.eson.scoping.EPackageScopeProvider;
 import org.eclipse.emf.eson.scoping.ExtendedImportedNamespaceAwareLocalScopeProvider;
 import org.eclipse.emf.eson.scoping.IEPackageScopeProvider;
 import org.eclipse.emf.eson.scoping.WarningErrorHandlerWithoutNoSuchMethodException;
+import org.eclipse.emf.eson.validation.ESONDiagnosticConverter;
 import org.eclipse.emf.eson.validation.ESONLinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
@@ -42,6 +43,7 @@ import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.service.DispatchingProvider;
 import org.eclipse.xtext.util.PolymorphicDispatcher;
+import org.eclipse.xtext.validation.IDiagnosticConverter;
 import org.eclipse.xtext.validation.IResourceValidator;
 
 import com.google.inject.Binder;
@@ -71,6 +73,10 @@ public class EFactoryRuntimeModule extends AbstractEFactoryRuntimeModule {
 	public Class<? extends IResourceFactory> bindIResourceFactory() {
 		return EFactoryResourceFactory.class;
 	}
+	
+	public Class<? extends IDiagnosticConverter> bindIDiagnosticConverter() {
+		return ESONDiagnosticConverter.class;
+	}	
 	
 	// NO @Override
 	public Class<? extends IDerivedStateComputer> bindIDerivedStateComputer() {

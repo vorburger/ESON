@@ -272,11 +272,12 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 
 	private void checkNoDuplicateFeature(NewObject newObject) {
 		Set<EStructuralFeature> existingFeatures = new HashSet<EStructuralFeature>();
-		for (Feature feature : newObject.getFeatures()) {
+		for (int i = 0; i < newObject.getFeatures().size(); i++) {
+			Feature feature = newObject.getFeatures().get(i);
 			EStructuralFeature eFeature = feature.getEFeature();
 			boolean hasDuplicate = existingFeatures.contains(eFeature);
 			if (hasDuplicate)
-			    error("Duplicate feature '" + eFeature.getName() + "'", null);
+			    error("Duplicate feature '" + eFeature.getName() + "'",  EFactoryPackage.Literals.NEW_OBJECT__FEATURES, i);
 			existingFeatures.add(eFeature);
 		}
 	}

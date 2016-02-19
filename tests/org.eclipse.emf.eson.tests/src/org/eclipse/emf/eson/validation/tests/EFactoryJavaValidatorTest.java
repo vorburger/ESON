@@ -14,25 +14,31 @@ package org.eclipse.emf.eson.validation.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eson.tests.util.ESONWithTestmodelInjectorProvider;
 import org.eclipse.emf.eson.validation.EFactoryJavaValidator;
+import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.junit4.validation.AssertableDiagnostics;
 import org.eclipse.xtext.junit4.validation.ValidatorTester;
 import org.eclipse.xtext.util.CancelIndicator;
+import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.validation.CheckMode;
+import org.eclipse.xtext.validation.IDiagnosticConverter;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.junit.Test;
@@ -51,6 +57,7 @@ public class EFactoryJavaValidatorTest {
 	@Inject ParseHelper<EObject> parseHelper;
 	@Inject ValidatorTester<EFactoryJavaValidator> tester;
 	@Inject IResourceValidator resourceValidator;
+	@Inject IDiagnosticConverter diagnosticConverter;
 	
 	@Test
 	public void testNoValidationError() throws Exception {
@@ -71,18 +78,54 @@ public class EFactoryJavaValidatorTest {
 	}
 
 	/**
+	 * Test validation of duplicate attribute
+	 */
+	@Test
+	public void testDuplicateAttribute() throws Exception {
+		EObject testModel = parseHelper.parse("use testmodel.* TestModel { singleRequired: SingleRequired { }"
+				+ "\nsingleRequired: SingleRequired { } }");
+		AssertableDiagnostics assertDiag = tester.validate(testModel).assertDiagnosticsCount(1);
+		assertDiag.assertErrorContains("Duplicate feature");
+		final AtomicBoolean acceptPassed = new AtomicBoolean();
+		new MyDiagnosticConverter(diagnosticConverter).convertValidatorDiagnostic(assertDiag.getDiagnostic(),
+				new IAcceptor<Issue>() {
+					@Override
+					public void accept(Issue t) {
+						assertEquals("lineNumber", Integer.valueOf(2), t.getLineNumber());
+						assertEquals("length", Integer.valueOf("singleRequired: SingleRequired { }".length()),
+								t.getLength());
+						acceptPassed.set(true);
+					}
+				});
+		assertTrue("accept run", acceptPassed.get());
+	}
+
+	/**
 	 * There used to be two identical error markers (one at the correct position
 	 * and one on row 0) for each missing required property; this test ensures
 	 * that there is only one (non-regression).
 	 * 
-	 * The solution to fix the problem above was to bind the DerivedStateAwareResourceValidator as IResourceValidator.
+	 * The solution to fix the problem above was to bind the
+	 * DerivedStateAwareResourceValidator as IResourceValidator.
 	 */
 	@Test
 	public void testOnlyOneErrorForMissingRequiredProperty() throws Exception {
-		EObject testModel = parseHelper.parse("use testmodel.* TestModel { }");
-		tester.validate(testModel).assertDiagnosticsCount(1).assertErrorContains("The required feature");
+		EObject testModel = parseHelper.parse("use testmodel.* TestModel {}");
+		AssertableDiagnostics assertDiag = tester.validate(testModel).assertDiagnosticsCount(1);
+		assertDiag.assertErrorContains("The required feature");
+		final AtomicBoolean acceptPassed = new AtomicBoolean();
+		new MyDiagnosticConverter(diagnosticConverter).convertValidatorDiagnostic(assertDiag.getDiagnostic(),
+				new IAcceptor<Issue>() {
+					@Override
+					public void accept(Issue t) {
+						assertEquals("lineNumber", Integer.valueOf(1), t.getLineNumber());
+						assertEquals("length", Integer.valueOf("TestModel {".length()), t.getLength());
+						acceptPassed.set(true);
+					}
+				});
+		assertTrue("accept run", acceptPassed.get());
 	}
-	
+
 	/**
 	 * There used to be 3 or 4 highly technical error markers in case of broken
 	 * references, which made non sense to end-users. This non-regression test
@@ -127,5 +170,33 @@ public class EFactoryJavaValidatorTest {
 				diagnostic.getException().printStackTrace();
 		}
 		return diag;
+	}
+
+	private static class MyDiagnosticConverter implements IDiagnosticConverter {
+		private IDiagnosticConverter coreDiagConverter;
+
+		public MyDiagnosticConverter(IDiagnosticConverter coreDiagConverter) {
+			super();
+			this.coreDiagConverter = coreDiagConverter;
+		}
+
+		@Override
+		public void convertResourceDiagnostic(org.eclipse.emf.ecore.resource.Resource.Diagnostic diagnostic,
+				Severity severity, IAcceptor<Issue> acceptor) {
+		}
+
+		@Override
+		public void convertValidatorDiagnostic(Diagnostic diagnostic, IAcceptor<Issue> acceptor) {
+			// Browse all children diagnostics!
+			if (diagnostic instanceof BasicDiagnostic) {
+				BasicDiagnostic basicDiag = (BasicDiagnostic) diagnostic;
+				for (Diagnostic childDiagnostic : basicDiag.getChildren()) {
+					this.convertValidatorDiagnostic(childDiagnostic, acceptor);
+				}
+			} else {
+				coreDiagConverter.convertValidatorDiagnostic(diagnostic, acceptor);
+			}
+		}
+
 	}
 }
