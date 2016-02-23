@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.emf.eson.ui.editor.tree.EFactoryWithTreeEditor">
+         <propertyCategory
+               category="esontestproperty"></propertyCategory>
+      </propertyContributor>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.emf.eson.ui.editor.tree.EFactoryWithTreeEditor">
+         <propertyTab
+               category="esontestproperty"
+               id="TESTPROPERTY"
+               label="TESTPROPERTY">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+  
+   <extension
+         point="org.eclipse.emf.eson.ui.properties">
+      <filterBasicPropertySection
+            eClass="library.Library">
+      </filterBasicPropertySection>
+   </extension> 
+   
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eson.ui.editor.tree.EFactoryWithTreeEditor">
+         <propertySection
+               class="org.eclipse.emf.eson.example.properties.ExamplePropertySection"
+               filter="org.eclipse.emf.eson.example.properties.ExamplePropertyFilter"
+               id="org.eclipse.emf.eson.ui.testpropertySection"
+               tab="TESTPROPERTY">
+         </propertySection>
+      </propertySections>
+    </extension>
+
+</plugin>

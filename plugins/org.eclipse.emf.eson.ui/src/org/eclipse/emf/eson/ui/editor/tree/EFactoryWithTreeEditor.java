@@ -15,10 +15,8 @@ package org.eclipse.emf.eson.ui.editor.tree;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Iterables.getFirst;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -28,12 +26,9 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.common.ui.celleditor.ExtendedDialogCellEditor;
 import org.eclipse.emf.common.ui.viewer.ColumnViewerInformationControlToolTipSupport;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.presentation.EcoreEditorPlugin;
@@ -47,8 +42,6 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
@@ -60,7 +53,6 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DecoratingColumLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
-import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.eson.eFactory.NewObject;
 import org.eclipse.emf.eson.eFactory.impl.FactoryImpl;
@@ -73,19 +65,15 @@ import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.text.ITextViewerExtension;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.util.LocalSelectionTransfer;
-import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.IPostSelectionProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.ISelectionProvider;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.dnd.DND;
@@ -101,46 +89,32 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.IPageLayout;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.contexts.IContextService;
-import org.eclipse.ui.views.properties.IPropertyDescriptor;
-import org.eclipse.ui.views.properties.PropertySheet;
+import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
-import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.ui.label.GlobalDescriptionLabelProvider;
-import org.eclipse.xtext.ui.search.IXtextEObjectSearch;
-import org.eclipse.xtext.ui.search.XtextEObjectSearchDialog;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import com.google.common.base.Throwables;
 
-public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomainProvider, IMenuListener, ISelectionProvider {
+public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomainProvider, IMenuListener, ITabbedPropertySheetPageContributor {
 	private final static Logger LOGGER = Logger.getLogger(EFactoryWithTreeEditor.class);
 
 	private TreeViewer treeViewer;
 	private AdapterFactoryEditingDomain editingDomain;
 	private ComposedAdapterFactory adapterFactory;
-	private Viewer currentViewer;
 	private IXtextDocument document;
 	private ResourceSet resourceSet;
-	private ISelectionChangedListener selectionChangedListener;
-	private Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
-	private ISelection editorSelection = StructuredSelection.EMPTY;
   	private ISelectionChangedListener editorSelectionChangedListener;
 	private SashForm sashForm;
 
-	private @Inject IXtextEObjectSearch eObjectSearch;
-	private @Inject GlobalDescriptionLabelProvider globalDescriptionLabelProvider;
 	private @Inject EObjectAtOffsetHelper eObjectAtOffsetHelper;
 	private @Inject ILocationInFileProvider locationInFileProvider;
 	
@@ -280,7 +254,6 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
     		
              final Tree tree = new Tree(sashForm, SWT.MULTI);
              treeViewer = new NonCollapsingTreeViewer(tree);
-             setCurrentViewer(treeViewer);
 
              treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
              treeViewer.setLabelProvider(new DecoratingColumLabelProvider(new AdapterFactoryLabelProvider(adapterFactory), new DiagnosticDecorator(editingDomain, treeViewer, EcoreEditorPlugin.getPlugin().getDialogSettings())));
@@ -296,7 +269,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
              
              new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
              new ColumnViewerInformationControlToolTipSupport(treeViewer, new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, treeViewer));
-             getSite().setSelectionProvider(this);
+             getSite().setSelectionProvider(treeViewer);
              createContextMenuFor(treeViewer);
 
              ViewerFilter filter = new ViewerFilter() {
@@ -358,67 +331,8 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
     public IActionBars getActionBars() {
     	return getActionBarContributor().getActionBars();
     }
-    
-	public void addSelectionChangedListener(ISelectionChangedListener listener) {
-		selectionChangedListeners.add(listener);		
-	}
 	
-	public ISelection getSelection() {
-		return editorSelection;
-	}
-	
-	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-		selectionChangedListeners.remove(listener);
-		
-	}
-	
-	public void setSelection(ISelection selection) {
-		editorSelection = selection;
-		for (ISelectionChangedListener listener : selectionChangedListeners) {
-			listener.selectionChanged(new SelectionChangedEvent(getSelectionProvider(), selection));
-		}
-	}
-	
-	/**
-	 * This makes sure that one content viewer, either for the current page or the outline view, if it has focus,
-	 * is the current one.
-	 */
-	protected void setCurrentViewer(Viewer viewer) {
-		// If it is changing...
-		//
-		if (currentViewer != viewer) {
-			if (selectionChangedListener == null) {
-				// Create the listener on demand.
-				selectionChangedListener = new ISelectionChangedListener() {
-					// This just notifies those things that are affected by the section.
-					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
-						if (isIgnored(selectionChangedEvent))
-							return;
 
-						setSelection(selectionChangedEvent.getSelection());
-					}
-				};
-			}
-
-			// Stop listening to the old one.
-			if (currentViewer != null) {
-				currentViewer.removeSelectionChangedListener(selectionChangedListener);
-				currentViewer.removeSelectionChangedListener(editorSelectionChangedListener);
-			}
-
-			// Start listening to the new one.
-			if (viewer != null) {
-				viewer.addSelectionChangedListener(selectionChangedListener);
-				viewer.addSelectionChangedListener(editorSelectionChangedListener);
-			}
-
-			// Remember it.
-			currentViewer = viewer;
-			
-			// Set the editors selection based on the current viewer's selection.
-			setSelection(currentViewer == null ? StructuredSelection.EMPTY : currentViewer.getSelection());
-		}
-	}
 	
 	protected ISelectionChangedListener createEditorSelectionChangedListener() {
 		return new ISelectionChangedListener() {
@@ -480,7 +394,6 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 		if (selectedObject == null)
 			return;
 		
-		updatePropertiesView(buildStructuredSelection(selectedObject));
 		getContainer().getDisplay().asyncExec(new Runnable() {
 		
 			public void run() {
@@ -491,7 +404,6 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 	}
 	
 	protected void onTreeViewSelectionChange(ITreeSelection selection) {
-		updatePropertiesView(mapToStructuredSelection(selection));
 		
 		Object firstElement = selection.getFirstElement();
 		if (firstElement instanceof EObject)
@@ -548,145 +460,14 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 		});
 	}
 		
-		private void updatePropertiesView(IStructuredSelection selection) {
-			IWorkbench workbench = PlatformUI.getWorkbench();
-			if (workbench == null) return;
-			IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-			if (window == null) return;
-			IWorkbenchPage page = window.getActivePage();
-			if (page == null) return;
-			PropertySheet propertiesView = (PropertySheet) page.findView(IPageLayout.ID_PROP_SHEET);
-			if (propertiesView == null) return;
-			
-			propertiesView.partActivated(EFactoryWithTreeEditor.this);
-			propertiesView.selectionChanged(EFactoryWithTreeEditor.this, selection);
-		}
-		
-		private IStructuredSelection mapToStructuredSelection(ITreeSelection treeSelection) {
-			Object object = treeSelection.getFirstElement();
-			if (object instanceof EObject) {
-				return buildStructuredSelection((EObject)object);
-			}
-			return new StructuredSelection();
-		}
-
-		private IStructuredSelection buildStructuredSelection(final EObject object) {
-			if(object==null ){
-				return new StructuredSelection();
-			}
-			final IItemPropertySource source = (IItemPropertySource) adapterFactory.adapt(object, IItemPropertySource.class);
-			return new StructuredSelection() {
-				public Object[] toArray() {
-					return new Object[] { 
-							new URIBasedPropertySource(object, source, document) {
-
-							protected IPropertyDescriptor createPropertyDescriptor(final EObject eObject, IItemPropertyDescriptor itemPropertyDescriptor) {
-								return new EFactoryPropertyDescriptor(eObject, itemPropertyDescriptor) {
-										@Override
-										protected CellEditor createEDataTypeCellEditor(final EDataType eDataType, Composite composite) {
-											return new EFactoryEDataTypeCellEditor(eDataType, composite);
-										}
-										@Override
-										public CellEditor createPropertyEditor(final Composite composite) {
-											CellEditor editor = null;
-											final Object feature = itemPropertyDescriptor.getFeature(this.object);
-											if (feature instanceof EReference) {
-												final EReference eReference = (EReference) feature;
-												editor = new ExtendedDialogCellEditor(composite, getEditLabelProvider()) {
-                                                    @Override @SuppressWarnings("unchecked")
-													protected Object openDialogBox(Control cellEditorWindow) {
-													Object currentEObjects = eObject.eGet(eReference);
-													XtextEObjectSearchDialog dlg;
-													if (eReference.isMany()) {
-														dlg = new XtextMultiEObjectSearchDialog(composite.getShell(), eObjectSearch, globalDescriptionLabelProvider);
-														((XtextMultiEObjectSearchDialog)dlg).setInitialSelection((List<EObject>) currentEObjects);
-													} else {
-														dlg = new XtextEObjectSearchDialog(composite.getShell(), eObjectSearch, globalDescriptionLabelProvider);
-													}
-													dlg.setInitialTypePattern(eReference.getEReferenceType().getName(), false);
-													int status = dlg.open();
-													if(status == Window.OK) {
-														Object[] dlgResult = dlg.getResult();
-														ArrayList<EObject> result = new ArrayList<EObject>();
-														if (dlgResult != null) {
-															for (Object eObjectDesc : dlgResult) {
-																EObject eObject = ((IEObjectDescription)eObjectDesc).getEObjectOrProxy();
-																// This is probably more of a work-around than a fix of the actual root cause :( but it works
-																if (eObject != null && eObject.eIsProxy()) {
-																	eObject = EcoreUtil.resolve(eObject, eReference.eResource());
-																}
-																result.add(eObject);
-															}
-														}
-														if(eReference.isMany()) {
-															return result;
-														} else {
-															return (result.size() > 0) ? result.get(0) : null;
-														}
-													} else {
-														return currentEObjects;
-													}
-													}
-												};
-											} else {
-												// return the default cell editor
-												editor = super.createPropertyEditor(composite);
-											}
-											return editor;
-										}
-									};
-								}
-						}
-					};
-				}
-			};
-		}
-		
-		public class EFactoryPropertyDescriptor extends PropertyDescriptor {
-			
-			public class EFactoryEDataTypeCellEditor extends PropertyDescriptor.EDataTypeCellEditor {
-				public EFactoryEDataTypeCellEditor(EDataType eDataType, Composite parent) {
-					super(eDataType, parent);
-		     	    valueHandler = new EFactoryEDataTypeValueHandler(eDataType);
-				    setValidator(valueHandler);
-				}
-			}
-			
-			protected class EFactoryEDataTypeValueHandler extends PropertyDescriptor.EDataTypeValueHandler {
-				public EFactoryEDataTypeValueHandler(EDataType eDataType) {
-					super(eDataType);
-				}
-				@Override
-				public String toString(Object value) {
-					if (value instanceof IItemPropertySource) {
-						IItemPropertySource propertySource = (IItemPropertySource)value;
-						return super.toString(propertySource.getEditableValue(value));
-					}
-					return super.toString(value);
-				}			
-			}
-			
-			@Override
-			public CellEditor createPropertyEditor(Composite composite) {
-				CellEditor editor = super.createPropertyEditor(composite);
-				return editor;
-			}
-
-			public EFactoryPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
-				super(object, itemPropertyDescriptor);
-			}
-		}
-		
 		@Override
 		public void dispose() {
-			currentViewer.removeSelectionChangedListener(editorSelectionChangedListener);
 			if (adapterFactory != null) {
 				adapterFactory.dispose();
 			}
 			editingDomain = null;
 			editorSelectionChangedListener = null;
 			treeViewer = null;
-			currentViewer = null;
 			super.dispose();
 		}
 		
@@ -731,5 +512,17 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
 			
 		});
 	}
+
+    @Override
+    public String getContributorId() {
+        return getSite().getId();
+    }
+    
+    @Override
+    public Object getAdapter(Class adapter) {
+        if (adapter == IPropertySheetPage.class)
+            return new TabbedPropertySheetPage(this);
+        return super.getAdapter(adapter);
+    }
 
 }

@@ -14,7 +14,9 @@ package org.eclipse.emf.eson.util;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
@@ -25,6 +27,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -182,4 +185,24 @@ public final class EcoreUtil3 {
 		}
 		return false;
 	}
+	
+	 // TODO a helper like this probably already exists somewhere in EMF? Found nothing obvious in EcoreUtil.. :(
+    public static String getFullyQualifiedName(EClass eClass) {
+    	List<EPackage> allParentEPackages = new ArrayList<EPackage>(5);
+    	{
+	    	EPackage ePackage = eClass.getEPackage();
+	    	do {
+	        	allParentEPackages.add(0, ePackage);
+	        	ePackage = ePackage.getESuperPackage();
+	    	} while (ePackage != null);
+    	}
+    	
+        StringBuilder sb = new StringBuilder();
+        for (EPackage ePackage : allParentEPackages) {
+            sb.append(ePackage.getName());
+		}
+        sb.append('.');
+        sb.append(eClass.getName());
+        return sb.toString();
+    }
 }

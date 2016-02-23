@@ -2,6 +2,8 @@
 <?eclipse version="3.0"?>
 
 <plugin>
+   <extension-point id="properties" name="EMF ESON UI Properties view" schema="schema/properties.exsd"/>
+
 	<!-- This is our new Editor, including the (editable! right-click New... + Properties!) tree -->
     <extension point="org.eclipse.ui.editors">
         <editor
@@ -458,4 +460,36 @@
  -->
         </example>
     </extension>
+
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.emf.eson.ui.editor.tree.EFactoryWithTreeEditor">
+         <propertyCategory
+               category="esonproperty"></propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.emf.eson.ui.editor.tree.EFactoryWithTreeEditor">
+         <propertyTab
+               category="esonproperty"
+               id="Basic"
+               label="Basic">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.emf.eson.ui.editor.tree.EFactoryWithTreeEditor">
+         <propertySection
+               class="org.eclipse.emf.eson.ui.EFactoryExecutableExtensionFactory:org.eclipse.emf.eson.ui.properties.ESONBasicPropertySection"
+               filter="org.eclipse.emf.eson.ui.properties.ESONBasicPropertySectionFilter"
+               id="org.eclipse.emf.eson.ui.defaultSection"
+               tab="Basic">
+         </propertySection>
+      </propertySections>
+   </extension>
 </plugin>

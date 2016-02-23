@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.emf.eson" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.emf.eson.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.emf.eson" id="generator" name="EMF ESON Generator"/>
+         <meta.schema plugin="org.eclipse.emf.eson.ui" id="properties" name="EMF ESON UI Properties view"/>
       </appInfo>
       <documentation>
-         This ESON extension point is used to define IGenerator participants for Xtext Builder. All registered participants will be called subsequently in no particular order.
+         This ESON extension point is used to disable the default "Basic" Properties section sheet provided by ESON out-of-the box. This can be useful if you provide your own Properties section(s) for certain EClass of your models.
       </documentation>
    </annotation>
 
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence>
-            <element ref="generator" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="filterBasicPropertySection"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,27 +47,18 @@
       </complexType>
    </element>
 
-   <element name="generator">
+   <element name="filterBasicPropertySection">
       <complexType>
-         <attribute name="class" type="string" use="required">
+         <attribute name="eClass" type="string" use="required">
             <annotation>
                <documentation>
-                  Java class implementing org.eclipse.xtext.generator.IGenerator
-               </documentation>
-               <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.xtext.generator.IGenerator"/>
-               </appinfo>
-            </annotation>
-         </attribute>
-<!--
-         <attribute name="id" type="string" use="required">
-            <annotation>
-               <documentation>
-                  ID of generator. Use classname if you like, but the idea is that if you refactor the class name or package, this ID stays stable, and existing preferences for this generator remain valid.
+                  Fully qualified name of EClass for which the default "Basic" Properties sheet section should be disabled.
+                  Note that this is typically NOT the same as the name of the Java interface of the EClass; for example
+                  org.eclipse.emf.ecore.EAttribute (Java FQN) vs. ecore.EAttribute (EMF FQN; because the EPackage name
+                  is just "ecore", with no ESuperPackage).  
                </documentation>
             </annotation>
          </attribute>
-  -->
       </complexType>
    </element>
 
@@ -76,7 +67,7 @@
          <meta.section type="since"/>
       </appInfo>
       <documentation>
-         2016.1.27
+         2016.3.2
       </documentation>
    </annotation>
 
@@ -106,5 +97,6 @@
          [Enter information about supplied implementation of this extension point.]
       </documentation>
    </annotation>
+
 
 </schema>

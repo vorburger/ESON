@@ -29,6 +29,8 @@ import com.google.common.base.Optional;
 /**
  * This utility class deals with reading the Eclipse extension points.
  *
+ * @see EFactoryUiExtensionRegistry for a similar utility (TODO unify?)
+ *
  * @author Michael Vorburger
  */
 public class EFactoryExtensionRegistry {
