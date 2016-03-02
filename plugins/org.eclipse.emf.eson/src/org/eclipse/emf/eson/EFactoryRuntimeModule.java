@@ -28,6 +28,7 @@ import org.eclipse.emf.eson.scoping.IEPackageScopeProvider;
 import org.eclipse.emf.eson.scoping.WarningErrorHandlerWithoutNoSuchMethodException;
 import org.eclipse.emf.eson.validation.ESONDiagnosticConverter;
 import org.eclipse.emf.eson.validation.ESONLinkingDiagnosticMessageProvider;
+import org.eclipse.emf.eson.xtextbackpatch.FasterResourceSetBasedAllContainersStateProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -138,4 +139,8 @@ public class EFactoryRuntimeModule extends AbstractEFactoryRuntimeModule {
 		binder.bind(IEncodingProvider.class).annotatedWith(DispatchingProvider.Runtime.class).to(EFactoryEncodingProvider.class);
 	}
 
+	@Override // TODO Remove once ESON is migrated to support only Xtext 2.9.0 and no 2.8.x anymore
+	public Class<? extends org.eclipse.xtext.resource.containers.IAllContainersState.Provider> bindIAllContainersState$Provider() {
+		return FasterResourceSetBasedAllContainersStateProvider.class;
+	}
 }
