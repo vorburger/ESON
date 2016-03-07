@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eson.eFactory.Feature;
+import org.eclipse.xtext.xbase.lib.Functions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -197,12 +199,12 @@ public final class EcoreUtil3 {
 	    	} while (ePackage != null);
     	}
     	
-        StringBuilder sb = new StringBuilder();
-        for (EPackage ePackage : allParentEPackages) {
-            sb.append(ePackage.getName());
-		}
-        sb.append('.');
-        sb.append(eClass.getName());
-        return sb.toString();
+        return IterableExtensions.join(allParentEPackages, null, ".", "." + eClass.getName(), new Functions.Function1<EPackage, String>() {
+
+			@Override
+			public String apply(EPackage p) {
+				return p.getName();
+			}
+		});
     }
 }

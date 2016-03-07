@@ -12,6 +12,15 @@
             class="testmodel.TestmodelPackage"
             genModel="model/TestModel.genmodel"/>
    </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated TestModel -->
+      <package
+            uri="http://testmodel/sub/1.0"
+            class="testmodel.testsubmodel.TestsubmodelPackage"
+            genModel="model/TestModel.genmodel"/>
+   </extension>
+
    <extension
          point="org.eclipse.emf.eson.generator">
       <generator

@@ -117,4 +117,7 @@
     <eLiterals name="Sample"/>
     <eLiterals name="Sample2" value="1" literal="Sample2"/>
   </eClassifiers>
+  <eSubpackages name="testsubmodel" nsURI="http://testmodel/sub/1.0" nsPrefix="testsubmodel">
+    <eClassifiers xsi:type="ecore:EClass" name="TestInnerModel"/>
+  </eSubpackages>
 </ecore:EPackage>

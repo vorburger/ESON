@@ -12,12 +12,14 @@
  */
 package org.eclipse.emf.eson.util.tests;
 
+import junit.framework.TestCase;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 
-import junit.framework.TestCase;
 import testmodel.TestmodelPackage;
+import testmodel.testsubmodel.TestsubmodelPackage;
 
 public class EcoreUtil3Test extends TestCase {
 
@@ -60,10 +62,14 @@ public class EcoreUtil3Test extends TestCase {
 		EClass subClass = TestmodelPackage.Literals.TEST_MODEL;
 		assertFalse(EcoreUtil3.isSubClass(eClass, subClass));
 	}
-	
+
 	public void testGetFullyQualifiedName() {
         EClass eClass = TestmodelPackage.Literals.TEST_MODEL;
 	    String eClassFQN = EcoreUtil3.getFullyQualifiedName(eClass);
 	    assertEquals("testmodel.TestModel", eClassFQN);
+
+	    eClass = TestsubmodelPackage.Literals.TEST_INNER_MODEL;
+	    eClassFQN = EcoreUtil3.getFullyQualifiedName(eClass);
+	    assertEquals("testmodel.testsubmodel.TestInnerModel", eClassFQN);
 	}
 }
