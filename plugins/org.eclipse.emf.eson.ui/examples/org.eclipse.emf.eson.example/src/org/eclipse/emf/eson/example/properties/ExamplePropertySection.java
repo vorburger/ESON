@@ -12,6 +12,8 @@
  */
 package org.eclipse.emf.eson.example.properties;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eson.example.library.Library;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ITreeSelection;
@@ -43,7 +45,7 @@ public class ExamplePropertySection extends AbstractPropertySection {
     private Button createButton;
 
     private IXtextDocument document;
-    private Library library;
+    private URI objectURI;   // NOTE: Do NOT keep an instance of the (derived) EMF EObject (e.g. Library) as an instance variable here!  
 
     @Override
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -66,6 +68,7 @@ public class ExamplePropertySection extends AbstractPropertySection {
                 document.modify(new IUnitOfWork.Void<XtextResource>() {
                     @Override
                     public void process(XtextResource state) throws Exception {
+                        Library library = (Library) state.getEObject(objectURI.fragment());
                         library.setName(text);
                     }
                 });
@@ -80,7 +83,8 @@ public class ExamplePropertySection extends AbstractPropertySection {
             if (selection instanceof ITreeSelection) {
                 Object firstElement = ((ITreeSelection) selection).getFirstElement();
                 if (firstElement instanceof Library) {
-                    library = (Library) firstElement;
+                    Library library = (Library) firstElement;
+                    this.objectURI = EcoreUtil.getURI(library);
                     createText.setText(library.getName());
                 }
             }

@@ -38,7 +38,7 @@ import com.google.common.collect.Lists;
  * @author Anton Kosyakov
  */
 public class URIBasedPropertySource implements IPropertySource, IPropertySource2 {
-	
+
 	protected final URI objectURI;
 	protected final IXtextDocument document;
 	protected final IItemPropertySource itemPropertySource;
@@ -146,19 +146,19 @@ public class URIBasedPropertySource implements IPropertySource, IPropertySource2
 			return false;
 		}
 	}
-	
+
 	private void completedChange(final Object propertyId) {
 		Lists.reverse(ongoingChanges).remove(propertyId);
 	}
-	
+
 	public void setPropertyValue(final Object propertyId, final Object value) {
 		if (aboutToChange(propertyId)) {
 			// we're running into a potentially infinite loop! stop here!	
 			return;
 		}
-		
+
 		document.modify(new IUnitOfWork.Void<XtextResource>() {
-			
+
 			@Override
 			public void process(XtextResource state) throws Exception {
 				EObject eObject = state.getEObject(objectURI.fragment());
@@ -170,7 +170,7 @@ public class URIBasedPropertySource implements IPropertySource, IPropertySource2
 		
 		completedChange(propertyId);
 	};
-	
+
 	public void resetPropertyValue(final Object propertyId) {
 		if (aboutToChange(propertyId)) {
 			// we're running into a potentially infinite loop! stop here!			
@@ -187,7 +187,7 @@ public class URIBasedPropertySource implements IPropertySource, IPropertySource2
 				}
 			}			
 		});
-		
+
 		completedChange(propertyId);
 	}
 
