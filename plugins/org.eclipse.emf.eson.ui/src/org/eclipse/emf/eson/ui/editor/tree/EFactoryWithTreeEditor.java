@@ -49,7 +49,6 @@ import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DecoratingColumLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
@@ -255,7 +254,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
              final Tree tree = new Tree(sashForm, SWT.MULTI);
              treeViewer = new NonCollapsingTreeViewer(tree);
 
-             treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+             treeViewer.setContentProvider(new DelayedAdapterFactoryContentProvider(adapterFactory));
              treeViewer.setLabelProvider(new DecoratingColumLabelProvider(new AdapterFactoryLabelProvider(adapterFactory), new DiagnosticDecorator(editingDomain, treeViewer, EcoreEditorPlugin.getPlugin().getDialogSettings())));
              treeViewer.setInput(getInputForSelectionViewer(editingDomain));
              treeViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
