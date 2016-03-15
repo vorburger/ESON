@@ -14,17 +14,10 @@ package org.eclipse.emf.eson.util;
 
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
-import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.util.Pair;
-import org.eclipse.xtext.util.SimpleCache;
-import org.eclipse.xtext.util.Tuples;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
@@ -34,37 +27,6 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class EPackageResolver {
-
-	private SimpleCache<Pair<Resource, String>, EPackage> cache = new SimpleCache<Pair<Resource, String>, EPackage>(
-			new Function<Pair<Resource, String>, EPackage>() {
-				@SuppressWarnings("null") // OK, because we know cache is only used from resolve() below, which has @NonNull args
-				public EPackage apply(Pair<Resource, String> tuple) {
-					String packageUri = tuple.getSecond();
-					EPackage ePackage = getPackageFromRegistry(packageUri);
-					if (ePackage == null) {
-						ePackage = loadPackageAsResource(tuple.getFirst(), packageUri);
-					}
-					return ePackage; // could still be null here..
-				}
-			});
-
-	/**
-	 * Get the packageUri from the resource.
-	 * @param resource an EMF Resource
-	 * @param packageUri an EMF Package URI
-	 * @return EPackage, or null if the resource does not contain an EPackage
-	 */
-	public @Nullable EPackage resolve(@NonNull Resource resource, @NonNull String packageUri) {
-		Pair<Resource, String> pair = Tuples.create(resource, packageUri);
-		return cache.get(pair);
-	}
-
-	protected @Nullable EPackage loadPackageAsResource(@NonNull Resource context, @NonNull String packageUri) {
-		final Resource resource = EcoreUtil2.getResource(context, packageUri);
-		if (resource == null)
-			return null;
-		return getEPackage(resource);
-	}
 
 	/**
 	 * We've seen a corner case (DS-6421) where there is no EMF ECore model gen.
@@ -79,17 +41,6 @@ public class EPackageResolver {
 		} catch (WrappedException e) {
 			return null;
 		}
-	}
-
-	private @Nullable EPackage getEPackage(@NonNull Resource resource) {
-		// This will (has to, see DynamicEmfTest) find
-		// an EPackage created dynamically in an EFactory as well
-		EList<EObject> contents = resource.getContents();
-		for (EObject eObject : contents) {
-			if (eObject instanceof EPackage)
-				return (EPackage) eObject;
-		}
-		return null;
 	}
 
 	/**

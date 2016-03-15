@@ -20,11 +20,9 @@ import com.google.common.base.Function;
 public class ValueResolver implements Function<EObject, Object> {
 
 	public Object apply(EObject eObject) {
-		EStructuralFeature valueFeature = eObject.eClass()
-				.getEStructuralFeature("value");
+		EStructuralFeature valueFeature = eObject.eClass().getEStructuralFeature("value");
 		if (valueFeature == null) {
-			throw new IllegalArgumentException("'" + eObject.eClass().getName()
-					+ "' has no feature 'value'");
+			throw new IllegalArgumentException("'" + eObject.eClass().getName() + "' has no feature 'value'");
 		}
 		return eObject.eGet(valueFeature);
 	}

@@ -21,9 +21,6 @@ import org.eclipse.emf.eson.eFactory.PackageImport;
 
 public final class EFactoryUtil {
 
-	//@Inject
-	//private EPackageResolver packageResolver;
-
 	/**
 	 * Gets EPackages from the 'use' clause, as well as from the 'import' clause,
 	 * in case any imported files dynamically define new EClass (see
