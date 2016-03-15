@@ -4,7 +4,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Factory">
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//NamespaceImport" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="epackages" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ePackages" upperBound="-1"
         eType="#//PackageImport" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
         eType="#//Annotation" containment="true"/>

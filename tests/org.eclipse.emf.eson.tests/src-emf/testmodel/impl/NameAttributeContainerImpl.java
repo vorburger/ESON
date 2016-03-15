@@ -23,13 +23,13 @@ import testmodel.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.impl.NameAttributeContainerImpl#getDefaultNameTest <em>Default Name Test</em>}</li>
  *   <li>{@link testmodel.impl.NameAttributeContainerImpl#getCustomNameTest <em>Custom Name Test</em>}</li>
  *   <li>{@link testmodel.impl.NameAttributeContainerImpl#getName <em>Name</em>}</li>
  *   <li>{@link testmodel.impl.NameAttributeContainerImpl#getNoNameTest <em>No Name Test</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

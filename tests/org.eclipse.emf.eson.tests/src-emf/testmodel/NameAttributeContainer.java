@@ -11,13 +11,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.NameAttributeContainer#getDefaultNameTest <em>Default Name Test</em>}</li>
  *   <li>{@link testmodel.NameAttributeContainer#getCustomNameTest <em>Custom Name Test</em>}</li>
  *   <li>{@link testmodel.NameAttributeContainer#getName <em>Name</em>}</li>
  *   <li>{@link testmodel.NameAttributeContainer#getNoNameTest <em>No Name Test</em>}</li>
  * </ul>
- * </p>
  *
  * @see testmodel.TestmodelPackage#getNameAttributeContainer()
  * @model

@@ -21,12 +21,12 @@ import testmodel.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.impl.AbstractImpl#isParentAttribute <em>Parent Attribute</em>}</li>
  *   <li>{@link testmodel.impl.AbstractImpl#getParentReference <em>Parent Reference</em>}</li>
  *   <li>{@link testmodel.impl.AbstractImpl#getParentContainment <em>Parent Containment</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

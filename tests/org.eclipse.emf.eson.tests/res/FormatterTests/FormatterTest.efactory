@@ -1,6 +1,6 @@
 import testmodel.TestModel
 
-use testmodel.*
+use testmodel
 
 TestModel testModelName {
 	singleRequired: SingleRequired {

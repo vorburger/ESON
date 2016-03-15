@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.Abstract#isParentAttribute <em>Parent Attribute</em>}</li>
  *   <li>{@link testmodel.Abstract#getParentReference <em>Parent Reference</em>}</li>
  *   <li>{@link testmodel.Abstract#getParentContainment <em>Parent Containment</em>}</li>
  * </ul>
- * </p>
  *
  * @see testmodel.TestmodelPackage#getAbstract()
  * @model abstract="true"

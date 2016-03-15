@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getImports <em>Imports</em>}</li>
- *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getEpackages <em>Epackages</em>}</li>
+ *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getEPackages <em>EPackages</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.eclipse.emf.eson.eFactory.Factory#getRoot <em>Root</em>}</li>
  * </ul>
@@ -44,20 +44,20 @@ public interface Factory extends EObject
   EList<NamespaceImport> getImports();
 
   /**
-   * Returns the value of the '<em><b>Epackages</b></em>' containment reference list.
+   * Returns the value of the '<em><b>EPackages</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.emf.eson.eFactory.PackageImport}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Epackages</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>EPackages</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Epackages</em>' containment reference list.
-   * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getFactory_Epackages()
+   * @return the value of the '<em>EPackages</em>' containment reference list.
+   * @see org.eclipse.emf.eson.eFactory.EFactoryPackage#getFactory_EPackages()
    * @model containment="true"
    * @generated
    */
-  EList<PackageImport> getEpackages();
+  EList<PackageImport> getEPackages();
 
   /**
    * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.

@@ -22,6 +22,4 @@ public interface IEPackageScopeProvider {
 
 	IScope createEClassScope(Resource resource, IScope parent);
 
-	IScope createEPackageScope(Resource eResource, IScope parent);
-
 }

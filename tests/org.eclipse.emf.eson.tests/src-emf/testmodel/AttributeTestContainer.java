@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.AttributeTestContainer#getName <em>Name</em>}</li>
  *   <li>{@link testmodel.AttributeTestContainer#getOneInt <em>One Int</em>}</li>
@@ -40,7 +41,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link testmodel.AttributeTestContainer#getOneString <em>One String</em>}</li>
  *   <li>{@link testmodel.AttributeTestContainer#getManyString <em>Many String</em>}</li>
  * </ul>
- * </p>
  *
  * @see testmodel.TestmodelPackage#getAttributeTestContainer()
  * @model

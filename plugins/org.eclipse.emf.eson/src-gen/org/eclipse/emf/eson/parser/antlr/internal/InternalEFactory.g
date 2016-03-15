@@ -98,16 +98,16 @@ ruleFactory returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getFactoryAccess().getEPackagesPackageImportParserRuleCall_1_0()); 
 	    }
-		lv_epackages_1_0=rulePackageImport		{
+		lv_ePackages_1_0=rulePackageImport		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFactoryRule());
 	        }
        		add(
        			$current, 
-       			"epackages",
-        		lv_epackages_1_0, 
+       			"ePackages",
+        		lv_ePackages_1_0, 
         		"PackageImport");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -184,16 +184,12 @@ rulePackageImport returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getPackageImportAccess().getEPackageEPackageCrossReference_1_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleStringOrQualifiedNameWithWildcard		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_2='.*' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getPackageImportAccess().getFullStopAsteriskKeyword_2());
-    }
-)
+))
 ;
 
 
@@ -1055,6 +1051,46 @@ ruleBooleanAttribute returns [EObject current=null]
 )
 )
 ;
+
+
+
+
+
+// Entry rule entryRuleStringOrQualifiedNameWithWildcard
+entryRuleStringOrQualifiedNameWithWildcard returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getStringOrQualifiedNameWithWildcardRule()); } 
+	 iv_ruleStringOrQualifiedNameWithWildcard=ruleStringOrQualifiedNameWithWildcard 
+	 { $current=$iv_ruleStringOrQualifiedNameWithWildcard.current.getText(); }  
+	 EOF 
+;
+
+// Rule StringOrQualifiedNameWithWildcard
+ruleStringOrQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(    this_STRING_0=RULE_STRING    {
+		$current.merge(this_STRING_0);
+    }
+
+    { 
+    newLeafNode(this_STRING_0, grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getSTRINGTerminalRuleCall_0()); 
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getQualifiedNameWithWildcardParserRuleCall_1()); 
+    }
+    this_QualifiedNameWithWildcard_1=ruleQualifiedNameWithWildcard    {
+		$current.merge(this_QualifiedNameWithWildcard_1);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
+    }
+)
+    ;
 
 
 

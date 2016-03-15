@@ -27,6 +27,7 @@ import testmodel.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.impl.AttributeSampleImpl#getSingleIntOptional <em>Single Int Optional</em>}</li>
  *   <li>{@link testmodel.impl.AttributeSampleImpl#getListIntRequired <em>List Int Required</em>}</li>
@@ -34,7 +35,6 @@ import testmodel.TestmodelPackage;
  *   <li>{@link testmodel.impl.AttributeSampleImpl#getBigInteger <em>Big Integer</em>}</li>
  *   <li>{@link testmodel.impl.AttributeSampleImpl#getDouble <em>Double</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

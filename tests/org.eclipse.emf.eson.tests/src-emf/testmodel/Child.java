@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.Child#getReferenceList <em>Reference List</em>}</li>
  * </ul>
- * </p>
  *
  * @see testmodel.TestmodelPackage#getChild()
  * @model

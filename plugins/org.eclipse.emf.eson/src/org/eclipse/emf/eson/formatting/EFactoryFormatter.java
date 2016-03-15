@@ -35,7 +35,6 @@ public class EFactoryFormatter extends AbstractDeclarativeFormatter {
 		setPreservingLinewraps(c, 2).after(f.getNamespaceImportRule());
 
 		setPreservingLinewraps(c, 2).after(f.getPackageImportRule());
-		c.setNoSpace().after(f.getPackageImportAccess().getEPackageAssignment_1());
 
 		setIndentationIncrementAndDecrementAndLinewrapAfter(c,
 				f.getNewObjectAccess().getLeftCurlyBracketKeyword_2(),

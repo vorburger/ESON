@@ -12,23 +12,49 @@
  */
 package org.eclipse.emf.eson.scoping;
 
+import java.util.Collections;
+
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.eson.eFactory.Feature;
 import org.eclipse.emf.eson.eFactory.PackageImport;
+import org.eclipse.emf.eson.util.EPackageRegistry;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.resource.EObjectDescription;
+import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
+/**
+ * Scope Provider which finds Ecore EPackage both from within the workspace using the Xtext index as well as from the global EPackage Registry.
+ */
 public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 
-	@Inject
-	private IEPackageScopeProvider ePackageScopeProvider;
+	protected @Inject EPackageRegistry ePackageRegistry;
+	protected @Inject IQualifiedNameConverter qualifiedNameConverter;
+
+	// TODO rm!
+	@Inject	private IEPackageScopeProvider ePackageScopeProvider;
 
 	public IScope scope_PackageImport_ePackage(PackageImport packageImport, EReference eReference) {
 		final IScope parent = delegateGetScope(packageImport, eReference);
-		return ePackageScopeProvider.createEPackageScope(packageImport.eResource(), parent);
+		// Following shamelessly ;) stolen from org.eclipse.xtext.xtext.XtextScopeProvider.createEPackageScope(Grammar):
+		Iterable<String> nsURIs = ePackageRegistry.getNsURIs(packageImport);
+		return new SimpleEPackageScope(parent, Iterables.transform(nsURIs, new Function<String, IEObjectDescription>() {
+			@Override
+			public IEObjectDescription apply(String from) {
+				InternalEObject proxyPackage = (InternalEObject) EcoreFactory.eINSTANCE.createEPackage();
+				proxyPackage.eSetProxyURI(URI.createURI(from));
+				return EObjectDescription.create(qualifiedNameConverter.toQualifiedName(from), proxyPackage, Collections.singletonMap("nsURI", "true"));
+			}
+		}));
 	}
 
 	@Override

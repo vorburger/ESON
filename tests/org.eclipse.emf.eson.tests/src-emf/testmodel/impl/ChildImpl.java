@@ -22,10 +22,10 @@ import testmodel.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.impl.ChildImpl#getReferenceList <em>Reference List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -30,6 +30,7 @@ import testmodel.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.impl.AttributeTestContainerImpl#getName <em>Name</em>}</li>
  *   <li>{@link testmodel.impl.AttributeTestContainerImpl#getOneInt <em>One Int</em>}</li>
@@ -52,7 +53,6 @@ import testmodel.TestmodelPackage;
  *   <li>{@link testmodel.impl.AttributeTestContainerImpl#getOneString <em>One String</em>}</li>
  *   <li>{@link testmodel.impl.AttributeTestContainerImpl#getManyString <em>Many String</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

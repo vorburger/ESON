@@ -18,22 +18,22 @@ import testmodel.testsubmodel.TestsubmodelPackage;
  */
 public class TestInnerModelImpl extends EObjectImpl implements TestInnerModel {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected TestInnerModelImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return TestsubmodelPackage.Literals.TEST_INNER_MODEL;
-    }
+		return TestsubmodelPackage.Literals.TEST_INNER_MODEL;
+	}
 
 } //TestInnerModelImpl

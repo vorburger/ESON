@@ -76,7 +76,7 @@ public interface EFactoryPackage extends EPackage
   int FACTORY__IMPORTS = 0;
 
   /**
-   * The feature id for the '<em><b>Epackages</b></em>' containment reference list.
+   * The feature id for the '<em><b>EPackages</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -647,15 +647,15 @@ public interface EFactoryPackage extends EPackage
   EReference getFactory_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eson.eFactory.Factory#getEpackages <em>Epackages</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eson.eFactory.Factory#getEPackages <em>EPackages</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Epackages</em>'.
-   * @see org.eclipse.emf.eson.eFactory.Factory#getEpackages()
+   * @return the meta object for the containment reference list '<em>EPackages</em>'.
+   * @see org.eclipse.emf.eson.eFactory.Factory#getEPackages()
    * @see #getFactory()
    * @generated
    */
-  EReference getFactory_Epackages();
+  EReference getFactory_EPackages();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eson.eFactory.Factory#getAnnotations <em>Annotations</em>}'.
@@ -1110,12 +1110,12 @@ public interface EFactoryPackage extends EPackage
     EReference FACTORY__IMPORTS = eINSTANCE.getFactory_Imports();
 
     /**
-     * The meta object literal for the '<em><b>Epackages</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>EPackages</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FACTORY__EPACKAGES = eINSTANCE.getFactory_Epackages();
+    EReference FACTORY__EPACKAGES = eINSTANCE.getFactory_EPackages();
 
     /**
      * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.

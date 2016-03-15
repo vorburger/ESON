@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.SingleRequired#getNestedElements <em>Nested Elements</em>}</li>
  *   <li>{@link testmodel.SingleRequired#getNestedElement <em>Nested Element</em>}</li>
  *   <li>{@link testmodel.SingleRequired#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see testmodel.TestmodelPackage#getSingleRequired()
  * @model

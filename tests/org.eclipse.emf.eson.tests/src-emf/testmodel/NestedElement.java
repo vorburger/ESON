@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.NestedElement#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see testmodel.TestmodelPackage#getNestedElement()
  * @model

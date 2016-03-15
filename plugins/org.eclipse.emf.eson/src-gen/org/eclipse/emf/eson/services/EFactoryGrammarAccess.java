@@ -23,18 +23,18 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cImportsNamespaceImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
-		private final Assignment cEpackagesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cEpackagesPackageImportParserRuleCall_1_0 = (RuleCall)cEpackagesAssignment_1.eContents().get(0);
+		private final Assignment cEPackagesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cEPackagesPackageImportParserRuleCall_1_0 = (RuleCall)cEPackagesAssignment_1.eContents().get(0);
 		private final Assignment cAnnotationsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cAnnotationsAnnotationParserRuleCall_2_0 = (RuleCall)cAnnotationsAssignment_2.eContents().get(0);
 		private final Assignment cRootAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cRootNewObjectParserRuleCall_3_0 = (RuleCall)cRootAssignment_3.eContents().get(0);
 		
 		//Factory:
-		//	imports+=NamespaceImport* epackages+=PackageImport* annotations+=Annotation* root=NewObject;
+		//	imports+=NamespaceImport* ePackages+=PackageImport* annotations+=Annotation* root=NewObject;
 		@Override public ParserRule getRule() { return rule; }
 
-		//imports+=NamespaceImport* epackages+=PackageImport* annotations+=Annotation* root=NewObject
+		//imports+=NamespaceImport* ePackages+=PackageImport* annotations+=Annotation* root=NewObject
 		public Group getGroup() { return cGroup; }
 
 		//imports+=NamespaceImport*
@@ -43,11 +43,11 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//NamespaceImport
 		public RuleCall getImportsNamespaceImportParserRuleCall_0_0() { return cImportsNamespaceImportParserRuleCall_0_0; }
 
-		//epackages+=PackageImport*
-		public Assignment getEpackagesAssignment_1() { return cEpackagesAssignment_1; }
+		//ePackages+=PackageImport*
+		public Assignment getEPackagesAssignment_1() { return cEPackagesAssignment_1; }
 
 		//PackageImport
-		public RuleCall getEpackagesPackageImportParserRuleCall_1_0() { return cEpackagesPackageImportParserRuleCall_1_0; }
+		public RuleCall getEPackagesPackageImportParserRuleCall_1_0() { return cEPackagesPackageImportParserRuleCall_1_0; }
 
 		//annotations+=Annotation*
 		public Assignment getAnnotationsAssignment_2() { return cAnnotationsAssignment_2; }
@@ -68,32 +68,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cUseKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cEPackageAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cEPackageEPackageCrossReference_1_0 = (CrossReference)cEPackageAssignment_1.eContents().get(0);
-		private final RuleCall cEPackageEPackageQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cEPackageEPackageCrossReference_1_0.eContents().get(1);
-		private final Keyword cFullStopAsteriskKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final RuleCall cEPackageEPackageStringOrQualifiedNameWithWildcardParserRuleCall_1_0_1 = (RuleCall)cEPackageEPackageCrossReference_1_0.eContents().get(1);
 		
-		//PackageImport: // TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
-		//	"use" ePackage=[ecore::EPackage|QualifiedName] ".*";
+		//PackageImport:
+		//	"use" ePackage=[ecore::EPackage|StringOrQualifiedNameWithWildcard];
 		@Override public ParserRule getRule() { return rule; }
 
-		//// TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
-		//"use" ePackage=[ecore::EPackage|QualifiedName] ".*"
+		//"use" ePackage=[ecore::EPackage|StringOrQualifiedNameWithWildcard]
 		public Group getGroup() { return cGroup; }
 
-		//// TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
 		//"use"
 		public Keyword getUseKeyword_0() { return cUseKeyword_0; }
 
-		//ePackage=[ecore::EPackage|QualifiedName]
+		//ePackage=[ecore::EPackage|StringOrQualifiedNameWithWildcard]
 		public Assignment getEPackageAssignment_1() { return cEPackageAssignment_1; }
 
-		//[ecore::EPackage|QualifiedName]
+		//[ecore::EPackage|StringOrQualifiedNameWithWildcard]
 		public CrossReference getEPackageEPackageCrossReference_1_0() { return cEPackageEPackageCrossReference_1_0; }
 
-		//QualifiedName
-		public RuleCall getEPackageEPackageQualifiedNameParserRuleCall_1_0_1() { return cEPackageEPackageQualifiedNameParserRuleCall_1_0_1; }
-
-		//".*"
-		public Keyword getFullStopAsteriskKeyword_2() { return cFullStopAsteriskKeyword_2; }
+		//StringOrQualifiedNameWithWildcard
+		public RuleCall getEPackageEPackageStringOrQualifiedNameWithWildcardParserRuleCall_1_0_1() { return cEPackageEPackageStringOrQualifiedNameWithWildcardParserRuleCall_1_0_1; }
 	}
 
 	public class NamespaceImportElements extends AbstractParserRuleElementFinder {
@@ -103,7 +97,6 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
 		
-		//// TODO like the *.Xtext grammar itself does, support namespace and package name based (try the 'import' above!) + maybe support an "as" syntax
 		//// TODO Content Assist for EPackage .. but one COULD also import other named NewObject / EObject, instead of EPackages.. hm. As EPackage will be much more common, just support that.	
 		//NamespaceImport:
 		//	"import" importedNamespace=QualifiedNameWithWildcard;
@@ -590,6 +583,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueBooleanParserRuleCall_0() { return cValueBooleanParserRuleCall_0; }
 	}
 
+	public class StringOrQualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringOrQualifiedNameWithWildcard");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cQualifiedNameWithWildcardParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//StringOrQualifiedNameWithWildcard:
+		//	STRING | QualifiedNameWithWildcard;
+		@Override public ParserRule getRule() { return rule; }
+
+		//STRING | QualifiedNameWithWildcard
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
+
+		//QualifiedNameWithWildcard
+		public RuleCall getQualifiedNameWithWildcardParserRuleCall_1() { return cQualifiedNameWithWildcardParserRuleCall_1; }
+	}
+
 	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildcard");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -779,6 +792,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	private final DateAttributeElements pDateAttribute;
 	private final NullAttributeElements pNullAttribute;
 	private final BooleanAttributeElements pBooleanAttribute;
+	private final StringOrQualifiedNameWithWildcardElements pStringOrQualifiedNameWithWildcard;
 	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final QualifiedNameElements pQualifiedName;
 	private final ValidIDElements pValidID;
@@ -817,6 +831,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDateAttribute = new DateAttributeElements();
 		this.pNullAttribute = new NullAttributeElements();
 		this.pBooleanAttribute = new BooleanAttributeElements();
+		this.pStringOrQualifiedNameWithWildcard = new StringOrQualifiedNameWithWildcardElements();
 		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pValidID = new ValidIDElements();
@@ -857,7 +872,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Factory:
-	//	imports+=NamespaceImport* epackages+=PackageImport* annotations+=Annotation* root=NewObject;
+	//	imports+=NamespaceImport* ePackages+=PackageImport* annotations+=Annotation* root=NewObject;
 	public FactoryElements getFactoryAccess() {
 		return pFactory;
 	}
@@ -866,8 +881,8 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getFactoryAccess().getRule();
 	}
 
-	//PackageImport: // TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
-	//	"use" ePackage=[ecore::EPackage|QualifiedName] ".*";
+	//PackageImport:
+	//	"use" ePackage=[ecore::EPackage|StringOrQualifiedNameWithWildcard];
 	public PackageImportElements getPackageImportAccess() {
 		return pPackageImport;
 	}
@@ -876,7 +891,6 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getPackageImportAccess().getRule();
 	}
 
-	//// TODO like the *.Xtext grammar itself does, support namespace and package name based (try the 'import' above!) + maybe support an "as" syntax
 	//// TODO Content Assist for EPackage .. but one COULD also import other named NewObject / EObject, instead of EPackages.. hm. As EPackage will be much more common, just support that.	
 	//NamespaceImport:
 	//	"import" importedNamespace=QualifiedNameWithWildcard;
@@ -1052,6 +1066,16 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getBooleanAttributeRule() {
 		return getBooleanAttributeAccess().getRule();
+	}
+
+	//StringOrQualifiedNameWithWildcard:
+	//	STRING | QualifiedNameWithWildcard;
+	public StringOrQualifiedNameWithWildcardElements getStringOrQualifiedNameWithWildcardAccess() {
+		return pStringOrQualifiedNameWithWildcard;
+	}
+	
+	public ParserRule getStringOrQualifiedNameWithWildcardRule() {
+		return getStringOrQualifiedNameWithWildcardAccess().getRule();
 	}
 
 	//QualifiedNameWithWildcard:

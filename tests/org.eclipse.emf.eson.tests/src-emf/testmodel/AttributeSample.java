@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.AttributeSample#getSingleIntOptional <em>Single Int Optional</em>}</li>
  *   <li>{@link testmodel.AttributeSample#getListIntRequired <em>List Int Required</em>}</li>
@@ -23,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link testmodel.AttributeSample#getBigInteger <em>Big Integer</em>}</li>
  *   <li>{@link testmodel.AttributeSample#getDouble <em>Double</em>}</li>
  * </ul>
- * </p>
  *
  * @see testmodel.TestmodelPackage#getAttributeSample()
  * @model

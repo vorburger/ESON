@@ -12,11 +12,6 @@
  */
 package org.eclipse.emf.eson.ui.wizard;
 
-import static java.util.Collections.sort;
-
-import java.util.Comparator;
-import java.util.List;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -28,7 +23,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.eson.util.EPackageResolver;
+import org.eclipse.emf.eson.ui.EFactoryLog;
+import org.eclipse.emf.eson.ui.internal.EFactoryActivator;
+import org.eclipse.emf.eson.util.EPackageRegistry;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.dialogs.IDialogPage;
@@ -50,17 +47,13 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
-import com.google.common.collect.Lists;
-import org.eclipse.emf.eson.ui.EFactoryLog;
-
 public class EFactoryNewFileWizardPage extends WizardPage {
 
+	private /* TODO @Inject */ EPackageRegistry ePackageRegistry = EFactoryActivator.getInstance().getInjector(EFactoryActivator.ORG_ECLIPSE_EMF_ESON_EFACTORY).getInstance(EPackageRegistry.class); // TODO
+	
 	private Text containerText;
-
 	private Text fileText;
-
 	private ISelection selection;
-
 	private Combo metamodelCombo;
 
 	public EFactoryNewFileWizardPage(ISelection selection) {
@@ -116,17 +109,8 @@ public class EFactoryNewFileWizardPage extends WizardPage {
 		label.setText("&EPackage URI:");
 
 		metamodelCombo = new Combo(container, SWT.NONE);
-		List<EPackage> allRegisteredEPackages = Lists
-				.newArrayList(new EPackageResolver()
-						.getAllRegisteredEPackages());
-		sort(allRegisteredEPackages, new Comparator<EPackage>() {
-
-			public int compare(EPackage o1, EPackage o2) {
-				return o1.getNsURI().compareTo(o2.getNsURI());
-			}
-		});
-		for (EPackage ePackage : allRegisteredEPackages) {
-			metamodelCombo.add(ePackage.getNsURI());
+		for (String ePackageURI : ePackageRegistry.getNsURIs()) {
+			metamodelCombo.add(ePackageURI);
 		}
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalSpan = 2;

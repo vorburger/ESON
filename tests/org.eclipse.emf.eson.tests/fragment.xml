@@ -2,12 +2,30 @@
 <?eclipse version="3.0"?>
 <plugin>
 
+   <!-- NOTE org.eclipse.emf.eson.tests is a Fragment, not a Plugin,
+             therefore whatever is auto. gen. by EM in the ./plugin.xml must be kept in sync here in this ./fragment.xml !!! -->
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://testmodel/1.0"
+            uri="testmodel"
             class="testmodel.TestmodelPackage"
             genModel="model/TestModel.genmodel"/>
    </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="testmodel.testsubmodel"
+            class="testmodel.testsubmodel.TestsubmodelPackage"
+            genModel="model/TestModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://testmodel/subWithTraditionalURI/1.0"
+            class="testmodel.testsubmodelWithTraditionalURI.TestsubmodelWithTraditionalURIPackage"
+            genModel="model/TestModel.genmodel"/>
+   </extension>
+
    <extension
          point="org.eclipse.emf.eson.generator">
       <generator

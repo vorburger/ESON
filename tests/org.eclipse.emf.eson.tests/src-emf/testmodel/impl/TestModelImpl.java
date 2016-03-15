@@ -34,6 +34,7 @@ import testmodel.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.impl.TestModelImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link testmodel.impl.TestModelImpl#getSingleOptional <em>Single Optional</em>}</li>
@@ -45,7 +46,6 @@ import testmodel.TestmodelPackage;
  *   <li>{@link testmodel.impl.TestModelImpl#getAttributeTest <em>Attribute Test</em>}</li>
  *   <li>{@link testmodel.impl.TestModelImpl#getNameAttributeTest <em>Name Attribute Test</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

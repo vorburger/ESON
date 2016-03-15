@@ -19,6 +19,9 @@ Export-Package: org.eclipse.emf.eson.builder.tests,
  testmodel.testsubmodel,
  testmodel.testsubmodel.impl,
  testmodel.testsubmodel.util,
+ testmodel.testsubmodelWithTraditionalURI,
+ testmodel.testsubmodelWithTraditionalURI.impl,
+ testmodel.testsubmodelWithTraditionalURI.util,
  testmodel.util,
  org.eclipse.emf.eson
 Require-Bundle: org.junit,
@@ -42,7 +45,8 @@ Require-Bundle: org.junit,
  org.eclipse.emf.codegen;bundle-version="2.8.0",
  org.eclipse.emf.codegen.ecore;bundle-version="2.8.2",
  org.eclipse.emf.eson,
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.eclipse.emf.eson.ui
 Bundle-ActivationPolicy: lazy
 Import-Package: org.hamcrest.core,
  org.junit.runner;version="4.5.0",

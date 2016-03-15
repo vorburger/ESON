@@ -8,14 +8,12 @@ generate eFactory "http://www.eclipse.org/emf/eson/EFactory"
 
 Factory:
 	(imports += NamespaceImport)*
-	(epackages+=PackageImport)*
-	(annotations+=Annotation)*
-	root=NewObject;
+	(ePackages += PackageImport)*
+	(annotations += Annotation)*
+	root = NewObject;
 	
 PackageImport:
-// TODO Validation rule with "deprecated" warning for 'use', now that we have 'import' instead 
-'use' ePackage = [ecore::EPackage|QualifiedName] '.*';
-// TODO like the *.Xtext grammar itself does, support namespace and package name based (try the 'import' above!) + maybe support an "as" syntax
+'use' ePackage = [ecore::EPackage|StringOrQualifiedNameWithWildcard];
 
 NamespaceImport:
 	'import' importedNamespace = QualifiedNameWithWildcard	
@@ -84,6 +82,7 @@ NullAttribute:    value = "NULL";
 
 BooleanAttribute: value = Boolean;
 
+StringOrQualifiedNameWithWildcard: STRING | QualifiedNameWithWildcard;
 QualifiedNameWithWildcard: QualifiedName '.*'? ;
 QualifiedName: ValidID (=>'.' ValidID)*;
 ValidID: ID | LONG_ID | LONG_UNSIGNED; // This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).

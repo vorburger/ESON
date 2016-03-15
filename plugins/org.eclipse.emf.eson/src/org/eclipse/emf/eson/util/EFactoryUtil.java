@@ -22,16 +22,15 @@ import org.eclipse.emf.eson.eFactory.PackageImport;
 public final class EFactoryUtil {
 
 	/**
-	 * Gets EPackages from the 'use' clause, as well as from the 'import' clause,
-	 * in case any imported files dynamically define new EClass (see
-	 * DynamicEmfTest).
+	 * Gets EPackages from the 'use' clause.
 	 */
 	public Iterable<EPackage> getEPackages(Factory factory) {
-		List<PackageImport> ePackageUris = factory.getEpackages();
+		List<PackageImport> ePackageUris = factory.getEPackages();
 		List<EPackage> result = new ArrayList<EPackage>(ePackageUris.size());
 		for (PackageImport packageImport : ePackageUris) {
 			EPackage ePackage = packageImport.getEPackage();
-			result.add(ePackage);
+			if (ePackage != null)
+				result.add(ePackage);
 		}
 		return result;
 	}

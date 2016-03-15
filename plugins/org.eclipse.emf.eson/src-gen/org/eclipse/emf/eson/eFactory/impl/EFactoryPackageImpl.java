@@ -260,7 +260,7 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFactory_Epackages()
+  public EReference getFactory_EPackages()
   {
     return (EReference)factoryEClass.getEStructuralFeatures().get(1);
   }
@@ -793,7 +793,7 @@ public class EFactoryPackageImpl extends EPackageImpl implements EFactoryPackage
     // Initialize classes and features; add operations and parameters
     initEClass(factoryEClass, Factory.class, "Factory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFactory_Imports(), this.getNamespaceImport(), null, "imports", null, 0, -1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFactory_Epackages(), this.getPackageImport(), null, "epackages", null, 0, -1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFactory_EPackages(), this.getPackageImport(), null, "ePackages", null, 0, -1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFactory_Annotations(), this.getAnnotation(), null, "annotations", null, 0, -1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFactory_Root(), this.getNewObject(), null, "root", null, 0, 1, Factory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

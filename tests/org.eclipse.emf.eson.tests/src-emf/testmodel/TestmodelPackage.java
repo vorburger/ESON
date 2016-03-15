@@ -38,7 +38,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://testmodel/1.0";
+	String eNS_URI = "testmodel";
 
 	/**
 	 * The package namespace name.

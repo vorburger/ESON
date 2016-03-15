@@ -80,7 +80,7 @@ public class UIResyncTest extends AbstractXtextTests {
 		});
 		
 		formattedText = LineEndingUtil.fixLineEndings(document.get());
-		assertEquals("use testmodel.* \n\nTestModel tested {\n	singleRequired: SingleRequired { }\n}", formattedText);
+		assertEquals("use testmodel \n\nTestModel tested {\n	singleRequired: SingleRequired { }\n}", formattedText);
 	}
 
 	/**

@@ -2,7 +2,7 @@
 
 import lunar.*
 
-use library.* // TODO (later when unified) import org.eclipse.emf.eson.example.library.*
+use org.eclipse.emf.eson.example.library
 
 Library {
     books: [

@@ -30,6 +30,7 @@ import testmodel.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.impl.ReferenceTestContainerImpl#getContainments <em>Containments</em>}</li>
  *   <li>{@link testmodel.impl.ReferenceTestContainerImpl#getReferenceToOne <em>Reference To One</em>}</li>
@@ -39,7 +40,6 @@ import testmodel.TestmodelPackage;
  *   <li>{@link testmodel.impl.ReferenceTestContainerImpl#isOneAttribute <em>One Attribute</em>}</li>
  *   <li>{@link testmodel.impl.ReferenceTestContainerImpl#getManyAttributes <em>Many Attributes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

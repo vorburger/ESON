@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link testmodel.TestModel#getChildren <em>Children</em>}</li>
  *   <li>{@link testmodel.TestModel#getSingleOptional <em>Single Optional</em>}</li>
@@ -24,7 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link testmodel.TestModel#getAttributeTest <em>Attribute Test</em>}</li>
  *   <li>{@link testmodel.TestModel#getNameAttributeTest <em>Name Attribute Test</em>}</li>
  * </ul>
- * </p>
  *
  * @see testmodel.TestmodelPackage#getTestModel()
  * @model

@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.util.EFactoryUtil;
-import org.eclipse.emf.eson.util.EPackageResolver;
 import org.eclipse.emf.eson.util.EcoreUtil3;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -38,9 +37,6 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 	@Inject
 	private EFactoryUtil eFactoryUtil;
 
-	@Inject
-	private EPackageResolver packageResolver;
-	
 	public IScope createEClassScope(Resource resource, EClass type, IScope parent) {
 		Iterable<EPackage> ePackages = resolvePackages(resource);
 		Iterable<EClass> eClasses = getAllEClasses(ePackages);
@@ -86,12 +82,6 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 			result = Iterables.concat(result, allContents);
 		}
 		return result;
-	}
-
-	public IScope createEPackageScope(Resource eResource, IScope parent) {
-		Iterable<EPackage> ePackages = packageResolver.getAllRegisteredEPackages();
-		Iterable<IEObjectDescription> scopedElements = Scopes.scopedElementsFor(ePackages /* no need for DottedQualifiedNameFixer.FUNCTION, as no EPackages with dots */ );
-		return new SimpleScope(parent, scopedElements);
 	}
 
 }

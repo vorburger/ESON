@@ -38,6 +38,11 @@ import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
+/**
+ * Scope Provider which finds everything only from within the workspace using the Xtext index, as usual.
+ * 
+ * @see EFactoryScopeProvider
+ */
 public class EFactoryScopeProviderNG extends AbstractDeclarativeScopeProvider {
 
 	protected @Inject ICaseInsensitivityHelper caseInsensitivityHelper;

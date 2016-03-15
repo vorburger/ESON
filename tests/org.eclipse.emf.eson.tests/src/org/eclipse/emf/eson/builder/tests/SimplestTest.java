@@ -26,6 +26,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import testmodel.TestModel;
+import testmodel.testsubmodel.TestInnerModel;
+import testmodel.testsubmodelWithTraditionalURI.TestInnerModelInPackageWithTraditionalURI;
 
 @RunWith(XtextRunner.class)
 @InjectWith(ESONWithTestmodelInjectorProvider.class)
@@ -33,10 +35,20 @@ public class SimplestTest {
 
 	@Inject ResourceProvider provider;
 
+	@Test public void testSimplestWithNamespaceURI() throws Exception {
+		TestInnerModelInPackageWithTraditionalURI m = provider.loadModel("res/BuilderTests/SimplestWithNamespaceURI.eson", TestInnerModelInPackageWithTraditionalURI.class);
+		assertEquals("def", m.getName());
+	}
+
 	@Test public void testSimplest() throws Exception {
 		TestModel m = provider.loadModel("res/BuilderTests/Simplest.eson", TestModel.class);
 		assertEquals("abc", m.getName());
 		assertNotNull(m.getSingleRequired());
+	}
+
+	@Test public void testSimplestSubPackage() throws Exception {
+		TestInnerModel m = provider.loadModel("res/BuilderTests/SimplestSubPackage.eson", TestInnerModel.class);
+		assertNotNull(m);
 	}
 
 	@Test public void testSimplestNamedContainment() throws Exception {

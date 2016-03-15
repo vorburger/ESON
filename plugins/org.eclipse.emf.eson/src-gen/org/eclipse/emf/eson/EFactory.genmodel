@@ -9,7 +9,7 @@
       ecorePackage="EFactory.ecore#/">
     <genClasses ecoreClass="EFactory.ecore#//Factory">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//Factory/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//Factory/epackages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//Factory/ePackages"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//Factory/annotations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EFactory.ecore#//Factory/root"/>
     </genClasses>

@@ -268,7 +268,7 @@ public class BuilderResyncTest {
 		EClass eClass = factory.getRoot().getEClass();
 		assertEquals(TestmodelPackage.Literals.TEST_MODEL, eClass);
 
-		assertTrue(factory.getEpackages().isEmpty());
+		assertTrue(factory.getEPackages().isEmpty());
 		assertTrue(factory.getAnnotations().isEmpty());
 		checkNodes(factory);
 	}

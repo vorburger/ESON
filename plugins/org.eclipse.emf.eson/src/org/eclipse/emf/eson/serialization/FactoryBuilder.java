@@ -40,7 +40,7 @@ public class FactoryBuilder implements IFactoryBuilder {
 	public Factory buildFactory(EObject eObject) {
 		factory = EFactoryFactory.eINSTANCE.createFactory();
 		PackageImport packageImport = createPackageImport(eObject);
-		factory.getEpackages().add(packageImport);
+		factory.getEPackages().add(packageImport);
 		
 		NewObject root = createNewObject(eObject);
 		factory.setRoot(root);

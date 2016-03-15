@@ -20,76 +20,76 @@ import testmodel.testsubmodel.*;
  */
 public class TestsubmodelFactoryImpl extends EFactoryImpl implements TestsubmodelFactory {
     /**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static TestsubmodelFactory init() {
-        try {
-            TestsubmodelFactory theTestsubmodelFactory = (TestsubmodelFactory)EPackage.Registry.INSTANCE.getEFactory(TestsubmodelPackage.eNS_URI);
-            if (theTestsubmodelFactory != null) {
-                return theTestsubmodelFactory;
-            }
-        }
-        catch (Exception exception) {
-            EcorePlugin.INSTANCE.log(exception);
-        }
-        return new TestsubmodelFactoryImpl();
-    }
+		try {
+			TestsubmodelFactory theTestsubmodelFactory = (TestsubmodelFactory)EPackage.Registry.INSTANCE.getEFactory(TestsubmodelPackage.eNS_URI);
+			if (theTestsubmodelFactory != null) {
+				return theTestsubmodelFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new TestsubmodelFactoryImpl();
+	}
 
     /**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public TestsubmodelFactoryImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public EObject create(EClass eClass) {
-        switch (eClass.getClassifierID()) {
-            case TestsubmodelPackage.TEST_INNER_MODEL: return createTestInnerModel();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eClass.getClassifierID()) {
+			case TestsubmodelPackage.TEST_INNER_MODEL: return createTestInnerModel();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public TestInnerModel createTestInnerModel() {
-        TestInnerModelImpl testInnerModel = new TestInnerModelImpl();
-        return testInnerModel;
-    }
+		TestInnerModelImpl testInnerModel = new TestInnerModelImpl();
+		return testInnerModel;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public TestsubmodelPackage getTestsubmodelPackage() {
-        return (TestsubmodelPackage)getEPackage();
-    }
+		return (TestsubmodelPackage)getEPackage();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @deprecated
-     * @generated
-     */
+	 * @deprecated
+	 * @generated
+	 */
     @Deprecated
     public static TestsubmodelPackage getPackage() {
-        return TestsubmodelPackage.eINSTANCE;
-    }
+		return TestsubmodelPackage.eINSTANCE;
+	}
 
 } //TestsubmodelFactoryImpl

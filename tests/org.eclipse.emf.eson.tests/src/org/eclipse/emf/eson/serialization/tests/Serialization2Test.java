@@ -65,7 +65,6 @@ public class Serialization2Test {
 	
     @Test 
     public void testChangeNameThenSecondAttribute() throws Exception {
-        
         TestModel testModel = resourceProvider.loadModel("res/SerializationTests/AttributeTest.efactory", TestModel.class);
         //assertEquals("testModelName", testModel.getName());
         testModel.setName("name");

@@ -13,8 +13,6 @@ import testmodel.TestmodelPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>No Name</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

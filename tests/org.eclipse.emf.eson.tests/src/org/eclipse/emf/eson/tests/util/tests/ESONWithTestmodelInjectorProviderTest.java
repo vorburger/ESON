@@ -31,12 +31,12 @@ import org.junit.runner.RunWith;
 public class ESONWithTestmodelInjectorProviderTest {
 	
 	@Test
-	public void testNoNameFeature() throws Exception {
-		assertNotNull(EPackage.Registry.INSTANCE.getEPackage("http://testmodel/1.0"));
+	public void testFirst() throws Exception {
+		assertNotNull(EPackage.Registry.INSTANCE.getEPackage("testmodel"));
 	}
 
 	@Test
-	public void testOnlyOneErrorForMissingRequiredProperty() throws Exception {
-		assertNotNull(EPackage.Registry.INSTANCE.getEPackage("http://testmodel/1.0"));
+	public void testSecond() throws Exception {
+		assertNotNull(EPackage.Registry.INSTANCE.getEPackage("testmodel"));
 	}
 }

@@ -188,7 +188,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (imports+=NamespaceImport* epackages+=PackageImport* annotations+=Annotation* root=NewObject)
+	 *     (imports+=NamespaceImport* ePackages+=PackageImport* annotations+=Annotation* root=NewObject)
 	 */
 	protected void sequence_Factory(EObject context, Factory semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -272,7 +272,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     ePackage=[EPackage|QualifiedName]
+	 *     ePackage=[EPackage|StringOrQualifiedNameWithWildcard]
 	 */
 	protected void sequence_PackageImport(EObject context, PackageImport semanticObject) {
 		if(errorAcceptor != null) {
@@ -281,7 +281,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPackageImportAccess().getEPackageEPackageQualifiedNameParserRuleCall_1_0_1(), semanticObject.getEPackage());
+		feeder.accept(grammarAccess.getPackageImportAccess().getEPackageEPackageStringOrQualifiedNameWithWildcardParserRuleCall_1_0_1(), semanticObject.getEPackage());
 		feeder.finish();
 	}
 	

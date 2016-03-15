@@ -15,6 +15,7 @@ package org.eclipse.emf.eson.serialization;
 import java.io.StringReader;
 
 import org.eclipse.emf.eson.services.EFactoryGrammarAccess;
+import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -40,15 +41,22 @@ public class ValidIDChecker {
 	 * @param candidate the string to parse which may be a ValidID
 	 * @return true if the parser successfully parsed it as a ValidID
 	 */
-	boolean isValidID(String candidate) {
+	public boolean isValidID(String candidate) {
+		return isValid(grammar.getValidIDRule(), candidate);
+	}
+
+	public boolean isValidQualifiedName(String candidate) {
+		return isValid(grammar.getQualifiedNameRule(), candidate);		
+	}
+	
+	protected boolean isValid(ParserRule rule, String candidate) {
 		if (Strings.isNullOrEmpty(candidate)) {
 			// This is not strictly speaking true from the Grammar's point of
 			// view of the ValidID regexp definition, but still required / makes
 			// sense in this context; see tests.
 			return true;
 		}
-		IParseResult parseResult = parser.parse(grammar.getValidIDRule(), new StringReader(candidate));
-		return IterableExtensions.isNullOrEmpty(parseResult.getSyntaxErrors());
+		IParseResult parseResult = parser.parse(rule, new StringReader(candidate));
+		return IterableExtensions.isNullOrEmpty(parseResult.getSyntaxErrors());		
 	}
-
 }

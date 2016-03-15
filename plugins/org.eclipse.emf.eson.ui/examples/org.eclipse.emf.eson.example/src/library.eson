@@ -1,6 +1,6 @@
 // https://wiki.eclipse.org/ESON
 
-use library.* // TODO (later when unified) import org.eclipse.emf.eson.example.library.*
+use org.eclipse.emf.eson.example.library
 
 /**
  * If Library/Book/Writer etc. are red here, then you must close

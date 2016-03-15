@@ -561,6 +561,34 @@ finally {
 
 
 
+// Entry rule entryRuleStringOrQualifiedNameWithWildcard
+entryRuleStringOrQualifiedNameWithWildcard 
+:
+{ before(grammarAccess.getStringOrQualifiedNameWithWildcardRule()); }
+	 ruleStringOrQualifiedNameWithWildcard
+{ after(grammarAccess.getStringOrQualifiedNameWithWildcardRule()); } 
+	 EOF 
+;
+
+// Rule StringOrQualifiedNameWithWildcard
+ruleStringOrQualifiedNameWithWildcard
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getAlternatives()); }
+(rule__StringOrQualifiedNameWithWildcard__Alternatives)
+{ after(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleQualifiedNameWithWildcard
 entryRuleQualifiedNameWithWildcard 
 :
@@ -844,6 +872,28 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__StringOrQualifiedNameWithWildcard__Alternatives
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getSTRINGTerminalRuleCall_0()); }
+	RULE_STRING
+{ after(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getSTRINGTerminalRuleCall_0()); }
+)
+
+    |(
+{ before(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getQualifiedNameWithWildcardParserRuleCall_1()); }
+	ruleQualifiedNameWithWildcard
+{ after(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getQualifiedNameWithWildcardParserRuleCall_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__ValidID__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -947,9 +997,9 @@ rule__Factory__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getFactoryAccess().getEpackagesAssignment_1()); }
-(rule__Factory__EpackagesAssignment_1)*
-{ after(grammarAccess.getFactoryAccess().getEpackagesAssignment_1()); }
+{ before(grammarAccess.getFactoryAccess().getEPackagesAssignment_1()); }
+(rule__Factory__EPackagesAssignment_1)*
+{ after(grammarAccess.getFactoryAccess().getEPackagesAssignment_1()); }
 )
 
 ;
@@ -1060,7 +1110,6 @@ rule__PackageImport__Group__1
     }
 :
 	rule__PackageImport__Group__1__Impl
-	rule__PackageImport__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1081,38 +1130,6 @@ rule__PackageImport__Group__1__Impl
 finally {
 	restoreStackSize(stackSize);
 }
-
-
-rule__PackageImport__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__PackageImport__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__PackageImport__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getPackageImportAccess().getFullStopAsteriskKeyword_2()); }
-
-	'.*' 
-
-{ after(grammarAccess.getPackageImportAccess().getFullStopAsteriskKeyword_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
 
 
 
@@ -2621,14 +2638,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Factory__EpackagesAssignment_1
+rule__Factory__EPackagesAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_1_0()); }
-	rulePackageImport{ after(grammarAccess.getFactoryAccess().getEpackagesPackageImportParserRuleCall_1_0()); }
+{ before(grammarAccess.getFactoryAccess().getEPackagesPackageImportParserRuleCall_1_0()); }
+	rulePackageImport{ after(grammarAccess.getFactoryAccess().getEPackagesPackageImportParserRuleCall_1_0()); }
 )
 
 ;
@@ -2674,8 +2691,8 @@ rule__PackageImport__EPackageAssignment_1
 (
 { before(grammarAccess.getPackageImportAccess().getEPackageEPackageCrossReference_1_0()); }
 (
-{ before(grammarAccess.getPackageImportAccess().getEPackageEPackageQualifiedNameParserRuleCall_1_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getPackageImportAccess().getEPackageEPackageQualifiedNameParserRuleCall_1_0_1()); }
+{ before(grammarAccess.getPackageImportAccess().getEPackageEPackageStringOrQualifiedNameWithWildcardParserRuleCall_1_0_1()); }
+	ruleStringOrQualifiedNameWithWildcard{ after(grammarAccess.getPackageImportAccess().getEPackageEPackageStringOrQualifiedNameWithWildcardParserRuleCall_1_0_1()); }
 )
 { after(grammarAccess.getPackageImportAccess().getEPackageEPackageCrossReference_1_0()); }
 )

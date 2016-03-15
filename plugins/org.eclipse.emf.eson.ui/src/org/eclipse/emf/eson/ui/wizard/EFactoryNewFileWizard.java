@@ -41,6 +41,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
 public class EFactoryNewFileWizard extends Wizard implements INewWizard {
+
 	private EFactoryNewFileWizardPage page;
 	private ISelection selection;
 

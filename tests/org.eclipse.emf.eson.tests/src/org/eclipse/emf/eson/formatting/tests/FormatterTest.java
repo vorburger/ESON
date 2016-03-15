@@ -30,7 +30,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Tests Formatting.
+ * Tests EFactoryFormatter.
  * 
  * @author Michael Vorburger
  */
@@ -43,10 +43,9 @@ public class FormatterTest {
 	// at this code to write your own Xtext Formatter unit test, just use a
 	// ParseHelper.
 	@Inject ResourceProvider resourceProvider;
-	
+
 	@Inject INodeModelFormatter formatter;
 
-	
 	@Test
 	public void testFormatting() throws Exception {
 		URI uri = resourceProvider.getUri("res/FormatterTests/FormatterTest.efactory");
