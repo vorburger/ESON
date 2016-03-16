@@ -13,21 +13,19 @@
 package org.eclipse.emf.eson.scoping;
 
 import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.eson.eFactory.Factory;
 import org.eclipse.emf.eson.util.EFactoryUtil;
 import org.eclipse.emf.eson.util.EcoreUtil3;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
@@ -72,16 +70,15 @@ public class EPackageScopeProvider implements IEPackageScopeProvider {
 	}
 
 	public Iterable<EClass> getAllEClasses(Iterable<? extends EPackage> ePackages) {
-		return getAllInstances(ePackages, EClass.class);
-	}
-
-	private <T extends EObject> Iterable<T> getAllInstances(Iterable<? extends EPackage> ePackages, Class<T> type) {
-		Iterable<T> result = Collections.emptyList();
-		for (EPackage ePackage : ePackages) {
-			List<T> allContents = EcoreUtil2.getAllContentsOfType(ePackage, type);
-			result = Iterables.concat(result, allContents);
-		}
-		return result;
+		return Iterables.concat(Iterables.transform(ePackages,
+				new Function<EPackage, Iterable<EClass>>() {
+					@Override
+					public Iterable<EClass> apply(EPackage input) {
+						// only the EClass/es of the given EPackage, but NOT their sub-packages
+						return Iterables.filter(input.getEClassifiers(), EClass.class);
+						// OLD BEHAVIOUR: return Iterables.filter(ImmutableList.copyOf(input.eAllContents()), EClass.class);
+					}
+				}));
 	}
 
 }

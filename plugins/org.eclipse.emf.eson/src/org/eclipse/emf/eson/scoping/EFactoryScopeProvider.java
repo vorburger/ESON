@@ -45,13 +45,14 @@ public class EFactoryScopeProvider extends EFactoryScopeProviderNG {
 
 	public IScope scope_PackageImport_ePackage(PackageImport packageImport, EReference eReference) {
 		final IScope parent = delegateGetScope(packageImport, eReference);
-		// Following shamelessly ;) stolen from org.eclipse.xtext.xtext.XtextScopeProvider.createEPackageScope(Grammar):
+		// Following inspired & shamelessly ;) stolen from org.eclipse.xtext.xtext.XtextScopeProvider.createEPackageScope(Grammar):
+		// but fixed up as discussed in https://bugs.eclipse.org/bugs/show_bug.cgi?id=489748
 		Iterable<String> nsURIs = ePackageRegistry.getNsURIs(packageImport);
 		return new SimpleEPackageScope(parent, Iterables.transform(nsURIs, new Function<String, IEObjectDescription>() {
 			@Override
 			public IEObjectDescription apply(String from) {
 				InternalEObject proxyPackage = (InternalEObject) EcoreFactory.eINSTANCE.createEPackage();
-				proxyPackage.eSetProxyURI(URI.createURI(from));
+				proxyPackage.eSetProxyURI(URI.createURI(from).appendFragment("/"));
 				return EObjectDescription.create(qualifiedNameConverter.toQualifiedName(from), proxyPackage, Collections.singletonMap("nsURI", "true"));
 			}
 		}));
