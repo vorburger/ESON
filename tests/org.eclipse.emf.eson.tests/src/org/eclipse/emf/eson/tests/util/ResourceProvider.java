@@ -102,11 +102,10 @@ public class ResourceProvider {
 		for (EObject content : contents ) {
 			Diagnostician.INSTANCE.validate(content, chain);
 		}
+        logResourceDiagnostics(resource);
 		if (chain.getSeverity() != BasicDiagnostic.OK) {
 			throw new DiagnosticException2(chain, uri);
 		}
-		
-		logResourceDiagnostics(resource);
 		if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
 			// This is important, because as the case of a completely empty resource used in 
 			// org.eclipse.emf.eson.builder.resync.tests.BuilderResyncTest.testCreateCompletelyNew()

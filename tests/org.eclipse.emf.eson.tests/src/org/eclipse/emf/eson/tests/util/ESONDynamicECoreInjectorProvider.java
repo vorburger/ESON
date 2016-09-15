@@ -29,7 +29,7 @@ import com.google.inject.Injector;
  * 
  * @author Michael Vorburger
  */
-public class ESONWithTestmodelAndDynamicECoreInjectorProvider extends EFactoryInjectorProviderNG // NOT ESONWithTestmodelInjectorProvider, we do NOT want TestmodelPackageImpl.init() in this scenario  
+public class ESONDynamicECoreInjectorProvider extends EFactoryInjectorProviderNG // NOT ESONWithTestmodelInjectorProvider, we do NOT want TestmodelPackageImpl.init() in this scenario  
 {	// We're intentionally extends EFactoryInjectorProviderNG, note *NG, which is the variant with the new simplified Scope provider
 	
 	@Override
